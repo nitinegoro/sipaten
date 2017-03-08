@@ -63,6 +63,9 @@ echo form_open(site_url('user/bulk_action'));
 					<thead class="bg-silver">
 						<tr>
 							<th width="30">
+			                    <div class="checkbox checkbox-inline">
+			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
+			                    </div>
 							</th>
 							<th class="text-center">NIK</th>
 							<th>Nama Pengguna</th>
@@ -82,21 +85,21 @@ echo form_open(site_url('user/bulk_action'));
 				?>
 						<tr>
 							<td>
-
+					<?php if($row->user_id != 1) : ?>
 			                    <div class="checkbox checkbox-inline">
-			                        <input type="checkbox" name="users[]" value=""> <label></label>
+			                        <input type="checkbox" name="users[]" value="<?php echo $row->user_id; ?>"> <label></label>
 			                    </div>
-
+					<?php endif; ?>
 							</td>
-							<td><?php echo $row->nik; ?></td>
+							<td><?php echo $row->nip; ?></td>
 							<td><?php echo $row->name; ?></td>
 							<td><?php echo $row->address; ?></td>
 							<td><?php echo $row->phone; ?></td>
 							<td><?php echo $row->role_name; ?></td>
 							<td class="text-center" width="80">
 					<?php if($row->user_id != 1) : ?>
-								<a href="<?php echo site_url("user/update/{$row->user_id}") ?>" class="icon-button text-blue"><i class="fa fa-pencil"></i></a>
-								<a class="icon-button text-red get-delete-user" data-id=""><i class="fa fa-trash-o"></i></a>
+								<a href="<?php echo site_url("user/update/{$row->user_id}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
+								<a class="icon-button text-red get-delete-user" data-id="<?php echo $row->user_id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 					<?php endif; ?>
 							</td>
 						</tr>
@@ -112,8 +115,9 @@ echo form_open(site_url('user/bulk_action'));
 						</th>
 						<th colspan="6">
 							<label style="font-size: 11px; margin-right: 10px;">Yang terpilih :</label>
-							<button type="submit" name="action" value="update" class="btn btn-xs btn-round btn-primary"><i class="fa fa-pencil"></i> Sunting</button>
+							<!-- <button type="submit" name="action" value="update" class="btn btn-xs btn-round btn-primary"><i class="fa fa-pencil"></i> Sunting</button> -->
 							<a class="btn btn-xs btn-round btn-danger get-delete-user-multiple"><i class="fa fa-trash-o"></i> Hapus</a>
+							<small class="pull-right"><?php echo count($users) . " dari " . $num_users . " data"; ?></small>
 						</th>
 					</tfoot>
 				</table>

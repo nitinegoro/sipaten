@@ -43,10 +43,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="<?php echo base_url('public/plugins/validation/js/language/id_ID.js') ?>"></script>
    <script src="<?php echo base_url('public/dist/js/ajaxFileUpload.js'); ?>"></script>
    <script src="<?php echo base_url("public/plugins/select2/select2.full.min.js"); ?>"></script>
-    <script src="<?php echo base_url("public/dist/js/less-1.3.0.min.js"); ?>" type="text/javascript"></script>
-    <script src="<?php echo base_url("public/dist/js/prefixfree.min.js"); ?>" type="text/javascript"></script>
+   <script src="<?php echo base_url("public/dist/js/less-1.3.0.min.js"); ?>"></script>
+   <script src="<?php echo base_url("public/dist/js/prefixfree.min.js"); ?>"></script>
+   <script src="<?php echo base_url("public/plugins/datepicker/bootstrap-datepicker.min.js"); ?>"></script>
    <script type="text/javascript"> 
-      var base_url   = '<?php echo site_url('akademik'); ?>';
+      var base_url   = '<?php echo site_url(); ?>';
       var base_path  = '<?php echo base_url('assets'); ?>';
       var current_url = '<?php echo current_url(); ?>';
    </script>

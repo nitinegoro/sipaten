@@ -1,6 +1,7 @@
 @sipaten : #003D7E;
-
+@mini_font: 11px;
 @success : #00C66B;
+@gray_border : #CDCDCD;
 
 .box.box-primary {  
 	border-top-color: @sipaten; 
@@ -11,16 +12,30 @@
 	background-color: @success !important;
 }
 
+.table-bordered {
+  border: 1px solid @gray_border;
+}
+
+.mini-font > thead > tr > th,
+.mini-font > tbody > tr > th,
+.mini-font > tfoot > tr > th,
+.mini-font > thead > tr > td,
+.mini-font > tbody > tr > td,
+.mini-font > tfoot > tr > td,
+.mini-font > tfoot > tr > th > .btn,
+ {
+	font-size:@mini_font;
+}
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
 .table-bordered > tfoot > tr > th,
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-   border: 0.5px solid #CDCDCD;
+  border: 1px solid @gray_border;
 }
-
-.table-bordered > thead.bg-silver > tr > th {
-	border-top-color:#CDCDCD;
-	border:2px;
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 2px;
+  border-color:@gray_border;
 }

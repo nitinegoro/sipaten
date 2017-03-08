@@ -9,34 +9,36 @@
  * @var string
  **/
 echo form_open(current_url(), array('class' => 'form-horizontal'));
+
+echo form_hidden('ID', $get->user_id);
 ?>
 			<div class="box-body" style="margin-top: 10px;">
 				<div class="form-group">
 					<label for="email" class="control-label col-md-3 col-xs-12">NIK : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<input type="text" name="nik" class="form-control" value="<?php echo set_value('nik'); ?>">
-						<p class="help-block"><?php echo form_error('nik', '<small class="text-red">', '</small>'); ?></p>
+						<input type="text" name="nip" class="form-control" value="<?php echo $get->nip; ?>">
+						<p class="help-block"><?php echo form_error('nip', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="name" class="control-label col-md-3 col-xs-12">Nama Lengkap : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<input type="text" name="name" class="form-control" value="<?php echo set_value('name'); ?>">
+						<input type="text" name="name" class="form-control" value="<?php echo $get->name; ?>">
 						<p class="help-block"><?php echo form_error('name', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="password" class="control-label col-md-3 col-xs-12">Password : <strong class="text-red">*</strong></label>
+					<label for="status" class="control-label col-md-3 col-xs-12">Status : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<input type="password" name="password" class="form-control" value="<?php echo set_value('password'); ?>">
-						<p class="help-block"><?php echo form_error('password', '<small class="text-red">', '</small>'); ?></p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="repeat_pass" class="control-label col-md-3 col-xs-12">Ulangi : <strong class="text-red">*</strong></label>
-					<div class="col-md-8">
-						<input type="password" name="repeat_pass" class="form-control" value="<?php echo set_value('repeat_pass'); ?>">
-						<p class="help-block"><?php echo form_error('repeat_pass', '<small class="text-red">', '</small>'); ?></p>
+	                    <div class="radio radio-info radio-inline">
+	                        <input type="radio" name="status" value="1" <?php if($get->active==1) echo "checked"; ?>>
+	                        <label> Aktif </label>
+	                    </div>
+	                    <div class="radio radio-inline">
+	                        <input type="radio" name="status" value="0" <?php if($get->active==0) echo "checked"; ?>>
+	                        <label> Tidak Aktif </label>
+	                    </div>
+						<p class="help-block"><?php echo form_error('status', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
@@ -52,7 +54,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							 **/
 							foreach($roles as $row) :
 							?>
-							<option value="<?php echo $row->role_id; ?>" <?php if(set_value('role')==$row->role_id) echo "selected"; ?>><?php echo $row->role_name; ?></option>
+							<option value="<?php echo $row->role_id; ?>" <?php if($get->role_id==$row->role_id) echo "selected"; ?>><?php echo $row->role_name; ?></option>
 							<?php  
 							// End Loop roles
 							endforeach;

@@ -30,6 +30,16 @@ class Sipaten_model extends MY_Model
 			return $this->db->get_where('users_role', array('role_id' => $param))->row();
 		}
 	}
+
+	public function get_desa($param = 0)
+	{
+		if($param == FALSE)
+		{
+			return $this->db->get('desa')->result();
+		} else {
+			return $this->db->get_where('desa', array('id_desa' => $param))->row();
+		}
+	}
 }
 
 /* End of file MY_Model.php */

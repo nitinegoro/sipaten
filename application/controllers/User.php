@@ -54,6 +54,7 @@ class User extends Sipaten
 			'breadcrumb' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show(),
 			'users' => $this->user->get_all($this->per_page, $this->page),
+			'num_users' => $config['total_rows']
 		);
 		$this->template->view('user/data-user', $this->data);
 	}
@@ -63,7 +64,7 @@ class User extends Sipaten
 		$this->page_title->push('Pengguna', 'Tambah Pengguna');
 		$this->breadcrumbs->unshift(2, 'Tambah', "user/create");
 
-		$this->form_validation->set_rules('nik', 'NIK', 'trim|callback_validate_nik|required');
+		$this->form_validation->set_rules('nip', 'NIK', 'trim|callback_validate_nip|required');
 		$this->form_validation->set_rules('name', 'Nama Lengkap', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|min_length[8]|max_length[12]|required');
 		$this->form_validation->set_rules('repeat_pass', 'Ulangi Password', 'trim|matches[password]|required');
@@ -72,6 +73,8 @@ class User extends Sipaten
 		if ($this->form_validation->run() == TRUE)
 		{
 			$this->user->create();
+
+			redirect(current_url());
 		}
 
 		$this->data = array(
@@ -89,25 +92,56 @@ class User extends Sipaten
 		$this->page_title->push('Pengguna', 'Sunting Pengguna');
 		$this->breadcrumbs->unshift(2, 'Sunting', "user/create");
 
-		$this->form_validation->set_rules('nik', 'NIK', 'trim|callback_validate_nik|required');
+		$this->form_validation->set_rules('nip', 'NIK', 'trim|callback_validate_nip|required');
 		$this->form_validation->set_rules('name', 'Nama Lengkap', 'trim|required');
-		$this->form_validation->set_rules('password', 'Password', 'trim|min_length[8]|max_length[12]|required');
-		$this->form_validation->set_rules('repeat_pass', 'Ulangi Password', 'trim|matches[password]|required');
+		$this->form_validation->set_rules('status', 'Status', 'trim|required');
 		$this->form_validation->set_rules('role', 'Level Akses', 'trim|required');
 
 		if ($this->form_validation->run() == TRUE)
 		{
-			$this->user->create();
+			$this->user->update($param);
 		}
 
 		$this->data = array(
 			'title' => "Sunting Pengguna", 
 			'breadcrumb' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show(),
-			'roles' => $this->user->get_role()
+			'roles' => $this->user->get_role(),
+			'get' => $this->user->get($param)
 		);
 
 		$this->template->view('user/update-user', $this->data);
+	}
+
+	public function delete($param = 0)
+	{
+		$this->user->delete($param);
+
+		redirect('user');
+	}
+
+	/**
+	 * Action Multiple User
+	 *
+	 * @return string
+	 **/
+	public function bulk_action()
+	{
+		switch ($this->input->post('action')) 
+		{
+			case 'delete':
+				$this->user->delete_multiple();
+				break;
+			
+			default:
+				$this->template->alert(
+					' Tidak ada data yang dipilih.', 
+					array('type' => 'warning','icon' => 'warning')
+				);
+				break;
+		}
+
+		redirect('user');
 	}
 
 	/**
@@ -115,11 +149,11 @@ class User extends Sipaten
 	 *
 	 * @return string
 	 **/
-	public function validate_nik()
+	public function validate_nip()
 	{
-		if($this->user->nik_check(NULL) == TRUE)
+		if($this->user->nip_check($this->input->post('ID')) == TRUE)
 		{
-			$this->form_validation->set_message('validate_nik', 'Maaf NIK telah digunakan oleh Pengguna lain.');
+			$this->form_validation->set_message('validate_nip', 'Maaf NIK telah digunakan oleh Pengguna lain.');
 			return false;
 		} else {
 			return true;

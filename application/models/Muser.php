@@ -14,6 +14,9 @@ class Muser extends Sipaten_model
 
 	public function get_all($limit = 20, $offset = 0, $type = 'result')
 	{
+		if($this->input->get('query') != '')
+			$this->db->like('nip', $this->input->get('query'))
+					 ->or_like('name', $this->input->get('query'));
 
 		$this->db->join('users_role', 'users.role_id = users_role.role_id', 'left');
 
@@ -28,7 +31,7 @@ class Muser extends Sipaten_model
 	public function create()
 	{
 		$user = array(
-			'nik' => $this->input->post('nik'),
+			'nip' => $this->input->post('nip'),
 			'name' => $this->input->post('name'),
 			'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 			'address' => '',
@@ -54,17 +57,104 @@ class Muser extends Sipaten_model
 		}
 	}
 
+	public function get($param = 0)
+	{
+		return $this->db->get_where('users', array('user_id' => $param))->row();
+	}
+
 	/**
-	 * Check Ketersediaan NIK
+	 * Update User
+	 *
+	 * @param Integer
+	 * @return string
+	 **/
+	public function update($param = 0)
+	{
+		$user = array(
+			'nip' => $this->input->post('nip'),
+			'name' => $this->input->post('name'),
+			'active' => $this->input->post('status'),
+			'role_id' => $this->input->post('role') 
+		);
+
+		$this->db->update('users', $user, array('user_id' => $param));
+
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Pengguna ditambahkan.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Tidak ada yang dirubah.', 
+				array('type' => 'warning','icon' => 'times')
+			);
+		}
+	}
+
+	/**
+	 * Delete User
+	 *
+	 * @param Integer
+	 * @return string
+	 **/
+	public function delete($param = 0)
+	{
+		$this->db->delete('users', array('user_id' => $param));
+
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Pengguna dihapus.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Tidak ada data yang dihapus.', 
+				array('type' => 'warning','icon' => 'times')
+			);
+		}
+	}
+
+	/**
+	 * Delete Multiple User
+	 *
+	 * @param Integer (Array)
+	 * @return string
+	 **/
+	public function delete_multiple()
+	{
+		if(is_array($this->input->post('users')))
+		{
+			foreach($this->input->post('users') as $value)
+				$this->db->delete('users', array('user_id' => $value));
+
+			$this->template->alert(
+				' Pengguna dihapus.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Tidak ada data yang dipilih.', 
+				array('type' => 'warning','icon' => 'times')
+			);
+		}
+	}
+
+	/**
+	 * Check Ketersediaan nip
 	 *
 	 * @param Integer (user_id)
 	 * @return string
 	 **/
-	public function nik_check($param = 0)
+	public function nip_check($param = 0)
 	{
 		if($param == FALSE)
 		{
-			return $this->db->get_where('users', array('nik' => $this->input->post('nik')))->num_rows();
+			return $this->db->get_where('users', array('nip' => $this->input->post('nip')))->num_rows();
+		} else {
+			return $this->db->query("SELECT nip FROM users WHERE nip IN({$this->input->post('nip')}) AND user_id != {$param}")->num_rows();
 		}
 	}
 

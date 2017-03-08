@@ -99,7 +99,7 @@ class Login extends CI_Controller
 	 **/
 	private function _get_account($param = 0)
 	{
-		$query = $this->db->get_where('users', array('nik' => $param));
+		$query = $this->db->get_where('users', array('nip' => $param));
 
 		if($query->num_rows() == 1)
 		{

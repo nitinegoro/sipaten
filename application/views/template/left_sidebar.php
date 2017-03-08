@@ -101,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </li>
 
-        <li class="treeview <?php echo active_link_multiple(array('setting')); ?>">
+        <li class="treeview <?php echo active_link_multiple(array('people')); ?>">
             <a href="#">
                <i class="fa fa-database"></i> <span> Master Data</span>
                <span class="pull-right-container">
@@ -110,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
           <ul class="treeview-menu">
             <li>
-              <a href="" class="<?php echo active_link_controller('penduduk') ?>"><i class="fa fa-angle-double-right"></i> Data Penduduk</a>
+              <a href="<?php echo site_url('people') ?>" class="<?php echo active_link_controller('people') ?>"><i class="fa fa-angle-double-right"></i> Data Penduduk</a>
             </li>
             <li>
               <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Data Kelurahan/Desa</a>
@@ -123,17 +123,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <li class="treeview <?php echo active_link_multiple(array('setting')); ?>">
             <a href="#">
-               <i class="fa fa-bar-chart-o"></i> <span>Laporan</span>
+               <i class="fa fa-bar-chart-o"></i> <span>Statistik</span>
                <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                </span>
             </a>
           <ul class="treeview-menu">
             <li>
-              <a href="" class="<?php echo active_link_controller('surat') ?>"><i class="fa fa-angle-double-right"></i> Data pengguna</a>
+              <a href="" class="<?php echo active_link_controller('surat') ?>"><i class="fa fa-angle-double-right"></i> Kependudukan</a>
             </li>
             <li>
-              <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Tambah Pengguna</a>
+              <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Surat Keterangan</a>
+            </li>
+            <li>
+              <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Surat Perizinan</a>
             </li>
           </ul>
         </li>

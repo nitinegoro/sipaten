@@ -5,16 +5,16 @@
 
 jQuery(function($) {
 
-	$('.get-delete-user').click( function() {
-		$('#modal-delete-user').modal('show');
-		$('a#btn-delete').attr('href', base_url + '/user/delete/' + $(this).data('id'));
+	$('.get-delete-people').click( function() {
+		$('#modal-delete-people').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/people/delete/' + $(this).data('id'));
 	});
 
 	// Delete Multiple User
-	$('.get-delete-user-multiple').click( function() {
+	$('.get-delete-people-multiple').click( function() {
 		if( $('input[type=checkbox]').is(':checked') != '' ) 
 		{
-			$('#modal-delete-user-multiple').modal('show');
+			$('#modal-delete-people-multiple').modal('show');
 		} else {
 			$.notify({
 				icon: 'fa fa-warning',

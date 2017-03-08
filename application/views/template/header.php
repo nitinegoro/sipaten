@@ -19,6 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-checkbox/awesome-bootstrap-checkbox.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url('public/plugins/validation/css/formValidation.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/select2/select2.min.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("public/plugins/datepicker/datepicker3.min.css"); ?>">
   <link rel="shortcut icon" type="image/png" href="<?php echo base_url("public/image/small-logo.png"); ?>"/>
   <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
   <style>
@@ -31,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     a.active { font-weight: bold; }
     a { cursor: pointer; }
     div.checkbox, label.checkbox { padding-top:0px; padding-bottom: 0px; }
-    .bg-silver { background:rgb(249,250,252); }
+    .bg-silver { background:rgb(249,250,252); border:#444; }
     .icon-button { font-size: 1.1em; margin: 5px 10px 0px 0px; }
     .icon-button:hover { font-size: 1.2em;}
     .text-line { text-decoration: line-through; color: rgb(173,0,0); }
@@ -39,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     .top { margin-top: 20px; }
     div.kisaran > .ticks_labels { padding: 10px; }
     .bigger-font { font-size: 15px; }
-    label.control-label { font-weight: normal !important; }
+    /* label.control-label { font-weight: normal !important; } */
   </style>
 </head>
 <?php  
