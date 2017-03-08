@@ -123,7 +123,7 @@ echo form_hidden('ID', $people->ID);
 							<option value="AB-" <?php if($people->gol_darah=='AB-') echo "selected"; ?>>AB-</option>
 							<option value="O+" <?php if($people->gol_darah=='O+') echo "selected"; ?>>O+</option>
 							<option value="O-" <?php if($people->gol_darah=='O-') echo "selected"; ?>>O-</option>
-							<option value="tidak tahu"<?php if($people->gol_darah=='tidak tahu') echo "selected"; ?>>Tidak Tahu</option>
+							<option value="tidak tahu"<?php if($people->gol_darah=='TIDAK TAHU') echo "selected"; ?>>TIDAK TAHU</option>
 						</select>
 						<p class="help-block"><?php echo form_error('gol_darah', '<small class="text-red">', '</small>'); ?></p>
 					</div>

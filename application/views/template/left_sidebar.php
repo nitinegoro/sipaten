@@ -101,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </li>
 
-        <li class="treeview <?php echo active_link_multiple(array('people')); ?>">
+        <li class="treeview <?php echo active_link_multiple(array('people','desa')); ?>">
             <a href="#">
                <i class="fa fa-database"></i> <span> Master Data</span>
                <span class="pull-right-container">
@@ -113,7 +113,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <a href="<?php echo site_url('people') ?>" class="<?php echo active_link_controller('people') ?>"><i class="fa fa-angle-double-right"></i> Data Penduduk</a>
             </li>
             <li>
-              <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Data Kelurahan/Desa</a>
+              <a href="<?php echo site_url('desa') ?>" class="<?php echo active_link_controller('desa') ?>"><i class="fa fa-angle-double-right"></i> Data Kelurahan/Desa</a>
             </li>
             <li>
               <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Manajemen Surat</a>

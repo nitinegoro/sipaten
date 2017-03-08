@@ -121,7 +121,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							<option value="AB-" <?php if(set_value('gol_darah')=='AB-') echo "selected"; ?>>AB-</option>
 							<option value="O+" <?php if(set_value('gol_darah')=='O+') echo "selected"; ?>>O+</option>
 							<option value="O-" <?php if(set_value('gol_darah')=='O-') echo "selected"; ?>>O-</option>
-							<option value="tidak tahu"<?php if(set_value('gol_darah')=='tidak tahu') echo "selected"; ?>>Tidak Tahu</option>
+							<option value="tidak tahu"<?php if(set_value('gol_darah')=='TIDAK TAHU') echo "selected"; ?>>TIDAK TAHU</option>
 						</select>
 						<p class="help-block"><?php echo form_error('gol_darah', '<small class="text-red">', '</small>'); ?></p>
 					</div>

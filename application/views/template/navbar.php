@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                </li>
                <li class="dropdown user user-menu" data-toggle="tooltip" data-placement="bottom" title="Pengaturan Login">
-                  <a href="<?php echo site_url('akademik/user/account'); ?>" style="font-size: 20px;">
+                  <a href="<?php echo site_url('account'); ?>" style="font-size: 20px;">
                      <i class="fa fa-user"></i>
                   </a>
                </li>

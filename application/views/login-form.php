@@ -65,6 +65,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0F466E',endCol
          <!-- /.login-logo -->
          <div class="arrow-up"></div>
          <div class="login-box-body">
+            <?php echo $this->session->flashdata('alert'); ?>
             <form action="" method="post">
                <div class="form-group has-feedback">
                   <span class="glyphicon glyphicon-user form-control-feedback" style="color: white;"></span>

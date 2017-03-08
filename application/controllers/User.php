@@ -27,7 +27,7 @@ class User extends Sipaten
 
 		$this->load->model('muser','user');
 
-		$this->per_page = $this->input->get('per_page');
+		$this->per_page = (!$this->input->get('per_page')) ? 20: $this->input->get('per_page');
 
 		$this->page = $this->input->get('page');
 
@@ -40,7 +40,7 @@ class User extends Sipaten
 	{
 		$this->page_title->push('Pengguna', 'Data Pengguna');
 
-		$this->template->pagination_list();
+		$config = $this->template->pagination_list();
 
 		$config['base_url'] = site_url("user?per_page={$this->per_page}&query={$this->query}");
 

@@ -8,7 +8,7 @@
  *
  * @var string
  **/
-echo form_open_multipart(current_url(), array('class' => 'form-horizontal'))	
+echo form_open_multipart(site_url('people/set_upload'), array('class' => 'form-horizontal'))	
 ?>
 			<div class="box-body" style="margin-top: 10px;">
 				<div class="form-group pad">

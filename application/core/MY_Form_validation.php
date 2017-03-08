@@ -16,6 +16,8 @@ class MY_Form_validation extends CI_Form_validation {
 			return FALSE;
 		}
 	}
+
+	
 }
 
 /* End of file MY_Form_validation.php */

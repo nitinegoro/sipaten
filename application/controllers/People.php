@@ -31,7 +31,9 @@ class People extends Sipaten
 
 		$this->load->model('mpeople','people');
 
-		$this->per_page = $this->input->get('per_page');
+		$this->load->model('mpeople_excel', 'people_excel');
+
+		$this->per_page = (!$this->input->get('per_page')) ? 20: $this->input->get('per_page');
 
 		$this->page = $this->input->get('page');
 
@@ -50,7 +52,7 @@ class People extends Sipaten
 
 		$this->breadcrumbs->unshift(2, 'Data Penduduk', "people");
 
-		$this->template->pagination_list();
+		$config = $this->template->pagination_list();
 
 		$config['base_url'] = site_url("people?per_page={$this->per_page}&query={$this->query}&village={$this->desa}&gender={$this->gender}");
 
@@ -181,16 +183,6 @@ class People extends Sipaten
 		$this->page_title->push('Master Data', 'Impor Data Penduduk');
 
 		$this->breadcrumbs->unshift(2, 'Data Penduduk', "people");
-		
-		if (empty($_FILES['file_excel']['name']))
-			$this->form_validation->set_rules('file_excel', 'Dokumen Excel', 'required');
-
-		if ($this->form_validation->run() == TRUE)
-		{
-			$this->people_excel->upload();
-
-			redirect(current_url());
-		}
 
 		$this->data = array(
 			'title' => "Impor Data Penduduk", 
@@ -199,6 +191,18 @@ class People extends Sipaten
 		);
 
 		$this->template->view('people/import-people', $this->data);
+	}
+
+	public function set_upload()
+	{
+			$this->people_excel->upload();
+
+			redirect('people/import');
+	}
+
+	public function export()
+	{
+		$this->people_excel->get();
 	}
 
 	/**
