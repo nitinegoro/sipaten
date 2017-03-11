@@ -27,6 +27,8 @@ class Desa extends Sipaten
 
 		$this->load->model('mdesa','desa');
 
+		$this->load->model('mdesa_excel','desa_excel');
+
 		$this->per_page = (!$this->input->get('per_page')) ? 20: $this->input->get('per_page');
 
 		$this->page = $this->input->get('page');
@@ -116,6 +118,77 @@ class Desa extends Sipaten
 	public function delete($param = 0)
 	{
 		$this->desa->delete($param);
+
+		redirect('desa/import');
+	}
+
+	public function export()
+	{
+		$this->desa_excel->get();
+	}
+
+	public function bulk_action()
+	{
+		switch ($this->input->post('action')) 
+		{
+			case 'delete':
+				$this->desa->delete_multiple();
+				redirect('desa');
+				break;
+			case 'set_update':
+				$this->set_update_multiple();
+				break;
+			case 'update':
+				$this->desa->update_multiple();
+				redirect('desa');
+				break;
+			default:
+				$this->template->alert(
+					' Tidak ada data yang dipilih.', 
+					array('type' => 'warning','icon' => 'warning')
+				);
+				redirect('desa');
+				break;
+		}
+	}
+
+	/**
+	 * Update Desa Multiple
+	 *
+	 **/
+	private function set_update_multiple()
+	{
+		$this->page_title->push('Master Data', 'Sunting Data Desa');
+
+		$this->breadcrumbs->unshift(2, 'Data Desa', "people");
+
+		$this->data = array(
+			'title' => "Sunting Data Desa", 
+			'breadcrumb' => $this->breadcrumbs->show(),
+			'page_title' => $this->page_title->show(),
+		);
+
+		$this->template->view('desa/update-desa-multiple', $this->data);
+	}
+
+	public function import()
+	{
+		$this->page_title->push('Master Data', 'Impor Data Desa');
+
+		$this->breadcrumbs->unshift(2, 'Data Desa', "desa");
+
+		$this->data = array(
+			'title' => "Impor Data Desa", 
+			'breadcrumb' => $this->breadcrumbs->show(),
+			'page_title' => $this->page_title->show(),
+		);
+
+		$this->template->view('desa/import-desa', $this->data);
+	}
+
+	public function set_upload()
+	{
+		$this->desa_excel->upload();
 
 		redirect('desa');
 	}

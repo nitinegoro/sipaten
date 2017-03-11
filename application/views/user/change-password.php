@@ -8,7 +8,7 @@
  *
  * @var string
  **/
-echo form_open(current_url(), array('class' => 'form-horizontal'));
+echo form_open_multipart(current_url(), array('class' => 'form-horizontal'));
 
 echo form_hidden('ID', $get->user_id);
 ?>
@@ -25,6 +25,27 @@ echo form_hidden('ID', $get->user_id);
 					<div class="col-md-8">
 						<input type="text" name="name" class="form-control" value="<?php echo $get->name; ?>">
 						<p class="help-block"><?php echo form_error('name', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="control-label col-md-3 col-xs-12">Alamat : <strong class="text-primary">*</strong></label>
+					<div class="col-md-8">
+						<textarea name="alamat" class="form-control" rows="3"><?php echo $get->address; ?></textarea>
+						<p class="help-block"><?php echo form_error('alamat', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="phone" class="control-label col-md-3 col-xs-12">Nomor Telepon : <strong class="text-primary">*</strong></label>
+					<div class="col-md-8">
+						<input type="text" name="phone" class="form-control" value="<?php echo $get->phone; ?>">
+						<p class="help-block"><?php echo form_error('phone', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="file_excel" class="control-label col-md-3 col-xs-12">Foto : <strong class="text-red">*</strong></label>
+					<div class="col-md-8">
+						<input type="file" name="file_foto" class="form-control" id="file-excel">
+						<p class="help-block"><?php echo form_error('file_excel', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">

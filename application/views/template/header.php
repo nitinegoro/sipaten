@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url('public/plugins/validation/css/formValidation.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/select2/select2.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/datepicker/datepicker3.min.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"); ?>">
   <link rel="shortcut icon" type="image/png" href="<?php echo base_url("public/image/small-logo.png"); ?>"/>
   <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
   <style>

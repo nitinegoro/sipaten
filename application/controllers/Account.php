@@ -33,7 +33,13 @@ class Account extends Sipaten
 		$this->form_validation->set_rules('new_pass', 'Password Baru', 'trim|min_length[8]|max_length[12]');
 		$this->form_validation->set_rules('repeat_pass', 'Ini', 'trim|matches[new_pass]');
 		$this->form_validation->set_rules('old_pass', 'Password Lama', 'trim|required|callback_validate_password');
-
+		$this->form_validation->set_rules('alamat', 'Alamat', 'trim');
+		$this->form_validation->set_rules('phone', 'Nomor Telepon', 'trim');
+		
+		if (empty($_FILES['file_foto']['name']))
+		{
+		    $this->form_validation->set_rules('file_foto', 'Foto', 'trim');
+		}
 
 		if ($this->form_validation->run() == TRUE)
 		{

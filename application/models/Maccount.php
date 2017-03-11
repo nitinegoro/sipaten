@@ -10,6 +10,8 @@ class Maccount extends Sipaten_model
 		parent::__construct();
 
 		$this->user = $this->session->userdata('ID');
+
+		$this->load->library(array('upload'));
 	}
 
 	public function get()
@@ -21,9 +23,35 @@ class Maccount extends Sipaten_model
 	{
 		$get = $this->get();
 
+		$config['upload_path'] = './public/image/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		
+		$this->upload->initialize($config);
+		
+		if ( ! $this->upload->do_upload('file_foto')) 
+		{
+
+			$this->template->alert(
+				$this->upload->display_errors('<span>','</span>'), 
+				array('type' => 'success','icon' => 'check')
+			);
+
+			$gambar = $get->photo;
+			
+		} else {
+
+			if($get->photo != '')
+				unlink("public/image/{$get->photo}");
+
+			$gambar = $this->upload->file_name;
+		}
+
 		$data = array(
 			'nip' => $this->input->post('nip'),
 			'name' => $this->input->post('name'),  
+			'address' => $this->input->post('alamat'),
+			'phone' => $this->input->post('phone'),
+			'photo' => $gambar
 		);
 
 		if($this->input->post('new_pass') != '')

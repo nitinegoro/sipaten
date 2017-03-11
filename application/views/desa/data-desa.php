@@ -39,9 +39,9 @@ echo form_open(current_url(), array('method' => 'get'));
 				</div>
 				<div class="col-md-5">
 					<a href="<?php echo site_url('desa/create') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
-					<a href="<?php echo site_url('desa/create') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-print"></i> Cetak</a>
-					<a href="<?php echo site_url('desa/create') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
-					<a href="<?php echo site_url('desa/create') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a>
+					<a href="<?php echo site_url('desa/print_out') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url('desa/export') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
+					<a href="<?php echo site_url('desa/import') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a>
 				</div>
             <div class="col-md-3">
                <div class="input-group input-group-sm">
@@ -86,7 +86,7 @@ echo form_open(site_url('desa/bulk_action'));
 						<tr>
 							<td>
 			                    <div class="checkbox checkbox-inline">
-			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
+			                        <input id="checkbox1" type="checkbox" name="desa[]" value="<?php echo $row->id_desa; ?>"> <label for="checkbox1"></label>
 			                    </div>
 							</td>
 							<td><?php echo $row->nama_desa; ?></td>
@@ -109,7 +109,7 @@ echo form_open(site_url('desa/bulk_action'));
 						</th>
 						<th colspan="6">
 							<label style="font-size: 11px; margin-right: 10px;">Yang terpilih :</label>
-							<button type="submit" name="action" value="update" class="btn btn-xs btn-round btn-primary"><i class="fa fa-pencil"></i> Sunting</button>
+							<button type="submit" name="action" value="set_update" class="btn btn-xs btn-round btn-primary"><i class="fa fa-pencil"></i> Sunting</button>
 							<a class="btn btn-xs btn-round btn-danger get-delete-desa-multiple"><i class="fa fa-trash-o"></i> Hapus</a>
 							<small class="pull-right"><?php echo count($desa) . " dari " . $num_desa . " data"; ?></small>
 						</th>

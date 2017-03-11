@@ -14,50 +14,21 @@
               	</div>
             </div>
             <div class="box-body">
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Tidak Mampu
+      <?php  
+      /**
+      * Loop Surat Keterangan
+      *
+      * @param String (jenis) 
+      */
+      foreach($this->option->surat_category(NULL,'non perizinan') as $row) :
+      ?>
+              <a class="csurat" href="<?php echo site_url("surat_keterangan/index/{$row->id_surat}") ?>">
+                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt="sss"/>
+                <span><?php echo $row->nama_kategori; ?></span>
               </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Kelakuan Baik
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br> KTP
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br> KK
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br>Akta Kelahiran
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br>Tinggal Sementara
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Pindah Jiwa
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br>Izin Keramaian
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Waris <br>dan <br> Kuasa Waris
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Domisili <br> Perusahaan
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br>Tanda Daftar <br> Perusahaan
-              </a>
+      <?php  
+      endforeach;
+      ?>
             </div>
         </div>
     </div>
@@ -70,42 +41,21 @@
                 </div>
             </div>
             <div class="box-body">
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Bersih Lingkungan
+      <?php  
+      /**
+      * Loop Surat Keterangan
+      *
+      * @param String (jenis) 
+      */
+      foreach($this->option->surat_category(NULL,'perizinan') as $row) :
+      ?>
+              <a class="csurat" href="<?php echo site_url('') ?>">
+                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt="sss"/>
+                <span><?php echo $row->nama_kategori; ?></span>
               </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Izin Usaha <br> Mikro Kecil
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br> SIUP (Perorangan)
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br> SIUP (CV)
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br> SIUP (PT)
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br>IMB
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br>SIG
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br>TDG
-              </a>
-              <a href="" class="btn btn-app btn-shortcut">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt=""> <br>
-               Rekomendasi <br> TDI
-              </a>
+      <?php  
+      endforeach;
+      ?>
             </div>
         </div>
     </div>

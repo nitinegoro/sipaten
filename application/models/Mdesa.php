@@ -106,6 +106,52 @@ class Mdesa extends Sipaten_model
 		}
 	}
 
+	public function delete_multiple()
+	{
+		if(is_array($this->input->post('desa')))
+		{
+			foreach($this->input->post('desa') as $value)
+				$this->db->delete('desa', array('id_desa' => $value));
+
+			$this->template->alert(
+				' Data desa berhasil dihapus.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Tidak ada data yang dipilih.', 
+				array('type' => 'warning','icon' => 'times')
+			);
+		}
+	}
+
+	public function update_multiple()
+	{
+		if(is_array($this->input->post('ID')))
+		{
+			foreach($this->input->post('ID') as $key => $value)
+			{
+				$desa = array(
+					'nama_desa' => $this->input->post('desa')[$key],
+					'slug' => $this->slug->create_slug($this->input->post('desa')[$key]),
+					'kepala_desa' => $this->input->post('kepala_desa')[$key] 
+				);
+
+				$this->db->update('desa', $desa, array('id_desa' => $value));
+			}
+
+			$this->template->alert(
+				' Data desa berhasil diubah.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Tidak ada data yang dipilih.', 
+				array('type' => 'warning','icon' => 'times')
+			);
+		}
+	}
+
 	/**
 	 * Check Ketersediaan Slug
 	 *
