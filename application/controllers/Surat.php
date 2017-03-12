@@ -71,20 +71,19 @@ class Surat extends Sipaten
 		$this->form_validation->set_rules('nama_surat', 'Desa / Kelurahan', 'trim|required');
 		$this->form_validation->set_rules('kepala_desa', 'Nama Kepala Desa', 'trim');
 		$this->form_validation->set_rules('jenis', 'Jenis Surat', 'trim|required');
-		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'trim|required');
 		$this->form_validation->set_rules('durasi', 'Waktu Pelayanan', 'trim|required');
 
-		if( is_array($this->input->post('syarat') ) )
-		{
-			foreach($this->input->post('syarat') as $key => $value) 
-				$this->form_validation->set_rules('syarat['.$key.']', 'Syarat', 'trim|required');
-		} 
+		if( $this->input->post('syarat') == FALSE ) 
+			$this->form_validation->set_rules("syarat[]", 'Syarat', 'trim|required');
+
+		if( $this->input->post('isi') == FALSE ) 
+			$this->form_validation->set_rules("isi[]", 'Form / Isian Surat', 'trim|required');
 
 		if($this->form_validation->run() == TRUE)
 		{
 			$this->surat->create_category();
 
-			redirect('surat');
+			redirect(current_url());
 		}
 
 		$this->data = array(
@@ -97,6 +96,66 @@ class Surat extends Sipaten
 		$this->template->view('surat/create-surat', $this->data);
 	}
 
+	public function update($param = 0)
+	{
+		$this->page_title->push('Master Data', 'Sunting Data Jenis Surat');
+
+		$this->breadcrumbs->unshift(2, 'Manajemen Surat', "surat");
+
+		$this->form_validation->set_rules('nama_surat', 'Desa / Kelurahan', 'trim|required');
+		$this->form_validation->set_rules('kepala_desa', 'Nama Kepala Desa', 'trim');
+		$this->form_validation->set_rules('jenis', 'Jenis Surat', 'trim|required');
+		$this->form_validation->set_rules('durasi', 'Waktu Pelayanan', 'trim|required');
+
+		if( $this->input->post('syarat') == FALSE ) 
+			$this->form_validation->set_rules("syarat[]", 'Syarat', 'trim|required');
+
+		if( $this->input->post('isi') == FALSE ) 
+			$this->form_validation->set_rules("isi[]", 'Form / Isian Surat', 'trim|required');
+
+		if($this->form_validation->run() == TRUE)
+		{
+			$this->surat->update_category($param);
+
+			redirect(current_url());
+		}
+
+		$this->data = array(
+			'title' => "Sunting Data Jenis Surat", 
+			'breadcrumb' => $this->breadcrumbs->show(),
+			'page_title' => $this->page_title->show(),
+			'syarat' => $this->surat->get_syarat_surat(),
+			'get' => $this->surat->get($param)
+		);
+
+		$this->template->view('surat/update-surat', $this->data);
+	}
+
+	public function delete($param = 0)
+	{
+		$this->surat->delete($param);
+
+		redirect('surat');
+	}
+
+	public function bulk_action()
+	{
+		switch ($this->input->post('action')) 
+		{
+			case 'delete':
+				$this->surat->delete_multiple();
+				break;
+			
+			default:
+				$this->template->alert(
+					' Tidak ada data yang dipilih.', 
+					array('type' => 'warning','icon' => 'warning')
+				);
+				break;
+		}
+
+		redirect('surat');
+	}
 }
 
 /* End of file Surat.php */

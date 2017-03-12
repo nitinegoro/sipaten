@@ -48,7 +48,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="<?php echo base_url("public/plugins/datepicker/bootstrap-datepicker.min.js"); ?>"></script>
    <script src="<?php echo base_url("public/plugins/heightchart/highcharts.js"); ?>"></script>
    <script src="<?php echo base_url("public/plugins/heightchart/modules/exporting.js"); ?>"></script>
-   <script src="<?php echo base_url("public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"); ?>"></script>
    <script type="text/javascript"> 
       var base_url   = '<?php echo site_url(); ?>';
       var base_path  = '<?php echo base_url('assets'); ?>';

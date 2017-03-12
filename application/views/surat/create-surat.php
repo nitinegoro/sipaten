@@ -35,7 +35,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				<div class="form-group">
 					<label for="name" class="control-label col-md-2 col-xs-12">Syarat : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<select name="syarat[]" class="form-control" multiple="multiple" data-placeholder="Pilih syarat penerbitan surat" id="select-syarat" required>
+						<select name="syarat[]" class="form-control" multiple="multiple" data-placeholder="Pilih syarat penerbitan surat" id="select-syarat">
 					<?php  
 					/**
 					 * Loop data Syarat Surat
@@ -44,18 +44,30 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					foreach($syarat as $row) :
 					?>
 							<option value="<?php echo $row->id_syarat; ?>"><?php echo $row->nama_syarat; ?></option>
+							
 					<?php  
 					endforeach;
 					?>
 						</select>
-						<p class="help-block"><?php echo form_error('kepala_desa', '<small class="text-red">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('syarat[]', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="control-label col-md-2 col-xs-12">Deskripsi / Isi Surat : <strong class="text-red">*</strong></label>
+					<label for="name" class="control-label col-md-2 col-xs-12">Form / Isian Surat : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<textarea name="deskripsi" class="form-control" rows="10" id="text-editor"></textarea>
-						<p class="help-block"><?php echo form_error('deskripsi', '<small class="text-red">', '</small>'); ?></p>
+	                    <div class="checkbox checkbox-primary">
+	                        <input class="styled" name="isi[]" value="nomor_surat_pengantar" type="checkbox">
+	                        <label>
+	                           Nomor Surat Pengantar / Rekomendasi dari Lurah / Kades
+	                        </label>
+	                    </div>
+	                    <div class="checkbox checkbox-primary">
+	                        <input class="styled" name="isi[]" value="keperluan" type="checkbox">
+	                        <label>
+	                           Keperluan
+	                        </label>
+	                    </div>
+						<p class="help-block"><?php echo form_error('isi[]', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">

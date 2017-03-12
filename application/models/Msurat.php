@@ -35,11 +35,16 @@ class Msurat extends Sipaten_model
 		}
 	}
 
+	public function get($param = 0)
+	{
+		return $this->db->get_where('kategori_surat', array('id_surat' => $param))->row();
+	}
+
 	public function create_category()
 	{
 		$kategori_surat = array(
 			'nama_kategori' => $this->input->post('nama_surat'), 
-			'deskripsi' => $this->input->post('deskripsi'),
+			'form_isi_surat' => implode(',', $this->input->post('isi')),
 			'jenis' => $this->input->post('jenis'),
 			'syarat' => implode(",", $this->input->post('syarat')),
 			'durasi' => $this->input->post('durasi')
@@ -50,12 +55,75 @@ class Msurat extends Sipaten_model
 		if($this->db->affected_rows())
 		{
 			$this->template->alert(
-				' Data Jenis ditambahkan.', 
+				' Data Jenis Surat ditambahkan.', 
 				array('type' => 'success','icon' => 'check')
 			);
 		} else {
 			$this->template->alert(
 				' Gagal menyimpan data.', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
+	}
+
+	public function update_category($param = 0)
+	{
+		$kategori_surat = array(
+			'nama_kategori' => $this->input->post('nama_surat'), 
+			'form_isi_surat' => implode(',', $this->input->post('isi')),
+			'jenis' => $this->input->post('jenis'),
+			'syarat' => implode(",", $this->input->post('syarat')),
+			'durasi' => $this->input->post('durasi')
+		);
+
+		$this->db->update('kategori_surat', $kategori_surat, array('id_surat' => $param));
+
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Data Jenis Surat berhasil diubah.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Tidak ada data yang diubah.', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
+	}
+
+	public function delete($param = 0)
+	{
+		$this->db->delete('kategori_surat', array('id_surat' => $param));
+
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Data Jenis Surat berhasil dihapus.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Gagal menghapus data.', 
+				array('type' => 'warning','icon' => 'times')
+			);
+		}
+	}
+
+	public function delete_multiple()
+	{
+		if(is_array($this->input->post('surat')))
+		{
+			foreach($this->input->post('surat') as $value)
+				$this->db->delete('kategori_surat', array('id_surat' => $value));
+
+			$this->template->alert(
+				' Data Jenis Surat berhasil dihapus.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Tidak ada data yang dipilih.', 
 				array('type' => 'warning','icon' => 'times')
 			);
 		}

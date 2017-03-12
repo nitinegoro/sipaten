@@ -99,7 +99,7 @@ class Employee extends Sipaten
 
 	public function update($param = 0)
 	{
-		$this->page_title->push('Master Data', 'Tambah Data Kepegawaian');
+		$this->page_title->push('Master Data', 'Sunting Data Kepegawaian');
 
 		$this->breadcrumbs->unshift(2, 'Data Kepegawaian', "employee");
 
@@ -118,7 +118,7 @@ class Employee extends Sipaten
 		}
 
 		$this->data = array(
-			'title' => "Tambah Data Kepegawaian", 
+			'title' => "Sunting Data Kepegawaian", 
 			'breadcrumb' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show(),
 			'get' => $this->employee->get($param)

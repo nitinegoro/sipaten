@@ -277,6 +277,7 @@ border-radius:7px;
 -moz-border-radius:7px;
 -webkit-border-radius:7px;
   position:relative;
+  text-align:center;
   display:inline;
   float:left;
   color:#555;

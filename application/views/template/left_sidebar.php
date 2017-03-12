@@ -68,6 +68,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </li>
 
+        <li class="<?php echo active_link_controller('ha'); ?>">
+            <a href="<?php echo site_url('main') ?>">
+               <i class="fa fa-line-chart"></i> <span>Data Surat Keluar</span>
+            </a>
+        </li>
+
         <li class="treeview <?php echo active_link_multiple(array('people','desa', 'surat','employee')); ?>">
             <a href="#">
                <i class="fa fa-database"></i> <span> Master Data</span>

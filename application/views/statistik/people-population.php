@@ -17,13 +17,15 @@
         </div>
 	</div>
 	<div class="col-md-9">
-		<div id="chart-populasi-desa"></div>
-        <div class="box box-solid pad">
+        <div class="box box-solid">
+            <div class="box-body">
+                <div id="chart-populasi-desa"></div>
+            </div>
             <div class="box-header">
                 <a href="<?php echo site_url('stats_people') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-print"></i> Cetak</a>
                 <a href="<?php echo site_url('stats_people') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
             </div>
-            <div class="box-body no-padding">
+            <div class="box-body">
                 <table class="table table-hover table-bordered col-md-12" style="margin-top: 10px;">
                     <thead class="bg-silver">
                         <tr>

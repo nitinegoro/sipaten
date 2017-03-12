@@ -13,14 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("public/font-awesome/css/font-awesome.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/ionicons/css/ionicons.min.css"); ?>">
   <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url("public/plugins/select2/select2.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/dist/css/AdminLTE.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/dist/css/skins/skin-sipaten.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/dist/css/animate.css"); ?>">  
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-checkbox/awesome-bootstrap-checkbox.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url('public/plugins/validation/css/formValidation.css') ?>">
-  <link rel="stylesheet" href="<?php echo base_url("public/plugins/select2/select2.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/datepicker/datepicker3.min.css"); ?>">
-  <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"); ?>">
   <link rel="shortcut icon" type="image/png" href="<?php echo base_url("public/image/small-logo.png"); ?>"/>
   <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
   <style>
@@ -41,7 +40,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     .top { margin-top: 20px; }
     div.kisaran > .ticks_labels { padding: 10px; }
     .bigger-font { font-size: 15px; }
-    /* label.control-label { font-weight: normal !important; } */
+     label.control-label { font-size: 12px !important; } 
+     div.icon > i.ion  { font-size: 80px; }
+     div.icon > i.fa { font-size: 60px; }
   </style>
 </head>
 <?php  

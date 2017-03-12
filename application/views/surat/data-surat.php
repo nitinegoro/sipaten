@@ -83,15 +83,15 @@ echo form_open(site_url('surat/bulk_action'));
 						<tr>
 							<td>
 			                    <div class="checkbox checkbox-inline">
-			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
+			                        <input id="checkbox1" type="checkbox" name="surat[]" value="<?php echo $row->id_surat; ?>"> <label for="checkbox1"></label>
 			                    </div>
 							</td>
 							<td><?php echo $row->nama_kategori; ?></td>
 							<td class="text-center"><?php echo strtoupper($row->jenis) ?></td>
 							<td class="text-center"><?php echo $row->durasi; ?></td>
 							<td class="text-center">
-								<a href="<?php echo site_url("surat/update/{}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
-								<a class="icon-button text-red get-delete-surat" data-id="" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+								<a href="<?php echo site_url("surat/update/{$row->id_surat}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
+								<a class="icon-button text-red get-delete-surat" data-id="<?php echo $row->id_surat; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 							</td>
 						</tr>
 				<?php  

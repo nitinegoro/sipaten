@@ -84,8 +84,8 @@ class Memployee extends Sipaten_model
 			);
 		} else {
 			$this->template->alert(
-				' Gagal menyimpan data.', 
-				array('type' => 'warning','icon' => 'times')
+				' Tidak ada data yang diubah.', 
+				array('type' => 'warning','icon' => 'warning')
 			);
 		}	
 	}
@@ -103,7 +103,7 @@ class Memployee extends Sipaten_model
 		} else {
 			$this->template->alert(
 				' Gagal menghapus data.', 
-				array('type' => 'warning','icon' => 'times')
+				array('type' => 'warning','icon' => 'warning')
 			);
 		}
 	}
@@ -122,7 +122,7 @@ class Memployee extends Sipaten_model
 		} else {
 			$this->template->alert(
 				' Tidak ada data yang dipilih.', 
-				array('type' => 'warning','icon' => 'times')
+				array('type' => 'warning','icon' => 'warning')
 			);
 		}
 	}
