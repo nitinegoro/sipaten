@@ -66,7 +66,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0F466E',endCol
          <div class="arrow-up"></div>
          <div class="login-box-body">
             <?php echo $this->session->flashdata('alert'); ?>
-            <form action="" method="post">
+            <form action="<?php echo site_url('login?from_url='.$this->input->get('from_url')); ?>" method="post">
                <div class="form-group has-feedback">
                   <span class="glyphicon glyphicon-user form-control-feedback" style="color: white;"></span>
                   <input type="text" name="nik" class="form-control padd" placeholder="Masukkan NIK" value="<?php echo set_value('nik'); ?>">

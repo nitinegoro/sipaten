@@ -3,7 +3,7 @@ Highcharts.chart('surat-keluar', {
         type: 'areaspline'
     },
     title: {
-        text: 'Grafil Data Surat Keluar'
+        text: 'Grafik Data Surat Keluar'
     },
     legend: {
         layout: 'vertical',
@@ -45,6 +45,6 @@ Highcharts.chart('surat-keluar', {
         data: [3, 4, 3, 5, 4, 10, 12]
     }, {
         name: 'Surat Perizinan',
-        data: [1, 3, 4, 3, 3, 5, 4]
+        data: [1, 3, 4, 3, 7, 5, 4]
     }]
 });

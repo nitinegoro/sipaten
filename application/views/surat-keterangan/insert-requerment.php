@@ -3,7 +3,7 @@
 	<dov class="col-md-12 col-xs-12">
 		<div class="box box-primary">
             <div class="box-header with-border">
-              	<h3 class="box-title">Surat Keterangan <?php echo $title; ?></h3>
+              	<h3 class="box-title">Surat Keterangan <?php echo $title; ?> <small>- Lengkapi Syarat</small></h3>
             </div>
 <?php  
 /**
@@ -11,42 +11,38 @@
  *
  * @var string
  **/
-echo form_open(current_url(), array('class' => 'form-horizontal'));
+echo form_open(site_url("surat_keterangan/save_history"), array('class' => 'form-horizontal'));
+ 
+echo form_hidden('kategori-surat', $get->id_surat);
+
+echo form_hidden('nik', '');
 ?>
 			<div class="box-body" style="margin-top: 10px;">
 				<div class="col-md-7">
 					<div class="form-group">
 						<label for="nik" class="control-label col-md-3 col-xs-12">NIK / Nama : <strong class="text-red">*</strong></label>
-						<div class="col-md-6">
-							<input type="text" name="nik" id="cari-nik" class="form-control" value="<?php echo set_value('nik'); ?>">
-							<p class="help-block"><?php echo form_error('nik', '<small class="text-red">', '</small>'); ?></p>
+						<div class="col-md-7">
+							<input type="text" id="cari-nik" class="form-control" value="">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
-						<div class="col-md-7">
-							<input type="text" name="nama_surat" class="form-control" value="<?php echo set_value('nama_surat'); ?>">
+						<label for="email" class="control-label col-md-3 col-xs-12">Lengkapi Syarat : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+	              	<?php  
+	              	/* Loop Syarat Surat */
+	              	foreach($syarat as $row) :
+	              	?>
+		                    <div class="checkbox checkbox-primary checkbox-lg">
+		                        <input id="log_surat_check" class="styled syarat-<?php echo $row->id_syarat; ?>" name="syarat[]" value="<?php echo $row->id_syarat; ?>" type="checkbox" data-id="<?php echo $row->id_syarat; ?>">
+		                        <label><?php echo $row->nama_syarat; ?></label>
+		                    </div>
+		            <?php  
+		            endforeach;
+		            ?>
 							<p class="help-block"><?php echo form_error('nama_surat', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					
-					<div class="form-group">
-						<label for="email" class="control-label col-md-3 col-xs-12">Tanda Tangan : <strong class="text-red">*</strong></label>
-						<div class="col-md-9">
-							<select name="staf" class="form-control">
-								<option value="">- PILIH -</option>
-					<?php  
-					/* Loop Data Pegawai */
-					foreach($pegawai as $row) :
-					?>
-								<option value="<?php echo $row->ID; ?>"><?php echo $row->nama; ?> (<?php echo $row->jabatan; ?>)</option>
-					<?php  
-					endforeach;
-					?>
-							</select>
-							<p class="help-block"><?php echo form_error('nama_surat', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>	
 					<div class="form-group">
 						<div class="col-md-12"> <hr> </div>
 						<div class="col-md-3 col-xs-5">
@@ -54,16 +50,10 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 								<i class="ion ion-reply"></i> Kembali
 							</a>
 						</div>
-						<div class="col-md-6 col-xs-6 pull-right">
-							<button type="submit" class="btn btn-app">
-								<i class="fa fa-print"></i> Cetak
+						<div class="col-md-5 col-xs-6 pull-right">
+							<button type="button" id="save-histori" class="btn btn-app">
+								<i class="fa fa-history"></i> Buat Histori
 							</button>
-							<button type="submit" class="btn btn-app">
-								<i class="fa fa-save"></i> Simpan
-							</button>
-<!-- 							<button type="submit" class="btn btn-app">
-	<i class="fa fa-file-word-o"></i> Dokumen
-</button> -->
 						</div>
 						<div class="col-md-12"><hr>
 							<small><strong class="text-red">*</strong>	Field wajib diisi!</small> <br>
@@ -123,13 +113,24 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 	              	</ol>
 				</div>
 			</div>
-<!-- 
-			<div class="box-footer with-border">
 
+	
+			<!-- Modal Dialog Jadikan Histori -->
+	        <div class="modal animated fadeIn modal-info" id="diaolo-save-history" tabindex="-1" data-backdrop="static" data-keyboard="false">
+	          	<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Jadikan Histori?</h4>
+			                <span>Simpan Rekaman Data ini menjadi histori pengajuan Surat</span>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
+							<button type="submit" class="btn btn-outline pull-right">Simpan</button>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="box-footer with-border">
-
-			</div> -->
 <?php  
 // End Form
 echo form_close();

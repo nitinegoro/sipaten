@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Question!</h4>
+                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Keluar!</h4>
                 <span><?php echo $this->session->userdata('account')->name; ?>, Yakin anda akan Keluar dari sistem?</span>
               </div>
               <div class="modal-footer">
@@ -48,9 +48,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <script src="<?php echo base_url("public/plugins/datepicker/bootstrap-datepicker.min.js"); ?>"></script>
    <script src="<?php echo base_url("public/plugins/heightchart/highcharts.js"); ?>"></script>
    <script src="<?php echo base_url("public/plugins/heightchart/modules/exporting.js"); ?>"></script>
+   <script src="<?php echo base_url("public/plugins/autocomplete/tautocomplete.js"); ?>"></script>
+   <script src="<?php echo base_url("public/plugins/bootstrap-tour/js/bootstrap-tour.min.js"); ?>"></script>
    <script type="text/javascript"> 
       var base_url   = '<?php echo site_url(); ?>';
-      var base_path  = '<?php echo base_url('assets'); ?>';
+      var base_path  = '<?php echo base_url('public'); ?>';
       var current_url = '<?php echo current_url(); ?>';
    </script>
    <?php 

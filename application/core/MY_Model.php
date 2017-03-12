@@ -71,6 +71,21 @@ class Sipaten_model extends MY_Model
 			return $this->db->get_where('kategori_surat', array('id_surat' => $param))->row();
 		}
 	}
+
+	/**
+	 * Get Pejabat Pemerintah
+	 *
+	 * @param Integer (ID)
+	 **/
+	public function pegawai($param = 0)
+	{
+		if($param == FALSE)
+		{
+			return $this->db->get_where('pegawai')->result();
+		} else {
+			return $this->db->get_where('pegawai', array('ID' => $param))->row();
+		}
+	}
 }
 
 /* End of file MY_Model.php */

@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-aqua">
+        <div class="small-box bg-aqua" id="block-stats-penduduk">
             <div class="inner">
               <h3><?php echo $this->db->count_all('penduduk'); ?></h3> <p>Jumlah Penduduk</p>
             </div>
@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green">
+        <div class="small-box bg-green" id="block-stats-desa">
             <div class="inner">
                 <h3><?php echo $this->db->count_all('desa'); ?></h3><p>Jumlah Kel / Desa</p>
             </div>
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-yellow">
+        <div class="small-box bg-yellow" id="block-stats-surat-keluar">
             <div class="inner">
                 <h3>44</h3> <p>Surat Keluar</p>
             </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-teal">
+        <div class="small-box bg-teal" id="block-stats-pengguna-sistem">
             <div class="inner">
                 <h3><?php echo $this->db->count_all('users'); ?></h3> <p>Pengguna Sistem</p>
             </div>
@@ -45,7 +45,7 @@
 
 <div class="row">
     <div class="col-md-7">
-        <div class="box box-default box-solid">
+        <div class="box box-default box-solid" id="block-tombol-surat-keterangan">
             <div class="box-header with-border">
               	<h3 class="box-title">Shortcut Surat Keterangan </h3>
               	<div class="box-tools pull-right">
@@ -61,7 +61,7 @@
       */
       foreach($this->option->surat_category(NULL,'non perizinan') as $row) :
       ?>
-              <a class="csurat" href="<?php echo site_url("surat_keterangan/create/{$row->id_surat}?from=".current_url()) ?>">
+              <a class="csurat" href="<?php echo site_url("surat_keterangan/index/{$row->id_surat}?from=".current_url()) ?>">
                 <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt="sss"/>
                 <span><?php echo $row->nama_kategori; ?></span>
               </a>
@@ -72,7 +72,7 @@
         </div>
     </div>
     <div class="col-md-5">
-        <div class="box box-default box-solid">
+        <div class="box box-default box-solid" id="block-tombol-surat-perizinan">
             <div class="box-header with-border">
                 <h3 class="box-title">Shortcut Surat Perizinan </h3>
                 <div class="box-tools pull-right">
@@ -102,6 +102,6 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div id="surat-keluar"></div>
+        <div id="surat-keluar" class="block-chart-surat-keluar"></div>
     </div>
 </div>

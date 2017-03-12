@@ -18,6 +18,7 @@ class Main extends Sipaten
 		parent::__construct();
 
 		$this->load->js(base_url('public/app/dashboard.js'));
+		$this->load->js(base_url('public/app/tour/dashboard-tour.js'));
 	}
 
 	public function index()
