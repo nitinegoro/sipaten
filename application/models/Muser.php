@@ -52,7 +52,7 @@ class Muser extends Sipaten_model
 		} else {
 			$this->template->alert(
 				' Gagal menyimpan data.', 
-				array('type' => 'warning','icon' => 'times')
+				array('type' => 'warning','icon' => 'warning')
 			);
 		}
 	}
@@ -87,8 +87,8 @@ class Muser extends Sipaten_model
 			);
 		} else {
 			$this->template->alert(
-				' Tidak ada yang dirubah.', 
-				array('type' => 'warning','icon' => 'times')
+				' Tidak ada yang diubah.', 
+				array('type' => 'warning','icon' => 'warning')
 			);
 		}
 	}
@@ -112,7 +112,7 @@ class Muser extends Sipaten_model
 		} else {
 			$this->template->alert(
 				' Tidak ada data yang dihapus.', 
-				array('type' => 'warning','icon' => 'times')
+				array('type' => 'warning','icon' => 'warning')
 			);
 		}
 	}
@@ -137,7 +137,7 @@ class Muser extends Sipaten_model
 		} else {
 			$this->template->alert(
 				' Tidak ada data yang dipilih.', 
-				array('type' => 'warning','icon' => 'times')
+				array('type' => 'warning','icon' => 'warning')
 			);
 		}
 	}

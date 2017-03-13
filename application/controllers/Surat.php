@@ -68,6 +68,10 @@ class Surat extends Sipaten
 
 		$this->breadcrumbs->unshift(2, 'Manajemen Surat', "surat");
 
+		$this->form_validation->set_rules('kode_surat', 'Kode Surat', 'trim|required');
+		$this->form_validation->set_rules('kode_kecamatan', 'Kode Kecamatan', 'trim|required');
+		$this->form_validation->set_rules('kode_desa', 'Kode Desa', 'trim');
+		$this->form_validation->set_rules('judul_surat', 'Judul Surat', 'trim|required');
 		$this->form_validation->set_rules('nama_surat', 'Desa / Kelurahan', 'trim|required');
 		$this->form_validation->set_rules('kepala_desa', 'Nama Kepala Desa', 'trim');
 		$this->form_validation->set_rules('jenis', 'Jenis Surat', 'trim|required');
@@ -102,6 +106,10 @@ class Surat extends Sipaten
 
 		$this->breadcrumbs->unshift(2, 'Manajemen Surat', "surat");
 
+		$this->form_validation->set_rules('kode_surat', 'Kode Surat', 'trim|required');
+		$this->form_validation->set_rules('kode_kecamatan', 'Kode Kecamatan', 'trim|required');
+		$this->form_validation->set_rules('kode_desa', 'Kode Desa', 'trim');
+		$this->form_validation->set_rules('judul_surat', 'Judul Surat', 'trim|required');
 		$this->form_validation->set_rules('nama_surat', 'Desa / Kelurahan', 'trim|required');
 		$this->form_validation->set_rules('kepala_desa', 'Nama Kepala Desa', 'trim');
 		$this->form_validation->set_rules('jenis', 'Jenis Surat', 'trim|required');

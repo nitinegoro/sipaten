@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?php echo $title; ?> | Sistem Informasi Akademik</title>
+  <title><?php echo $title; ?> | Sistem Informasi Pelayanan Administrasi Terpadu</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet/less" type="text/css" href="<?php echo base_url("public/build/sipaten.less"); ?>" media="screen, projection"/>
   <link rel="stylesheet" href="<?php echo base_url("public/bootstrap/css/bootstrap.min.css"); ?>">
@@ -23,6 +23,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/autocomplete/tautocomplete.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-tour/css/bootstrap-tour.min.css"); ?>">
   <link rel="shortcut icon" type="image/png" href="<?php echo base_url("public/image/small-logo.png"); ?>"/>
+  <script src="<?php echo base_url("public/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/bootstrap/js/bootstrap.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/slimScroll/jquery.slimscroll.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/fastclick/fastclick.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/jquery.sticky.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/app.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/jquery.tableCheckbox.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/jquery.printPage.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/bnotify/bootstrap-notify.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/jquery.timeago.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/moment.min.js"); ?>"></script>
+  <script src="<?php echo base_url('public/plugins/validation/js/formValidation.js') ?>"></script>
+  <script src="<?php echo base_url('public/plugins/validation/js/framework/bootstrap.js') ?>"></script>
+  <script src="<?php echo base_url('public/plugins/validation/js/language/id_ID.js') ?>"></script>
+  <script src="<?php echo base_url('public/dist/js/ajaxFileUpload.js'); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/select2/select2.full.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/less-1.3.0.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/prefixfree.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/datepicker/bootstrap-datepicker.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/heightchart/highcharts.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/heightchart/modules/exporting.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/autocomplete/tautocomplete.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/bootstrap-tour/js/bootstrap-tour.min.js"); ?>"></script>
+  <script type="text/javascript"> 
+      var base_url   = '<?php echo site_url(); ?>';
+      var base_path  = '<?php echo base_url('public'); ?>';
+      var current_url = '<?php echo current_url(); ?>';
+  </script>
   <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
   <style>
     .content-wrapper { background: #E4E5E7 }

@@ -12,6 +12,27 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 ?>
 			<div class="box-body" style="margin-top: 10px;">
 				<div class="form-group">
+					<label for="email" class="control-label col-md-2 col-xs-12">Kode Surat : <strong class="text-red">*</strong></label>
+					<div class="col-md-3">
+						<input type="text" name="kode_surat" class="form-control" value="<?php echo set_value('kode_surat'); ?>">
+						<p class="help-block"><?php echo form_error('kode_surat', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="control-label col-md-2 col-xs-12">Kode Kecamatan : <strong class="text-red">*</strong></label>
+					<div class="col-md-4">
+						<input type="text" name="kode_kecamatan" class="form-control" value="<?php echo set_value('kode_kecamatan'); ?>">
+						<p class="help-block"><?php echo form_error('kode_kecamatan', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="control-label col-md-2 col-xs-12">Kode Desa : <strong class="text-primary">*</strong></label>
+					<div class="col-md-4">
+						<input type="text" name="kode_desa" class="form-control" value="<?php echo set_value('kode_desa'); ?>">
+						<p class="help-block"><?php echo form_error('kode_desa', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="email" class="control-label col-md-2 col-xs-12">Nama Surat : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<input type="text" name="nama_surat" class="form-control" value="<?php echo set_value('nama_surat'); ?>">
@@ -19,7 +40,14 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="control-label col-md-2 col-xs-12">Nama Surat : <strong class="text-red">*</strong></label>
+					<label for="email" class="control-label col-md-2 col-xs-12">Judul Surat : <strong class="text-red">*</strong></label>
+					<div class="col-md-8">
+						<input type="text" name="judul_surat" class="form-control" value="<?php echo set_value('judul_surat'); ?>">
+						<p class="help-block"><?php echo form_error('judul_surat', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="control-label col-md-2 col-xs-12">Jenis Surat : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 	                    <div class="radio radio-primary">
 	                        <input name="jenis" value="non perizinan" type="radio">

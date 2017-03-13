@@ -79,7 +79,7 @@ echo form_hidden('ID', $people->ID);
 				           <input name="status_kawin" type="radio" value="kawin" <?php if($people->status_kawin=='kawin') echo "checked"; ?>> <label> Kawin</label>
 				       	</div>
 				       	<div class="radio radio-inline radio-primary">
-				           <input name="status_kawin" type="radio" value="cerai hidung" <?php if($people->status_kawin=='cerai hidung') echo "checked"; ?>> <label> Cerai Hidup</label>
+				           <input name="status_kawin" type="radio" value="cerai hidup" <?php if($people->status_kawin=='cerai hidup') echo "checked"; ?>> <label> Cerai Hidup</label>
 				       	</div>
 				       	<div class="radio radio-inline radio-primary">
 				           <input name="status_kawin" type="radio" value="cerai mati" <?php if($people->status_kawin=='cerai mati') echo "checked"; ?>> <label> Cerai Mati</label>
@@ -164,6 +164,13 @@ echo form_hidden('ID', $people->ID);
 					?>
 						</select>
 						<p class="help-block"><?php echo form_error('desa', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="telepon" class="control-label col-md-3 col-xs-12">Telepon : <strong class="text-red">*</strong></label>
+					<div class="col-md-6">
+						<input type="text" name="telepon" class="form-control" value="<?php echo $people->telepon; ?>">
+						<p class="help-block"><?php echo form_error('telepon', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 			</div>

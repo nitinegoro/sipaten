@@ -48,21 +48,21 @@ echo form_hidden('ID', $get->user_id);
 						<p class="help-block"><?php echo form_error('file_excel', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" id="block-new-password">
 					<label for="new_pass" class="control-label col-md-3 col-xs-12">Password Baru : <strong class="text-blue">*</strong></label>
 					<div class="col-md-8">
 						<input type="password" name="new_pass" class="form-control" value="<?php echo set_value('new_pass'); ?>">
 						<p class="help-block"><?php echo form_error('new_pass', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" id="block-new-password-again">
 					<label for="repeat_pass" class="control-label col-md-3 col-xs-12">Ulangi : <strong class="text-blue">*</strong></label>
 					<div class="col-md-8">
 						<input type="password" name="repeat_pass" class="form-control" value="<?php echo set_value('repeat_pass'); ?>">
 						<p class="help-block"><?php echo form_error('repeat_pass', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" id="block-new-password-old">
 					<label for="old_pass" class="control-label col-md-3 col-xs-12">Password Lama : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<input type="password" name="old_pass" class="form-control" value="<?php echo set_value('old_pass'); ?>">
@@ -77,7 +77,7 @@ echo form_hidden('ID', $get->user_id);
 				</div>
 				<div class="hidden-md hidden-lg"><hr></div>
 				<div class="col-md-5 col-xs-12">
-					<button type="submit" class="btn btn-app pull-right">
+					<button type="submit" class="btn btn-app pull-right" id="button-simpan">
 						<i class="fa fa-save"></i>
 						Simpan
 					</button>

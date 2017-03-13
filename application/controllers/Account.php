@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
 * SIPATEN
-* Main Class 
+* Account Class 
 *
 * @version 1.0.0
 * @author Vicky Nitinegoro <pkpvicky@gmail.com>
@@ -24,6 +24,8 @@ class Account extends Sipaten
 		$this->load->model('muser','user');
 
 		$this->myaccount = $this->session->userdata('ID');
+
+		$this->load->js(base_url('public/app/tour/account-tour.js'));
 	}
 
 	public function index()

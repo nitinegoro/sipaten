@@ -64,7 +64,8 @@ class Mpeople extends Sipaten_model
 			'pekerjaan' => $this->input->post('pekerjaan'),
 			'kewarganegaraan' => $this->input->post('kewarganegaraan'),
 			'status_kawin' => $this->input->post('status_kawin'),
-			'gol_darah' => $this->input->post('gol_darah')
+			'gol_darah' => $this->input->post('gol_darah'),
+			'telepon' => $this->input->post('telepon')
 		);
 
 		$this->db->insert('penduduk', $people);
@@ -100,7 +101,8 @@ class Mpeople extends Sipaten_model
 			'pekerjaan' => $this->input->post('pekerjaan'),
 			'kewarganegaraan' => $this->input->post('kewarganegaraan'),
 			'status_kawin' => $this->input->post('status_kawin'),
-			'gol_darah' => $this->input->post('gol_darah')
+			'gol_darah' => $this->input->post('gol_darah'),
+			'telepon' => $this->input->post('telepon')
 		);
 
 		$this->db->update('penduduk', $people, array('ID' => $param));

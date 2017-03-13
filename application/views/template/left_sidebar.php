@@ -19,9 +19,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
         </li>
 
-        <li class="treeview <?php echo active_link_multiple(array('setting')); ?>">
+        <li class="treeview <?php echo active_link_multiple(array('ad')); ?>">
             <a href="#">
-               <i class="fa fa-file-text-o"></i> <span> Surat Keterangan</span>
+               <i class="fa fa-file-text-o"></i> <span> Surat Non Perizinan</span>
                <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                </span>
@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       ?>
           </ul>
         </li>
-        <li class="treeview <?php echo active_link_multiple(array('ha', 'setting')); ?>">
+        <li class="treeview <?php echo active_link_multiple(array('ha')); ?>">
             <a href="#">
                <i class="ion ion-clipboard"></i> <span>Surat Perizinan</span>
                <span class="pull-right-container">
@@ -70,7 +70,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <li class="<?php echo active_link_controller('ha'); ?>">
             <a href="<?php echo site_url('main') ?>">
-               <i class="fa fa-line-chart"></i> <span>Data Surat Keluar</span>
+               <i class="glyphicon glyphicon-envelope"></i> <span>Data Surat Keluar</span>
+            </a>
+        </li>
+
+        <li class="<?php echo active_link_controller('ha'); ?>">
+            <a href="<?php echo site_url('main') ?>">
+               <i class="fa fa-line-chart"></i> <span> Analisa Pelayanan</span>
             </a>
         </li>
 
@@ -109,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <a href="<?php echo site_url('stats_people'); ?>" class="<?php echo active_link_controller('stats_people') ?>"><i class="fa fa-angle-double-right"></i> Kependudukan</a>
             </li>
             <li>
-              <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Surat Keterangan</a>
+              <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Surat Non Perizinan</a>
             </li>
             <li>
               <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Surat Perizinan</a>
@@ -143,13 +149,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
           <ul class="treeview-menu">
             <li>
-              <a href="" class="<?php echo active_link_controller('setting') ?>"><i class="fa fa-angle-double-right"></i> Pengaturan Sistem</a>
+              <a href="<?php echo site_url('setting') ?>" class="<?php echo active_link_controller('setting') ?>"><i class="fa fa-angle-double-right"></i> Pengaturan Sistem</a>
             </li>
             <li>
               <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Hak Akses Pengguna</a>
-            </li>
-            <li>
-              <a href="" class="<?php echo active_link_controller('setting') ?>"><i class="fa fa-angle-double-right"></i> Lain-lain</a>
             </li>
           </ul>
         </li>
