@@ -73,7 +73,7 @@ Highcharts.chart('chart-populasi-status', {
         text: 'Populasi Penduduk Menurut Golongan Darah'
     },
     subtitle: {
-        text: '<strong>Kecamatan Koba</strong>'
+        text: '<strong>Kecamatan <?php echo $this->option->get('kecamatan'); ?></strong>'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

@@ -60,7 +60,7 @@ Highcharts.chart('chart-populasi-gender', {
         text: 'Populasi Penduduk Menurut Jenis Kelamin'
     },
     subtitle: {
-        text: '<strong>Kecamatan Koba</strong>'
+        text: '<strong>Kecamatan <?php echo $this->option->get('kecamatan'); ?></strong>'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

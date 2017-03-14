@@ -5,15 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div class="wrapper">
       <header class="main-header">
          <a href="<?php echo site_url('main') ?>" class="logo">
-            <img src="<?php echo base_url("public/image/in-logo.png"); ?>" class="logo-head" alt="Logo STIE Pertiba">
+            <img src="<?php echo base_url("public/image/{$this->option->get('logo_sistem')}"); ?>" class="logo-head" alt="Logo STIE Pertiba">
          </a>
          <nav class="navbar navbar-static-top">
-<!--             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-   <span class="sr-only">Toggle navigation</span>
-   <span class="icon-bar"></span>
-   <span class="icon-bar"></span>
-   <span class="icon-bar"></span>
-</a> -->
          <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                <li class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Aktifkan Pemandu Sistem" data-class="<?php echo $this->router->fetch_class(); ?>" data-method="<?php echo $this->router->fetch_method(); ?>">

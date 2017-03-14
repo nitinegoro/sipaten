@@ -5,20 +5,10 @@
             <div class="box-body no-padding">
               	<ul class="nav nav-pills nav-stacked">
                 	<li class="<?php echo active_link_method('index', 'setting'); ?>">
-                        <a href="">Identitas Kecamatan</a>
+                        <a href="<?php echo site_url('setting') ?>">Identitas Kecamatan</a>
                     </li>
-                    <li class="<?php echo active_link_method('gender', 'stats_people'); ?>">
-                        <a href="">Logo Kecamatan</a>
-                    </li>
-                	<li class="<?php echo active_link_method('gender', 'stats_people'); ?>">
-                        <a href="">Kop Surat</a>
-                    </li>
-                        <li class="<?php echo active_link_method('gender', 'stats_people'); ?>">
-                        <a href="">Penampilan Sistem</a>
-                    </li>
-                    </li>
-                        <li class="<?php echo active_link_method('gender', 'stats_people'); ?>">
-                        <a href="">Lain-lain</a>
+                    <li class="<?php echo active_link_method('logo', 'setting'); ?>">
+                        <a href="<?php echo site_url('setting/logo') ?>">Logo</a>
                     </li>
               	</ul>
             </div>

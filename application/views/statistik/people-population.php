@@ -127,7 +127,7 @@ Highcharts.chart('chart-populasi-desa', {
         type: 'pie'
     },
     title: {
-        text: 'Populasi Penduduk Desa - Kecamatan Koba'
+        text: 'Populasi Penduduk Desa - Kecamatan <?php echo $this->option->get('kecamatan'); ?>'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -172,7 +172,7 @@ Highcharts.chart('chart-populasi-desa-bar', {
         type: 'bar'
     },
     title: {
-        text: 'Populasi Penduduk Desa - Kecamatan Koba'
+        text: 'Populasi Penduduk Desa - Kecamatan <?php echo $this->option->get('kecamatan'); ?>'
     },
     xAxis: {
         categories: [<?php foreach($desa as $row) echo "'{$row->nama_desa}',"; ?>],

@@ -3,28 +3,21 @@
    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>Sistem Informasi Pelayanan Administrasi Terpadu </title>
+      <title>Login | <?php echo $this->option->get('nama_sistem'); ?></title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.6 -->
       <link rel="stylesheet" href="<?php echo base_url('public/bootstrap/css/bootstrap.min.css'); ?>">
       <!-- Font Awesome -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-      <!-- Ionicons -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-      <!-- Theme style -->
+      <link rel="stylesheet" href="<?php echo base_url("public/font-awesome/css/font-awesome.min.css"); ?>">
+      <link rel="stylesheet" href="<?php echo base_url("public/ionicons/css/ionicons.min.css"); ?>">
       <link rel="stylesheet" href="<?php echo base_url('public/dist/css/AdminLTE.min.css'); ?>">
       <link rel="stylesheet" href="<?php echo base_url('public/plugins/bootstrap-checkbox/awesome-bootstrap-checkbox.min.css'); ?>">
-      <link rel="shortcut icon" type="image/png" href="<?php echo base_url('public/image/small-logo.png'); ?>"/>
+      <link rel="shortcut icon" type="image/png" href="<?php echo base_url("public/image/{$this->option->get('small_logo')}"); ?>"/>
       <style>
          .login-page { 
             margin-top: -2%;
          height: auto;  
-/*          background:-webkit-linear-gradient(top, #001F3F 23%,#003D7F 90%);
-background:-moz-linear-gradient(top,#003D7F 0%,#001F3F 75%);
-background:-o-linear-gradient(top,#003D7F 0%,#001F3F 75%);
-background:-ms-linear-gradient(top,#0F466E 0%,#387AAB 75%); 
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0F466E',endColorstr='#387AAB',GradientType=0); */
 
            background: url(<?php echo base_url('public/image/background.png'); ?>) no-repeat center center fixed; 
            -webkit-background-size: cover;
@@ -60,7 +53,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0F466E',endCol
    <body class="login-page">
       <div class="login-box">
          <div class="login-logo">
-            <img src="<?php echo base_url('public/image/logo.png'); ?>" alt="">
+            <img src="<?php echo base_url("public/image/{$this->option->get('logo_login')}"); ?>" alt="Logo Sistem">
          </div>
          <!-- /.login-logo -->
          <div class="arrow-up"></div>

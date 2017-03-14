@@ -115,10 +115,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <a href="<?php echo site_url('stats_people'); ?>" class="<?php echo active_link_controller('stats_people') ?>"><i class="fa fa-angle-double-right"></i> Kependudukan</a>
             </li>
             <li>
-              <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Surat Non Perizinan</a>
+              <a href="" class="<?php echo active_link_controller('sdf') ?>"><i class="fa fa-angle-double-right"></i> Surat Non Perizinan</a>
             </li>
             <li>
-              <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Surat Perizinan</a>
+              <a href="" class="<?php echo active_link_controller('sdf') ?>"><i class="fa fa-angle-double-right"></i> Surat Perizinan</a>
             </li>
           </ul>
         </li>
@@ -140,7 +140,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </li>
 
-        <li class="treeview <?php echo active_link_multiple(array('setting')); ?>">
+        <li class="treeview <?php echo active_link_multiple(array('setting','role')); ?>">
             <a href="#">
                <i class="fa fa-wrench"></i> <span>Pengaturan</span>
                <span class="pull-right-container">
@@ -152,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <a href="<?php echo site_url('setting') ?>" class="<?php echo active_link_controller('setting') ?>"><i class="fa fa-angle-double-right"></i> Pengaturan Sistem</a>
             </li>
             <li>
-              <a href="" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Hak Akses Pengguna</a>
+              <a href="<?php echo site_url('role') ?>" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Hak Akses Pengguna</a>
             </li>
           </ul>
         </li>
