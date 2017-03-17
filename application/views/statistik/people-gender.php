@@ -9,7 +9,7 @@
             </div>
             <div class="box-header">
                 <a href="<?php echo site_url('stats_people/gender') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-print"></i> Cetak</a>
-                <a href="<?php echo site_url('stats_people/gender') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
+                <a href="<?php echo site_url('stats_people/export/gender_population') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
             </div>
             <div class="box-body">
                 <table class="table table-striped table-bordered col-md-12" style="margin-top: 10px;">

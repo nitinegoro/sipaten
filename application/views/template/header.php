@@ -12,7 +12,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("public/bootstrap/css/bootstrap.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/font-awesome/css/font-awesome.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/ionicons/css/ionicons.min.css"); ?>">
-  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/select2/select2.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/dist/css/AdminLTE.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/dist/css/skins/skin-sipaten.css"); ?>">
@@ -23,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/autocomplete/tautocomplete.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-tour/css/bootstrap-tour.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-switch/css/bootstrap-switch.min.css"); ?>">
+  <link  rel="stylesheet" href="<?php echo base_url("public/dist/css/hover-min.css"); ?>">
   <link rel="shortcut icon" type="image/png" href="<?php echo base_url("public/image/{$this->option->get('small_logo')}"); ?>"/>
   <script src="<?php echo base_url("public/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/bootstrap/js/bootstrap.min.js"); ?>"></script>
@@ -35,10 +35,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("public/plugins/bnotify/bootstrap-notify.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/dist/js/jquery.timeago.js"); ?>"></script>
   <script src="<?php echo base_url("public/dist/js/moment.min.js"); ?>"></script>
-  <script src="<?php echo base_url('public/plugins/validation/js/formValidation.js') ?>"></script>
-  <script src="<?php echo base_url('public/plugins/validation/js/framework/bootstrap.js') ?>"></script>
-  <script src="<?php echo base_url('public/plugins/validation/js/language/id_ID.js') ?>"></script>
-  <script src="<?php echo base_url('public/dist/js/ajaxFileUpload.js'); ?>"></script>
   <script src="<?php echo base_url("public/plugins/select2/select2.full.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/dist/js/less-1.3.0.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/dist/js/prefixfree.min.js"); ?>"></script>
@@ -66,7 +62,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     div.checkbox, label.checkbox { padding-top:0px; padding-bottom: 0px; }
     .bg-silver { background:rgb(249,250,252); border:#444; }
     .icon-button { font-size: 1.1em; margin: 5px 10px 0px 0px; }
-    .icon-button:hover { font-size: 1.2em;}
     .text-line { text-decoration: line-through; color: rgb(173,0,0); }
     dt { text-align: left; }
     .top { margin-top: 20px; }
@@ -75,6 +70,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      label.control-label { font-size: 12px !important; } 
      div.icon > i.ion  { font-size: 80px; }
      div.icon > i.fa { font-size: 60px; }
+    .block-no-surat > strong { font-size: 16px; }
+     input.no_surat { padding: 5px; width: 80px;  border-bottom: dotted 2px gray; border-top: none; border-right: none; border-left: none; text-align:center; font-size: 16px; font-weight: bold;
+      position: inline; color:blue; 
+     }
+    input.no_surat:focus { outline:none !important; }
   </style>
 </head>
 <?php  

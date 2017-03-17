@@ -21,6 +21,13 @@ echo form_hidden('ID', $people->ID);
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="email" class="control-label col-md-3 col-xs-12">No. KK : <strong class="text-primary">*</strong></label>
+					<div class="col-md-4">
+						<input type="text" name="kk" class="form-control" value="<?php echo $people->no_kk; ?>">
+						<p class="help-block"><?php echo form_error('kk', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="name" class="control-label col-md-3 col-xs-12">Nama : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<input type="text" name="name" class="form-control" value="<?php echo $people->nama_lengkap; ?>">
@@ -167,7 +174,7 @@ echo form_hidden('ID', $people->ID);
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="telepon" class="control-label col-md-3 col-xs-12">Telepon : <strong class="text-red">*</strong></label>
+					<label for="telepon" class="control-label col-md-3 col-xs-12">Telepon : <strong class="text-primary">*</strong></label>
 					<div class="col-md-6">
 						<input type="text" name="telepon" class="form-control" value="<?php echo $people->telepon; ?>">
 						<p class="help-block"><?php echo form_error('telepon', '<small class="text-red">', '</small>'); ?></p>

@@ -51,6 +51,7 @@ class Mpeople extends Sipaten_model
 	{
 		$people = array(
 			'nik' => $this->input->post('nik'),
+			'no_kk' => $this->input->post('kk'),
 			'nama_lengkap' => $this->input->post('name'),
 			'tmp_lahir' => $this->input->post('tmp_lahir'),
 			'tgl_lahir' => $this->input->post('birts'),
@@ -88,6 +89,7 @@ class Mpeople extends Sipaten_model
 	{
 		$people = array(
 			'nik' => $this->input->post('nik'),
+			'no_kk' => $this->input->post('kk'),
 			'nama_lengkap' => $this->input->post('name'),
 			'tmp_lahir' => $this->input->post('tmp_lahir'),
 			'tgl_lahir' => $this->input->post('birts'),

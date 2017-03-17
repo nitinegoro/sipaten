@@ -38,6 +38,8 @@ $(document).ready(function () {
 
             $('input[name="nik"]').val(input_cari_nik.text());
 
+            $('input[name="ID"]').val(input_cari_nik.id());
+
             select_penduduk(input_cari_nik.id());
         }
     });
@@ -48,6 +50,10 @@ $(document).ready(function () {
     */
     $('input#log_surat_check').click( function() 
     {
+        var param = $('input[name="ID"]').val();
+
+        var category = $('input[name="kategori-surat"]').val();
+
         if($("#cari-nik").val() === '')
         {
             $.notify({
@@ -67,14 +73,30 @@ $(document).ready(function () {
 
             $(this).removeAttr('checked');
         } else {
+            var form_asal  = $("#form-insert-requirement");
+            
+            var form    = getFormData(form_asal);
 
+            var param = $('input[name="ID"]').val();
+
+            var category = $('input[name="kategori-surat"]').val();
+
+            $.post( base_url + "/surat_keterangan/insert_log_surat", form, function( data ) 
+            {
+                if(data.status === true)
+                {
+                    $('div#dialog-lanjutkan').modal('show');
+
+                    $('a#button-lanjutkan').attr('href', base_url + '/surat_keterangan/create/' + category + '/' + param);
+                } 
+            });
         }
     });
 
     /*!
     * Button Save Histori
     */
-    $('button#save-histori').click( function() 
+    $('button#button-reset').click( function() 
     {
         if($("#cari-nik").val() === '')
         {
@@ -93,7 +115,13 @@ $(document).ready(function () {
                 },
             });
         } else {
-            $('div#diaolo-save-history').modal('show');
+            $('div#dialog-delete-history').modal('show');
+
+            var param = $('input[name="nik"]').val();
+
+            var category = $('input[name="kategori-surat"]').val();
+
+            $('a#button-delete-history').attr('href', base_url + '/surat_keterangan/delete_history/' + param + '/' + category);
         }
     });
 });
@@ -116,11 +144,51 @@ function select_penduduk(param)
 
         $.each( data.syarat_surat, function( key, value ) 
         {
-            $('input[type="checkbox"].syarat-' + value.id).attr('checked', true);
+            var test = $('input[type="checkbox"].syarat-' + value.id).attr({ 
+                checked:true, 
+                onClick: 'delete_syarat("'+value.id+'")'
+            });
         });
+
+        if(data.status === true)
+        {
+            $('div#dialog-lanjutkan').modal('show');
+
+            $('a#button-lanjutkan').attr('href', base_url + '/surat_keterangan/create/' + category + '/' + param);
+        } else {
+            if(data.syarat_surat)
+            {
+                $.notify({
+                    message: data.nama + " sudah pernah datang sebelumnya, lanjutkan proses pengajuan"
+                },{ 
+                    type: 'info',
+                    animate: {
+                        enter: 'animated fadIn',
+                        exit: 'animated fadeOut'
+                    },
+                    placement: {
+                        from: "top",
+                        align: "center"
+                    },
+                }); 
+            }
+        }
+
+
     });
+
 }
 
+function delete_syarat(param) 
+{
+    var form_asal  = $("#form-insert-requirement");
+            
+    var form    = getFormData(form_asal);
+
+    var category = $('input[name="kategori-surat"]').val();
+
+    $.post( base_url + "/surat_keterangan/delete_syarat/" + param, form);
+}
 
 
 (function($) {

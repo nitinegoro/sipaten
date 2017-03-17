@@ -9,6 +9,8 @@
  * @var string
  **/
 echo form_open(current_url(), array('class' => 'form-horizontal'));
+
+echo form_hidden('ID', $get->id_surat);
 ?>
 			<div class="box-body" style="margin-top: 10px;">
 				<div class="form-group">
@@ -16,20 +18,6 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					<div class="col-md-3">
 						<input type="text" name="kode_surat" class="form-control" value="<?php echo $get->kode_surat; ?>">
 						<p class="help-block"><?php echo form_error('kode_surat', '<small class="text-red">', '</small>'); ?></p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="email" class="control-label col-md-2 col-xs-12">Kode Kecamatan : <strong class="text-red">*</strong></label>
-					<div class="col-md-4">
-						<input type="text" name="kode_kecamatan" class="form-control" value="<?php echo $get->kode_kecamatan; ?>">
-						<p class="help-block"><?php echo form_error('kode_kecamatan', '<small class="text-red">', '</small>'); ?></p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="email" class="control-label col-md-2 col-xs-12">Kode Desa : <strong class="text-primary">*</strong></label>
-					<div class="col-md-4">
-						<input type="text" name="kode_desa" class="form-control" value="<?php echo $get->kode_desa; ?>">
-						<p class="help-block"><?php echo form_error('kode_desa', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">

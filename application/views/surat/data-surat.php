@@ -67,7 +67,8 @@ echo form_open(site_url('surat/bulk_action'));
 			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
 			                    </div>
 							</th>
-							<th class="text-center">Nama Surat</th>
+							<th class="text-center">Kode Surat</th>
+							<th class="text-center">Judul Surat Surat</th>
 							<th class="text-center">Jenis Surat</th>
 							<th class="text-center">Waktu Pelayanan</th>
 							<th width="80"></th>
@@ -86,7 +87,8 @@ echo form_open(site_url('surat/bulk_action'));
 			                        <input id="checkbox1" type="checkbox" name="surat[]" value="<?php echo $row->id_surat; ?>"> <label for="checkbox1"></label>
 			                    </div>
 							</td>
-							<td><?php echo $row->nama_kategori; ?></td>
+							<td class="text-center"><?php echo $row->kode_surat; ?></td>
+							<td><?php echo $row->judul_surat; ?></td>
 							<td class="text-center"><?php echo strtoupper($row->jenis) ?></td>
 							<td class="text-center"><?php echo $row->durasi; ?></td>
 							<td class="text-center">

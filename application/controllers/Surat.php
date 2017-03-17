@@ -69,8 +69,6 @@ class Surat extends Sipaten
 		$this->breadcrumbs->unshift(2, 'Manajemen Surat', "surat");
 
 		$this->form_validation->set_rules('kode_surat', 'Kode Surat', 'trim|required');
-		$this->form_validation->set_rules('kode_kecamatan', 'Kode Kecamatan', 'trim|required');
-		$this->form_validation->set_rules('kode_desa', 'Kode Desa', 'trim');
 		$this->form_validation->set_rules('judul_surat', 'Judul Surat', 'trim|required');
 		$this->form_validation->set_rules('nama_surat', 'Desa / Kelurahan', 'trim|required');
 		$this->form_validation->set_rules('kepala_desa', 'Nama Kepala Desa', 'trim');
@@ -107,8 +105,6 @@ class Surat extends Sipaten
 		$this->breadcrumbs->unshift(2, 'Manajemen Surat', "surat");
 
 		$this->form_validation->set_rules('kode_surat', 'Kode Surat', 'trim|required');
-		$this->form_validation->set_rules('kode_kecamatan', 'Kode Kecamatan', 'trim|required');
-		$this->form_validation->set_rules('kode_desa', 'Kode Desa', 'trim');
 		$this->form_validation->set_rules('judul_surat', 'Judul Surat', 'trim|required');
 		$this->form_validation->set_rules('nama_surat', 'Desa / Kelurahan', 'trim|required');
 		$this->form_validation->set_rules('kepala_desa', 'Nama Kepala Desa', 'trim');
@@ -163,6 +159,23 @@ class Surat extends Sipaten
 		}
 
 		redirect('surat');
+	}
+
+	/**
+	 * Check Ketersediaan Kode Surat
+	 *
+	 * @param Integer (ID)
+	 * @return string
+	 **/
+	public function validate_kode()
+	{
+		if($this->surat->kode_check($this->input->post('ID')) == TRUE)
+		{
+			$this->form_validation->set_message('validate_kode', 'Maaf Kode Surat ini telah digunakan.');
+			return false;
+		} else {
+			return true;
+		}
 	}
 }
 

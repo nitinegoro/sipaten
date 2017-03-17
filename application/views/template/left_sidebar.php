@@ -13,13 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          </div>
       </div>
       <ul class="sidebar-menu">
-        <li class="<?php echo active_link_controller('ha'); ?>">
+        <li class="<?php echo active_link_controller('main'); ?>">
             <a href="<?php echo site_url('main') ?>">
                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
 
-        <li class="treeview <?php echo active_link_multiple(array('ad')); ?>">
+        <li class="treeview <?php echo active_link_multiple(array('surat_keterangan')); ?>">
             <a href="#">
                <i class="fa fa-file-text-o"></i> <span> Surat Non Perizinan</span>
                <span class="pull-right-container">
@@ -35,8 +35,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       */
       foreach($this->option->surat_category(NULL,'non perizinan') as $row) :
       ?>
-            <li>
-              <a href="" class="<?php echo active_link_controller('ok') ?>"><i class="fa fa-angle-double-right"></i> <?php echo $row->nama_kategori; ?></a>
+            <li class="<?php if($this->uri->segment(3)==$row->id_surat) echo "active"; ?>">
+              <a href="<?php echo site_url("surat_keterangan/index/{$row->id_surat}?from=".current_url()) ?>">
+                <i class="fa fa-angle-double-right"></i> <?php echo $row->nama_kategori; ?>
+              </a>
             </li>
       <?php  
       endforeach;
@@ -59,8 +61,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       */
       foreach($this->option->surat_category(NULL,'perizinan') as $row) :
       ?>
-            <li>
-              <a href="" class="<?php echo active_link_controller('ok') ?>"><i class="fa fa-angle-double-right"></i> <?php echo $row->nama_kategori; ?></a>
+            <li class="<?php if($this->uri->segment(3)==$row->id_surat) echo "active"; ?>">
+              <a href=""><i class="fa fa-angle-double-right"></i> <?php echo $row->nama_kategori; ?></a>
             </li>
       <?php  
       endforeach;
@@ -68,8 +70,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </li>
 
-        <li class="<?php echo active_link_controller('ha'); ?>">
-            <a href="<?php echo site_url('main') ?>">
+        <li class="<?php echo active_link_controller('surat_keluar'); ?>">
+            <a href="<?php echo site_url('surat_keluar') ?>">
                <i class="glyphicon glyphicon-envelope"></i> <span>Data Surat Keluar</span>
             </a>
         </li>
@@ -88,17 +90,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                </span>
             </a>
           <ul class="treeview-menu">
-            <li>
-              <a href="<?php echo site_url('people') ?>" class="<?php echo active_link_controller('people') ?>"><i class="fa fa-angle-double-right"></i> Data Penduduk</a>
+            <li class="<?php echo active_link_controller('people') ?>">
+              <a href="<?php echo site_url('people') ?>"><i class="fa fa-angle-double-right"></i> Data Penduduk</a>
             </li>
-            <li>
-              <a href="<?php echo site_url('desa') ?>" class="<?php echo active_link_controller('desa') ?>"><i class="fa fa-angle-double-right"></i> Data Kelurahan/Desa</a>
+            <li class="<?php echo active_link_controller('desa') ?>">
+              <a href="<?php echo site_url('desa') ?>"><i class="fa fa-angle-double-right"></i> Data Kelurahan/Desa</a>
             </li>
-            <li>
-              <a href="<?php echo site_url('surat') ?>" class="<?php echo active_link_controller('surat') ?>"><i class="fa fa-angle-double-right"></i> Manajemen Surat</a>
+            <li class="<?php echo active_link_controller('surat') ?>">
+              <a href="<?php echo site_url('surat') ?>"><i class="fa fa-angle-double-right"></i> Manajemen Surat</a>
             </li>
-            <li>
-              <a href="<?php echo site_url('employee') ?>" class="<?php echo active_link_controller('employee') ?>"><i class="fa fa-angle-double-right"></i> Data Kepegawaian</a>
+            <li class="<?php echo active_link_controller('employee') ?>">
+              <a href="<?php echo site_url('employee') ?>"><i class="fa fa-angle-double-right"></i> Data Kepegawaian</a>
             </li>
           </ul>
         </li>
@@ -111,8 +113,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                </span>
             </a>
           <ul class="treeview-menu">
-            <li>
-              <a href="<?php echo site_url('stats_people'); ?>" class="<?php echo active_link_controller('stats_people') ?>"><i class="fa fa-angle-double-right"></i> Kependudukan</a>
+            <li class="<?php echo active_link_controller('stats_people') ?>">
+              <a href="<?php echo site_url('stats_people'); ?>"><i class="fa fa-angle-double-right"></i> Kependudukan</a>
             </li>
             <li>
               <a href="" class="<?php echo active_link_controller('sdf') ?>"><i class="fa fa-angle-double-right"></i> Surat Non Perizinan</a>
@@ -131,11 +133,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                </span>
             </a>
           <ul class="treeview-menu">
-            <li>
-              <a href="<?php echo site_url('user') ?>" class="<?php echo active_link_method('index','user') ?>"><i class="fa fa-angle-double-right"></i> Data pengguna</a>
+            <li class="<?php echo active_link_method('index','user') ?>">
+              <a href="<?php echo site_url('user') ?>"><i class="fa fa-angle-double-right"></i> Data pengguna</a>
             </li>
-            <li>
-              <a href="<?php echo site_url('user/create') ?>" class="<?php echo active_link_method('create','user') ?>"><i class="fa fa-angle-double-right"></i> Tambah Pengguna</a>
+            <li class="<?php echo active_link_method('create','user') ?>">
+              <a href="<?php echo site_url('user/create') ?>"><i class="fa fa-angle-double-right"></i> Tambah Pengguna</a>
             </li>
           </ul>
         </li>
@@ -148,11 +150,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                </span>
             </a>
           <ul class="treeview-menu">
-            <li>
-              <a href="<?php echo site_url('setting') ?>" class="<?php echo active_link_controller('setting') ?>"><i class="fa fa-angle-double-right"></i> Pengaturan Sistem</a>
+            <li class="<?php echo active_link_controller('setting') ?>">
+              <a href="<?php echo site_url('setting') ?>"><i class="fa fa-angle-double-right"></i> Pengaturan Sistem</a>
             </li>
-            <li>
-              <a href="<?php echo site_url('role') ?>" class="<?php echo active_link_controller('role') ?>"><i class="fa fa-angle-double-right"></i> Hak Akses Pengguna</a>
+            <li class="<?php echo active_link_controller('role') ?>">
+              <a href="<?php echo site_url('role') ?>"><i class="fa fa-angle-double-right"></i> Hak Akses Pengguna</a>
             </li>
           </ul>
         </li>

@@ -61,9 +61,6 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							<button type="submit" class="btn btn-app">
 								<i class="fa fa-save"></i> Simpan
 							</button>
-<!-- 							<button type="submit" class="btn btn-app">
-	<i class="fa fa-file-word-o"></i> Dokumen
-</button> -->
 						</div>
 						<div class="col-md-12"><hr>
 							<small><strong class="text-red">*</strong>	Field wajib diisi!</small> <br>

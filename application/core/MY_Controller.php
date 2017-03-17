@@ -27,6 +27,8 @@ class Sipaten extends MY_Controller
 	{
 		parent::__construct();
 
+		$this->load->model('msurat_keterangan', 'surat_keterangan');
+
 		$this->breadcrumbs->unshift(0, 'Home', 'main');
 
 		if($this->session->has_userdata('authentifaction')==FALSE)
@@ -72,6 +74,13 @@ class Sipaten extends MY_Controller
 			);
 
 			$this->log_surat_check($get->nik, $this->input->get('surat'));
+
+			if( $this->surat_keterangan->valid_requirement_check($get->nik, $this->input->get('surat')) )
+			{
+				$this->data['status'] = true;
+			} else {
+				$this->data['status'] = false;
+			}
 		}
 
 		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
@@ -86,12 +95,13 @@ class Sipaten extends MY_Controller
 	 **/
 	public function log_surat_check($param = '', $kategori = 0)
 	{
-		$log_surat = $this->db->query("SELECT nik, syarat FROM log_surat WHERE nik = {$param} AND status IN('pending') AND kategori = {$kategori}")->result();
+		$log_surat = $this->db->query("SELECT nik, syarat, tanggal FROM log_surat WHERE nik = {$param} AND nomor_surat IN(0) AND kategori = {$kategori}")->result();
 
 		foreach($log_surat as $row)
 		{
 			$this->data['syarat_surat'][] = array(
-				'id' => $row->syarat
+				'id' => $row->syarat,
+				'date' => $row->tanggal
 			);
 		}
 

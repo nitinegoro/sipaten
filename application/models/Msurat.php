@@ -44,6 +44,7 @@ class Msurat extends Sipaten_model
 	{
 		$kategori_surat = array(
 			'nama_kategori' => $this->input->post('nama_surat'), 
+			'judul_surat' => $this->input->post('judul_surat'),
 			'form_isi_surat' => implode(',', $this->input->post('isi')),
 			'jenis' => $this->input->post('jenis'),
 			'syarat' => implode(",", $this->input->post('syarat')),
@@ -69,7 +70,10 @@ class Msurat extends Sipaten_model
 	public function update_category($param = 0)
 	{
 		$kategori_surat = array(
+			'kode_surat' => $this->input->post('kode_surat'),
+			'slug' => $this->slug->create_slug($this->input->post('nama_surat')),
 			'nama_kategori' => $this->input->post('nama_surat'), 
+			'judul_surat' => $this->input->post('judul_surat'),
 			'form_isi_surat' => implode(',', $this->input->post('isi')),
 			'jenis' => $this->input->post('jenis'),
 			'syarat' => implode(",", $this->input->post('syarat')),
@@ -126,6 +130,22 @@ class Msurat extends Sipaten_model
 				' Tidak ada data yang dipilih.', 
 				array('type' => 'warning','icon' => 'times')
 			);
+		}
+	}
+
+	/**
+	 * Check Ketersediaan Kode Surat
+	 *
+	 * @param Integer (ID)
+	 * @return string
+	 **/
+	public function kode_check($param = 0)
+	{
+		if($param == FALSE)
+		{
+			return $this->db->get_where('kategori_surat', array('kode_surat' => $this->input->post('kode_surat')))->num_rows();
+		} else {
+			return $this->db->query("SELECT kode_surat FROM kategori_surat WHERE kode_surat = '{$this->input->post('kode_surat')}' AND id_surat != {$param}")->num_rows();
 		}
 	}
 }

@@ -1,10 +1,4 @@
 <div class="row">
-    <div class="col-md-12">
-        <div class="alert alert-info">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong><i class="fa fa-info-circle"></i></strong> Silahkan klik menu pilihan di sebelah kiri untuk untuk mengelola software anda atau pilih icon pada Shortcut Panel di bawah ini.
-        </div>
-    </div>
     <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-aqua" id="block-stats-penduduk">
             <div class="inner">
@@ -44,7 +38,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
         <div class="box box-default box-solid" id="block-tombol-surat-keterangan">
             <div class="box-header with-border">
               	<h3 class="box-title">Shortcut Surat Non Perizinan </h3>
@@ -52,7 +46,7 @@
                 	<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button>
               	</div>
             </div>
-            <div class="box-body">
+            <div class="box-body" style="padding-left: 12px;">
       <?php  
       /**
       * Loop Surat Keterangan
@@ -61,7 +55,7 @@
       */
       foreach($this->option->surat_category(NULL,'non perizinan') as $row) :
       ?>
-              <a class="csurat" href="<?php echo site_url("surat_keterangan/index/{$row->id_surat}?from=".current_url()) ?>">
+              <a class="csurat hvr-pulse-grow" href="<?php echo site_url("surat_keterangan/index/{$row->id_surat}?from=".current_url()) ?>">
                 <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt="sss"/>
                 <span><?php echo $row->nama_kategori; ?></span>
               </a>
@@ -71,7 +65,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
         <div class="box box-default box-solid" id="block-tombol-surat-perizinan">
             <div class="box-header with-border">
                 <h3 class="box-title">Shortcut Surat Perizinan </h3>
@@ -79,7 +73,7 @@
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="box-body" style="padding-left: 12px;">
       <?php  
       /**
       * Loop Surat Keterangan
@@ -88,7 +82,7 @@
       */
       foreach($this->option->surat_category(NULL,'perizinan') as $row) :
       ?>
-              <a class="csurat" href="<?php echo site_url('') ?>">
+              <a class="csurat hvr-pulse-grow" href="<?php echo site_url('') ?>">
                 <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt="sss"/>
                 <span><?php echo $row->nama_kategori; ?></span>
               </a>

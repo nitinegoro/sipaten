@@ -19,20 +19,6 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="control-label col-md-2 col-xs-12">Kode Kecamatan : <strong class="text-red">*</strong></label>
-					<div class="col-md-4">
-						<input type="text" name="kode_kecamatan" class="form-control" value="<?php echo set_value('kode_kecamatan'); ?>">
-						<p class="help-block"><?php echo form_error('kode_kecamatan', '<small class="text-red">', '</small>'); ?></p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="email" class="control-label col-md-2 col-xs-12">Kode Desa : <strong class="text-primary">*</strong></label>
-					<div class="col-md-4">
-						<input type="text" name="kode_desa" class="form-control" value="<?php echo set_value('kode_desa'); ?>">
-						<p class="help-block"><?php echo form_error('kode_desa', '<small class="text-red">', '</small>'); ?></p>
-					</div>
-				</div>
-				<div class="form-group">
 					<label for="email" class="control-label col-md-2 col-xs-12">Nama Surat : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<input type="text" name="nama_surat" class="form-control" value="<?php echo set_value('nama_surat'); ?>">

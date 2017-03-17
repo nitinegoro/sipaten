@@ -1,4 +1,4 @@
-        <div class="box box-solid" id="sticker">
+        <div class="box box-solid no-print" id="sticker">
             <div class="box-header with-border">
               	<h3 class="box-title">Statistik Kependudukan</h3>
             </div>

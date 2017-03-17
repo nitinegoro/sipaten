@@ -73,6 +73,15 @@ class Sipaten_model extends MY_Model
 	}
 
 	/**
+	 * Get Kategori Surat
+	 *
+	 **/
+	public function category()
+	{
+		return $this->db->get('kategori_surat')->result();
+	}
+
+	/**
 	 * Get Pejabat Pemerintah
 	 *
 	 * @param Integer (ID)
@@ -85,6 +94,17 @@ class Sipaten_model extends MY_Model
 		} else {
 			return $this->db->get_where('pegawai', array('ID' => $param))->row();
 		}
+	}
+
+	/**
+	 * Get Data Penduduk
+	 *
+	 * @param Integer (ID)
+	 **/
+	public function get_penduduk($param = 0)
+	{
+		$this->db->join('desa', 'penduduk.desa = desa.id_desa', 'left');
+		return $this->db->get_where('penduduk', array('ID' => $param))->row();
 	}
 }
 

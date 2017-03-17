@@ -21,6 +21,8 @@ class Stats_people extends Sipaten
 
 		$this->load->model('mstats_people', 'stats_people');
 
+		$this->load->model('mexcel_kependudukan', 'excel_kependudukan');
+
 		$this->load->js(base_url('public/app/statistik_penduduk.js'));
 	}
 
@@ -38,6 +40,47 @@ class Stats_people extends Sipaten
 		);
 
 		$this->template->view('statistik/people-population', $this->data);
+	}
+
+	public function print_out($param = '')
+	{
+		$this->data = array(
+			'title' => "Data Statistik Penduduk Desa",
+			'desa' => $this->stats_people->get_desa(),
+			'status_kawin' => $this->stats_people->get_status_perkawinan(),
+			'agama' => $this->stats_people->get_religion(),
+			'gol_darah' => $this->stats_people->get_golongan_darah()
+		);
+		
+		$this->load->view('statistik/print-kependudukan', $this->data);
+	}
+
+	public function export($param = 0)
+	{
+		switch ($param) 
+		{
+			case 'desa_population':
+				$this->excel_kependudukan->desa();
+				break;
+			case 'gender_population':
+				$this->excel_kependudukan->gender();
+				break;
+			case 'perkawinan_population':
+				$this->excel_kependudukan->perkawinan();
+				break;
+			case 'agama':
+				$this->excel_kependudukan->agama();
+				break;
+			case 'kewarganegaraan':
+				$this->excel_kependudukan->kewarganegaraan();
+				break;
+			case 'gol_darah':
+				$this->excel_kependudukan->gol_darah();
+				break;
+			default:
+				# code...
+				break;
+		}
 	}
 
 	/**

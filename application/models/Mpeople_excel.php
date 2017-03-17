@@ -57,13 +57,13 @@ class Mpeople_excel extends Sipaten_model
 		        		if($value['B'] == FALSE OR $this->nik_check($value['B'])) 
 		        			continue;
 
-		        		if( $this->desa($value['K']) )
+		        		if( $this->desa($value['L']) )
 		        		{
-		        			$desa = $this->desa($value['K']);
+		        			$desa = $this->desa($value['L']);
 		        		} else {
 		        			$desa_in = array(
-		        				'nama_desa' => $value['K'],
-		        				'slug' => $this->slug->create_slug($value['K']),
+		        				'nama_desa' => $value['L'],
+		        				'slug' => $this->slug->create_slug($value['L']),
 		        				'kepala_desa' => ''
 		        			);
 
@@ -74,21 +74,22 @@ class Mpeople_excel extends Sipaten_model
 
 						$people = array(
 							'nik' => $value['B'],
-							'nama_lengkap' => $value['C'],
-							'tmp_lahir' => $value['E'],
-							'tgl_lahir' => date("Y-m-d", PHPExcel_Shared_Date::ExcelToPHP($value['F'])),
-							'jns_kelamin' => strtolower($value['D']),
-							'alamat' => $value['O'],
-							'rt' => $value['M'],
-							'rw' => $value['N'],
+							'no_kk' => $value['C'],
+							'nama_lengkap' => $value['D'],
+							'tmp_lahir' => $value['F'],
+							'tgl_lahir' => date("Y-m-d", PHPExcel_Shared_Date::ExcelToPHP($value['G'])),
+							'jns_kelamin' => strtolower($value['E']),
+							'alamat' => $value['P'],
+							'rt' => $value['N'],
+							'rw' => $value['O'],
 							'desa' => $desa,
-							'kecamatan' => $value['L'],
-							'agama' => strtolower($value['G']),
-							'pekerjaan' => $value['P'],
-							'kewarganegaraan' => strtolower($value['H']),
-							'status_kawin' => strtolower($value['I']),
-							'gol_darah' => strtoupper($value['J']),
-							'telepon' => $value['K']
+							'kecamatan' => $value['M'],
+							'agama' => strtolower($value['H']),
+							'pekerjaan' => $value['Q'],
+							'kewarganegaraan' => strtolower($value['I']),
+							'status_kawin' => strtolower($value['J']),
+							'gol_darah' => strtoupper($value['K']),
+							'telepon' => $value['R']
 						);
 
 						$this->db->insert('penduduk', $people);
@@ -157,20 +158,21 @@ class Mpeople_excel extends Sipaten_model
 		// Header dokumen
 		 $worksheet->setCellValue('A1', 'NO.')
 		 		   ->setCellValue('B1', 'NIK')
-		 		   ->setCellValue('C1', 'NAMA LENGKAP')
-		 		   ->setCellValue('D1', 'JENIS KELAMIN')
-		 		   ->setCellValue('E1', 'TEMPAT LAHIR')
-		 		   ->setCellValue('F1', 'TANGGAL LAHIR')
-		 		   ->setCellValue('G1', 'AGAMA')
-		 		   ->setCellValue('H1', 'KEWARGANEGARAAN')
-		 		   ->setCellValue('I1', 'STATUS PERKAWINAN')
-		 		   ->setCellValue('J1', 'GOLONGAN DARAH')
-		 		   ->setCellValue('K1', 'DESA KELURAHAN')
-		 		   ->setCellValue('L1', 'RT')
-		 		   ->setCellValue('M1', 'RW')
-		 		   ->setCellValue('N1', 'ALAMAT')
-		 		   ->setCellValue('O1', 'PEKERJAAN')
-		 		   ->setCellValue('P1', 'TELEPON');
+		 		   ->setCellValue('C1', 'NO. KK')
+		 		   ->setCellValue('D1', 'NAMA LENGKAP')
+		 		   ->setCellValue('E1', 'JENIS KELAMIN')
+		 		   ->setCellValue('F1', 'TEMPAT LAHIR')
+		 		   ->setCellValue('G1', 'TANGGAL LAHIR')
+		 		   ->setCellValue('H1', 'AGAMA')
+		 		   ->setCellValue('I1', 'KEWARGANEGARAAN')
+		 		   ->setCellValue('J1', 'STATUS PERKAWINAN')
+		 		   ->setCellValue('K1', 'GOLONGAN DARAH')
+		 		   ->setCellValue('L1', 'DESA KELURAHAN')
+		 		   ->setCellValue('M1', 'RT')
+		 		   ->setCellValue('N1', 'RW')
+		 		   ->setCellValue('O1', 'ALAMAT')
+		 		   ->setCellValue('P1', 'PEKERJAAN')
+		 		   ->setCellValue('Q1', 'TELEPON');
 
 		$this->db->join('desa', 'penduduk.desa = desa.id_desa', 'left');
 
@@ -181,20 +183,21 @@ class Mpeople_excel extends Sipaten_model
 
 			 $worksheet->setCellValue('A'.$row_cell, ++$key)
 			 		   ->setCellValue('B'.$row_cell, $value->nik)
-			 		   ->setCellValue('C'.$row_cell, $value->nama_lengkap)
-			 		   ->setCellValue('D'.$row_cell, ucfirst($value->jns_kelamin))
-			 		   ->setCellValue('E'.$row_cell, $value->tmp_lahir)
-			 		   ->setCellValue('F'.$row_cell, $date->format('d/m/Y'))
-			 		   ->setCellValue('G'.$row_cell, ucfirst($value->agama))
-			 		   ->setCellValue('H'.$row_cell, strtoupper($value->kewarganegaraan))
-			 		   ->setCellValue('I'.$row_cell, strtoupper($value->status_kawin))
-			 		   ->setCellValue('J'.$row_cell, strtoupper($value->gol_darah))
-			 		   ->setCellValue('K'.$row_cell, $value->nama_desa)
-			 		   ->setCellValue('L'.$row_cell, $value->rt)
-			 		   ->setCellValue('M'.$row_cell, $value->rw)
-			 		   ->setCellValue('N'.$row_cell, $value->alamat)
-			 		   ->setCellValue('O'.$row_cell, $value->pekerjaan)
-			 		   ->setCellValue('P'.$row_cell, $value->telepon);
+			 		   ->setCellValue('C'.$row_cell, $value->no_kk)
+			 		   ->setCellValue('D'.$row_cell, $value->nama_lengkap)
+			 		   ->setCellValue('E'.$row_cell, ucfirst($value->jns_kelamin))
+			 		   ->setCellValue('F'.$row_cell, $value->tmp_lahir)
+			 		   ->setCellValue('G'.$row_cell, $date->format('d/m/Y'))
+			 		   ->setCellValue('H'.$row_cell, ucfirst($value->agama))
+			 		   ->setCellValue('I'.$row_cell, strtoupper($value->kewarganegaraan))
+			 		   ->setCellValue('J'.$row_cell, strtoupper($value->status_kawin))
+			 		   ->setCellValue('K'.$row_cell, strtoupper($value->gol_darah))
+			 		   ->setCellValue('L'.$row_cell, $value->nama_desa)
+			 		   ->setCellValue('M'.$row_cell, $value->rt)
+			 		   ->setCellValue('N'.$row_cell, $value->rw)
+			 		   ->setCellValue('O'.$row_cell, $value->alamat)
+			 		   ->setCellValue('P'.$row_cell, $value->pekerjaan)
+					   ->setCellValue('Q'.$row_cell, $value->telepon);
 
 			$row_cell++;
 		}

@@ -18,9 +18,9 @@
                 <div id="chart-populasi-desa-bar"></div>
             <?php endif; ?>
             </div>
-            <div class="box-header">
-                <a href="<?php echo site_url('stats_people') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-print"></i> Cetak</a>
-                <a href="<?php echo site_url('stats_people') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
+            <div class="box-header no-print">
+                <a href="<?php echo site_url('stats_people/print_out/desa') ?>" class="btn btn-default btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+                <a href="<?php echo site_url('stats_people/export/desa_population') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
                 <a href="<?php echo site_url('stats_people') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-pie-chart"></i> Grafik Pie</a>
                 <a href="<?php echo site_url('stats_people?chart=bar') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-bar-chart"></i> Grafik Batang</a>
             </div>
