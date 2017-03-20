@@ -145,6 +145,36 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[nama_pengelola]', 'Nama Pengelola', 'trim|required');
 				$this->form_validation->set_rules('isi[alamat_lembaga]', 'Alamat Lembaga', 'trim|required');
 				break;
+			case 'izin-usaha-mikro-dan-kecil':
+				$this->form_validation->set_rules('isi[nama_perusahaan]', 'Nama Perusahaan', 'trim|required');
+				$this->form_validation->set_rules('isi[bentuk_perusahaan]', 'Bentuk Perusahaan', 'trim|required');
+				$this->form_validation->set_rules('isi[npwp]', 'NPWP', 'trim|required');
+				$this->form_validation->set_rules('isi[kegiatan_usaha]', 'Kegiatan', 'trim|required');
+				$this->form_validation->set_rules('isi[sarana_usaha]', 'Sarana', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat_perusahaan]', 'Alamat', 'trim|required');
+				$this->form_validation->set_rules('isi[jml_modal_usaha]', 'Jumlah Modal', 'trim|is_numeric|required');
+				$this->form_validation->set_rules('isi[no_pendaftaran]', 'No Pendaftaran', 'trim|required');
+				break;
+			case 'izin-keramaian':
+				$this->form_validation->set_rules('isi[keperluan]', 'Keperluan', 'trim|required');
+				$this->form_validation->set_rules('isi[hari]', 'Hari', 'trim|required');
+				$this->form_validation->set_rules('isi[tanggal]', 'Tanggal', 'trim|required');
+				$this->form_validation->set_rules('isi[waktu]', 'Waktu', 'trim|required');
+				$this->form_validation->set_rules('isi[tempat]', 'Tempat', 'trim|required');
+				$this->form_validation->set_rules('isi[hiburan]', 'Hiburan', 'trim|required');
+				break;
+			case 'surat-izin-gangguan':
+				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[ttd_desa]', 'Tanda Tangan', 'trim|required');
+				$this->form_validation->set_rules('isi[jabatan_desa]', 'Jabatan', 'trim|required');
+				$this->form_validation->set_rules('isi[nama]', 'Nama Toko / Kios / Perusahaan ', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat]', 'Alamat', 'trim|required');
+				$this->form_validation->set_rules('isi[jenis_kegiatan]', 'Jenis Kegiatan', 'trim|required');
+				$this->form_validation->set_rules('isi[jenis_bangunan]', 'Jenis Bangunan', 'trim|required');
+				$this->form_validation->set_rules('isi[lokasi_bangunan]', 'Lokasi Bangunan', 'trim|required');
+				break;
 			default:
 				# code...surat
 				break;

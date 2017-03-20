@@ -3,7 +3,7 @@
 	<dov class="col-md-12 col-xs-12">
 		<div class="box box-primary">
             <div class="box-header with-border">
-              	<h3 class="box-title">Surat Keterangan <?php echo $title; ?></h3>
+              	<h3 class="box-title"> <?php echo $title; ?></h3>
             </div>
 <?php  
 /**

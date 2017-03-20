@@ -3,7 +3,7 @@
 	<dov class="col-md-12 col-xs-12">
 		<div class="box box-primary">
             <div class="box-header with-border">
-              	<h3 class="box-title"> <?php echo $title; ?></h3>
+              	<h3 class="box-title"><?php echo $title; ?></h3>
             </div>
 <?php  
 /**
@@ -23,10 +23,10 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							<strong>/<?php echo $this->option->get('kode_kecamatan'); ?>/<?php echo date('Y') ?></strong>
 							<p class="help-block"><?php echo form_error('nomor_surat', '<small class="text-red">', '</small>'); ?></p>
 						</div>
-					</div>	
+					</div>
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Surat Rekomendasi Keterangan Dari Lurah / Desa</p>
+							<p class="legend-form">Surat Pengantar Dari Lurah / Desa</p>
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
@@ -50,21 +50,49 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Keterangan Domisili</p>
+							<p class="legend-form">Keperluan :</p>
 						</div>
-						<label for="email" class="control-label col-md-3 col-xs-12">Nama Perusahaan : <strong class="text-red">*</strong></label>
+						<label for="email" class="control-label col-md-3 col-xs-12">Keperluan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<input type="text" name="isi[nama_perusahaan]" class="form-control" value="<?php echo set_value('isi[nama_perusahaan]'); ?>">
-							<p class="help-block"><?php echo form_error('isi[nama_perusahaan]', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="email" class="control-label col-md-3 col-xs-12">Alamat  : <strong class="text-red">*</strong></label>
-						<div class="col-md-9">
-							<textarea name="isi[alamat_perusahaan]" class="form-control" cols="30" rows="3"><?php echo set_value('isi[alamat_perusahaan]'); ?></textarea>
-							<p class="help-block"><?php echo form_error('isi[alamat_perusahaan]', '<small class="text-red">', '</small>'); ?></p>
+							<input type="text" name="isi[keperluan]" class="form-control" value="<?php echo set_value('isi[keperluan]'); ?>">
+							<p class="help-block"><?php echo form_error('isi[keperluan]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Hari : <strong class="text-red">*</strong></label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="isi[hari]" value="<?php echo set_value('isi[hari]'); ?>">
+							<p class="help-block"><?php echo form_error('isi[hari]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Tanggal : <strong class="text-red">*</strong></label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="isi[tanggal]" id="datepicker" value="<?php echo set_value('isi[tanggal]'); ?>" placeholder="Ex : <?php echo date('Y-m-d'); ?>">
+							<p class="help-block"><?php echo form_error('isi[tanggal]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Waktu : <strong class="text-red">*</strong></label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="isi[waktu]" value="<?php echo set_value('isi[waktu]'); ?>">
+							<p class="help-block"><?php echo form_error('isi[waktu]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Tempat  : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<textarea name="isi[tempat]" class="form-control" cols="30" rows="3"><?php echo set_value('isi[tempat]'); ?></textarea>
+							<p class="help-block"><?php echo form_error('isi[tempat]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Hiburan : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="isi[hiburan]" value="<?php echo set_value('isi[hiburan]'); ?>">
+							<p class="help-block"><?php echo form_error('isi[hiburan]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form"></p>
