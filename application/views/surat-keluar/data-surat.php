@@ -127,7 +127,7 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 							</th>
 							<th class="text-center">No. Surat</th>
 							<th class="text-center">Jenis Surat</th>
-							<th class="text-center">Tanggal</th>
+							<th class="text-center" width="90">Tanggal</th>
 							<th class="text-center">Nama Penduduk</th>
 							<th class="text-center">Ditanda Tangani</th>
 							<th class="text-center">User</th>
@@ -159,15 +159,32 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 							<td><?php echo $row->name; ?></td>
 							<td><?php echo strtoupper($row->status) ?></td>
 							<td class="text-center" style="font-size: 14px;" width="100">
-								<a href="<?php echo site_url("surat_keluar/update/{}") ?>" class="icon-button text-success" data-toggle="tooltip" data-placement="top" title="Cetak Surat">
-									<i class="glyphicon glyphicon-print"></i>
-								</a>
-								<a href="<?php echo site_url("surat_keluar/update/{}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting">
-									<i class="fa fa-pencil"></i>
-								</a>
-								<a class="icon-button text-red get-delete-people" data-id="" data-toggle="tooltip" data-placement="top" title="Hapus">
-									<i class="fa fa-trash-o"></i>
-								</a>
+								<div class="btn-group dropup">
+  									
+  									<a href="<?php echo site_url("surat_keluar/print_surat/{$row->ID}") ?>" class="btn btn-xs btn-default btn-print"><i class="glyphicon glyphicon-print"></i> Cetak</a>
+
+  									<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" data-placement="bottom"  title="Tombol Lainnya">
+    									<span class="caret"></span>
+    									<span class="sr-only">Toggle Dropdown</span>
+  									</button>
+  									<ul class="dropdown-menu">
+								    	<li>
+								    		<a href="<?php echo site_url("surat_keluar/get/{$row->ID}") ?>"> Sunting</a>
+								    	</li>
+								    	<li>
+								    		<a href=""> Pending</a>
+								    	</li>
+								    	<li>
+								    		<a href=""> Verifikasi</a>
+								    	</li>
+								    	<li>
+								    		<a href=""> Unduh</a>
+								    	</li>
+								    	<li>
+								    		<a href=""> Hapus</a>
+								    	</li>
+  									</ul>
+								</div>
 							</td>
 						</tr>
 				<?php  

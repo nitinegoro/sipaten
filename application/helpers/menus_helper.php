@@ -1,10 +1,10 @@
 <?php 
 /**
- * Sistem Informasi Akdemik STIE Pertiba
+ * Active Menu Helper
  *
- * @package Codeigniter - Template Siakad
+ * @package Codeigniter - Template Sipaten
  * @subpackage Helper
- * @see https://github.com/nitinegoro/siakad-terpadu/tree/master/application/helpers
+ * @see https://github.com/nitinegoro/sipaten/tree/master/application/helpers
  * @since 2017 (V1.0.1)
  * @author Vicky Nitinegoro <pkpvicky@gmail.com>
  *
@@ -67,6 +67,33 @@ if(!function_exists('active_link_multiple'))
         } else {
             show_error('Masukkan beberapa nama Controller menggunakan array.', 200, 'Error menus helper');
             return FALSE;
+        }
+    }
+}
+
+
+/**
+ * Untuk Menu Surat Perizinan & Non Perizinan dalam satu Controller
+ *
+ * @param Array
+ * @return string (Active Menu)
+ **/
+if(!function_exists('is_surat'))
+{
+    function is_surat($jenis, $param)
+    {
+        $ci    =& get_instance();
+
+        if($param != FALSE)
+        {
+            require_once( BASEPATH .'database/DB'. EXT );
+
+            $db =& DB();
+
+            $category = $db->get_where('kategori_surat', array('id_surat' => $param))->row();
+            if($category)
+                if($category->jenis == $jenis AND $ci->router->fetch_class() == 'create_surat')
+                    return 'active';
         }
     }
 }

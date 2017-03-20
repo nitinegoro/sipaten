@@ -10,7 +10,7 @@ $(document).ready(function () {
         norecord: "NIK atau Nama tidak ditemukan!",
         placeholder: "Cari NIK / Nama penduduk ..",
         ajax: {
-            url: base_url + "/surat_keterangan/penduduk",
+            url: base_url + "/create_surat/penduduk",
             type: "GET",
             data: function () {
                 return [{ test: input_cari_nik.searchdata() }];
@@ -81,13 +81,13 @@ $(document).ready(function () {
 
             var category = $('input[name="kategori-surat"]').val();
 
-            $.post( base_url + "/surat_keterangan/insert_log_surat", form, function( data ) 
+            $.post( base_url + "/create_surat/insert_log_surat", form, function( data ) 
             {
                 if(data.status === true)
                 {
                     $('div#dialog-lanjutkan').modal('show');
 
-                    $('a#button-lanjutkan').attr('href', base_url + '/surat_keterangan/create/' + category + '/' + param);
+                    $('a#button-lanjutkan').attr('href', base_url + '/create_surat/create/' + category + '/' + param);
                 } 
             });
         }
@@ -121,7 +121,7 @@ $(document).ready(function () {
 
             var category = $('input[name="kategori-surat"]').val();
 
-            $('a#button-delete-history').attr('href', base_url + '/surat_keterangan/delete_history/' + param + '/' + category);
+            $('a#button-delete-history').attr('href', base_url + '/create_surat/delete_history/' + param + '/' + category);
         }
     });
 });
@@ -130,7 +130,7 @@ function select_penduduk(param)
 {
     var category = $('input[name="kategori-surat"]').val();
 
-    $.get( base_url + "/surat_keterangan/penduduk/" + param + '?surat=' + category, function( data ) 
+    $.get( base_url + "/create_surat/penduduk/" + param + '?surat=' + category, function( data ) 
     {
         $('td#data-nik').html(data.nik);
         $('td#data-nama').html(data.nama);
@@ -154,7 +154,7 @@ function select_penduduk(param)
         {
             $('div#dialog-lanjutkan').modal('show');
 
-            $('a#button-lanjutkan').attr('href', base_url + '/surat_keterangan/create/' + category + '/' + param);
+            $('a#button-lanjutkan').attr('href', base_url + '/create_surat/create/' + category + '/' + param);
         } else {
             if(data.syarat_surat)
             {
@@ -187,7 +187,7 @@ function delete_syarat(param)
 
     var category = $('input[name="kategori-surat"]').val();
 
-    $.post( base_url + "/surat_keterangan/delete_syarat/" + param, form);
+    $.post( base_url + "/create_surat/delete_syarat/" + param, form);
 }
 
 

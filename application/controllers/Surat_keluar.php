@@ -45,7 +45,7 @@ class Surat_keluar extends Sipaten
 
 		$this->query = $this->input->get('query');
 
-		$this->per_page = (!$this->input->get('per_page')) ? 20: $this->input->get('per_page');
+		$this->per_page = $this->input->get('per_page') ? $this->input->get('per_page') : 20;
 
 		$this->page = $this->input->get('page');
 
@@ -60,7 +60,9 @@ class Surat_keluar extends Sipaten
 
 		$config = $this->template->pagination_list();
 
-		$config['base_url'] = site_url("people?per_page={$this->per_page}&query={$this->query}");
+		$config['base_url'] = site_url(
+			"surat_keluar?per_page={$this->per_page}&query={$this->query}&start={$this->start_date}&end={$this->end_date}&jenis={$this->category}&status={$this->status}&user={$this->user}"
+		);
 
 		$config['per_page'] = $this->per_page;
 		$config['total_rows'] = $this->surat_keluar->data(null, null, 'num');
@@ -76,6 +78,66 @@ class Surat_keluar extends Sipaten
 		);
 
 		$this->template->view('surat-keluar/data-surat', $this->data);
+	}
+
+	/**
+	 * Get Print SUrat
+	 *
+	 * @param Integer (ID) surat
+	 * @return Html output (print)
+	 **/
+	public function print_surat($param = 0)
+	{
+		$surat = $this->surat_keluar->get($param);
+
+		$this->data = array(
+			'title' => "PRINT | {$surat->judul_surat}",
+			'get' => $surat,
+			'isi' => json_decode($surat->isi_surat)
+		);
+
+		$this->load->view("surat-keluar/print/{$surat->slug}", $this->data);
+	}
+
+	/**
+	 * Get Update SUrat
+	 *
+	 * @param Integer (ID) surat
+	 * @return Html output (form update)
+	 **/
+	public function get($param = 0)
+	{
+		$this->page_title->push('Surat Keluar', 'Sunting Surat Keluar');
+
+		$this->breadcrumbs->unshift(2, 'Sunting Surat Keluar', "surat_keluar");
+
+		$surat = $this->surat_keluar->get($param);
+
+		if($surat == FALSE)
+			show_404();
+
+		/* Get Validation Rules */
+		parent::get_surat_validation($surat->slug);
+
+		if($this->form_validation->run() == TRUE)
+		{
+			$this->surat_keluar->update_surat($param);
+			
+			redirect("surat_keluar/get/{$param}");
+
+		}
+
+		$this->data = array(
+			'title' => "Sunting - {$surat->judul_surat}",
+			'breadcrumb' => $this->breadcrumbs->show(),
+			'page_title' => $this->page_title->show(),
+			'pegawai' => $this->create_surat->pegawai(),
+			'syarat' => $this->create_surat->get_syarat($surat->syarat),
+			'get' => $surat,
+			'isi' => json_decode($surat->isi_surat)
+		);
+
+		$this->template->view("surat-keluar/form/{$surat->slug}", $this->data);
 	}
 }
 

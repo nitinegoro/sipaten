@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Msurat_keterangan extends Sipaten_model 
+class Mcreate_surat extends Sipaten_model 
 {
 	public $user;
 
@@ -182,6 +182,11 @@ class Msurat_keterangan extends Sipaten_model
 	 **/
 	public function update_surat($nik = '', $category = 0)
 	{
+		$check_surat = $this->db->get_where(
+			'surat', 
+			array('nik' => $nik, 'kategori' => $category, 'status' => 'entry')
+		)->row(); 
+
 		$surat = array(
 			'nomor_surat' => $this->input->post('nomor_surat'),
 			'isi_surat' => json_encode($this->input->post('isi')),
@@ -198,7 +203,7 @@ class Msurat_keterangan extends Sipaten_model
 
 		$this->db->update(
 			'log_surat', 
-			array('nomor_surat' => $this->input->post('nomor_surat')),
+			array('nomor_surat' => $check_surat->ID),
 			array('nik' => $nik, 'kategori' => $category, 'nomor_surat' => 0)
 		);
 

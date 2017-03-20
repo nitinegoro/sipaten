@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
         </li>
 
-        <li class="treeview <?php echo active_link_multiple(array('surat_keterangan')); ?>">
+        <li class="treeview <?php echo is_surat('non perizinan', $this->uri->segment(3)); ?>">
             <a href="#">
                <i class="fa fa-file-text-o"></i> <span> Surat Non Perizinan</span>
                <span class="pull-right-container">
@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       foreach($this->option->surat_category(NULL,'non perizinan') as $row) :
       ?>
             <li class="<?php if($this->uri->segment(3)==$row->id_surat) echo "active"; ?>">
-              <a href="<?php echo site_url("surat_keterangan/index/{$row->id_surat}?from=".current_url()) ?>">
+              <a href="<?php echo site_url("create_surat/index/{$row->id_surat}?from=".current_url()) ?>">
                 <i class="fa fa-angle-double-right"></i> <?php echo $row->nama_kategori; ?>
               </a>
             </li>
@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       ?>
           </ul>
         </li>
-        <li class="treeview <?php echo active_link_multiple(array('ha')); ?>">
+        <li class="treeview <?php echo is_surat('perizinan', $this->uri->segment(3)); ?>">
             <a href="#">
                <i class="ion ion-clipboard"></i> <span>Surat Perizinan</span>
                <span class="pull-right-container">
@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       foreach($this->option->surat_category(NULL,'perizinan') as $row) :
       ?>
             <li class="<?php if($this->uri->segment(3)==$row->id_surat) echo "active"; ?>">
-              <a href=""><i class="fa fa-angle-double-right"></i> <?php echo $row->nama_kategori; ?></a>
+              <a href="<?php echo site_url("create_surat/index/{$row->id_surat}?from=".current_url()) ?>"><i class="fa fa-angle-double-right"></i> <?php echo $row->nama_kategori; ?></a>
             </li>
       <?php  
       endforeach;

@@ -20,10 +20,10 @@
     <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-yellow" id="block-stats-surat-keluar">
             <div class="inner">
-                <h3>44</h3> <p>Surat Keluar</p>
+                <h3><?php echo $this->db->get_where('surat', array('status' => 'approve'))->num_rows() ?></h3> <p>Surat Keluar</p>
             </div>
             <div class="icon"> <i class="fa fa-line-chart"></i> </div>
-            <a href="#" class="small-box-footer">Selengkapnya...</a>
+            <a href="<?php echo site_url('surat_keluar?status=approve') ?>" class="small-box-footer">Selengkapnya...</a>
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
@@ -55,7 +55,7 @@
       */
       foreach($this->option->surat_category(NULL,'non perizinan') as $row) :
       ?>
-              <a class="csurat hvr-pulse-grow" href="<?php echo site_url("surat_keterangan/index/{$row->id_surat}?from=".current_url()) ?>">
+              <a class="csurat hvr-pulse-grow" href="<?php echo site_url("create_surat/index/{$row->id_surat}?from=".current_url()) ?>">
                 <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt="sss"/>
                 <span><?php echo $row->nama_kategori; ?></span>
               </a>
@@ -82,7 +82,7 @@
       */
       foreach($this->option->surat_category(NULL,'perizinan') as $row) :
       ?>
-              <a class="csurat hvr-pulse-grow" href="<?php echo site_url('') ?>">
+              <a class="csurat hvr-pulse-grow" href="<?php echo site_url("create_surat/index/{$row->id_surat}?from=".current_url()) ?>">
                 <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt="sss"/>
                 <span><?php echo $row->nama_kategori; ?></span>
               </a>

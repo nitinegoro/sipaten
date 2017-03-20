@@ -27,7 +27,7 @@ class Sipaten extends MY_Controller
 	{
 		parent::__construct();
 
-		$this->load->model('msurat_keterangan', 'surat_keterangan');
+		$this->load->model('mcreate_surat', 'create_surat');
 
 		$this->breadcrumbs->unshift(0, 'Home', 'main');
 
@@ -75,7 +75,7 @@ class Sipaten extends MY_Controller
 
 			$this->log_surat_check($get->nik, $this->input->get('surat'));
 
-			if( $this->surat_keterangan->valid_requirement_check($get->nik, $this->input->get('surat')) )
+			if( $this->create_surat->valid_requirement_check($get->nik, $this->input->get('surat')) )
 			{
 				$this->data['status'] = true;
 			} else {
@@ -106,6 +106,51 @@ class Sipaten extends MY_Controller
 		}
 
 		return $this->data;
+	}
+
+	/**
+	 * Get Validation Rules
+	 *
+	 * @param String (slug) kategori surat
+	 * @return Void
+	 **/
+	public function get_surat_validation($param = '')
+	{
+		switch ($param) 
+		{
+			case 'domisili-perusahaan':
+				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[nama_perusahaan]', 'Nama Perusahaan', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat_perusahaan]', 'Alamat Perusahaan', 'trim|required');
+				break;
+			case 'keterangan-usaha':
+				$this->form_validation->set_rules('isi[pejabat_lurah]', 'Pejabat Lurah / Kades', 'trim|required');
+				$this->form_validation->set_rules('isi[nip_pejabat_lurah]', 'NIP Pejabat Lurah / Kades', 'trim|required');
+				$this->form_validation->set_rules('isi[jabatan_pejabat_lurah]', 'Jabatan Pejabat Lurah', 'trim|required');
+				$this->form_validation->set_rules('isi[nama_usaha]', 'Nama Usaha', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat_usaha]', 'Alamat Usaha', 'trim|required');
+				break;
+			case 'kelakuan-baik':
+				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[keperluan]', 'Keperluan', 'trim|required');
+				break;
+			case 'perpanjangan-izin-oprasional':
+				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[nama_lembaga]', 'Nama Lembaga', 'trim|required');
+				$this->form_validation->set_rules('isi[nama_pengelola]', 'Nama Pengelola', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat_lembaga]', 'Alamat Lembaga', 'trim|required');
+				break;
+			default:
+				# code...surat
+				break;
+		}
+		$this->form_validation->set_rules('nomor_surat', 'Nomor Surat', 'trim|required');
+		$this->form_validation->set_rules('ttd_pejabat', 'Tanda Tangan', 'trim|required');
 	}
 }
 
