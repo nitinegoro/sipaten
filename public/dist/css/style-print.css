@@ -82,7 +82,7 @@ table.table-bordered th {
 table.table-bordered td { 
    border-width: 0.1px; 
    border-top: 0px; 
-   padding: 3px 3px 3px 3px; 
+   padding: 3px 3px 10px 3px; 
    border-style: solid; 
    border-color: #757572; 
 }

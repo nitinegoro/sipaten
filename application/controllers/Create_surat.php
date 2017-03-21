@@ -139,7 +139,6 @@ class Create_surat extends Sipaten
 			$this->create_surat->update_surat($penduduk->nik, $param);
 			
 			redirect("create_surat/index/{$param}");
-
 		}
 
 		$this->data = array(

@@ -175,6 +175,42 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[jenis_bangunan]', 'Jenis Bangunan', 'trim|required');
 				$this->form_validation->set_rules('isi[lokasi_bangunan]', 'Lokasi Bangunan', 'trim|required');
 				break;
+			case 'izin-mendirikan-bangunan':
+				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[nama_perusahaan]', 'Nama Perusahaan', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat_perusahaan]', 'Alamat Perusahaan', 'trim|required');
+				$this->form_validation->set_rules('isi[jenis_bangunan]', 'Jenis Bangunan', 'trim|required');
+				$this->form_validation->set_rules('isi[lokasi_bangunan]', 'Lokasi Bangunan', 'trim|required');
+				$this->form_validation->set_rules('isi[gsb]', 'GSB', 'trim|required');
+				$this->form_validation->set_rules('isi[jangka_tahun]', 'Tahun', 'trim');
+				$this->form_validation->set_rules('isi[jangka_mulai]', 'Tanggal Mulai', 'trim');
+				$this->form_validation->set_rules('isi[jangka_akhir]', 'Tanggal Akhir', 'trim');
+				$this->form_validation->set_rules('isi[luas_bangunan][0][0]', 'Nilai', 'trim|required');
+				$this->form_validation->set_rules('isi[luas_bangunan][0][1]', 'Nilai', 'trim|required');
+				$this->form_validation->set_rules('isi[luas_bangunan][0][2]', 'Nilai', 'trim|required');
+				break;
+			case 'rekomendasi-siup':
+				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[nama_perusahaan]', 'Nama Perusahaan', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat_perusahaan]', 'Alamat Perusahaan', 'trim|required');
+				$this->form_validation->set_rules('isi[kedudukan]', 'Kedudukan', 'trim|required');
+				$this->form_validation->set_rules('isi[bentuk_perusahaan]', 'Bentuk Perusahaan', 'trim|required');
+				$this->form_validation->set_rules('isi[bidang_usaha]', 'Bidang Usaha', 'trim|required');
+				$this->form_validation->set_rules('isi[kegiatan_usaha]', 'Kegiatan Usaha', 'trim|required');
+				$this->form_validation->set_rules('isi[jenis_barang_dagang][a]', 'Jenis Barang Dagang Utama', 'trim|required');
+				$this->form_validation->set_rules('isi[jenis_barang_dagang][b]', 'Jenis Barang Dagang Utama', 'trim');
+				$this->form_validation->set_rules('isi[jenis_barang_dagang][c]', 'Jenis Barang Dagang Utama', 'trim');
+				$this->form_validation->set_rules('isi[pekerja_laki][sd]', 'Pekerja Laki-laki', 'trim');
+				$this->form_validation->set_rules('isi[pekerja_laki][sltp]', 'Pekerja Laki-laki', 'trim');
+				$this->form_validation->set_rules('isi[pekerja_laki][slta]', 'Pekerja Laki-laki', 'trim');
+				$this->form_validation->set_rules('isi[pekerja_laki][d3]', 'Pekerja Laki-laki', 'trim');
+				$this->form_validation->set_rules('isi[pekerja_laki][s1]', 'Pekerja Laki-laki', 'trim');
+				$this->form_validation->set_rules('isi[pekerja_laki][s2]', 'Pekerja Laki-laki', 'trim');
+				$this->form_validation->set_rules('isi[modal_usaha]', 'Modal Usaha', 'trim|required');
+				$this->form_validation->set_rules('isi[jangka_tahun]', 'Tahun', 'trim');
+				$this->form_validation->set_rules('isi[jangka_mulai]', 'Tanggal Mulai', 'trim');
+				$this->form_validation->set_rules('isi[jangka_akhir]', 'Tanggal Akhir', 'trim');
+				break;
 			default:
 				# code...surat
 				break;

@@ -89,7 +89,7 @@ $date = new DateTime($get->tanggal);
             <p class="indent">Demikian Surat Rekomendasi ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.</p>
         </div>
         <div class="mail-footer">
-            <table align="left" style="margin-right: 11%;margin-bottom:30px;">
+            <table align="left" style="margin-right: 11%;margin-bottom:50px;">
                 <tr style="text-align:left">
                     <td>Nomor</td>
                     <td class="text-center">:</td>
@@ -114,32 +114,21 @@ $date = new DateTime($get->tanggal);
                 </tr>
             </table>
             <table style="width: 100%;" align="center">
-                <tr style="text-align:center;">
-                    <td style="width: 50%;"></td>
-                    <td style="width: 20%;"></td>
-                    <td style="width: 45%;">
-
-                    </td>
-                </tr>
-                <tr style="text-align:center;">
-                    <td colspan="3"><strong class="upper">mengetahui :</strong></td>
-                </tr>
                 <tr>
-                    <td style="width: 40%;">
-                        <strong style="line-height: 20px;">a.n CAMAT <?php echo strtoupper($this->option->get('kecamatan')) ?>,</strong><br>
-                        <strong><?php echo $get->jabatan; ?></strong>
-                    </td>
+                    <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <strong style="line-height: 20px;">a.n <?php echo strtoupper($isi->jabatan_desa) ?>,</strong>
+                        <?php echo strtoupper($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?> <br>
+                        <strong style="line-height: 20px;">a.n CAMAT <?php echo strtoupper($this->option->get('kecamatan')) ?>,</strong><br>
+                        <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
                 <tr><td colspan="3" style="height: 40px;"></td></tr>
                 <tr>
-                    <td style="width: 40%;"><span><?php echo ucfirst($get->nama); ?></span></td>
+                    <td style="width: 40%;"><span></span></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span><?php echo ucfirst($isi->ttd_desa); ?></span>
+                       <span><?php echo ucfirst($get->nama); ?></span>
                     </td>
                 </tr>
             </table>
