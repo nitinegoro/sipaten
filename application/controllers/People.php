@@ -80,7 +80,8 @@ class People extends Sipaten
 		$this->breadcrumbs->unshift(2, 'Data Penduduk', "people");
 
 		$this->form_validation->set_rules('nik', 'NIK', 'trim|callback_validate_nik|required');
-		$this->form_validation->set_rules('kk', 'No. KK', 'trim');
+		$this->form_validation->set_rules('kk', 'No. KK', 'trim|required');
+		$this->form_validation->set_rules('status_kk', 'Status Hubungan KK', 'trim|required');
 		$this->form_validation->set_rules('name', 'Nama', 'trim|required');
 		$this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'trim|required');
 		$this->form_validation->set_rules('birts', 'Tanggal Lahir', 'trim|required');
@@ -120,7 +121,8 @@ class People extends Sipaten
 		$this->breadcrumbs->unshift(2, 'Data Penduduk', "people");
 
 		$this->form_validation->set_rules('nik', 'NIK', 'trim|callback_validate_nik|required');
-		$this->form_validation->set_rules('kk', 'No. KK', 'trim');
+		$this->form_validation->set_rules('kk', 'No. KK', 'trim|required');
+		$this->form_validation->set_rules('status_kk', 'Status Hubungan KK', 'trim|required');
 		$this->form_validation->set_rules('name', 'Nama', 'trim|required');
 		$this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'trim|required');
 		$this->form_validation->set_rules('birts', 'Tanggal Lahir', 'trim|required');

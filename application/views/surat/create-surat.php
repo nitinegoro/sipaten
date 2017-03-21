@@ -37,7 +37,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					<div class="col-md-8">
 	                    <div class="radio radio-primary">
 	                        <input name="jenis" value="non perizinan" type="radio">
-	                        <label> Surat Keterangan</label>
+	                        <label> Surat Non Perizinan</label>
 	                    </div>
 	                    <div class="radio radio-primary">
 	                        <input name="jenis" value="perizinan" type="radio">
@@ -64,24 +64,6 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					?>
 						</select>
 						<p class="help-block"><?php echo form_error('syarat[]', '<small class="text-red">', '</small>'); ?></p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="name" class="control-label col-md-2 col-xs-12">Form / Isian Surat : <strong class="text-red">*</strong></label>
-					<div class="col-md-8">
-	                    <div class="checkbox checkbox-primary">
-	                        <input class="styled" name="isi[]" value="nomor_surat_pengantar" type="checkbox">
-	                        <label>
-	                           Nomor Surat Pengantar / Rekomendasi dari Lurah / Kades
-	                        </label>
-	                    </div>
-	                    <div class="checkbox checkbox-primary">
-	                        <input class="styled" name="isi[]" value="keperluan" type="checkbox">
-	                        <label>
-	                           Keperluan
-	                        </label>
-	                    </div>
-						<p class="help-block"><?php echo form_error('isi[]', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">

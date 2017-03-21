@@ -39,7 +39,7 @@ echo form_hidden('ID', $get->id_surat);
 					<div class="col-md-8">
 	                    <div class="radio radio-primary">
 	                        <input name="jenis" value="non perizinan" <?php if($get->jenis=='non perizinan') echo "checked"; ?> type="radio">
-	                        <label> Surat Keterangan</label>
+	                        <label> Surat Non Perizinan</label>
 	                    </div>
 	                    <div class="radio radio-primary">
 	                        <input name="jenis" value="perizinan" <?php if($get->jenis=='perizinan') echo "checked"; ?> type="radio">
@@ -67,25 +67,6 @@ echo form_hidden('ID', $get->id_surat);
 					?>
 						</select>
 						<p class="help-block"><?php echo form_error('syarat[]', '<small class="text-red">', '</small>'); ?></p>
-					</div>
-				</div>
-				<?php $isi = explode(',', $get->form_isi_surat); ?>
-				<div class="form-group">
-					<label for="name" class="control-label col-md-2 col-xs-12">Form / Isian Surat : <strong class="text-red">*</strong></label>
-					<div class="col-md-8">
-	                    <div class="checkbox checkbox-primary">
-	                        <input class="styled" name="isi[]" value="nomor_surat_pengantar" <?php if(is_integer(array_search("nomor_surat_pengantar", $isi))) echo "checked"; ?> type="checkbox">
-	                        <label>
-	                           Nomor Surat Pengantar / Rekomendasi dari Lurah / Kades <?php echo array_search("keperluan", $isi) ?>
-	                        </label>
-	                    </div>
-	                    <div class="checkbox checkbox-primary">
-	                        <input class="styled" name="isi[]" value="keperluan" <?php if(is_integer(array_search("keperluan", $isi))) echo "checked"; ?> type="checkbox">
-	                        <label>
-	                           Keperluan
-	                        </label>
-	                    </div>
-						<p class="help-block"><?php echo form_error('isi[]', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">

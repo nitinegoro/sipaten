@@ -26,6 +26,27 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="status_kk" class="control-label col-md-3">Status KK : <strong class="text-red">*</strong></label>
+					<div class="col-md-6">
+				       	<div class="radio radio-inline radio-primary">
+				           <input name="status_kk" type="radio" value="kepala keluarga" <?php if(set_value('status_kk')=='kepala keluarga') echo "checked"; ?>> <label for="status_kk"> Kepala Keluarga</label>
+				       	</div>
+				       	<div class="radio radio-inline radio-primary">
+				           <input name="status_kk" type="radio" value="istri" <?php if(set_value('status_kk')=='istri') echo "checked"; ?>> <label for="status_kk"> Istri</label>
+				       	</div>
+				       	<div class="radio radio-inline radio-primary">
+				           <input name="status_kk" type="radio" value="anak" <?php if(set_value('status_kk')=='anak') echo "checked"; ?>> <label for="status_kk"> Anak</label>
+				       	</div>
+				       	<div class="radio radio-inline radio-primary">
+				           <input name="status_kk" type="radio" value="ayah" <?php if(set_value('status_kk')=='ayah') echo "checked"; ?>> <label for="status_kk"> Ayah</label>
+				       	</div>
+				       	<div class="radio radio-inline radio-primary">
+				           <input name="status_kk" type="radio" value="ibu" <?php if(set_value('status_kk')=='ibu') echo "checked"; ?>> <label for="status_kk"> Ibu</label>
+				       	</div>
+				       	<p class="help-block"><?php echo form_error('status_kk', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="name" class="control-label col-md-3 col-xs-12">Nama : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<input type="text" name="name" class="form-control" value="<?php echo set_value('name'); ?>">

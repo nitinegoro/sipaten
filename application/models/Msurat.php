@@ -45,7 +45,6 @@ class Msurat extends Sipaten_model
 		$kategori_surat = array(
 			'nama_kategori' => $this->input->post('nama_surat'), 
 			'judul_surat' => $this->input->post('judul_surat'),
-			'form_isi_surat' => implode(',', $this->input->post('isi')),
 			'jenis' => $this->input->post('jenis'),
 			'syarat' => implode(",", $this->input->post('syarat')),
 			'durasi' => $this->input->post('durasi')
@@ -74,7 +73,6 @@ class Msurat extends Sipaten_model
 			'slug' => $this->slug->create_slug($this->input->post('nama_surat')),
 			'nama_kategori' => $this->input->post('nama_surat'), 
 			'judul_surat' => $this->input->post('judul_surat'),
-			'form_isi_surat' => implode(',', $this->input->post('isi')),
 			'jenis' => $this->input->post('jenis'),
 			'syarat' => implode(",", $this->input->post('syarat')),
 			'durasi' => $this->input->post('durasi')

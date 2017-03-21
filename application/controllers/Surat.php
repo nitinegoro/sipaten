@@ -78,9 +78,6 @@ class Surat extends Sipaten
 		if( $this->input->post('syarat') == FALSE ) 
 			$this->form_validation->set_rules("syarat[]", 'Syarat', 'trim|required');
 
-		if( $this->input->post('isi') == FALSE ) 
-			$this->form_validation->set_rules("isi[]", 'Form / Isian Surat', 'trim|required');
-
 		if($this->form_validation->run() == TRUE)
 		{
 			$this->surat->create_category();
@@ -113,9 +110,6 @@ class Surat extends Sipaten
 
 		if( $this->input->post('syarat') == FALSE ) 
 			$this->form_validation->set_rules("syarat[]", 'Syarat', 'trim|required');
-
-		if( $this->input->post('isi') == FALSE ) 
-			$this->form_validation->set_rules("isi[]", 'Form / Isian Surat', 'trim|required');
 
 		if($this->form_validation->run() == TRUE)
 		{
