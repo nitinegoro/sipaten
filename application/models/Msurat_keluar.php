@@ -38,6 +38,26 @@ class Msurat_keluar extends Sipaten_model
 
 		$this->db->where_not_in('status', 'entry');
 
+		if($this->input->get('start') != '')
+			$this->db->where('tanggal >= ', $this->input->get('start'));
+
+		if($this->input->get('end') != '')
+			$this->db->where('tanggal <= ', $this->input->get('end'));
+
+		if($this->input->get('jenis') != '')
+			$this->db->where('kategori', $this->input->get('jenis'));
+
+		if($this->input->get('user') != '')
+			$this->db->where('user', $this->input->get('user'));
+
+		if($this->input->get('status') != '')
+			$this->db->where('status', $this->input->get('status'));
+
+		if($this->input->get('query') != '')
+			$this->db->like('surat.nomor_surat', $this->input->get('query'))
+					 ->or_like('surat.nik', $this->input->get('query'))
+					 ->or_like('penduduk.nama_lengkap', $this->input->get('query'));
+
 		$this->db->join('kategori_surat', 'surat.kategori = kategori_surat.id_surat', 'left');
 
 		$this->db->join('penduduk', 'surat.nik = penduduk.nik', 'left');
@@ -59,7 +79,7 @@ class Msurat_keluar extends Sipaten_model
 	public function get($param = 0)
 	{
 		$this->db->select('
-			surat.*, kategori_surat.*, penduduk.nik, penduduk.nama_lengkap, penduduk.pekerjaan, penduduk.tmp_lahir, penduduk.tgl_lahir, penduduk.agama, penduduk.alamat, penduduk.rt, penduduk.rw, penduduk.jns_kelamin, penduduk.status_kawin, penduduk.kewarganegaraan, desa.nama_desa, pegawai.nama, pegawai.jabatan, pegawai.nip, penduduk.telepon'
+			surat.*, kategori_surat.*, penduduk.nik, penduduk.nama_lengkap, penduduk.pekerjaan, penduduk.tmp_lahir, penduduk.tgl_lahir, penduduk.no_kk, penduduk.status_kk, penduduk.agama, penduduk.alamat, penduduk.rt, penduduk.rw, penduduk.jns_kelamin, penduduk.status_kawin, penduduk.kewarganegaraan, desa.nama_desa, pegawai.nama, pegawai.jabatan, pegawai.nip, penduduk.telepon'
 		);
 
 		$this->db->where_not_in('status', 'entry');

@@ -49,7 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       var base_path  = '<?php echo base_url('public'); ?>';
       var current_url = '<?php echo current_url(); ?>';
   </script>
-  <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
   <style>
     .content-wrapper { background: #E4E5E7 }
     * { font-family: 'Arial', sans-serif; font-size: 13px; }
@@ -71,13 +70,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      div.icon > i.ion  { font-size: 80px; }
      div.icon > i.fa { font-size: 60px; }
     .block-no-surat > strong { font-size: 16px; }
-     input.no_surat { padding: 5px; width: 80px;  border-bottom: dotted 2px gray; border-top: none; border-right: none; border-left: none; text-align:center; font-size: 16px; font-weight: bold;
-      position: inline; color:blue; 
+     input.no_surat { padding: 0px 0px 0px 0px; width:42px;   border-bottom: none;  border-top: none; border-right: none; border-left: none; text-align:center; font-size: 16px; font-weight: bold;
+       position: inline; color:blue;
      }
     input.no_surat:focus { outline:none !important; }
+    div.modal-sm {
+      top:30%;
+    }
+    small > a { font-size:inherit; }
   </style>
 </head>
-<?php  
+<?php
 /* End of file header.php */
-/* Location: ./application/modules/Akademik/views/_template/header.php */
-?>
+/* Location: ./application/views/template/header.php */

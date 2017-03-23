@@ -217,6 +217,9 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[pejabat_lurah]', 'Pejabat Lurah / Kades', 'trim|required');
+				$this->form_validation->set_rules('isi[nip_pejabat_lurah]', 'NIP Pejabat Lurah / Kades', 'trim|required');
+				$this->form_validation->set_rules('isi[jabatan_pejabat_lurah]', 'Jabatan Pejabat Lurah', 'trim|required');
 				$this->form_validation->set_rules('isi[keperluan]', 'Keperluan', 'trim|required');
 				break;
 			default:

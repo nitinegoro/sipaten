@@ -101,5 +101,28 @@ if ( ! function_exists('bulan'))
 	}
 }
 
+
+if( !  function_exists('nomo_urut') )
+{
+	function nomor_urut($number = 0)
+	{
+		switch (strlen($number)) 
+		{
+			case 1:
+				return '000'.$number;
+				break;
+			case 2:
+				return '00'.$number;
+				break;
+			case 3:
+				return '0'.$number;
+				break;
+			default:
+				return $number;
+				break;
+		}
+	}
+}
+
 /* End of file indonesia_helper.php */
 /* Location: ./application/helpers/indonesia_helper.php */

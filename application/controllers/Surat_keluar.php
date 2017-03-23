@@ -116,7 +116,11 @@ class Surat_keluar extends Sipaten
 		if($surat == FALSE)
 			show_404();
 
-		/* Get Validation Rules */
+		/*!
+		*
+		* Get Validation Rules 
+		* Ambil dari parent controller
+		*/
 		parent::get_surat_validation($surat->slug);
 
 		if($this->form_validation->run() == TRUE)
@@ -138,6 +142,20 @@ class Surat_keluar extends Sipaten
 		);
 
 		$this->template->view("surat-keluar/form/{$surat->slug}", $this->data);
+	}
+
+	public function test($param = 0)
+	{
+		$surat = $this->surat_keluar->get($param);
+
+		$isi = json_decode($surat->isi_surat);
+
+		echo "<pre>";
+		echo print_r($isi);
+
+		echo "</pre>";
+
+		echo $isi->nama_desa;
 	}
 }
 

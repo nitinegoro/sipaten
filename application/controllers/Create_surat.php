@@ -158,6 +158,8 @@ class Create_surat extends Sipaten
 		$this->template->view("create-surat/form/{$surat->slug}", $this->data);
 	}
 
+
+
 }
 
 /* End of file Surat_keterangan.php */

@@ -3,15 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
        </section>
      </div>
-<!--       <footer class="main-footer">
+     <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Versi</b> <?php echo SIPATEN_VERSION; ?>
     </div>
    <div class="container text-center">
-      <small>Hak Cipta &copy; 2017 - <?php echo date('Y'); ?> Kec. Koba, <a href="">Kab. Koba</a>. All rights
+      <small>Hak Cipta &copy; 2017 <?php if(date('Y')!=2017) echo "- ".date('Y'); ?> Kec. Koba, Kab. Koba All rights. Develop By <a href="http://teitramega.co.id" target="_blank">Teitra Mega</a>
          reserved.<small>
    </div>
-</footer> -->
+</footer>
         <div class="modal animated fadeIn modal-danger" id="logout" tabindex="-1" data-backdrop="static" data-keyboard="false">
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   ?>
 </body>
 </html>
-<?php 
+<?php
+
 /* End of file footer.php */
-/* Location: ./application/modules/Akademik/views/_template/footer.php */
-?>
+/* Location: ./application/views/template/footer.php */

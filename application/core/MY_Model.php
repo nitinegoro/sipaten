@@ -21,6 +21,16 @@ class Sipaten_model extends MY_Model
 		
 	}
 
+	public function get_user($param = 0)
+	{
+		if($param == FALSE)
+		{
+			return $this->db->get('users')->result();
+		} else {
+			return $this->db->get_where('users', array('user_id' => $param))->row();
+		}
+	}
+
 	public function get_role($param = 0)
 	{
 		if($param == FALSE)
@@ -113,11 +123,28 @@ class Sipaten_model extends MY_Model
 	 * @param String (no_kk)
 	 * @return Result
 	 **/
-	public function get_keluarga($param = '')
+	public function get_keluarga($param = 0)
 	{
 		return $this->db->get_where('penduduk', array('no_kk' => $param))->result();
 
-		/*return $this->db->query("SELECT * FROM penduduk WHERE no_kk IN({$param})")->result();*/
+		//return $this->db->query("SELECT * FROM penduduk WHERE no_kk IN({$param})")->result();
+	}
+
+	/**
+	 * Ambil Maks Nomor Surat
+	 *
+	 * @param Integer (category surat)
+	 * @param String (Date as tanggal)
+	 * @return Integer
+	 **/
+	public function get_nomor_surat($category = 0, $year = NULL)
+	{
+		if($year == NUll)
+			$year = date('Y');
+
+		$query = $this->db->query("SELECT MAX(nomor_surat) AS nomor FROM surat WHERE YEAR(tanggal) = {$year} AND kategori = {$category}")->row('nomor');
+
+		return nomor_urut(++$query);
 	}
 	
 }

@@ -20,9 +20,9 @@ echo form_open(current_url(), array('method' => 'get'));
 				    <div class="form-group">
 				        <label>Tanggal :</label>
 		            	<div class="input-group registration-date-time">
-		            		<input class="form-control input-sm" name="start" id="datepicker" placeholder="Mulai Tanggal ..">
+		            		<input class="form-control input-sm" name="start" id="datepicker" value="<?php echo $this->input->get('start') ?>" placeholder="Mulai Tanggal ..">
 		            		<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
-		            		<input class="form-control input-sm" name="end" id="datepicker2" placeholder="Sampai Tanggal ..">
+		            		<input class="form-control input-sm" name="end" id="datepicker2" value="<?php echo $this->input->get('end') ?>" placeholder="Sampai Tanggal ..">
 		            	</div>	
 				    </div>
 				    <div class="form-group">
@@ -39,7 +39,7 @@ echo form_open(current_url(), array('method' => 'get'));
 				    /* Loop Surat Kategori */
 				    foreach($this->surat_keluar->category() as $row) :
 				    ?>
-							<option value="<?php echo $row->id_surat; ?>"><?php echo $row->judul_surat; ?></option>
+							<option value="<?php echo $row->id_surat; ?>" <?php if($row->id_surat==$this->input->get('jenis')) echo "selected"; ?>><?php echo $row->judul_surat; ?></option>
 					<?php  
 					endforeach;
 					?>
@@ -49,18 +49,24 @@ echo form_open(current_url(), array('method' => 'get'));
 				        <label>Status :</label>
 				        <select name="status" class="form-control input-sm">
 				        	<option value="">-- PILIH STATUS --</option>
-				        	<option value="pria" <?php if($this->input->get('status')=='pending') echo 'selected'; ?>>Pending</option>
-				        	<option value="wanita" <?php if($this->input->get('status')=='approve') echo 'selected'; ?>>Terverifikasi</option>
+				        	<option value="pending" <?php if($this->input->get('status')=='pending') echo 'selected'; ?>>Pending</option>
+				        	<option value="approve" <?php if($this->input->get('status')=='approve') echo 'selected'; ?>>Terverifikasi</option>
 				        </select>	
 				    </div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
 				        <label>User :</label>
-				        <select name="status" class="form-control input-sm">
+				        <select name="user" class="form-control input-sm">
 				        	<option value="">-- PILIH --</option>
-				        	<option value="pria" <?php if($this->input->get('status')=='pending') echo 'selected'; ?>>Pending</option>
-				        	<option value="wanita" <?php if($this->input->get('status')=='approve') echo 'selected'; ?>>Terverifikasi</option>
+				    <?php  
+				    /* Loop Data User */
+				    foreach($this->surat_keluar->get_user() as $row) :
+				    ?>
+							<option value="<?php echo $row->user_id; ?>" <?php if($row->user_id==$this->input->get('user')) echo "selected"; ?>><?php echo $row->name; ?></option>
+					<?php  
+					endforeach;
+					?>
 				        </select>	
 					</div>
 				</div>
@@ -92,10 +98,10 @@ echo form_open(current_url(), array('method' => 'get'));
 					per Halaman
 				</div>
 				<div class="col-md-3 pull-right">
-					<a href="<?php echo site_url(""); ?>" class="btn btn-default hvr-shadow btn-flat btn-print">
+					<a href="<?php echo site_url("surat_keluar"); ?>" class="btn btn-default hvr-shadow btn-flat btn-print">
 						<i class="fa fa-print"></i> Cetak
 					</a>
-					<a href="<?php echo site_url("") ?>" class="btn btn-default hvr-shadow btn-flat">
+					<a href="" class="btn btn-default hvr-shadow btn-flat">
 						<i class="fa fa-download"></i> Ekspor Data
 					</a>
 				</div>
@@ -172,16 +178,16 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 								    		<a href="<?php echo site_url("surat_keluar/get/{$row->ID}") ?>"> Sunting</a>
 								    	</li>
 								    	<li>
-								    		<a href=""> Pending</a>
+								    		<a href="#" data-id="<?php echo $row->ID; ?>" class="get-dialog" data-action="set_pending"> Pending</a>
 								    	</li>
 								    	<li>
-								    		<a href=""> Verifikasi</a>
+								    		<a href="#" data-id="<?php echo $row->ID; ?>" class="get-dialog" data-action="set_aprove"> Verifikasi</a>
 								    	</li>
 								    	<li>
 								    		<a href=""> Unduh</a>
 								    	</li>
 								    	<li>
-								    		<a href=""> Hapus</a>
+								    		<a href="#" data-id="<?php echo $row->ID; ?>" class="get-dialog" data-action="delete"> Hapus</a>
 								    	</li>
   									</ul>
 								</div>
@@ -236,17 +242,17 @@ echo form_close();
 
 
 
-<div class="modal animated fadeIn modal-danger" id="modal-delete-people" tabindex="-1" data-backdrop="static" data-keyboard="false">
+<div class="modal animated fadeIn" id="modal-dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
            	<div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Hapus!</h4>
-                <span>Hapus data penduduk ini dari sistem?</span>
+                <h4 class="modal-title"></h4>
+                <span class="modal-text">Hapus data surat keluar ini dari sistem?</span>
            	</div>
            	<div class="modal-footer">
                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
-                <a href="#" id="btn-delete" class="btn btn-outline"> Hapus </a>
+                <a href="#" id="btn-action" class="btn btn-outline"> </a>
            	</div>
         </div>
     </div>
