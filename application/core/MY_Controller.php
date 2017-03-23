@@ -200,6 +200,8 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[jenis_barang_dagang][a]', 'Jenis Barang Dagang Utama', 'trim|required');
 				$this->form_validation->set_rules('isi[jenis_barang_dagang][b]', 'Jenis Barang Dagang Utama', 'trim');
 				$this->form_validation->set_rules('isi[jenis_barang_dagang][c]', 'Jenis Barang Dagang Utama', 'trim');
+				$this->form_validation->set_rules('isi[jumlah_pekerja_laki]', 'Pekerja Laki-laki', 'trim|required');
+				$this->form_validation->set_rules('isi[jumlah_pekerja_wanita]', 'Pekerja Wanita', 'trim|required');
 				$this->form_validation->set_rules('isi[pekerja_laki][sd]', 'Pekerja Laki-laki', 'trim');
 				$this->form_validation->set_rules('isi[pekerja_laki][sltp]', 'Pekerja Laki-laki', 'trim');
 				$this->form_validation->set_rules('isi[pekerja_laki][slta]', 'Pekerja Laki-laki', 'trim');
@@ -210,6 +212,12 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[jangka_tahun]', 'Tahun', 'trim');
 				$this->form_validation->set_rules('isi[jangka_mulai]', 'Tanggal Mulai', 'trim');
 				$this->form_validation->set_rules('isi[jangka_akhir]', 'Tanggal Akhir', 'trim');
+				break;
+			case 'keterangan-tidak-mampu':
+				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[keperluan]', 'Keperluan', 'trim|required');
 				break;
 			default:
 				# code...surat

@@ -17,10 +17,10 @@ $date = new DateTime($get->tanggal);
             <h5 class="mail-number">Nomor : <?php echo $get->kode_surat.'/<b>'.$get->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?></h5>
         </div>
         <div class="mail-content">
-            <p class="indent">
+            <p style="margin-top: -5px;" class="indent">
             Yang bertanda tangan di bawah ini Kepala Desa/Kelurahan : <strong><?php echo strtoupper($isi->nama_desa); ?></strong> <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
             </p>
-            <table style=" margin-top: 10px; margin-bottom:10px;">
+            <table style=" margin-top: -5px; margin-bottom:-5px;">
                 <tr>
                     <td width="140">Nama</td>
                     <td class="text-center">:</td>
@@ -53,7 +53,7 @@ $date = new DateTime($get->tanggal);
                 </tr>
             </table>
             <p>Sedang / akan melakukan kegiatan usaha perdagangan/industri sebagai berikut :</p>
-            <table style="margin-top: 10px; margin-bottom:10px;">
+            <table style="margin-top: -5px; margin-bottom:-5px;">
                 <tr>
                     <td width="230">1. Nama Perusahaan/Perorangan</td>
                     <td class="text-center">:</td>
@@ -72,17 +72,17 @@ $date = new DateTime($get->tanggal);
                 <tr style="vertical-align: top">
                     <td>4. Bentuk Perusahaan</td>
                     <td class="text-center">:</td>
-                    <td>Milik Sendiri / Sewa / Kontrak / Pinjam Pakai</td>
+                    <td><?php echo $isi->bentuk_perusahaan; ?></td>
                 </tr>
                 <tr style="vertical-align: top">
                     <td>5. Bidang Usaha</td>
                     <td class="text-center">:</td>
-                    <td>Milik Sendiri / Sewa / Kontrak / Pinjam Pakai</td>
+                    <td><?php echo $isi->bidang_usaha; ?></td>
                 </tr>
                 <tr style="vertical-align: top">
                     <td>6. Kegiatan Usaha</td>
                     <td class="text-center">:</td>
-                    <td>Milik Sendiri / Sewa / Kontrak / Pinjam Pakai</td>
+                    <td><?php echo $isi->kegiatan_usaha; ?></td>
                 </tr>
                 <tr style="vertical-align: top">
                     <td>7. Jenis Barang Dagangan Utama</td>
@@ -105,8 +105,8 @@ $date = new DateTime($get->tanggal);
                     <td class="text-center">:</td>
                     <td>
                         <ul style="list-style: lower-alpha; margin: 0px; margin-left: -25px;">
-                            <li>Laki-laki : <?php echo $isi->jenis_barang_dagang->a; ?> Orang</li>
-                            <li>Wanita &nbsp;&nbsp;: <?php echo $isi->jenis_barang_dagang->b; ?> Orang</li>
+                            <li>Laki-laki : <?php echo ($isi->jumlah_pekerja_laki) ? $isi->jumlah_pekerja_laki : '..............'; ?> Orang</li>
+                            <li>Wanita &nbsp;&nbsp;: <?php echo ($isi->jumlah_pekerja_wanita) ? $isi->jumlah_pekerja_wanita : '..............'; ?> Orang</li>
                         </ul>
                     </td>
                 </tr>
@@ -114,10 +114,66 @@ $date = new DateTime($get->tanggal);
                     <td>10. Pendidikan tenaga kerja yang</td>
                     <td class="text-center">:</td>
                     <td>
-                        <ul style="list-style: lower-alpha; margin: 0px; margin-left: -25px;">
-                            <li>Laki-laki : <?php echo $isi->jenis_barang_dagang->a; ?> Orang</li>
-                            <li>Wanita &nbsp;&nbsp;: <?php echo $isi->jenis_barang_dagang->b; ?> Orang</li>
-                        </ul>
+                        <table>
+                            <tr>
+                                <td colspan="4" class="text-center"><label>Laki-laki</label></td>
+                                <td colspan="3" class="text-center"><label>Wanita</label></td>
+                            </tr>
+                            <tr>
+                                <td width="50">a. SD</td>
+                                <td width="10" class="text-center">:</td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                                <td width="30"></td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                            </tr>
+                            <tr>
+                                <td width="50">b. SLTP</td>
+                                <td width="10" class="text-center">:</td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                                <td width="30"></td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                            </tr>
+                            <tr>
+                                <td width="50">c. SLTA</td>
+                                <td width="10" class="text-center">:</td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                                <td width="30"></td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                            </tr>
+                            <tr>
+                                <td width="50">d. D3</td>
+                                <td width="10" class="text-center">:</td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                                <td width="30"></td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                            </tr>
+                            <tr>
+                                <td width="50">e. S1</td>
+                                <td width="10" class="text-center">:</td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                                <td width="30"></td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                            </tr>
+                            <tr>
+                                <td width="50">f. S2</td>
+                                <td width="10" class="text-center">:</td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                                <td width="30"></td>
+                                <td width="50">............</td>
+                                <td>Orang</td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <tr style="vertical-align: top">
@@ -133,19 +189,7 @@ $date = new DateTime($get->tanggal);
                             <li>Nama Pemilik Tanah : <?php echo $isi->nama_pemilik_tanah; ?></li>
                             <li>Alamat Pemilik Tanah : <?php echo $isi->alamat_pemilik; ?></li>
                             <li>Perjanjian Sewa / kontak : Ada / Tidak / Pinjam</li>
-                            <li>Jangka waktu perjanjian sewa : <?php echo ($isi->jangka_tahun != '') ? $isi->jangka_tahun : '..........' ?> Tahun, dari tanggal <?php echo ($isi->jangka_mulai != '') ? date_id($isi->jangka_mulai) : '.....................' ?> s/d <?php echo ($isi->jangka_akhir != '') ? date_id($isi->jangka_akhir) : '.....................' ?></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr style="vertical-align: top">
-                    <td>9. Bagi mereka yang tempat usahanya bukan milik sendiri</td>
-                    <td class="text-center">:</td>
-                    <td>
-                        <ul style="list-style: lower-alpha; margin: 0px; margin-left: -25px;">
-                            <li>Nama Pemilik Tanah : <?php echo $isi->nama_pemilik_tanah; ?></li>
-                            <li>Alamat Pemilik Tanah : <?php echo $isi->alamat_pemilik; ?></li>
-                            <li>Perjanjian Sewa / kontak : Ada / Tidak / Pinjam</li>
-                            <li>Jangka waktu perjanjian sewa : <?php echo ($isi->jangka_tahun != '') ? $isi->jangka_tahun : '..........' ?> Tahun, dari tanggal <?php echo ($isi->jangka_mulai != '') ? date_id($isi->jangka_mulai) : '.....................' ?> s/d <?php echo ($isi->jangka_akhir != '') ? date_id($isi->jangka_akhir) : '.....................' ?></li>
+                            <li>Jangka waktu perjanjian sewa : <?php echo ($isi->jangka_tahun != '') ? $isi->jangka_tahun : '..........'; ?> Tahun, dari tanggal <?php echo ($isi->jangka_mulai != '') ? date_id($isi->jangka_mulai) : '.....................'; ?> s/d <?php echo ($isi->jangka_akhir != '') ? date_id($isi->jangka_akhir) : '.....................'; ?></li>
                         </ul>
                     </td>
                 </tr>
@@ -154,17 +198,12 @@ $date = new DateTime($get->tanggal);
                     <td class="text-center">:</td>
                     <td>Kegiatan tersebut tidak / perlu SIG / HO</td>
                 </tr>
-                <tr style="vertical-align: top">
-                    <td>11. Site Plan dan Gambar Situasi</td>
-                    <td class="text-center">:</td>
-                    <td>Lampiran</td>
-                </tr>
             </table>
             <p class="indent">Atas permohonan tersebut, kami menyatakan bahwa tanah yang dimohonkan IMB benar-benar milik pemohon serta tidak terdapat suatu masalah atau tidak dalam sengketa tanah/bangunan.</p>
             <p class="indent">Demikian Surat Keterangan ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.</p>
         </div>
         <div class="mail-footer">
-            <table style="width: 100%;" align="center">
+            <table style="width: 100%; margin-top: 0px;" align="center">
                 <tr>
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
@@ -174,7 +213,7 @@ $date = new DateTime($get->tanggal);
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
-                <tr><td colspan="3" style="height: 40px;"></td></tr>
+                <tr><td colspan="3" style="height: 70px;"></td></tr>
                 <tr>
                     <td style="width: 40%;"><span></span></td>
                     <td style="width: 20%;"></td>

@@ -106,6 +106,20 @@ class Sipaten_model extends MY_Model
 		$this->db->join('desa', 'penduduk.desa = desa.id_desa', 'left');
 		return $this->db->get_where('penduduk', array('ID' => $param))->row();
 	}
+
+	/**
+	 * Get Keluarga in (no_kk)
+	 *
+	 * @param String (no_kk)
+	 * @return Result
+	 **/
+	public function get_keluarga($param = '')
+	{
+		return $this->db->get_where('penduduk', array('no_kk' => $param))->result();
+
+		/*return $this->db->query("SELECT * FROM penduduk WHERE no_kk IN({$param})")->result();*/
+	}
+	
 }
 
 /* End of file MY_Model.php */

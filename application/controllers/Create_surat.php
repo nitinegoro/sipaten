@@ -137,8 +137,12 @@ class Create_surat extends Sipaten
 		if($this->form_validation->run() == TRUE)
 		{
 			$this->create_surat->update_surat($penduduk->nik, $param);
-			
 			redirect("create_surat/index/{$param}");
+
+			/*
+			echo json_encode($this->input->post('isi'), JSON_PRETTY_PRINT);
+			exit;
+			*/
 		}
 
 		$this->data = array(

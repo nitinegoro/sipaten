@@ -70,6 +70,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </li>
 
+        <li class="<?php echo active_link_controller('ha'); ?>">
+            <a href="<?php echo site_url('main') ?>">
+               <i class="glyphicon glyphicon-search"></i> <span> Cek Pelayanan Online</span>
+            </a>
+        </li>
+
         <li class="<?php echo active_link_controller('surat_keluar'); ?>">
             <a href="<?php echo site_url('surat_keluar') ?>">
                <i class="glyphicon glyphicon-envelope"></i> <span>Data Surat Keluar</span>
@@ -157,6 +163,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <a href="<?php echo site_url('role') ?>"><i class="fa fa-angle-double-right"></i> Hak Akses Pengguna</a>
             </li>
           </ul>
+        </li>
+
+        <li class="<?php echo active_link_controller('ha'); ?>">
+            <a href="<?php echo site_url('main') ?>">
+               <i class="fa fa-book"></i> <span> Panduan Sistem</span>
+            </a>
         </li>
       </ul>
       </section>
