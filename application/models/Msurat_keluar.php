@@ -128,6 +128,63 @@ class Msurat_keluar extends Sipaten_model
 		}
 	}
 
+	/**
+	 * Set Update Status Surat Keluar
+	 *
+	 * @param Integer (ID) key table surat
+	 * @param String (status)
+	 * @return void
+	 **/
+	public function upadte_status($param = 0, $status = 'pending')
+	{
+		$surat = array(
+			'waktu_selesai' => date('Y-m-d H:i:s'),
+			'status' => $status 
+		);
+
+		$this->db->update('surat', $surat, array('ID' => $param));
+
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Status Surat berhasil diubah.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Gagal saat mengubah data.', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
+	}
+
+	/**
+	 * Hapus Data Surat keluar
+	 *
+	 * @param Integer (ID) key table surat
+	 * @return void
+	 **/
+	public function delete($param = 0)
+	{
+		$this->db->delete('surat', array('ID' => $param));
+
+		$this->db->delete('log_surat', array('nomor_surat' => $param));
+
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Data Surat berhasil dihapus.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Gagal saat menghapus data.', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
+	}
+
+
 }
 
 /* End of file Msurat_keluar.php */

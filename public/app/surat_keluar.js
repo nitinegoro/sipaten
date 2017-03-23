@@ -13,13 +13,13 @@ jQuery(function($) {
 				$('#modal-dialog').modal('show').addClass('modal-warning');
 				$('h4.modal-title').html('<i class="fa fa-question-circle"></i> Jadikan status pending?');
 				$('span.modal-text').html("Ubah status surat ini menjadi status tertunda atau pending.");
-				$('a#btn-action').attr('href', base_url + '/surat_keluar/delete/' + $(this).data('id')).html('Iya');
+				$('a#btn-action').attr('href', base_url + '/surat_keluar/set_verification/' + $(this).data('id') + '/pending').html('Iya');
 				break;
 			case 'set_aprove' :
 				$('#modal-dialog').modal('show').addClass('modal-success');
 				$('h4.modal-title').html('<i class="fa fa-question-circle"></i> Jadikan status approve?');
 				$('span.modal-text').html("Ubah status surat ini menjadi status terverifikasi atau approve.");
-				$('a#btn-action').attr('href', base_url + '/surat_keluar/delete/' + $(this).data('id')).html('Iya');
+				$('a#btn-action').attr('href', base_url + '/surat_keluar/set_verification/' + $(this).data('id') + '/approve').html('Iya');
 				break;
 			case 'delete':
 				$('#modal-dialog').modal('show').addClass('modal-danger');
@@ -53,3 +53,36 @@ jQuery(function($) {
 	});
 	
 });
+
+
+		// Enable pusher logging - don't include this in production
+		Pusher.log = function(message) {
+			if (window.console && window.console.log) {
+				window.console.log(message);
+			}
+		};
+		var pusher = new Pusher('1a905dd0d0ea1304adbd');
+		var channel = pusher.subscribe('test_channel');
+		channel.bind('my_event', function(data) {
+			$.notify({
+				message: data.message
+			},{
+				type: data.status,
+				delay:81000,
+					placement: {
+				from: "top",
+				//	align: "center"
+				},
+			});	
+			audio.play();
+/*			document.getElementById('event').innerHTML = data.message;
+			alert(data.message);*/
+		});
+
+var source = base_path + "/sound/arpeggio.mp3"
+var audio = document.createElement("audio");
+audio.load()
+audio.addEventListener("load", function() {
+  audio.play();
+}, true);
+audio.src = source;

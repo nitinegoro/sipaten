@@ -16,6 +16,13 @@
 echo form_open(current_url(), array('method' => 'get'));
 ?>
 			<div class="box-body">
+				<div class="callaout callaout-info">
+	
+
+	<p id="event">Waiting on event...</p>
+	<p>Go to <strong><a href="<?php echo site_url('surat_keluar/trigger_event') ?>" target="_blank">/example/trigger_event</a></strong> in a new tab to trigger event.</p>
+
+				</div>
 				<div class="col-md-4">
 				    <div class="form-group">
 				        <label>Tanggal :</label>

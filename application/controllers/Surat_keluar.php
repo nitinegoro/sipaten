@@ -49,6 +49,7 @@ class Surat_keluar extends Sipaten
 
 		$this->page = $this->input->get('page');
 
+		$this->load->js('https://js.pusher.com/2.2/pusher.min.js');
 		$this->load->js(base_url("public/app/surat_keluar.js"));
 	}
 
@@ -144,18 +145,81 @@ class Surat_keluar extends Sipaten
 		$this->template->view("surat-keluar/form/{$surat->slug}", $this->data);
 	}
 
-	public function test($param = 0)
+	/**
+	 * Set Update Status Surat Keluar
+	 *
+	 * @param Integer (ID) key table surat
+	 * @param String (status)
+	 * @return 301
+	 **/
+	public function set_verification($param = 0, $status = 'pending')
 	{
-		$surat = $this->surat_keluar->get($param);
+		$this->surat_keluar->upadte_status($param, $status);
 
-		$isi = json_decode($surat->isi_surat);
+		$this->load->library('ci_pusher');
+		$pusher = $this->ci_pusher->get_pusher();
 
-		echo "<pre>";
-		echo print_r($isi);
+		if($status == 'pending')
+		{
+			$data = array(
+				'message' => $this->session->userdata('account')->name." Menolak surat pengajuan anda.",
+				'status' => 'warning'
+			); 
+		} else {
+			$data = array(
+				'message' => $this->session->userdata('account')->name." Memverifikasi surat pengajuan anda.",
+				'status' => 'info'
+			); 
+		}
 
-		echo "</pre>";
+		// Send message
+		$event = $pusher->trigger('test_channel', 'my_event', $data);
+		
 
-		echo $isi->nama_desa;
+		redirect('surat_keluar');
+	}
+
+	/**
+	 * Hapus Data Surat keluar
+	 *
+	 * @param Integer (ID) key table surat
+	 * @return 301
+	 **/
+	public function delete($param = 0)
+	{
+		$this->surat_keluar->delete($param);
+
+		redirect('surat_keluar');
+	}
+
+	public function trigger_event()
+	{
+		// Load the library.
+		// You can also autoload the library by adding it to config/autoload.php
+		$this->load->library('ci_pusher');
+		$pusher = $this->ci_pusher->get_pusher();
+
+		echo form_open(current_url());
+		echo "<textarea name='pesan'></textarea>";
+		echo "<button type='submit'>Kirim pesan </button>";
+
+		echo form_close();
+		// Set message
+		if($this->input->post('pesan') != '')
+		{
+			$data['message'] = $this->input->post('pesan');
+			// Send message
+			$event = $pusher->trigger('test_channel', 'my_event', $data);
+			if ($event === TRUE)
+			{
+				echo 'Oke Zakky';
+			}
+			else
+			{
+				echo 'Ouch, something happend. Could not trigger event.';
+			}
+		}	
+
 	}
 }
 

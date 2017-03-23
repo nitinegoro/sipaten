@@ -122,55 +122,55 @@ $date = new DateTime($get->tanggal);
                             <tr>
                                 <td width="50">a. SD</td>
                                 <td width="10" class="text-center">:</td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_laki->sd) ? $isi->pekerja_laki->sd : '..............'; ?></td>
                                 <td>Orang</td>
                                 <td width="30"></td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_wanita->sd) ? $isi->pekerja_wanita->sd : '..............'; ?></td>
                                 <td>Orang</td>
                             </tr>
                             <tr>
                                 <td width="50">b. SLTP</td>
                                 <td width="10" class="text-center">:</td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_laki->sltp) ? $isi->pekerja_laki->sltp : '..............'; ?></td>
                                 <td>Orang</td>
                                 <td width="30"></td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_wanita->sltp) ? $isi->pekerja_wanita->sltp : '..............'; ?></td>
                                 <td>Orang</td>
                             </tr>
                             <tr>
                                 <td width="50">c. SLTA</td>
                                 <td width="10" class="text-center">:</td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_laki->slta) ? $isi->pekerja_laki->slta : '..............'; ?></td>
                                 <td>Orang</td>
                                 <td width="30"></td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_wanita->slta) ? $isi->pekerja_wanita->slta : '..............'; ?></td>
                                 <td>Orang</td>
                             </tr>
                             <tr>
                                 <td width="50">d. D3</td>
                                 <td width="10" class="text-center">:</td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_laki->d3) ? $isi->pekerja_laki->d3 : '..............'; ?></td>
                                 <td>Orang</td>
                                 <td width="30"></td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_wanita->d3) ? $isi->pekerja_wanita->d3 : '..............'; ?></td>
                                 <td>Orang</td>
                             </tr>
                             <tr>
                                 <td width="50">e. S1</td>
                                 <td width="10" class="text-center">:</td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_laki->s1) ? $isi->pekerja_laki->s1 : '..............'; ?></td>
                                 <td>Orang</td>
                                 <td width="30"></td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_wanita->s1) ? $isi->pekerja_wanita->s1 : '..............'; ?></td>
                                 <td>Orang</td>
                             </tr>
                             <tr>
                                 <td width="50">f. S2</td>
                                 <td width="10" class="text-center">:</td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_laki->s2) ? $isi->pekerja_laki->s2 : '..............'; ?></td>
                                 <td>Orang</td>
                                 <td width="30"></td>
-                                <td width="50">............</td>
+                                <td width="50"><?php echo ($isi->pekerja_wanita->s2) ? $isi->pekerja_wanita->s2 : '..............'; ?></td>
                                 <td>Orang</td>
                             </tr>
                         </table>

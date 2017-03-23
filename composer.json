@@ -1,5 +1,5 @@
 {
     "require": {
-       "phpoffice/phpword": "v0.13.*"
+        "pusher/pusher-php-server": "2.2.*"
     }
 }
