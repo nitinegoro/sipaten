@@ -146,7 +146,20 @@ class Sipaten_model extends MY_Model
 
 		return nomor_urut(++$query);
 	}
+
+	/**
+	 * Hitung Jumlah Surat Keluar
+	 *
+	 * @param date (tanggal)
+	 * @param String (jenis tanggal)
+	 * @return Array
+	 **/
+	public function count_surat_by_date($date = NULL)
+	{
+		return $this->db->query("SELECT COUNT(tanggal) AS jumlah FROM surat  WHERE tanggal = '{$date}'")->row('jumlah');
+	}
 	
+
 }
 
 /* End of file MY_Model.php */

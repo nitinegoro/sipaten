@@ -16,13 +16,6 @@
 echo form_open(current_url(), array('method' => 'get'));
 ?>
 			<div class="box-body">
-				<div class="callaout callaout-info">
-	
-
-	<p id="event">Waiting on event...</p>
-	<p>Go to <strong><a href="<?php echo site_url('surat_keluar/trigger_event') ?>" target="_blank">/example/trigger_event</a></strong> in a new tab to trigger event.</p>
-
-				</div>
 				<div class="col-md-4">
 				    <div class="form-group">
 				        <label>Tanggal :</label>
@@ -189,9 +182,6 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 								    	</li>
 								    	<li>
 								    		<a href="#" data-id="<?php echo $row->ID; ?>" class="get-dialog" data-action="set_aprove"> Verifikasi</a>
-								    	</li>
-								    	<li>
-								    		<a href=""> Unduh</a>
 								    	</li>
 								    	<li>
 								    		<a href="#" data-id="<?php echo $row->ID; ?>" class="get-dialog" data-action="delete"> Hapus</a>

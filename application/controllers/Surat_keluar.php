@@ -192,6 +192,25 @@ class Surat_keluar extends Sipaten
 		redirect('surat_keluar');
 	}
 
+	/**
+	 * Get Action Multiple
+	 *
+	 * @return 301
+	 **/
+	public function bulk_action()
+	{
+		switch ($this->input->post('action')) 
+		{
+			case 'value':
+				# code...
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+	}
+
 	public function trigger_event()
 	{
 		// Load the library.

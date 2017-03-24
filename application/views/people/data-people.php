@@ -142,7 +142,7 @@ echo form_open(site_url('people/bulk_action'));
 							<td><?php echo $row->alamat; ?></td>
 							<td><?php echo $row->pekerjaan; ?></td>
 							<td class="text-center"><?php echo ucfirst($row->status_kawin); ?></td>
-							<td class="text-center" style="font-size: 12px;">
+							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
 								<a href="<?php echo site_url("people/update/{$row->ID}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 								<a class="icon-button text-red get-delete-people" data-id="<?php echo $row->ID; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 							</td>

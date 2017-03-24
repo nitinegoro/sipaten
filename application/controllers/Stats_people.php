@@ -45,7 +45,7 @@ class Stats_people extends Sipaten
 	public function print_out($param = '')
 	{
 		$this->data = array(
-			'title' => "Data Statistik Penduduk Desa",
+			'title' => "",
 			'desa' => $this->stats_people->get_desa(),
 			'status_kawin' => $this->stats_people->get_status_perkawinan(),
 			'agama' => $this->stats_people->get_religion(),

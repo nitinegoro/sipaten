@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
-* SIMPATEN
+* SIPATEN
 * Main Class 
 *
 * @version 1.0.0

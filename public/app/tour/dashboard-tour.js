@@ -91,6 +91,26 @@
         title: "Grafik Data Surat Keluar",
         content: "Data ini dibuat secara otomatis melalui data dokumen surat keluar.",
     },
+     {
+        element: ".date-time",
+        placement: "top",
+        animation: true,
+        container: "body",
+        backdrop: true,
+        backdropContainer: 'body',
+        title: "Filter Tanggal",
+        content: "Anda dapat memfilter tanggal mulai hingga batas tanggal yang ditentukan.",
+    },
+     {
+        element: "#tombol-filter",
+        placement: "top",
+        animation: true,
+        container: "body",
+        backdrop: true,
+        backdropContainer: 'body',
+        title: "Filter Tanggal",
+        content: "Kemudian Klik tombol filter, dan Tombol reset untuk kembali ke setingan awal yaitu 1 minggu terakhir.",
+    },
     ]);
  
     // Initialize the tour

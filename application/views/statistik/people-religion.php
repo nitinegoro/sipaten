@@ -8,7 +8,7 @@
                 <div id="chart-populasi-status"></div>
             </div>
             <div class="box-header">
-                <a href="<?php echo site_url('stats_people/gender') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-print"></i> Cetak</a>
+                <a href="<?php echo site_url('stats_people/print_out/agama') ?>" class="btn btn-default btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
                 <a href="<?php echo site_url('stats_people/export/agama') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
             </div>
             <div class="box-body">
@@ -42,7 +42,6 @@
                             <td class="text-center"><?php echo $this->stats_people->religion_population($value->agama); ?> Orang</td>
                             <td class="text-center"><?php echo $this->stats_people->religion_population($value->agama, TRUE); ?> %</td>
                         </tr>
-                        <tr>
                 <?php  
                 endforeach;
                 ?>
