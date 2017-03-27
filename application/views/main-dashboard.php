@@ -116,7 +116,7 @@ echo form_open(current_url(), array('method' => 'get'));
                   </div>  
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
               <div class="form-group" id="tombol-filter">
                 <button type="submit" class="btn btn-default top"><i class="fa fa-filter"></i> Filter</button>
                 <a href="<?php echo site_url('main') ?>" class="btn btn-default top" style="margin-left: 10px;"><i class="fa fa-times"></i> Reset</a>
