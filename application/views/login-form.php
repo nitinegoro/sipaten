@@ -18,8 +18,7 @@
          .login-page { 
             margin-top: -2%;
          height: auto;  
-
-           background: url(<?php echo base_url('public/image/background.png'); ?>) no-repeat center center fixed; 
+           background: url(<?php echo base_url('public/image/background.png'); ?>) no-repeat top fixed; 
            -webkit-background-size: cover;
            -moz-background-size: cover;
            -o-background-size: cover;
@@ -27,7 +26,7 @@
          }
          input.form-control { border-radius: 5px; font-size: 1.1em; }
          div.login-box-body { border-radius: 10px;  }
-         span.form-control-feedback { background-color: #0073B7; color: white; }
+         span.form-control-feedback { background-color: #FC9631; color: white; }
          div.has-feedback > span {  top: 0; left: 0; border-radius: 6px 0px 0px 6px;}
          .padd { padding-left: 40px; }
          .arrow-up {
@@ -38,22 +37,22 @@
          border-right: 10px solid transparent;
          border-bottom: 10px solid white;
          }
-         button.btn-login { border-radius: 5px; font-weight:bold; background-color:#0073B7; color: white }
-         button.btn-login:hover  { background-color: #28A4E2; color: white }
+         button.btn-login { border-radius: 5px; font-weight:bold; background-color:#FC9631; color: white }
+         button.btn-login:hover  { background-color: #EF933E; color: white }
          button.btn-login:focus, button.btn-login:active  { 
          color: white;
          }
          .login-logo { margin-bottom:10px; }
-         .lockscreen-footer { font-family: 'Arial', sans-serif; }
+         .lockscreen-footer { font-family: 'Arial', sans-serif; color:#FC9631; }
          span.blue-sipaten { color: #0093DD; }
          .text-red { color: red; }
-         .captcha > p { font-size:30px; font-family: 'Arial Narrow'; font-weight: bold; text-align: center; letter-spacing: 30px; color: #222A7B;  }
+         .captcha > p { font-size:30px; font-family: 'Arial Narrow'; font-weight: bold; text-align: center; letter-spacing: 30px; color: #FC9631;  }
       </style>
    </head>
    <body class="login-page">
       <div class="login-box">
          <div class="login-logo">
-            <img src="<?php echo base_url("public/image/{$this->option->get('logo_login')}"); ?>" alt="Logo Sistem">
+            <img src="<?php echo base_url("public/image/logo/{$this->option->get('logo_login')}"); ?>" alt="Logo Sistem">
          </div>
          <!-- /.login-logo -->
          <div class="arrow-up"></div>
@@ -97,7 +96,7 @@
             </form>
          </div>
          <!-- /.login-box-body -->
-         <div class="lockscreen-footer text-center" style="margin-top: 50px; color: white">
+         <div class="lockscreen-footer text-center" style="margin-top: 0px; color: #444">
             <small>Hak Cipta &copy; <?php echo date('Y'); ?> <br> Kec. Koba, Kab. Bangka Tengah. All rights reserved.</small>
          </div>
       </div>

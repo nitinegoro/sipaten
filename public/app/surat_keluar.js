@@ -65,15 +65,19 @@ jQuery(function($) {
 		var channel = pusher.subscribe('test_channel');
 		channel.bind('my_event', function(data) {
 			$.notify({
-				message: data.message
+				message: data.message,
+				url: base_url + '/surat_keluar/get/' + data.param,
+				target: "_self"
 			},{
 				type: data.status,
+				offset: 100,
 				delay:81000,
-					placement: {
-				from: "top",
-				//	align: "center"
+				placement: {
+					from: "top",
+						align: "center"
 				},
 			});	
+
 			audio.play();
 /*			document.getElementById('event').innerHTML = data.message;
 			alert(data.message);*/

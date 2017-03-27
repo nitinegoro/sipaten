@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       var current_url = '<?php echo current_url(); ?>';
   </script>
   <style>
-    .content-wrapper { background: #E4E5E7 }
+    .content-wrapper { background: #F4F5F7 }
     * { font-family: 'Arial', sans-serif; font-size: 13px; }
     li > a > i.ion { font-size: 18px; }
     a.link { color:blue; }

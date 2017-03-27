@@ -95,6 +95,7 @@ class Setting extends Sipaten
 		$config['upload_path'] = './public/image/logo';
 		$config['max_size']	= '110240';
 		$config['allowed_types'] = 'gif|jpg|png';
+		$config['overwrite'] = FALSE;
 		
 		$this->upload->initialize($config);
 		

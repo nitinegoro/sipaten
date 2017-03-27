@@ -156,26 +156,32 @@ class Surat_keluar extends Sipaten
 	{
 		$this->surat_keluar->upadte_status($param, $status);
 
-		$this->load->library('ci_pusher');
-		$pusher = $this->ci_pusher->get_pusher();
+		$surat = $this->surat_keluar->get($param);
 
-		if($status == 'pending')
+		if( $surat->user != $this->session->userdata('ID') )
 		{
-			$data = array(
-				'message' => $this->session->userdata('account')->name." Menolak surat pengajuan anda.",
-				'status' => 'warning'
-			); 
-		} else {
-			$data = array(
-				'message' => $this->session->userdata('account')->name." Memverifikasi surat pengajuan anda.",
-				'status' => 'info'
-			); 
+			$this->load->library('ci_pusher');
+			$pusher = $this->ci_pusher->get_pusher();
+
+			if($status == 'pending')
+			{
+				$data = array(
+					'message' => $this->session->userdata('account')->name." Menolak surat pengajuan anda.",
+					'param' => $param,
+					'status' => 'warning'
+				); 
+			} else {
+				$data = array(
+					'message' => $this->session->userdata('account')->name." Memverifikasi surat pengajuan anda.",
+					'param' => $param,
+					'status' => 'info'
+				); 
+			}
+
+			// Send message
+			$event = $pusher->trigger('test_channel', 'my_event', $data);
 		}
-
-		// Send message
-		$event = $pusher->trigger('test_channel', 'my_event', $data);
 		
-
 		redirect('surat_keluar');
 	}
 
