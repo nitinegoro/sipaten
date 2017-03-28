@@ -167,7 +167,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <li class="<?php echo active_link_controller('ha'); ?>">
             <a href="<?php echo site_url('main') ?>">
-               <i class="fa fa-book"></i> <span> Panduan Sistem</span>
+               <i class="ion ion-help-circled"></i> <span> Panduan Sistem</span>
             </a>
         </li>
       </ul>

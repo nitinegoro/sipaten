@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      div.icon > i.fa { font-size: 60px; }
     .block-no-surat > strong { font-size: 16px; }
      input.no_surat { padding: 0px 0px 0px 0px; width:42px;   border-bottom: none;  border-top: none; border-right: none; border-left: none; text-align:center; font-size: 16px; font-weight: bold;
-       position: inline; color:blue;
+       position: inline; color:orange;
      }
     input.no_surat:focus { outline:none !important; }
     div.modal-sm {
