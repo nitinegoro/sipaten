@@ -38,16 +38,16 @@ echo form_open(current_url(), array('method' => 'get'));
 					per halaman
 				</div>
 				<div class="col-md-5">
-					<a href="<?php echo site_url('desa/create') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
-					<a href="<?php echo site_url('desa/print_out') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-print"></i> Cetak</a>
-					<a href="<?php echo site_url('desa/export') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
-					<a href="<?php echo site_url('desa/import') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a>
+					<a href="<?php echo site_url('desa/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url('desa/print_out') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url('desa/export') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
+					<a href="<?php echo site_url('desa/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a>
 				</div>
             <div class="col-md-3">
                <div class="input-group input-group-sm">
                   <input type="text" name="query" class="form-control pull-right" name="<?php echo $this->input->get('query') ?>" placeholder="Pencarian ...">
                   <div class="input-group-btn">
-                  	<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  	<button type="submit" class="btn btn-warning hvr-shadow"><i class="fa fa-search"></i></button>
                   </div>
                </div>
             </div>

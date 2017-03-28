@@ -10,7 +10,7 @@
 			<div class="box-body">
 				<?php if(count($this->role->get_role()) <= 10) : ?>
 				<div class="btn-group col-md-2">
-					<a href="<?php echo site_url('role/create') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>	
+					<a href="<?php echo site_url('role/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>	
 				</div>
 				<?php endif; ?>
 <?php  

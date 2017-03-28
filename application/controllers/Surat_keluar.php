@@ -81,6 +81,19 @@ class Surat_keluar extends Sipaten
 		$this->template->view('surat-keluar/data-surat', $this->data);
 	}
 
+	public function print_out()
+	{
+		$this->data = array(
+			'title' => 'Data Surat Keluar', 
+			'breadcrumb' => $this->breadcrumbs->show(),
+			'page_title' => $this->page_title->show(),
+			'data_surat' => $this->surat_keluar->data($this->per_page, $this->page),
+			'num_surat' => $this->surat_keluar->data(null, null, 'num')
+		);
+
+		$this->load->view('surat-keluar/print-surat-keluar', $this->data);
+	}
+
 	/**
 	 * Get Print SUrat
 	 *

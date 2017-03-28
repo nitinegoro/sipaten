@@ -16,9 +16,9 @@
       <link rel="shortcut icon" type="image/png" href="<?php echo base_url("public/image/{$this->option->get('small_logo')}"); ?>"/>
       <style>
          .login-page { 
-            margin-top: -2%;
+            margin-top: 12%;
          height: auto;  
-           background: url(<?php echo base_url('public/image/background.png'); ?>) no-repeat top fixed; 
+           background: url(<?php echo base_url('public/image/bg-big.jpg'); ?>) no-repeat top fixed; 
            -webkit-background-size: cover;
            -moz-background-size: cover;
            -o-background-size: cover;

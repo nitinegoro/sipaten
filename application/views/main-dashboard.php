@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-aqua" id="block-stats-penduduk">
+        <div class="small-box color-600" id="block-stats-penduduk">
             <div class="inner">
               <h3><?php echo $this->db->count_all('penduduk'); ?></h3> <p>Jumlah Penduduk</p>
             </div>
@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-green" id="block-stats-desa">
+        <div class="small-box color-500" id="block-stats-desa">
             <div class="inner">
                 <h3><?php echo $this->db->count_all('desa'); ?></h3><p>Jumlah Kel / Desa</p>
             </div>
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-yellow" id="block-stats-surat-keluar">
+        <div class="small-box color-400" id="block-stats-surat-keluar">
             <div class="inner">
                 <h3><?php echo $this->db->get_where('surat', array('status' => 'approve'))->num_rows() ?></h3> <p>Surat Keluar</p>
             </div>
@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-teal" id="block-stats-pengguna-sistem">
+        <div class="small-box color-300" id="block-stats-pengguna-sistem">
             <div class="inner">
                 <h3><?php echo $this->db->count_all('users'); ?></h3> <p>Pengguna Sistem</p>
             </div>
@@ -56,7 +56,7 @@
       foreach($this->option->surat_category(NULL,'non perizinan') as $row) :
       ?>
               <a class="csurat hvr-pulse-grow" href="<?php echo site_url("create_surat/index/{$row->id_surat}?from=".current_url()) ?>">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt="sss"/>
+                <img src="<?php echo base_url("public/image/icon-surat2.png"); ?>" alt="sss"/>
                 <span><?php echo $row->nama_kategori; ?></span>
               </a>
       <?php  
@@ -83,7 +83,7 @@
       foreach($this->option->surat_category(NULL,'perizinan') as $row) :
       ?>
               <a class="csurat hvr-pulse-grow" href="<?php echo site_url("create_surat/index/{$row->id_surat}?from=".current_url()) ?>">
-                <img src="<?php echo base_url("public/image/icon-surat.png"); ?>" alt="sss"/>
+                <img src="<?php echo base_url("public/image/icon-surat2.png"); ?>" alt="sss"/>
                 <span><?php echo $row->nama_kategori; ?></span>
               </a>
       <?php  
@@ -97,7 +97,7 @@
 <div class="row">
     <div class="col-md-12">
       <div class="box box-default box-solid block-chart-surat-keluar">
-          <div class="box-body" style="padding-left: 12px;">
+          <div class="box-body chart-border" style="padding-left: 12px;">
 <?php  
 /**
  * Start Form Pencarian
@@ -118,8 +118,8 @@ echo form_open(current_url(), array('method' => 'get'));
             </div>
             <div class="col-md-3">
               <div class="form-group" id="tombol-filter">
-                <button type="submit" class="btn btn-default top"><i class="fa fa-filter"></i> Filter</button>
-                <a href="<?php echo site_url('main') ?>" class="btn btn-default top" style="margin-left: 10px;"><i class="fa fa-times"></i> Reset</a>
+                <button type="submit" class="btn btn-warning hvr-shadow top"><i class="fa fa-filter"></i> Filter</button>
+                <a href="<?php echo site_url('main') ?>" class="btn btn-warning hvr-shadow top" style="margin-left: 10px;"><i class="fa fa-times"></i> Reset</a>
               </div>
             </div>
 <?php  
@@ -133,7 +133,7 @@ $end_date = ($this->input->get('end') != '') ? $this->input->get('end') : date('
 $range = date_range($start_date, $end_date);
 ?>
             <div class="col-md-12">
-              <div id="surat-keluar"></div>
+              <div id="surat-keluar" style="height: 270px;"></div>
             </div>
           </div>
       </div>
@@ -145,6 +145,7 @@ Highcharts.chart('surat-keluar', {
     chart: {
         type: 'areaspline'
     },
+    colors: ['#ff9800'],
     title: {
         text: 'Grafik Data Surat Keluar'
     },

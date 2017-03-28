@@ -15,14 +15,14 @@
             ?>
                 <div id="chart-populasi-desa"></div>
             <?php else : ?>
-                <div id="chart-populasi-desa-bar"></div>
+                <div id="chart-populasi-desa-bar" style="height: 600px;"></div>
             <?php endif; ?>
             </div>
-            <div class="box-header no-print">
-                <a href="<?php echo site_url('stats_people/print_out/desa') ?>" class="btn btn-default btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
-                <a href="<?php echo site_url('stats_people/export/desa_population') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
-                <a href="<?php echo site_url('stats_people') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-pie-chart"></i> Grafik Pie</a>
-                <a href="<?php echo site_url('stats_people?chart=bar') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-bar-chart"></i> Grafik Batang</a>
+            <div class="box-body">
+                <a href="<?php echo site_url('stats_people/print_out/desa') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+                <a href="<?php echo site_url('stats_people/export/desa_population') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
+                <a href="<?php echo site_url('stats_people') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-pie-chart"></i> Grafik Pie</a>
+                <a href="<?php echo site_url('stats_people?chart=bar') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-bar-chart"></i> Grafik Batang</a>
             </div>
             <div class="box-body">
                 <table class="table table-striped table-bordered col-md-12" style="margin-top: 10px;">
@@ -126,6 +126,7 @@ Highcharts.chart('chart-populasi-desa', {
         plotShadow: false,
         type: 'pie'
     },
+    colors: ['#fff3e0','#ffe0b2','#ffcc80','#ffb74d', '#ffa726', '#ff9800','#fb8c00','#f57c00','#ef6c00','#e65100','#ffd180','#ffab40','#ff9100','#ff6d00'],
     title: {
         text: 'Populasi Penduduk Desa - Kecamatan <?php echo $this->option->get('kecamatan'); ?>'
     },
@@ -171,6 +172,7 @@ Highcharts.chart('chart-populasi-desa-bar', {
     chart: {
         type: 'bar'
     },
+    colors: ['#ffe0b2', '#ffa726','#f57c00','#ffd180','#ff6d00'],
     title: {
         text: 'Populasi Penduduk Desa - Kecamatan <?php echo $this->option->get('kecamatan'); ?>'
     },

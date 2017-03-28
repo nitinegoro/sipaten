@@ -98,10 +98,10 @@ echo form_open(current_url(), array('method' => 'get'));
 					per Halaman
 				</div>
 				<div class="col-md-3 pull-right">
-					<a href="<?php echo site_url("surat_keluar"); ?>" class="btn btn-default hvr-shadow btn-flat btn-print">
+					<a href="<?php echo site_url("surat_keluar/print_out?{$this->input->server('QUERY_STRING')}"); ?>" class="btn btn-warning hvr-shadow btn-flat btn-print">
 						<i class="fa fa-print"></i> Cetak
 					</a>
-					<a href="" class="btn btn-default hvr-shadow btn-flat">
+					<a href="" class="btn btn-warning hvr-shadow btn-flat">
 						<i class="fa fa-download"></i> Ekspor Data
 					</a>
 				</div>
@@ -124,7 +124,7 @@ echo form_close();
 echo form_open(site_url('surat_keluar/bulk_action'));
 ?>
 				<table class="table table-hover table-bordered col-md-12 mini-font" style="margin-top: 10px;">
-					<thead class="bg-silver">
+					<thead>
 						<tr>
 							<th width="30">
 			                    <div class="checkbox checkbox-inline">

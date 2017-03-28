@@ -77,7 +77,7 @@ echo form_hidden('ID', $get->user_id);
 				</div>
 				<div class="hidden-md hidden-lg"><hr></div>
 				<div class="col-md-5 col-xs-12">
-					<button type="submit" class="btn btn-app pull-right" id="button-simpan">
+					<button type="submit" class="btn btn-app hvr-shadow pull-right" id="button-simpan">
 						<i class="fa fa-save"></i>
 						Simpan
 					</button>

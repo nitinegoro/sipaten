@@ -67,12 +67,12 @@ echo form_hidden('ID', $get->user_id);
 
 			<div class="box-footer with-border">
 				<div class="col-md-4 col-xs-5">
-					<a href="<?php echo site_url('user') ?>" class="btn btn-app pull-right">
+					<a href="<?php echo site_url('user') ?>" class="btn btn-app hvr-shadow pull-right">
 						<i class="ion ion-reply"></i> Kembali
 					</a>
 				</div>
 				<div class="col-md-6 col-xs-6">
-					<button type="submit" class="btn btn-app pull-right">
+					<button type="submit" class="btn btn-app hvr-shadow pull-right">
 						<i class="fa fa-save"></i> Simpan
 					</button>
 				</div>

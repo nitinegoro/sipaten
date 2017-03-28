@@ -38,10 +38,10 @@ echo form_open(current_url(), array('method' => 'get'));
 					per halaman
 				</div>
 				<div class="pull-right">
-					<a href="<?php echo site_url('people/create') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
-					<a href="<?php echo site_url('people/print_out') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-print"></i> Cetak</a>
-					<a href="<?php echo site_url('people/export') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	
-					<a href="<?php echo site_url('people/import') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a>
+					<a href="<?php echo site_url('people/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url('people/print_out') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url('people/export') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	
+					<a href="<?php echo site_url('people/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a>
 				</div>
 			</div>
 			<div class="box-body">
@@ -82,8 +82,8 @@ echo form_open(current_url(), array('method' => 'get'));
 				</div>
 				<div class="col-md-3">
 				    <div class="form-group">
-                    <button type="submit" class="btn btn-default top"><i class="fa fa-filter"></i> Filter</button>
-                    <a href="<?php echo site_url('people') ?>" class="btn btn-default top" style="margin-left: 10px;"><i class="fa fa-times"></i> Reset</a>
+                    <button type="submit" class="btn btn-warning hvr-shadow top"><i class="fa fa-filter"></i> Filter</button>
+                    <a href="<?php echo site_url('people') ?>" class="btn btn-warning hvr-shadow top" style="margin-left: 10px;"><i class="fa fa-times"></i> Reset</a>
 				    </div>
 				</div>
 			</div>

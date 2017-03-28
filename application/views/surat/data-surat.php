@@ -38,13 +38,13 @@ echo form_open(current_url(), array('method' => 'get'));
 					per halaman
 				</div>
 				<div class="col-md-5">
-					<a href="<?php echo site_url('surat/create') ?>" class="btn btn-default btn-flat btn-sm pull-right"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url('surat/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm pull-right"><i class="fa fa-plus"></i> Tambah Baru</a>
 				</div>
             <div class="col-md-3">
                <div class="input-group input-group-sm">
                   <input type="text" name="query" class="form-control pull-right" name="<?php echo $this->input->get('query') ?>" placeholder="Pencarian ...">
                   <div class="input-group-btn">
-                  	<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  	<button type="submit" class="btn btn-warning hvr-shadow"><i class="fa fa-search"></i></button>
                   </div>
                </div>
             </div>
@@ -59,8 +59,8 @@ echo form_close();
  **/
 echo form_open(site_url('surat/bulk_action'));
 ?>
-				<table class="table table-hover table-bordered col-md-12" style="margin-top: 10px;">
-					<thead class="bg-silver">
+				<table class="table table-hover table-bordered mini-font col-md-12" style="margin-top: 10px;">
+					<thead>
 						<tr>
 							<th width="30">
 			                    <div class="checkbox checkbox-inline">

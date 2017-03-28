@@ -27,7 +27,7 @@ echo form_hidden('ID', '');
 							<input type="text" id="cari-nik" class="form-control" value=""> 
 						</div>
 						<div class="col-md-2">
-							<button type="button" id="button-reset" class="btn btn-sm btn-default btn-flat"><i class="fa fa-times"></i> Reset</button>
+							<button type="button" id="button-reset" class="btn btn-sm btn-warning btn-flat"><i class="fa fa-times"></i> Reset</button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -51,38 +51,38 @@ echo form_hidden('ID', '');
 				</div>
 
 				<div class="col-md-5">
-					<table class="table table-bordered mini-font">
+					<table class="table table-bordered">
 						<tbody>
 							<tr>
-								<th width="150" class="bg-silver text-right">NIK :</th>
+								<th width="160" class="bg-primary text-right">NIK :</th>
 								<td id="data-nik"></td>
 							</tr>
 							<tr>
-								<th width="150" class="bg-silver text-right">Nama :</th>
+								<th class="bg-primary text-right">Nama :</th>
 								<td id="data-nama"></td>
 							</tr>
 							<tr>
-								<th width="150" class="bg-silver text-right">Tempat, Tanggal Lahir :</th>
+								<th class="bg-primary text-right">Tempat, Tanggal Lahir :</th>
 								<td id="data-tgl-lahir"></td>
 							</tr>
 							<tr>
-								<th width="150" class="bg-silver text-right">Jenis Kelamin :</th>
+								<th class="bg-primary text-right">Jenis Kelamin :</th>
 								<td id="data-jns-kelamin"></td>
 							</tr>
 							<tr>
-								<th width="150" class="bg-silver text-right">Alamat : <br> RT/RW : <br>Kel/Desa : <br>Kecamatan :</th>
+								<th class="bg-primary text-right">Alamat : <br> RT/RW : <br>Kel/Desa : <br>Kecamatan :</th>
 								<td id="data-alamat"></td>
 							</tr>
 							<tr>
-								<th width="150" class="bg-silver text-right">Agama :</th>
+								<th class="bg-primary text-right">Agama :</th>
 								<td id="data-agama"></td>
 							</tr>
 							<tr>
-								<th width="150" class="bg-silver text-right">Status Perkawinan :</th>
+								<th class="bg-primary text-right">Status Perkawinan :</th>
 								<td id="data-status-kawin"></td>
 							</tr>
 							<tr>
-								<th width="150" class="bg-silver text-right">Kewarganegaraan :</th>
+								<th class="bg-primary text-right">Kewarganegaraan :</th>
 								<td id="data-kewarganegaraan"></td>
 							</tr>
 						</tbody>

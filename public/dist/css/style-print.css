@@ -151,19 +151,6 @@ div.mail-footer > table {
 
 
 
-table { font-family:'Arial', sans-serif; }
-
-         
-         .big-title {  font-family:'Arial', sans-serif; font-size:xx-large; letter-spacing:3px; word-spacing: 10px; font-weight:bold; }
-         .small-title {  font-family:'Arial'; font-size:7px; letter-spacing:normal; text-transform: uppercase; }
-         
-
-         table.mini-font { font-size: 10px; }
-         table.gridtable { border-width: 0; border-color: #757572; border-collapse: collapse; }
-         table.gridtable th {  border-width: 0.1px; padding: 3px; border-style: solid; border-color: #757572; text-transform: none; }
-         table.gridtable td { border-width: 0.1px; border-top: 0px; padding: 3px 3px 3px 3px; border-style: solid; border-color: #757572; }
-         table.kop tr { line-height: 50% }
-         table.kop { margin-top: -5px; }
         .wrapper {
             background-image: url(<?php echo base_url("assets/img/logo_watermark.png"); ?>);
             background-repeat: no-repeat;

@@ -7,9 +7,9 @@
             <div class="box-body">
                 <div id="chart-populasi-gender"></div>
             </div>
-            <div class="box-header">
-                <a href="<?php echo site_url('stats_people/print_out/gender') ?>" class="btn btn-default btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
-                <a href="<?php echo site_url('stats_people/export/gender_population') ?>" class="btn btn-default btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
+            <div class="box-body">
+                <a href="<?php echo site_url('stats_people/print_out/gender') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+                <a href="<?php echo site_url('stats_people/export/gender_population') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
             </div>
             <div class="box-body">
                 <table class="table table-striped table-bordered col-md-12" style="margin-top: 10px;">
@@ -56,6 +56,7 @@ Highcharts.chart('chart-populasi-gender', {
         plotShadow: false,
         type: 'pie'
     },
+    colors:['#ff6d00','#ff9800'],
     title: {
         text: 'Populasi Penduduk Menurut Jenis Kelamin'
     },

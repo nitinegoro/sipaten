@@ -1,41 +1,119 @@
 @sipaten : #003D7E;
-@mini_font: 11px;
+@mini_font: 12px;
 @success : #00C66B;
-@gray_border : #CDCDCD;
+@gray_border : #E6E7E9;
+@app_orange : #FC9631;
+@app_orange_dark : #F0943F;
+@app_orange_soft :#FDBA45;
+@app_gray : #E6E7E9;
 
-.box.box-primary {  
-	border-top-color: @sipaten; 
-} 
+@50  : #fff3e0;
+@100 : #ffe0b2;
+@200  : #ffcc80;
+@300 : #ffb74d;
+@400  : #ffa726;
+@500 : #ff9800;
+@600  : #fb8c00;
+@700 : #f57c00;
+@800  : #ef6c00;
+@900 : #e65100;
+@A100  : #ffd180;
+@A200 : #ffab40;
+@A400  : #ff9100;
+@A700 : #ff6d00;
+
+
+/* COLORING */
+.color-800 {
+  background-color:@800;
+  color:white;
+}
+.color-700 {
+  background-color:@700;
+  color:white;
+}
+
+.color-600 {
+  background-color:@600;
+  color:white;
+}
+
+.color-500 {
+  background-color:@500;
+  color:white;
+}
+
+.color-400 {
+  background-color:@400;
+  color:white;
+}
+
+.color-300 {
+  background-color:@300;
+  color:white;
+}
+
+.color-200 {
+  background-color:@200;
+  color:white;
+}
+
+/* CHART */
+.chart-border {
+  border-bottom:3px solid @500;
+}
+
+
+/*  ALERT  */
 
 .alert-success { 
 	border:none;
 	background-color: @success !important;
 }
 
+/* TABLE */
+
+.table-bordered > tbody > tr  th.bg-primary {
+  border:  none !important;
+  padding-right:5px;
+  background-color:@600;
+}
+
 .table-bordered {
   border: 1px solid @gray_border;
+  border-right:none;
+  border-left:none;
+  border-bottom:none; 
+  border-top:none;
 }
-.mini-font > tbody > tr > td > b {
+.table-bordered > thead {
+  background-color:@app_orange;
+  color:white;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > td {
+  border-color:white !important;
+}
+
+.table-bordered > tbody > tr > td > b {
   font-size:@mini_font;
-}
-.mini-font > thead > tr > th,
-.mini-font > tbody > tr > th,
-.mini-font > tfoot > tr > th,
-.mini-font > thead > tr > td,
-.mini-font > tbody > tr > td,
-.mini-font > tfoot > tr > td,
-.mini-font > tfoot > tr > th
- {
-	font-size:@mini_font;
-	padding:8px 0px 3px 8px;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
 .table-bordered > tfoot > tr > th,
-.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td,
+.table-bordered > tfoot > tr > th
+ {
+	font-size:@mini_font;
+	padding:8px 0px 3px 8px;
+}
+.table-bordered > tfoot > tr > th,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid @gray_border;
+  border-bottom: 1px solid @gray_border !important;
+  border-right:none;
+  border-left:none;
   padding:10px 3px 6px 8px;
 }
 .table-bordered > thead > tr > th,
@@ -43,4 +121,60 @@
   border-bottom-width: 2px;
   border-color:@gray_border;
   padding:10px 3px 6px 8px;
+}
+
+/*  BUTTTON STYLE */
+
+.btn-app {
+  background-color: @500;
+  color:white;
+  border:none !important;
+}
+.btn-app:hover, 
+.btn-app:active {
+  background-color: @600;
+  color:white;
+}
+
+
+/* BOX STYLE */
+.box.box-primary {
+  border-top-color: @500;
+}
+
+
+.box.box-solid.box-default > .box-header {
+  background-color: @500;
+  color:white
+}
+.box.box-solid.box-default > .box-header a,
+.box.box-solid.box-default > .box-header .btn {
+  color:white;
+}
+
+
+.box-default > div.box-header {
+  background-color:white
+}
+
+
+/* FORM */
+
+input:focus,
+select:focus,
+textarea:focus
+ {
+  border-color : @400 !important;
+}
+
+
+/*
+ * Component: Nav
+ * --------------
+ */
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  border-color: @500;
 }
