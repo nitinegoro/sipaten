@@ -121,6 +121,8 @@ class Surat_keluar extends Sipaten
 	 **/
 	public function get($param = 0)
 	{
+		$this->load->js(base_url("public/app/isi_surat.js"));
+		
 		$this->page_title->push('Surat Keluar', 'Sunting Surat Keluar');
 
 		$this->breadcrumbs->unshift(2, 'Sunting Surat Keluar', "surat_keluar");

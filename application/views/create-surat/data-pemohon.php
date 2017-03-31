@@ -1,3 +1,4 @@
+<div id="sticker">
 					<table class="table table-bordered">
 						<tbody>
 							<tr>
@@ -47,3 +48,4 @@
 	                endforeach;
 	                ?>
 	              	</ol>
+</div>

@@ -117,6 +117,8 @@ class Create_surat extends Sipaten
 		if($this->create_surat->surat_category($param) == FALSE)
 			show_404();
 
+		$this->load->js(base_url("public/app/isi_surat.js"));
+
 		$penduduk = $this->create_surat->get_penduduk($ID);
 
 		/* Apabila syarat kosong */

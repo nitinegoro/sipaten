@@ -143,6 +143,26 @@ div.mail-content > p.indent {
    text-indent: 40px;
 }
 
+ul > li,
+ol > li {
+   margin-top: 10px;
+   margin-bottom:10px;
+}
+
+ul > li > p,
+ul > li > table,
+ol > li > p,
+ol > li > table {
+   line-height: 1.5em;
+   margin-top: 0px;
+   margin-bottom:0px;
+}
+ol > li > table,
+ul > li > table {
+   margin-left:-3px;
+}
+
+
 /* FOOTER MAIL */
 
 div.mail-footer > table {

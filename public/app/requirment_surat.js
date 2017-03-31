@@ -61,6 +61,7 @@ $(document).ready(function () {
                 message: "Mohon Masukkan NIK penduduk!"
             },{ 
                 type: 'warning',
+                offset: 80,
                 animate: {
                     enter: 'animated bounce',
                     exit: 'animated bounceOut'
@@ -105,6 +106,7 @@ $(document).ready(function () {
                 message: "Mohon Masukkan NIK penduduk, dan Persyaratan penerbitan surat!"
             },{ 
                 type: 'warning',
+                offset: 80,
                 animate: {
                     enter: 'animated bounce',
                     exit: 'animated bounceOut'
@@ -162,6 +164,7 @@ function select_penduduk(param)
                     message: data.nama + " sudah pernah datang sebelumnya, lanjutkan proses pengajuan"
                 },{ 
                     type: 'info',
+                    offset: 80,
                     animate: {
                         enter: 'animated fadIn',
                         exit: 'animated fadeOut'

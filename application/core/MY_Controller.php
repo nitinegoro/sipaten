@@ -109,6 +109,18 @@ class Sipaten extends MY_Controller
 	}
 
 	/**
+	 * Menjadikan Bilangan Angka menjadi kalimat terbilangan
+	 *
+	 * @param Integer
+	 * @return String
+	 **/
+	public function generate_bilangan()
+	{
+		if(is_numeric($this->input->post('angka')))
+			echo terbilang($this->input->post('angka'), 'ucfirst');
+	}
+
+	/**
 	 * Get Validation Rules
 	 *
 	 * @param String (slug) kategori surat
@@ -229,6 +241,41 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[kabupaten]', 'Kabupaten/Kota', 'trim|required');
 				$this->form_validation->set_rules('isi[provinsi]', 'Provinsi', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_pindah]', 'Tanggal Pindah', 'trim|required');
+				break;
+			case 'sp3fat':
+				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[no_surat_kuasa]', 'No. Surat Kuasa', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_surat_kuasa]', 'Tanggal Surat Kuasa', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_diketahui]', 'Tanggal diketahui', 'trim|required');
+				$this->form_validation->set_rules('isi[letak_tanah]', 'Letak Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[luas_tanah]', 'Luas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_utara][ket]', 'Keterangan Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_utara][nama]', 'Nama Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_timur][ket]', 'Keterangan Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_timur][nama]', 'Nama Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_selatan][ket]', 'Keterangan Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_selatan][nama]', 'Nama Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_barat][ket]', 'Keterangan Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_barat][nama]', 'Nama Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[tahun_kuasa]', 'Tahun Kuasa', 'trim|required');
+				break;
+			case 'keterangan-waris':
+				$this->form_validation->set_rules('isi[pejabat_lurah]', 'Pejabat Lurah / Kades', 'trim|required');
+				$this->form_validation->set_rules('isi[nip_pejabat_lurah]', 'NIP Pejabat Lurah / Kades', 'trim|required');
+				$this->form_validation->set_rules('isi[perangkat_desa]', 'Perangkat/Golongan', 'trim|required');
+				$this->form_validation->set_rules('isi[jabatan_pejabat_lurah]', 'Jabatan Pejabat Lurah', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_surat_waris]', 'Tanggal', 'trim|required');
+				$this->form_validation->set_rules('isi[diketahui_oleh]', 'Keterangan diketahui', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_diketahui]', 'Keterangan Tanggal', 'trim|required');
+				$this->form_validation->set_rules('isi[no_akta_kematian]', 'Akta Kematian', 'trim|required');
+				$this->form_validation->set_rules('isi[akta_ttd]', 'Keterangan Tanda tangan oleh ', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_akta]', 'Tanggal  ', 'trim|required');
+				$this->form_validation->set_rules('isi[nama]', 'Nama  ', 'trim|required');
+				$this->form_validation->set_rules('isi[umur]', 'Umur  ', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat]', 'Alamat  ', 'trim|required');
+				$this->form_validation->set_rules('isi[hari_mati]', 'Hari  ', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_mati]', 'Tanggal  ', 'trim|required');
+				$this->form_validation->set_rules('isi[tmp_mati]', 'Keterangan Tempat Kematian  ', 'trim|required');
 				break;
 			default:
 				# code...surat
