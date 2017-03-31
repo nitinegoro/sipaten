@@ -138,14 +138,16 @@ class Create_surat extends Sipaten
 
 		if($this->form_validation->run() == TRUE)
 		{
-			$this->create_surat->update_surat($penduduk->nik, $param);
-			redirect("create_surat/index/{$param}");
+/*			$this->create_surat->update_surat($penduduk->nik, $param);
+			redirect("create_surat/index/{$param}");*/
 
-			/*
+
 			echo json_encode($this->input->post('isi'), JSON_PRETTY_PRINT);
-			exit;
-			*/
-		}
+		//	exit;
+
+		}else {
+
+
 
 		$this->data = array(
 			'title' => $surat->nama_kategori, 
@@ -158,6 +160,8 @@ class Create_surat extends Sipaten
 		);
 
 		$this->template->view("create-surat/form/{$surat->slug}", $this->data);
+
+		}
 	}
 
 

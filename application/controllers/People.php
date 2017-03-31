@@ -96,6 +96,7 @@ class People extends Sipaten
 		$this->form_validation->set_rules('rw', 'RW', 'trim|is_numeric|required');
 		$this->form_validation->set_rules('desa', 'Desa / Kelurahan', 'trim|required');
 		$this->form_validation->set_rules('telepon', 'Telepon', 'trim');
+		$this->form_validation->set_rules('kd_pos', 'Kode Pos', 'trim');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -137,6 +138,7 @@ class People extends Sipaten
 		$this->form_validation->set_rules('rw', 'RW', 'trim|is_numeric|required');
 		$this->form_validation->set_rules('desa', 'Desa / Kelurahan', 'trim|required');
 		$this->form_validation->set_rules('telepon', 'Telepon', 'trim');
+		$this->form_validation->set_rules('kd_pos', 'Kode Pos', 'trim');
 
 		if ($this->form_validation->run() == TRUE)
 		{

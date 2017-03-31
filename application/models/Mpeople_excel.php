@@ -90,7 +90,8 @@ class Mpeople_excel extends Sipaten_model
 							'kewarganegaraan' => strtolower($value['J']),
 							'status_kawin' => strtolower($value['K']),
 							'gol_darah' => strtoupper($value['L']),
-							'telepon' => $value['S']
+							'telepon' => $value['S'],
+							'kd_pos' => $value['T']
 						);
 
 						$this->db->insert('penduduk', $people);
@@ -133,12 +134,12 @@ class Mpeople_excel extends Sipaten_model
 
 		$worksheet = $objPHPExcel->createSheet(0);
 
-	    for ($cell='A'; $cell <= 'P'; $cell++)
+	    for ($cell='A'; $cell <= 'S'; $cell++)
 	    {
 	        $worksheet->getStyle($cell.'1')->getFont()->setBold(true);
 	    }
 
-	    $worksheet->getStyle('A1:P1')->applyFromArray(
+	    $worksheet->getStyle('A1:S1')->applyFromArray(
 	    	array(
 		        'alignment' => array(
 		            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
@@ -174,7 +175,8 @@ class Mpeople_excel extends Sipaten_model
 		 		   ->setCellValue('O1', 'RW')
 		 		   ->setCellValue('P1', 'ALAMAT')
 		 		   ->setCellValue('Q1', 'PEKERJAAN')
-		 		   ->setCellValue('R1', 'TELEPON');
+		 		   ->setCellValue('R1', 'TELEPON')
+		 		   ->setCellValue('S1', 'KODE POS');
 
 		$this->db->join('desa', 'penduduk.desa = desa.id_desa', 'left');
 
@@ -200,7 +202,8 @@ class Mpeople_excel extends Sipaten_model
 			 		   ->setCellValue('O'.$row_cell, $value->rw)
 			 		   ->setCellValue('P'.$row_cell, $value->alamat)
 			 		   ->setCellValue('Q'.$row_cell, $value->pekerjaan)
-					   ->setCellValue('R'.$row_cell, $value->telepon);
+					   ->setCellValue('R'.$row_cell, $value->telepon)
+					   ->setCellValue('T'.$row_cell, $value->kd_pos);
 
 			$row_cell++;
 		}

@@ -201,6 +201,13 @@ echo form_hidden('ID', $people->ID);
 						<p class="help-block"><?php echo form_error('telepon', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
+				<div class="form-group">
+					<label for="telepon" class="control-label col-md-3 col-xs-12">Kode Pos : <strong class="text-red">*</strong></label>
+					<div class="col-md-6">
+						<input type="text" name="kd_pos" class="form-control" value="<?php echo $people->kd_pos; ?>">
+						<p class="help-block"><?php echo form_error('kd_pos', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
 			</div>
 
 			<div class="box-footer with-border">

@@ -133,7 +133,7 @@ class Sipaten extends MY_Controller
 			case 'domisili-perusahaan':
 				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
-				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[desa]', 'Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[nama_perusahaan]', 'Nama Perusahaan', 'trim|required');
 				$this->form_validation->set_rules('isi[alamat_perusahaan]', 'Alamat Perusahaan', 'trim|required');
 				break;
@@ -276,6 +276,15 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[hari_mati]', 'Hari  ', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_mati]', 'Tanggal  ', 'trim|required');
 				$this->form_validation->set_rules('isi[tmp_mati]', 'Keterangan Tempat Kematian  ', 'trim|required');
+				break;
+			case 'keterangan-tinggal-sementara':
+				$this->form_validation->set_rules('desa', 'Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[no_tanda_masuk]', 'No. Tanda Masuk', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_tanda_masuk]', 'Tanggal Tanda Masuk', 'trim|required');
+				$this->form_validation->set_rules('isi[alasan_pindah]', 'Alasan Pindah', 'trim|required');
+				$this->form_validation->set_rules('isi[nama]', 'Nama', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat]', 'Alamat', 'trim|required');
+				$this->form_validation->set_rules('isi[pekerjaan]', 'Pekerjaan', 'trim|required');
 				break;
 			default:
 				# code...surat
