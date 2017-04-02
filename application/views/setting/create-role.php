@@ -30,12 +30,12 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				</div>
 				<div class="col-md-12">
 					<table class="table table-bordered mini-font">
-						<tr class="bg-silver">
+						<tr class="color-400">
 							<th rowspan="2" class="text-center" width="50">No.</th>
 							<th rowspan="2" class="text-center">Nama Module</th>
 							<th class="text-center" colspan="5">Hak Akses</th>
 						</tr>
-						<tr class="bg-silver">
+						<tr class="color-400">
 							<th class="text-center">Status</th>
 							<th class="text-center">Buat</th>
 							<th class="text-center">Lihat</th>

@@ -5,7 +5,7 @@
 
 jQuery(function($) {
 
-	$(".toggle").bootstrapSwitch();
+	$(".toggle").bootstrapSwitch({onColor:'orange'});
 
 	$('.get-delete-role').click( function() {
 		$('#modal-delete-role').modal('show');

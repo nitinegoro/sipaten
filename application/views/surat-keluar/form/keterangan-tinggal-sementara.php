@@ -18,8 +18,8 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7 block-no-surat">
-							<strong><?php echo $surat->kode_surat; ?>/</strong>
-							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $this->create_surat->get_nomor_surat($surat->id_surat, null); ?>" readonly="true">
+							<strong><?php echo $get->kode_surat; ?>/</strong>
+							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $get->nomor_surat; ?>" readonly="true">
 							<strong>/<?php echo $this->option->get('kode_kecamatan'); ?>/<?php echo date('Y') ?></strong>
 							<p class="help-block"><?php echo form_error('nomor_surat', '<small class="text-red">', '</small>'); ?></p>
 						</div>
@@ -33,7 +33,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					/* Loop Data Pegawai */
 					foreach($this->create_surat->get_desa() as $row) :
 					?>
-								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==set_value('isi[desa]')) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
+								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==$isi->desa) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
 					<?php  
 					endforeach;
 					?>
@@ -47,14 +47,14 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">No. Tanda Masuk : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<input type="text" name="isi[no_tanda_masuk]" class="form-control" value="<?php echo set_value('isi[no_tanda_masuk]'); ?>">
+							<input type="text" name="isi[no_tanda_masuk]" class="form-control" value="<?php echo $isi->no_tanda_masuk; ?>">
 							<p class="help-block"><?php echo form_error('isi[no_tanda_masuk]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Tanggal Tanda Masuk : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
-							<input type="text" class="form-control" name="isi[tgl_tanda_masuk]" id="datepicker" value="<?php echo set_value('isi[tgl_tanda_masuk]'); ?>" placeholder="Ex : <?php echo date('Y-m-d'); ?>">
+							<input type="text" class="form-control" name="isi[tgl_tanda_masuk]" id="datepicker" value="<?php echo $isi->tgl_tanda_masuk; ?>" placeholder="Ex : <?php echo date('Y-m-d'); ?>">
 							<p class="help-block"><?php echo form_error('isi[tgl_tanda_masuk]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
@@ -63,26 +63,26 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<div class="col-md-9">
 							<div class="col-md-4">
 						       	<div class="radio radio-primary">
-						           <input name="isi[alasan_pindah]" type="radio" value="pekerjaan" <?php if(set_value('isi[alasan_pindah]')=='pekerjaan') echo "checked"; ?>> <label> Pekerjaan</label>
+						           <input name="isi[alasan_pindah]" type="radio" value="pekerjaan" <?php if($isi->alasan_pindah=='pekerjaan') echo "checked"; ?>> <label> Pekerjaan</label>
 						       	</div>
 						       	<div class="radio radio-primary">
-						           <input name="isi[alasan_pindah]" type="radio" value="pendidikan" <?php if(set_value('isi[alasan_pindah]')=='pendidikan') echo "checked"; ?>> <label> Pendidikan</label>
-						       	</div>
-							</div>
-							<div class="col-md-4">
-						       	<div class="radio radio-primary">
-						           <input name="isi[alasan_pindah]" type="radio" value="keamanan" <?php if(set_value('isi[alasan_pindah]')=='keamanan') echo "checked"; ?>> <label> Keamanan</label>
-						       	</div>
-						       	<div class="radio radio-primary">
-						           <input name="isi[alasan_pindah]" type="radio" value="kesehatan" <?php if(set_value('isi[alasan_pindah]')=='kesehatan') echo "checked"; ?>> <label> Kesehatan</label>
+						           <input name="isi[alasan_pindah]" type="radio" value="pendidikan" <?php if($isi->alasan_pindah=='pendidikan') echo "checked"; ?>> <label> Pendidikan</label>
 						       	</div>
 							</div>
 							<div class="col-md-4">
 						       	<div class="radio radio-primary">
-						           <input name="isi[alasan_pindah]" type="radio" value="keluarga" <?php if(set_value('isi[alasan_pindah]')=='keluarga') echo "checked"; ?>> <label> Keluarga</label>
+						           <input name="isi[alasan_pindah]" type="radio" value="keamanan" <?php if($isi->alasan_pindah=='keamanan') echo "checked"; ?>> <label> Keamanan</label>
 						       	</div>
 						       	<div class="radio radio-primary">
-						           <input name="isi[alasan_pindah]" type="radio" value="lainnya" <?php if(set_value('isi[alasan_pindah]')=='lainnya') echo "checked"; ?>> <label> lainnya...</label>
+						           <input name="isi[alasan_pindah]" type="radio" value="kesehatan" <?php if($isi->alasan_pindah=='kesehatan') echo "checked"; ?>> <label> Kesehatan</label>
+						       	</div>
+							</div>
+							<div class="col-md-4">
+						       	<div class="radio radio-primary">
+						           <input name="isi[alasan_pindah]" type="radio" value="keluarga" <?php if($isi->alasan_pindah=='keluarga') echo "checked"; ?>> <label> Keluarga</label>
+						       	</div>
+						       	<div class="radio radio-primary">
+						           <input name="isi[alasan_pindah]" type="radio" value="lainnya" <?php if($isi->alasan_pindah=='lainnya') echo "checked"; ?>> <label> lainnya...</label>
 						       	</div>
 							</div>
 							<p class="help-block"><?php echo form_error('isi[alasan_pindah]', '<small class="text-red">', '</small>'); ?></p>
@@ -91,66 +91,66 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Alamat Pindah  : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<textarea name="isi[alamat_pindah]" class="form-control" cols="30" rows="3"><?php echo set_value('isi[alamat_pindah]'); ?></textarea>
+							<textarea name="isi[alamat_pindah]" class="form-control" cols="30" rows="3"><?php echo $isi->alamat_pindah; ?></textarea>
 							<p class="help-block"><?php echo form_error('isi[alamat_pindah]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Kode Pos : <strong class="text-red">*</strong></label>
 						<div class="col-md-4">
-							<input type="text" name="isi[kd_pos_pindah]" class="form-control" value="<?php echo set_value('isi[kd_pos_pindah]'); ?>">
+							<input type="text" name="isi[kd_pos_pindah]" class="form-control" value="<?php echo $isi->kd_pos_pindah; ?>">
 							<p class="help-block"><?php echo form_error('isi[kd_pos_pindah]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Desa/Kelurahan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<input type="text" name="isi[desa_pindah]" class="form-control" value="<?php echo set_value('isi[desa_pindah]'); ?>">
+							<input type="text" name="isi[desa_pindah]" class="form-control" value="<?php echo $isi->desa_pindah; ?>">
 							<p class="help-block"><?php echo form_error('isi[desa_pindah]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Kecamatan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<input type="text" name="isi[kecamatan_pindah]" class="form-control" value="<?php echo set_value('isi[kecamatan_pindah]'); ?>">
+							<input type="text" name="isi[kecamatan_pindah]" class="form-control" value="<?php echo $isi->kecamatan_pindah; ?>">
 							<p class="help-block"><?php echo form_error('isi[kecamatan_pindah]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Kab/Kota : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<input type="text" name="isi[kabupaten_pindah]" class="form-control" value="<?php echo set_value('isi[kabupaten_pindah]'); ?>">
+							<input type="text" name="isi[kabupaten_pindah]" class="form-control" value="<?php echo $isi->kabupaten_pindah; ?>">
 							<p class="help-block"><?php echo form_error('isi[kabupaten_pindah]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Provinsi : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<input type="text" name="isi[provinsi_pindah]" class="form-control" value="<?php echo set_value('isi[provinsi_pindah]'); ?>">
+							<input type="text" name="isi[provinsi_pindah]" class="form-control" value="<?php echo $isi->provinsi_pindah; ?>">
 							<p class="help-block"><?php echo form_error('isi[provinsi_pindah]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
-					</div>
+					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form">Penanggung Jawab</p>
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Nama : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<input type="text" name="isi[nama]" class="form-control" value="<?php echo set_value('isi[nama]'); ?>">
+							<input type="text" name="isi[nama]" class="form-control" value="<?php echo $isi->nama; ?>">
 							<p class="help-block"><?php echo form_error('isi[nama]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Alamat  : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<textarea name="isi[alamat]" class="form-control" cols="30" rows="3"><?php echo set_value('isi[alamat]'); ?></textarea>
+							<textarea name="isi[alamat]" class="form-control" cols="30" rows="3"><?php echo $isi->alamat; ?></textarea>
 							<p class="help-block"><?php echo form_error('isi[alamat]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Pekerjaan  : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<input type="text" name="isi[pekerjaan]" class="form-control" value="<?php echo set_value('isi[pekerjaan]'); ?>">
+							<input type="text" name="isi[pekerjaan]" class="form-control" value="<?php echo $isi->pekerjaan; ?>">
 							<p class="help-block"><?php echo form_error('isi[pekerjaan]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
@@ -166,7 +166,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							</div>
 						</div>
 						<div class="col-md-12 top">
-							<table class="table table-bordered mini-font" id="data-pengikut" id="data-pengikut" data-type="create" data-id="">
+							<table class="table table-bordered mini-font" id="data-pengikut" data-type="update" data-id="<?php echo $get->ID; ?>">
 								<thead class="bg-silver">
 									<tr>
 										<th width="30"></th>
@@ -178,8 +178,6 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 									</tr>
 								</thead>
 							</table>
-<!-- 							<input type="text" name="isi[pengikut][0][id]">
-<input type="text" name="isi[pengikut][0][status_hubungan]"> -->
 						</div>
 					</div>
 					<div class="form-group">
@@ -194,7 +192,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					/* Loop Data Pegawai */
 					foreach($pegawai as $row) :
 					?>
-								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==set_value('ttd_pejabat')) echo 'selected'; ?>><?php echo $row->nama; ?> (<?php echo $row->jabatan; ?>)</option>
+								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==$get->pegawai) echo 'selected'; ?>><?php echo $row->nama; ?> (<?php echo $row->jabatan; ?>)</option>
 					<?php  
 					endforeach;
 					?>
@@ -204,12 +202,20 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>	
 					<div class="form-group">
 						<div class="col-md-12"> <hr> </div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<small><strong class="text-red">*</strong>	Field wajib diisi!</small> <br>
 							<small><strong class="text-blue">*</strong>	Field Optional</small>
 						</div>
-						<div class="col-md-3 col-xs-6 pull-right">
-							<button type="submit" class="btn btn-app">
+						<div class="col-md-3">
+							<a href="<?php echo site_url('surat_keluar') ?>" class="btn btn-app hvr-shadow">
+								<i class="ion ion-reply"></i> Kembali
+							</a>
+						</div>
+						<div class="col-md-5 col-xs-6 pull-right">
+							<a href="<?php echo site_url("surat_keluar/print_surat/{$get->ID}") ?>" class="btn btn-app btn-print hvr-shadow">
+								<i class="fa fa-print"></i> Cetak
+							</a>
+							<button type="submit" class="btn btn-app hvr-shadow pull-right">
 								<i class="fa fa-save"></i> Simpan
 							</button>
 						</div>
@@ -223,7 +229,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					 *
 					 * @var string
 					 **/
-					$this->load->view('create-surat/data-pemohon');
+					$this->load->view('surat-keluar/data-pemohon');
 					?>
 				</div>
 			</div>

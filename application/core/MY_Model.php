@@ -52,6 +52,25 @@ class Sipaten_model extends MY_Model
 	}
 
 	/**
+	 * undocumented class variable
+	 *
+	 * @var string
+	 **/
+	public function get_select_desa($param = 0, $select = FALSE)
+	{
+		$this->db->where('id_desa', $param);
+
+		if(is_array($select)) 
+		{
+			$this->db->select(join(',', $select));
+
+			return $this->db->get('desa')->row();
+		} else {
+			return $this->db->get('desa')->row($select);
+		}		
+	}
+
+	/**
 	 * Get Syarat Surat
 	 *
 	 * @param Integer (id_syarat)
@@ -156,11 +175,43 @@ class Sipaten_model extends MY_Model
 	 **/
 	public function count_surat_by_date($date = NULL)
 	{
-		return $this->db->query("SELECT COUNT(tanggal) AS jumlah FROM surat  WHERE tanggal = '{$date}'")->row('jumlah');
+		return $this->db->query("SELECT COUNT(tanggal) AS jumlah FROM surat  WHERE tanggal = '{$date}' AND status = 'approve'")->row('jumlah');
 	}
 	
+	/**
+	 * Menampilkan Data Ayah dan Ibu dalam KK
+	 *
+	 * @param String (No_KK)
+	 * @return Result
+	 **/
+	public function get_parent_kk($param = '')
+	{
+		return $this->db->query("SELECT * FROM penduduk WHERE no_kk = '{$param}' AND status_kk IN ('ibu','ayah') ORDER BY status_kk ASC")->result();
+	}
 
+	/**
+	 * Check Pengikut satu dalam KK
+	 *
+	 * @param String (No_KK)
+	 * @return Bolean
+	 **/
+	public function check_kk_include($param = 0)
+	{
+		$id_pengikut = array();
+		for($id = 0; $id < count($param); $id++) 
+			$id_pengikut[] = $param[$id]->id;
+
+		$param = join(', ', $id_pengikut);
+
+		$query = $this->db->query("SELECT * FROM penduduk WHERE ID IN({$param})");
+
+		if($query->num_rows())
+			return TRUE;
+		else 
+			return FALSE;
+	}
 }
 
 /* End of file MY_Model.php */
 /* Location: ./application/core/MY_Model.php */
+

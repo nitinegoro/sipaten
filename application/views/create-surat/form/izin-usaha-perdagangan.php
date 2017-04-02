@@ -19,7 +19,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7 block-no-surat">
 							<strong><?php echo $surat->kode_surat; ?>/</strong>
-							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo set_value('nomor_surat'); ?>">
+							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $this->create_surat->get_nomor_surat($surat->id_surat, null); ?>" readonly="">
 							<strong>/<?php echo $this->option->get('kode_kecamatan'); ?>/<?php echo date('Y') ?></strong>
 							<p class="help-block"><?php echo form_error('nomor_surat', '<small class="text-red">', '</small>'); ?></p>
 						</div>
@@ -30,10 +30,20 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Nama Desa : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
-							<input type="text" class="form-control" name="isi[nama_desa]" value="<?php echo set_value('isi[nama_desa]'); ?>">
-							<p class="help-block"><?php echo form_error('isi[nama_desa]', '<small class="text-red">', '</small>'); ?></p>
+							<select name="isi[desa]" class="form-control">
+								<option value="">- PILIH -</option>
+					<?php  
+					/* Loop Data Pegawai */
+					foreach($this->create_surat->get_desa() as $row) :
+					?>
+								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==set_value('isi[desa]')) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
+					<?php  
+					endforeach;
+					?>
+							</select>
+							<p class="help-block"><?php echo form_error('isi[desa]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
-					</div>	
+					</div>
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form">Mendirikan Bangunan :</p>
@@ -114,7 +124,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Pendidikan tenaga kerja yang : <strong class="text-red">*</strong></label>
-						<div class="col-md-3 text-center">
+						<div class="col-md-4 text-center">
 							<label>laki-laki</label>
 							<div class="input-group">
 								<span class="input-group-addon">SD</span>
@@ -147,7 +157,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							  	<span class="input-group-addon">Orang</span>
 							</div>
 						</div>
-						<div class="col-md-3 text-center">
+						<div class="col-md-4 text-center">
 							<label>Wanita</label>
 							<div class="input-group">
 								<span class="input-group-addon">SD</span>

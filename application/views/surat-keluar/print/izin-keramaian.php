@@ -21,7 +21,7 @@ $date = new DateTime($get->tanggal);
             <h5 class="mail-number upper">izin keramaian</h5>
         </div>
         <div class="mail-content">
-            <p class="indent">Memperhatikan Surat Pengantar dari Lurah <?php echo $isi->nama_desa; ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?>, dengan ini Camat  <?php echo $this->option->get('kecamatan'); ?> menerangkan bahwa :</p>
+            <p class="indent">Memperhatikan Surat Pengantar dari Lurah <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?>, dengan ini Camat  <?php echo $this->option->get('kecamatan'); ?> menerangkan bahwa :</p>
             <table style="margin-top: 10px; margin-bottom:10px;">
                 <tr>
                     <td width="170">NAMA</td>
@@ -71,7 +71,7 @@ $date = new DateTime($get->tanggal);
                         <tr>
                             <td>Tempat</td>
                             <td class="text-center">:</td>
-                            <td><?php echo $isi->tempat.' Kelurahan '.$isi->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                            <td><?php echo $isi->tempat.' Kelurahan '.$this->option->get_select_desa($isi->desa, 'nama_desa').' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                         </tr>
                         <tr style="vertical-align: top;">
                             <td>Hiburan</td>
@@ -103,7 +103,7 @@ $date = new DateTime($get->tanggal);
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
-                <tr><td colspan="3" style="height: 40px;"></td></tr>
+                <tr><td colspan="3" style="height: 70px;"></td></tr>
                 <tr>
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>

@@ -18,7 +18,7 @@ $date = new DateTime($get->tanggal);
         </div>
         <div class="mail-content">
             <p class="indent">
-            Yang bertanda tangan di bawah ini Kepala Desa/Kelurahan : <strong><?php echo strtoupper($isi->nama_desa); ?></strong> <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
+            Yang bertanda tangan di bawah ini Kepala Desa/Kelurahan : <strong><?php echo strtoupper($this->option->get_select_desa($isi->desa, 'nama_desa')); ?></strong> <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
             </p>
             <table style=" margin-top: 10px; margin-bottom:10px;">
                 <tr>
@@ -135,7 +135,7 @@ $date = new DateTime($get->tanggal);
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
-                <tr><td colspan="3" style="height: 40px;"></td></tr>
+                <tr><td colspan="3" style="height: 70px;"></td></tr>
                 <tr>
                     <td style="width: 40%;"><span></span></td>
                     <td style="width: 20%;"></td>

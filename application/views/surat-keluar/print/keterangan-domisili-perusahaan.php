@@ -17,7 +17,7 @@ $date = new DateTime($get->tanggal);
             <h5 class="mail-number">Nomor : <?php echo $get->kode_surat.'/<b>'.$get->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?></h5>
         </div>
         <div class="mail-content">
-            <p class="indent">Berdasarkan Surat Keterangan Domisili dari Lurah / Kades <?php echo $isi->nama_desa; ?> Nomor : <?php echo $isi->no_surat_rek; ?> Tanggal <?php echo date_id($isi->tgl_surat_rek); ?> perihal Surat Keterangan Domisili a.n :</p>
+            <p class="indent">Berdasarkan Surat Keterangan Domisili dari Lurah / Kades <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> Tanggal <?php echo date_id($isi->tgl_surat_rek); ?> perihal Surat Keterangan Domisili a.n :</p>
             <table style="margin-left:40px; margin-top: 10px; margin-bottom:10px;">
                 <tr>
                     <td width="80">Nama</td>
@@ -30,7 +30,7 @@ $date = new DateTime($get->tanggal);
                     <td><?php echo $isi->alamat_perusahaan; ?></td>
                 </tr>
             </table>
-            <p class="indent">Memperhatihan get tersebut diatas dan sepanjang sepengetahuan kami bahwa <?php echo $isi->nama_perusahaan; ?> memang benar beralamat di <?php echo $isi->alamat_perusahaan . ' '.ucfirst($isi->nama_desa); ?> Kecamatan <?php echo ucfirst($this->option->get('kecamatan')) ?> Kabupaten <?php echo ucfirst($this->option->get('kabupaten')) ?>.</p>
+            <p class="indent">Memperhatihan get tersebut diatas dan sepanjang sepengetahuan kami bahwa <?php echo $isi->nama_perusahaan; ?> memang benar beralamat di <?php echo $isi->alamat_perusahaan . ' '.ucfirst($this->option->get_select_desa($isi->desa, 'nama_desa')); ?> Kecamatan <?php echo ucfirst($this->option->get('kecamatan')) ?> Kabupaten <?php echo ucfirst($this->option->get('kabupaten')) ?>.</p>
             <p class="indent">Demikiaan, Surat Keterangan Domisili ini dibuat untuk dapat dipergunakan sebagaimana mestinya.</p>
         </div>
         <div class="mail-footer">
@@ -44,7 +44,7 @@ $date = new DateTime($get->tanggal);
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
-                <tr><td colspan="3" style="height: 40px;"></td></tr>
+                <tr><td colspan="3" style="height: 70px;"></td></tr>
                 <tr>
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>

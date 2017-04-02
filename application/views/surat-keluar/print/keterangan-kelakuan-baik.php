@@ -17,7 +17,7 @@ $date = new DateTime($get->tanggal);
             <h5 class="mail-number">Nomor : <?php echo $get->kode_surat.'/<b>'.$get->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?></h5>
         </div>
         <div class="mail-content">
-            <p class="indent">Memperhatikan Surat Keterangan Kelakuan Baik dari Lurah <?php echo $isi->nama_desa; ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?>, dengan ini Camat  <?php echo $this->option->get('kecamatan'); ?> menerangkan bahwa :</p>
+            <p class="indent">Memperhatikan Surat Keterangan Kelakuan Baik dari Lurah <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?>, dengan ini Camat  <?php echo $this->option->get('kecamatan'); ?> menerangkan bahwa :</p>
             <table style="margin-left:40px; margin-top: 10px; margin-bottom:10px;">
                 <tr>
                     <td width="140">Nama</td>

@@ -22,7 +22,7 @@ $date = new DateTime($get->tanggal);
                 <tr>
                     <td width="80">Lurah</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->nama_desa; ?></td>
+                    <td><?php echo $this->db->get_where('desa', array('id_desa' => $isi->desa))->row('nama_desa') ?></td>
                 </tr>
                 <tr>
                     <td>Kecamatan</td>
@@ -44,7 +44,7 @@ $date = new DateTime($get->tanggal);
             <p>
                 <ol style="list-style:">
                     <li><p>
-                        Bahwa berdasarkan Surat Pernyataan Pengakuan Fisik Atas Tanah tanggal <?php echo date_id($isi->tgl_surat_kuasa); ?> diketahui lurah <?php echo $isi->nama_desa; ?> tanggal <?php echo date_id($isi->tgl_diketahui); ?> Nomor : <?php echo $isi->no_surat_kuasa; ?> berupa tanah pekarangan yang terleak di <?php echo $isi->letak_tanah; ?> dengan luas <strong>&plusmn; <?php echo $isi->luas_tanah; ?> M<sup>2</sup> (Kurang Lebih <?php echo terbilang($isi->luas_tanah, 'ucfirst'); ?> Meter Persegi)</strong> <br></p>
+                        Bahwa berdasarkan Surat Pernyataan Pengakuan Fisik Atas Tanah tanggal <?php echo date_id($isi->tgl_surat_kuasa); ?> diketahui lurah <?php echo $this->db->get_where('desa', array('id_desa' => $isi->desa))->row('nama_desa') ?> tanggal <?php echo date_id($isi->tgl_diketahui); ?> Nomor : <?php echo $isi->no_surat_kuasa; ?> berupa tanah pekarangan yang terleak di <?php echo $isi->letak_tanah; ?> dengan luas <strong>&plusmn; <?php echo $isi->luas_tanah; ?> M<sup>2</sup> (Kurang Lebih <?php echo terbilang($isi->luas_tanah, 'ucfirst'); ?> Meter Persegi)</strong> <br></p>
                         <p>Dengan Batas-batas sebagai berikut :</p>
                         <table>
                             <tr>
@@ -139,7 +139,7 @@ $date = new DateTime($get->tanggal);
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
-                <tr><td colspan="3" style="height: 40px;"></td></tr>
+                <tr><td colspan="3" style="height: 70px;"></td></tr>
                 <tr>
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>

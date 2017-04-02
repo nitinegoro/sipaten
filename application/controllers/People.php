@@ -226,6 +226,27 @@ class People extends Sipaten
 			return true;
 		}
 	}
+
+	/**
+	 * Get Data Penduduk 
+	 *
+	 * @param Integer (ID)
+	 * @return string (JSON) 
+	 **/
+	public function getjson($param = 0)
+	{
+		$get = $this->people->get($param);
+
+		$this->data = array(
+			'id' => $get->ID,
+			'nik' => $get->nik,
+			'nama' => $get->nama_lengkap,
+			'tmp_tgl_lahir' => $get->tmp_lahir.", ".date_id($get->tgl_lahir),
+			'jns_kelamin' => strtoupper($get->jns_kelamin)
+		);
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
+	}
 }
 
 /* End of file People.php */

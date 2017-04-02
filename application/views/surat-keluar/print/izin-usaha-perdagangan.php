@@ -17,10 +17,10 @@ $date = new DateTime($get->tanggal);
             <h5 class="mail-number">Nomor : <?php echo $get->kode_surat.'/<b>'.$get->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?></h5>
         </div>
         <div class="mail-content">
-            <p style="margin-top: -5px;" class="indent">
-            Yang bertanda tangan di bawah ini Kepala Desa/Kelurahan : <strong><?php echo strtoupper($isi->nama_desa); ?></strong> <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
+            <p style="margin-top: -10px;" class="indent">
+            Yang bertanda tangan di bawah ini Kepala Desa/Kelurahan : <strong><?php echo strtoupper($this->option->get_select_desa($isi->desa, 'nama_desa')); ?></strong> Kecamatan <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
             </p>
-            <table style=" margin-top: -5px; margin-bottom:-5px;">
+            <table style=" margin-top: -10px; margin-bottom:-10px;">
                 <tr>
                     <td width="140">Nama</td>
                     <td class="text-center">:</td>
@@ -53,7 +53,7 @@ $date = new DateTime($get->tanggal);
                 </tr>
             </table>
             <p>Sedang / akan melakukan kegiatan usaha perdagangan/industri sebagai berikut :</p>
-            <table style="margin-top: -5px; margin-bottom:-5px;">
+            <table style="margin-top: -10px; margin-bottom:-10px;">
                 <tr>
                     <td width="230">1. Nama Perusahaan/Perorangan</td>
                     <td class="text-center">:</td>
@@ -213,7 +213,7 @@ $date = new DateTime($get->tanggal);
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
-                <tr><td colspan="3" style="height: 70px;"></td></tr>
+                <tr><td colspan="3" style="height: 50px;"></td></tr>
                 <tr>
                     <td style="width: 40%;"><span></span></td>
                     <td style="width: 20%;"></td>

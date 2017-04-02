@@ -12,6 +12,7 @@
  * @var string
  **/
 echo form_open(current_url(), array('class' => 'form-horizontal'));
+
 ?>
 			<div class="box-body" style="margin-top: 10px;">
 				<div class="col-md-7">
@@ -44,10 +45,20 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Nama Desa : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
-							<input type="text" class="form-control" name="isi[nama_desa]" value="<?php echo $isi->nama_desa; ?>">
-							<p class="help-block"><?php echo form_error('isi[nama_desa]', '<small class="text-red">', '</small>'); ?></p>
+							<select name="isi[desa]" class="form-control">
+								<option value="">- PILIH -</option>
+					<?php  
+					/* Loop Data Pegawai */
+					foreach($this->create_surat->get_desa() as $row) :
+					?>
+								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==$isi->desa) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
+					<?php  
+					endforeach;
+					?>
+							</select>
+							<p class="help-block"><?php echo form_error('isi[desa]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
-					</div>	
+					</div>
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form">Tanda Tangan Kades / Lurah</p>
@@ -68,7 +79,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Jabatan : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
-							<input type="text" class="form-control" name="isi[jabatan_pejabat_lurah]" value="<?php echo $isi->nama_desa; ?>">
+							<input type="text" class="form-control" name="isi[jabatan_pejabat_lurah]" value="<?php echo $isi->jabatan_pejabat_lurah; ?>">
 							<p class="help-block"><?php echo form_error('isi[jabatan_pejabat_lurah]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
@@ -76,7 +87,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form">Data Keluarga yang mengikuti :</p>
 						</div>
-						<div class="col-md-11 col-md-offset-1">
+						<div class="col-md-12">
 							<table class="table table-bordered mini-font">
 								<thead class="bg-silver">
 									<tr>
@@ -98,6 +109,9 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							* From parent Model
 							*/
 							if($get->no_kk != FALSE) :
+				            /* Loop data penduduk */
+				            $key_no = 1;
+				            
 								foreach($this->create_surat->get_keluarga($get->no_kk) as $key => $value) :
 									/* Tidak dengan orang mengajukan */
 									if($get->nik==$value->nik) 
@@ -106,7 +120,8 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 									<tr>
 										<td>
 						                    <div class="checkbox checkbox-inline" style="margin-top: -10px;">
-						                        <input id="checkbox1" type="checkbox" name="isi[penduduk][]" checked="" value="<?php echo $value->nama_lengkap.'|'.$value->tmp_lahir.', '.date_id($value->tgl_lahir).'|'.strtoupper($value->status_kk); ?>"> <label for="checkbox1"></label>
+						                        <input id="checkbox1" type="checkbox" name="isi[pengikut][][id]" value="<?php echo $value->ID; ?>" <?php if(@$isi->pengikut[--$key]->id == $value->ID) echo "checked"; ?>> <label for="checkbox1"></label>
+
 						                    </div>
 										</td>
 										<td class="text-center" width="150"><?php echo $value->nik; ?></td>

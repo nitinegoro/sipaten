@@ -18,8 +18,8 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7 block-no-surat">
-							<strong><?php echo $surat->kode_surat; ?>/</strong>
-							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo set_value('nomor_surat'); ?>">
+							<strong><?php echo $get->kode_surat; ?>/</strong>
+							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $get->nomor_surat; ?>">
 							<strong>/<?php echo $this->option->get('kode_kecamatan'); ?>/<?php echo date('Y') ?></strong>
 							<p class="help-block"><?php echo form_error('nomor_surat', '<small class="text-red">', '</small>'); ?></p>
 						</div>
@@ -30,31 +30,41 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
-							<input type="text" name="isi[no_surat_rek]" class="form-control" value="<?php echo set_value('isi[no_surat_rek]'); ?>">
+							<input type="text" name="isi[no_surat_rek]" class="form-control" value="<?php echo $isi->no_surat_rek; ?>">
 							<p class="help-block"><?php echo form_error('isi[no_surat_rek]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Tanggal Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
-							<input type="text" class="form-control" name="isi[tgl_surat_rek]" id="datepicker" value="<?php echo set_value('isi[tgl_surat_rek]'); ?>" placeholder="Ex : <?php echo date('Y-m-d'); ?>">
+							<input type="text" class="form-control" name="isi[tgl_surat_rek]" id="datepicker" value="<?php echo $isi->tgl_surat_rek; ?>" placeholder="Ex : <?php echo date('Y-m-d'); ?>">
 							<p class="help-block"><?php echo form_error('isi[tgl_surat_rek]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
-						<label for="email" class="control-label col-md-3 col-xs-12">Nama Desa : <strong class="text-red">*</strong></label>
+						<label for="email" class="control-label col-md-3 col-xs-12">Desa : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
-							<input type="text" class="form-control" name="isi[nama_desa]" value="<?php echo set_value('isi[nama_desa]'); ?>">
-							<p class="help-block"><?php echo form_error('isi[nama_desa]', '<small class="text-red">', '</small>'); ?></p>
+							<select name="isi[desa]" class="form-control">
+								<option value="">- PILIH -</option>
+					<?php  
+					/* Loop Data Pegawai */
+					foreach($this->create_surat->get_desa() as $row) :
+					?>
+								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==$isi->desa) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
+					<?php  
+					endforeach;
+					?>
+							</select>
+							<p class="help-block"><?php echo form_error('isi[desa]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
-					</div>	
+					</div>		
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Pengantar keperluan</p>
+							<p class="legend-form">Pengantar Keperluan</p>
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Keperluan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<input type="text" name="isi[keperluan]" class="form-control" value="<?php echo set_value('isi[keperluan]'); ?>">
+							<input type="text" name="isi[keperluan]" class="form-control" value="<?php echo $isi->keperluan; ?>">
 							<p class="help-block"><?php echo form_error('isi[keperluan]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>
@@ -70,7 +80,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					/* Loop Data Pegawai */
 					foreach($pegawai as $row) :
 					?>
-								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==set_value('ttd_pejabat')) echo 'selected'; ?>><?php echo $row->nama; ?> (<?php echo $row->jabatan; ?>)</option>
+								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==$get->pegawai) echo 'selected'; ?>><?php echo $row->nama; ?> (<?php echo $row->jabatan; ?>)</option>
 					<?php  
 					endforeach;
 					?>
@@ -80,12 +90,20 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>	
 					<div class="form-group">
 						<div class="col-md-12"> <hr> </div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<small><strong class="text-red">*</strong>	Field wajib diisi!</small> <br>
 							<small><strong class="text-blue">*</strong>	Field Optional</small>
 						</div>
-						<div class="col-md-3 col-xs-6 pull-right">
-							<button type="submit" class="btn btn-app">
+						<div class="col-md-3">
+							<a href="<?php echo site_url('surat_keluar') ?>" class="btn btn-app hvr-shadow">
+								<i class="ion ion-reply"></i> Kembali
+							</a>
+						</div>
+						<div class="col-md-5 col-xs-6 pull-right">
+							<a href="<?php echo site_url("surat_keluar/print_surat/{$get->ID}") ?>" class="btn btn-app btn-print hvr-shadow">
+								<i class="fa fa-print"></i> Cetak
+							</a>
+							<button type="submit" class="btn btn-app hvr-shadow pull-right">
 								<i class="fa fa-save"></i> Simpan
 							</button>
 						</div>
@@ -99,7 +117,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					 *
 					 * @var string
 					 **/
-					$this->load->view('create-surat/data-pemohon');
+					$this->load->view('surat-keluar/data-pemohon');
 					?>
 				</div>
 			</div>

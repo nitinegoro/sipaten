@@ -30,8 +30,18 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Nama Desa : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
-							<input type="text" class="form-control" name="isi[nama_desa]" value="<?php echo $get->nama_desa; ?>">
-							<p class="help-block"><?php echo form_error('isi[nama_desa]', '<small class="text-red">', '</small>'); ?></p>
+							<select name="isi[desa]" class="form-control">
+								<option value="">- PILIH -</option>
+					<?php  
+					/* Loop Data Pegawai */
+					foreach($this->surat_keluar->get_desa() as $row) :
+					?>
+								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==$isi->desa) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
+					<?php  
+					endforeach;
+					?>
+							</select>
+							<p class="help-block"><?php echo form_error('isi[desa]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">

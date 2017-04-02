@@ -3,7 +3,7 @@
 	<div class="col-md-12 col-xs-12">
 		<div class="box box-primary">
             <div class="box-header with-border">
-              	<h3 class="box-title"> <?php echo $title; ?></h3>
+              	<h3 class="box-title"><?php echo $title; ?></h3>
             </div>
 <?php  
 /**
@@ -19,14 +19,14 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7 block-no-surat">
 							<strong><?php echo $surat->kode_surat; ?>/</strong>
-							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo set_value('nomor_surat'); ?>">
+							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $this->create_surat->get_nomor_surat($surat->id_surat, null); ?>">
 							<strong>/<?php echo $this->option->get('kode_kecamatan'); ?>/<?php echo date('Y') ?></strong>
 							<p class="help-block"><?php echo form_error('nomor_surat', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Surat Rekomendasi Keterangan Dari Lurah / Desa</p>
+							<p class="legend-form">Surat Pengantar dari kelurahan / Desa</p>
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
@@ -44,13 +44,13 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Desa : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
-							<select name="desa" class="form-control">
+							<select name="isi[desa]" class="form-control">
 								<option value="">- PILIH -</option>
 					<?php  
 					/* Loop Data Pegawai */
 					foreach($this->create_surat->get_desa() as $row) :
 					?>
-								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==set_value('desa')) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
+								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==set_value('isi[desa]')) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
 					<?php  
 					endforeach;
 					?>
@@ -60,21 +60,14 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Keterangan Domisili</p>
+							<p class="legend-form">Pengantar keperluan</p>
 						</div>
-						<label for="email" class="control-label col-md-3 col-xs-12">Nama Perusahaan : <strong class="text-red">*</strong></label>
+						<label for="email" class="control-label col-md-3 col-xs-12">Keperluan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
-							<input type="text" name="isi[nama_perusahaan]" class="form-control" value="<?php echo set_value('isi[nama_perusahaan]'); ?>">
-							<p class="help-block"><?php echo form_error('isi[nama_perusahaan]', '<small class="text-red">', '</small>'); ?></p>
+							<input type="text" name="isi[keperluan]" class="form-control" value="<?php echo set_value('isi[keperluan]'); ?>">
+							<p class="help-block"><?php echo form_error('isi[keperluan]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="email" class="control-label col-md-3 col-xs-12">Alamat  : <strong class="text-red">*</strong></label>
-						<div class="col-md-9">
-							<textarea name="isi[alamat_perusahaan]" class="form-control" cols="30" rows="3"><?php echo set_value('isi[alamat_perusahaan]'); ?></textarea>
-							<p class="help-block"><?php echo form_error('isi[alamat_perusahaan]', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form"></p>

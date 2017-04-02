@@ -36,35 +36,43 @@ $date = new DateTime($get->tanggal);
                 </tr>
             </table>
             <p>Menerangkan dengan sesungguhnya bahwa :</p>
-            <table class="table-bordered" width="100%" style="margin-top: 10px; margin-bottom:10px;">
+            <table class="table-bordered" width="100%" style="margin-top: 10px; margin-bottom:10px; font-size: 11px;">
                 <tr>
                     <th width="40">No</th>
                     <th>Nama</th>
-                    <th>Tempat, Tanggal Lahir</th>
-                    <th width="150">Status Hubungan Dalam Keluarga (SHDK)</th>
+                    <th>NIK</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tempat Lahir</th>
+                    <th width="100">Tanggal Lahir</th>
+                    <th width="150">SHDK</th>
                 </tr>
                 <tr>
                     <td class="text-center">1.</td>
                     <td><?php echo $get->nama_lengkap; ?></td>
-                    <td><?php echo ucfirst($get->tmp_lahir).', '.date_id($get->tgl_lahir); ?></td>
-                    <td class="text-center"><?php echo strtoupper($get->status_kk); ?></td>
+                    <td class="text-center"><?php echo $get->nik; ?></td>
+                    <td class="text-center"><?php echo strtoupper($get->jns_kelamin); ?></td>
+                    <td><?php echo ucfirst($get->tmp_lahir) ?></td>
+                    <td><?php echo date_id($get->tgl_lahir) ?></td>
+                    <td class="text-center"><?php echo strtoupper($get->status_kk) ?></td>
                 </tr>
             <?php 
             /* Loop data penduduk */
-            $number = 2;
-            for($key = 0; $key < count(@$isi->penduduk); $key++) : 
-
-                $penduduk = explode('|', $isi->penduduk[$key]);
+            $key_no = 1;
+            foreach($isi->pengikut as $key => $value) :
+                $ikut = $this->db->get_where('penduduk', array('ID' => $value->id))->row();
             ?>
                 <tr>
-                    <td class="text-center"><?php echo $number++; ?>.</td>
-                    <td><?php echo $penduduk[0]; ?></td>
-                    <td><?php echo $penduduk[1]; ?></td>
-                    <td class="text-center"><?php echo $penduduk[2]; ?></td>
+                    <td class="text-center"><?php echo ++$key_no; ?>.</td>
+                    <td><?php echo $ikut->nama_lengkap; ?></td>
+                    <td class="text-center"><?php echo $ikut->nik; ?></td>
+                    <td class="text-center"><?php echo strtoupper($ikut->jns_kelamin); ?></td>
+                    <td><?php echo ucfirst($ikut->tmp_lahir) ?></td>
+                    <td><?php echo date_id($ikut->tgl_lahir) ?></td>
+                    <td class="text-center"><?php echo strtoupper($ikut->status_kk) ?></td>
                 </tr>
-            <?php endfor; ?>
+            <?php endforeach; ?>
             </table>
-            <p class="indent">Nama-nama tersebut diatas memang benar warga Desa <?php echo $isi->nama_desa; ?> yang berdomisisli di <?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' Kelurahan '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten').' Prov. '.$this->option->get('provinsi'); ?> dan memang benar berdasarkan data pemantauan kami dilapangan yang bersangkutan adalah benar <strong>KELUARGA TIDAK MAMPU</strong>.</p>
+            <p class="indent">Nama-nama tersebut diatas memang benar warga Desa <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> yang berdomisisli di <?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' Kelurahan '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten').' Prov. '.$this->option->get('provinsi'); ?> dan memang benar berdasarkan data pemantauan kami dilapangan yang bersangkutan adalah benar <strong>KELUARGA TIDAK MAMPU</strong>.</p>
             <p class="indent">Demikiaan, Surat Keterangan Kurang Mampu ini dibuat, agar dapat dipergunakan untuk <strong>"<?php echo strtoupper($isi->keperluan); ?>"</strong>.</p>
         </div>
         <div class="mail-footer">

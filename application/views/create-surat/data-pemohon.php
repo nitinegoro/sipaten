@@ -1,4 +1,4 @@
-<div id="sticker">
+<div id="sticker" style="background: white;">
 					<table class="table table-bordered">
 						<tbody>
 							<tr>

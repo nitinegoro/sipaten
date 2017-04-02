@@ -1,6 +1,6 @@
 /*!
-* @author Vicky Nitinrgoro <pkpvicky@gmail.com>
-* @package Jquery, Bootstraps JS, Tautocomplete, Bootstrap Notify
+* @author 	: Vicky Nitinegoro <pkpvicky@gmail.com>
+* @package 	: Jquery, Bootstraps JS, Tautocomplete, Bootstrap Notify, Datatables
 */
 $(document).ready(function () {
 
@@ -42,19 +42,83 @@ $(document).ready(function () {
             }
         },
         onchange: function () 
-        {
-            select_penduduk(cari_pengikut.id());
-            alert('Ok');
-            $("#cari-pengikut").val('ok');
-        },
-        onclick: function() {
-        	alert('Ok');
+        {	
+			$.get( base_url + '/penduduk/get/' + cari_pengikut.id(), function(data) 
+			{
+			    $('div#modal-input-status-hubungan').modal('show');
+
+			    $('span#nama-pengikut').html(data.nama + ' (' + data.nik + ')');
+			    
+			    document.getElementById('status-pengikut').focus();
+			    
+			    $("form#form-input-status").submit( function(event) 
+			    {
+			    	event.preventDefault();
+
+				  	var $form = $( this ),
+				    	set_status = $form.find("input[name='status']").val();
+
+				    $.post( base_url + '/create_surat/add_pengikut/', { 
+				    	id: cari_pengikut.id(), 
+				    	nama : data.nama,
+				    	jns_kelamin : data.jns_kelamin,
+						tmp_tgl_lahir : data.tmp_tgl_lahir,
+						nik : data.nik,
+				    	status: set_status 
+				    } ).done(function( response )  {
+				  		$('div#modal-input-status-hubungan').modal('hide');
+
+				    	table_items.ajax.reload();
+				  	});
+			    });
+			});
         }
     });
 
+    /*!
+    * Get Data Pengikut
+    */
+    var url = ( $('#data-pengikut').data('type') === 'create' ) ? '/create_surat' : '/surat_keluar',
+   	table_items = $('#data-pengikut').DataTable({ 
+        "processing": true, 
+        "paging": false,
+        "ordering": false,
+        "info": false,
+        "bInfo": false,
+        "searching": false,
+        "ajax": {
+           "url": base_url + url + "/get_pengikut/" + $('#data-pengikut').data('id'),
+       	},
+	  	"columns": [
+	  		{ className: "text-center"}, 
+	  		null,
+	  		{ width:'170' },
+	  		null,
+	  		{ className: "text-center", width:'150' },
+	  		{ className: "text-center", width:'90' }
+	  	],
+   	});
+
+   	/*!
+	* Delete Data Pengikut
+   	*/
+   	$('#data-pengikut tbody').on( 'click', 'a.show-pengikut', function () 
+    {
+    	var param = $(this).data('id');
+
+		$.get( base_url + '/create_surat/remove_pengikut/' + param, function(data) 
+		{
+			table_items.ajax.reload();
+		});    	
+    }).on( 'click', 'a.delete-pengikut', function () {
+    	var param = $(this).data('id')
+    		key = $(this).data('key');
+
+		$.get( base_url + '/surat_keluar/remove_pengikut/' + param + '/' + key, function(data) 
+		{
+			table_items.ajax.reload();
+		});    	
+    });
 });
 
-function select_penduduk(param) 
-{
-	
-}
+

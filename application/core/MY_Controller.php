@@ -130,7 +130,7 @@ class Sipaten extends MY_Controller
 	{
 		switch ($param) 
 		{
-			case 'domisili-perusahaan':
+			case 'keterangan-domisili-perusahaan':
 				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[desa]', 'Desa', 'trim|required');
@@ -144,10 +144,10 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[nama_usaha]', 'Nama Usaha', 'trim|required');
 				$this->form_validation->set_rules('isi[alamat_usaha]', 'Alamat Usaha', 'trim|required');
 				break;
-			case 'kelakuan-baik':
+			case 'keterangan-kelakuan-baik':
 				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
-				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[keperluan]', 'Keperluan', 'trim|required');
 				break;
 			case 'perpanjangan-izin-oprasional':
@@ -168,6 +168,7 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[no_pendaftaran]', 'No Pendaftaran', 'trim|required');
 				break;
 			case 'izin-keramaian':
+				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[keperluan]', 'Keperluan', 'trim|required');
 				$this->form_validation->set_rules('isi[hari]', 'Hari', 'trim|required');
 				$this->form_validation->set_rules('isi[tanggal]', 'Tanggal', 'trim|required');
@@ -178,7 +179,7 @@ class Sipaten extends MY_Controller
 			case 'surat-izin-gangguan':
 				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
-				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[ttd_desa]', 'Tanda Tangan', 'trim|required');
 				$this->form_validation->set_rules('isi[jabatan_desa]', 'Jabatan', 'trim|required');
 				$this->form_validation->set_rules('isi[nama]', 'Nama Toko / Kios / Perusahaan ', 'trim|required');
@@ -188,7 +189,7 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[lokasi_bangunan]', 'Lokasi Bangunan', 'trim|required');
 				break;
 			case 'izin-mendirikan-bangunan':
-				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[nama_perusahaan]', 'Nama Perusahaan', 'trim|required');
 				$this->form_validation->set_rules('isi[alamat_perusahaan]', 'Alamat Perusahaan', 'trim|required');
 				$this->form_validation->set_rules('isi[jenis_bangunan]', 'Jenis Bangunan', 'trim|required');
@@ -202,7 +203,7 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[luas_bangunan][0][2]', 'Nilai', 'trim|required');
 				break;
 			case 'rekomendasi-siup':
-				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[nama_perusahaan]', 'Nama Perusahaan', 'trim|required');
 				$this->form_validation->set_rules('isi[alamat_perusahaan]', 'Alamat Perusahaan', 'trim|required');
 				$this->form_validation->set_rules('isi[kedudukan]', 'Kedudukan', 'trim|required');
@@ -228,13 +229,14 @@ class Sipaten extends MY_Controller
 			case 'keterangan-tidak-mampu':
 				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
-				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[pejabat_lurah]', 'Pejabat Lurah / Kades', 'trim|required');
 				$this->form_validation->set_rules('isi[nip_pejabat_lurah]', 'NIP Pejabat Lurah / Kades', 'trim|required');
 				$this->form_validation->set_rules('isi[jabatan_pejabat_lurah]', 'Jabatan Pejabat Lurah', 'trim|required');
 				$this->form_validation->set_rules('isi[keperluan]', 'Keperluan', 'trim|required');
+				$this->form_validation->set_rules('isi[pengikut][0][id]', 'Minimal 1 Orang dalam Keluarga yang mengikuti', 'trim|required');
 				break;
-			case 'keterangan-datang':
+			case 'keterangan-pindah-jiwa':
 				$this->form_validation->set_rules('isi[alasan_pindah]', 'Alasan Pindah', 'trim|required');
 				$this->form_validation->set_rules('isi[desa]', 'Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[kecamatan]', 'Kecamatan', 'trim|required');
@@ -243,7 +245,7 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[tgl_pindah]', 'Tanggal Pindah', 'trim|required');
 				break;
 			case 'sp3fat':
-				$this->form_validation->set_rules('isi[nama_desa]', 'Nama Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[no_surat_kuasa]', 'No. Surat Kuasa', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_surat_kuasa]', 'Tanggal Surat Kuasa', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_diketahui]', 'Tanggal diketahui', 'trim|required');
@@ -278,13 +280,25 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[tmp_mati]', 'Keterangan Tempat Kematian  ', 'trim|required');
 				break;
 			case 'keterangan-tinggal-sementara':
-				$this->form_validation->set_rules('desa', 'Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[desa]', 'Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[no_tanda_masuk]', 'No. Tanda Masuk', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_tanda_masuk]', 'Tanggal Tanda Masuk', 'trim|required');
 				$this->form_validation->set_rules('isi[alasan_pindah]', 'Alasan Pindah', 'trim|required');
 				$this->form_validation->set_rules('isi[nama]', 'Nama', 'trim|required');
 				$this->form_validation->set_rules('isi[alamat]', 'Alamat', 'trim|required');
 				$this->form_validation->set_rules('isi[pekerjaan]', 'Pekerjaan', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat_pindah]', 'Alamat Pindah', 'trim|required');
+				$this->form_validation->set_rules('isi[kd_pos_pindah]', 'Kode Pos', 'trim|required');
+				$this->form_validation->set_rules('isi[desa_pindah]', 'Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[kecamatan_pindah]', 'Kecamatan', 'trim|required');
+				$this->form_validation->set_rules('isi[kabupaten_pindah]', 'Kab/Kota', 'trim|required');
+				$this->form_validation->set_rules('isi[provinsi_pindah]', 'Provinsi', 'trim|required');
+				break;
+			case 'keterangan-bersih-lingkungan':
+				$this->form_validation->set_rules('isi[desa]', 'Desa', 'trim|required');
+				$this->form_validation->set_rules('isi[no_surat_ket]', 'Nomor Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_surat_ket]', 'Tanggal Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[keperluan]', 'Keperluan', 'trim|required');
 				break;
 			default:
 				# code...surat

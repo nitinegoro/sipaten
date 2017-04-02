@@ -13,6 +13,8 @@ class Create_surat extends Sipaten
 
 		$this->load->model('mcreate_surat', 'create_surat');
 
+		$this->load->library(array('cart'));
+
 		$this->now_date = date('Y-m-d');
 
 		if($this->uri->segment(2) == FALSE)
@@ -138,16 +140,17 @@ class Create_surat extends Sipaten
 
 		if($this->form_validation->run() == TRUE)
 		{
-/*			$this->create_surat->update_surat($penduduk->nik, $param);
-			redirect("create_surat/index/{$param}");*/
+			$this->create_surat->update_surat($penduduk->nik, $param);
+
+			$this->cart->destroy();
+
+			redirect("create_surat/index/{$param}");
 
 
-			echo json_encode($this->input->post('isi'), JSON_PRETTY_PRINT);
+			$this->output->set_content_type('application/json')->set_output(json_encode($this->input->post('isi'), JSON_PRETTY_PRINT));
 		//	exit;
 
-		}else {
-
-
+		} 
 
 		$this->data = array(
 			'title' => $surat->nama_kategori, 
@@ -160,13 +163,72 @@ class Create_surat extends Sipaten
 		);
 
 		$this->template->view("create-surat/form/{$surat->slug}", $this->data);
-
-		}
 	}
 
 
+	/**
+	 * Insert To Session Data Pengikut
+	 *
+	 * @param Integer (ID) key from penduduk
+	 * @return Booalean
+	 **/
+	public function add_pengikut()
+	{
+		$data = array(
+			'qty'     => 1,
+			'price' => 10,
+			'id'      => $this->input->post('id'),
+			'name'    => $this->input->post('nama'),
+			'jns_kelamin' => $this->input->post('jns_kelamin'),
+			'tmp_tgl_lahir' => $this->input->post('tmp_tgl_lahir'),
+			'nik' => $this->input->post('nik'), 
+			'status' => $this->input->post('status')
+		);
+		
+		$this->cart->insert($data);
+	}
 
+	/**
+	 * Remove Data Pengikut
+	 *
+	 * @param String (key) cart item
+	 * @return string
+	 **/
+	public function remove_pengikut($param = '')
+	{
+		$this->cart->remove($param);
+	}
+
+	/**
+	 * Get Cart Data Pengikut
+	 *
+	 * @var string
+	 **/
+	public function get_pengikut()
+	{
+		$pengikut = array('data' => array());
+
+		if($this->cart->contents() != FALSE)
+		{
+			$key_index = 0;
+			foreach($this->cart->contents() as $key => $value)
+			{
+				$pengikut['data'][] = array(
+					"<a data-id='{$key}' class='text-red show-pengikut' data-toggle='tooltip' data-placement='top' title='Hapus'><i class='fa fa-trash-o'></i></a><input type='hidden' name='isi[pengikut][{$key_index}][id]' value='{$value['id']}'><input type='hidden' name='isi[pengikut][{$key_index}][status_hubungan]' value='{$value['status']}'>",
+					$value['nik'],
+					$value['name'],
+					$value['jns_kelamin'],
+					$value['tmp_tgl_lahir'],
+					strtoupper($value['status'])
+				);
+
+				$key_index++;
+			}
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($pengikut, JSON_PRETTY_PRINT));
+	}
 }
 
-/* End of file Surat_keterangan.php */
-/* Location: ./application/controllers/Surat_keterangan.php */
+/* End of file Creat_surat.php */
+/* Location: ./application/controllers/Creat_surat.php */

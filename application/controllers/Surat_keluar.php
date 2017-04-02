@@ -31,6 +31,8 @@ class Surat_keluar extends Sipaten
 
 		$this->load->model('msurat_keluar', 'surat_keluar');
 
+		$this->load->library(array('cart'));
+
 		$this->now_date = date('Y-m-d');
 
 		$this->start_date = $this->input->get('start');
@@ -142,6 +144,8 @@ class Surat_keluar extends Sipaten
 		if($this->form_validation->run() == TRUE)
 		{
 			$this->surat_keluar->update_surat($param);
+
+			$this->cart->destroy();
 			
 			redirect("surat_keluar/get/{$param}");
 
@@ -214,6 +218,75 @@ class Surat_keluar extends Sipaten
 	}
 
 	/**
+	 * Get Cart Data Pengikut
+	 *
+	 * @var string
+	 **/
+	public function get_pengikut($param = 0)
+	{
+		$surat = $this->surat_keluar->get($param);
+
+		$isi = json_decode($surat->isi_surat);
+
+		$key_index = 0;
+
+		$pengikut = array('data' => array());
+
+		if(@$isi->pengikut != FALSE)
+		{
+			foreach($isi->pengikut as $key => $value)
+			{
+				$get = $this->db->get_where('penduduk', array('ID' => $value->id))->row(); 
+
+				$pengikut['data'][] = array(
+					"<a data-id='{$param}' data-key='{$key}' class='text-red delete-pengikut' data-toggle='tooltip' data-placement='top' title='Hapus'><i class='fa fa-trash-o'></i></a><input type='hidden' name='isi[pengikut][{$key_index}][id]' value='{$value->id}'><input type='hidden' name='isi[pengikut][{$key_index}][status_hubungan]' value='{$value->status_hubungan}'>",
+					$get->nik,
+					$get->nama_lengkap,
+					$get->jns_kelamin,
+					$get->tmp_lahir.", ".date_id($get->tgl_lahir),
+					strtoupper($value->status_hubungan)
+				);
+
+				$key_index++;
+			}
+		}
+
+		foreach($this->cart->contents() as $key => $value)
+		{
+			$pengikut['data'][] = array(
+					"<a data-id='{$key}' class='text-red show-pengikut' data-toggle='tooltip' data-placement='top' title='Hapus'><i class='fa fa-trash-o'></i></a><input type='hidden' name='isi[pengikut][{$key_index}][id]' value='{$value['id']}'><input type='hidden' name='isi[pengikut][{$key_index}][status_hubungan]' value='{$value['status']}'>",
+				$value['nik'],
+				$value['name'],
+				$value['jns_kelamin'],
+				$value['tmp_tgl_lahir'],
+				strtoupper($value['status'])
+			);
+
+			$key_index++;
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($pengikut, JSON_PRETTY_PRINT));
+	}
+
+	/**
+	 * Hapus Data Pengikut dalam surat
+	 *
+	 * @param Integer (key pengikut)
+	 * @return Void
+	 **/
+	public function remove_pengikut($param = 0, $key = 0)
+	{
+		$surat = $this->surat_keluar->get($param);
+
+		$isi = json_decode($surat->isi_surat);
+
+		if(is_array($isi->pengikut))
+			unset($isi->pengikut[$key]);
+
+		$this->db->update('surat', array('isi_surat' => json_encode($isi) ), array('ID' => $param) );
+	}
+
+	/**
 	 * Get Action Multiple
 	 *
 	 * @return 301
@@ -231,6 +304,7 @@ class Surat_keluar extends Sipaten
 				break;
 		}
 	}
+
 
 	public function trigger_event()
 	{

@@ -124,7 +124,7 @@ echo form_close();
 echo form_open(site_url('surat_keluar/bulk_action'));
 ?>
 				<table class="table table-hover table-bordered col-md-12 mini-font" style="margin-top: 10px;">
-					<thead>
+					<thead id="head-data-surat">
 						<tr>
 							<th width="30">
 			                    <div class="checkbox checkbox-inline">

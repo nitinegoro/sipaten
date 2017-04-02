@@ -179,12 +179,20 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>	
 					<div class="form-group">
 						<div class="col-md-12"> <hr> </div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<small><strong class="text-red">*</strong>	Field wajib diisi!</small> <br>
 							<small><strong class="text-blue">*</strong>	Field Optional</small>
 						</div>
-						<div class="col-md-3 col-xs-6 pull-right">
-							<button type="submit" class="btn btn-app">
+						<div class="col-md-3">
+							<a href="<?php echo site_url('surat_keluar') ?>" class="btn btn-app hvr-shadow">
+								<i class="ion ion-reply"></i> Kembali
+							</a>
+						</div>
+						<div class="col-md-5 col-xs-6 pull-right">
+							<a href="<?php echo site_url("surat_keluar/print_surat/{$get->ID}") ?>" class="btn btn-app btn-print hvr-shadow">
+								<i class="fa fa-print"></i> Cetak
+							</a>
+							<button type="submit" class="btn btn-app hvr-shadow pull-right">
 								<i class="fa fa-save"></i> Simpan
 							</button>
 						</div>

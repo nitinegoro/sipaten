@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-tour/css/bootstrap-tour.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-switch/css/bootstrap-switch.min.css"); ?>">
   <link  rel="stylesheet" href="<?php echo base_url("public/dist/css/hover-min.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("public/plugins/datatables/dataTables.bootstrap.css"); ?>">
   <link rel="shortcut icon" type="image/png" href="<?php echo base_url("public/image/{$this->option->get('small_logo')}"); ?>"/>
   <script src="<?php echo base_url("public/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/bootstrap/js/bootstrap.min.js"); ?>"></script>
@@ -44,6 +45,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("public/plugins/autocomplete/tautocomplete.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/bootstrap-tour/js/bootstrap-tour.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/bootstrap-switch/js/bootstrap-switch.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/datatables/jquery.dataTables.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/datatables/dataTables.bootstrap.min.js"); ?>"></script>
   <script type="text/javascript"> 
       var base_url   = '<?php echo site_url(); ?>';
       var base_path  = '<?php echo base_url('public'); ?>';
