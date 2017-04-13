@@ -68,6 +68,17 @@ class Employee extends Sipaten
 		$this->template->view('pegawai/data-pegawai', $this->data);
 	}
 
+	public function print_out()
+	{
+		$this->data = array(
+			'title' => "Data Kepegawaian", 
+			'employee' => $this->employee->get_all($this->per_page, $this->page),
+			'num_employee' => $this->employee->get_all(null, null, 'num')
+		);
+
+		$this->load->view('pegawai/print-pegawai', $this->data);
+	}
+
 	public function create()
 	{
 		$this->page_title->push('Master Data', 'Tambah Data Kepegawaian');

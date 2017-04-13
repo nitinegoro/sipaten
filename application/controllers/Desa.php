@@ -193,6 +193,17 @@ class Desa extends Sipaten
 		redirect('desa');
 	}
 
+	public function print_out()
+	{
+		$this->data = array(
+			'title' => "Data Desa / Kelurahan", 
+			'desa' => $this->desa->get_all($this->per_page, $this->page),
+			'num_desa' => $this->desa->get_all(null, null, 'num')
+		);
+
+		$this->load->view('desa/print-desa', $this->data);
+	}
+
 	/**
 	 * Check Ketersediaan NIK
 	 *

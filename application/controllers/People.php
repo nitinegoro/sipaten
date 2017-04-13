@@ -73,6 +73,17 @@ class People extends Sipaten
 		$this->template->view('people/data-people', $this->data);
 	}
 
+	public function print_out()
+	{
+		$this->data = array(
+			'title' => "Data Penduduk", 
+			'people' => $this->people->get_all($this->per_page, $this->page),
+			'num_people' => $this->people->get_all(null, null, 'num')
+		);
+
+		$this->load->view('people/print-people', $this->data);
+	}
+
 	public function create()
 	{
 		$this->page_title->push('Master Data', 'Tambah Data Penduduk');

@@ -7,7 +7,7 @@
             <div class="box-body">
                 <div id="chart-populasi-status"></div>
             </div>
-            <div class="box-header">
+            <div class="box-body">
                 <a href="<?php echo site_url('stats_people/print_out/gol-darah') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
                 <a href="<?php echo site_url('stats_people/export/gol_darah') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
             </div>

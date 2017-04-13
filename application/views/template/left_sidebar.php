@@ -111,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </li>
 
-        <li class="treeview <?php echo active_link_multiple(array('stats_people')); ?>">
+        <li class="treeview <?php echo active_link_multiple(array('stats_people','surat_stats')); ?>">
             <a href="#">
                <i class="fa fa-bar-chart-o"></i> <span>Statistik</span>
                <span class="pull-right-container">
@@ -122,11 +122,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li class="<?php echo active_link_controller('stats_people') ?>">
               <a href="<?php echo site_url('stats_people'); ?>"><i class="fa fa-angle-double-right"></i> Kependudukan</a>
             </li>
-            <li>
-              <a href="" class="<?php echo active_link_controller('sdf') ?>"><i class="fa fa-angle-double-right"></i> Surat Non Perizinan</a>
+            <li class="<?php echo active_link_method('index','surat_stats') ?>">
+              <a href="<?php echo site_url('surat_stats') ?>"><i class="fa fa-angle-double-right"></i> Surat Non Perizinan</a>
             </li>
-            <li>
-              <a href="" class="<?php echo active_link_controller('sdf') ?>"><i class="fa fa-angle-double-right"></i> Surat Perizinan</a>
+            <li class="<?php echo active_link_method('perizinan','surat_stats') ?>">
+              <a href="<?php echo site_url('surat_stats/perizinan') ?>"><i class="fa fa-angle-double-right"></i> Surat Perizinan</a>
             </li>
           </ul>
         </li>

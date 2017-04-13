@@ -39,7 +39,7 @@ echo form_open(current_url(), array('method' => 'get'));
 				</div>
 				<div class="pull-right">
 					<a href="<?php echo site_url('employee/create') ?>" class="btn btn-flat btn-warning hvr-shadow btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
-					<a href="<?php echo site_url('employee/print_out') ?>" class="btn btn-flat btn-warning hvr-shadow btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("employee/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-flat btn-warning hvr-shadow btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
 					<a href="<?php echo site_url('employee/export') ?>" class="btn btn-flat btn-warning hvr-shadow btn-sm"><i class="fa fa-download"></i> Ekspor</a>	
 					<a href="<?php echo site_url('employee/import') ?>" class="btn btn-flat btn-warning hvr-shadow btn-sm"><i class="fa fa-upload"></i> Impor</a>
 				</div>
