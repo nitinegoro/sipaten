@@ -82,8 +82,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
         </li>
 
-        <li class="<?php echo active_link_controller('ha'); ?>">
-            <a href="<?php echo site_url('main') ?>">
+        <li class="<?php echo active_link_controller('analytics'); ?>">
+            <a href="<?php echo site_url('analytics') ?>">
                <i class="fa fa-line-chart"></i> <span> Analisa Pelayanan</span>
             </a>
         </li>
@@ -128,6 +128,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li class="<?php echo active_link_method('perizinan','surat_stats') ?>">
               <a href="<?php echo site_url('surat_stats/perizinan') ?>"><i class="fa fa-angle-double-right"></i> Surat Perizinan</a>
             </li>
+            <li class="<?php echo active_link_method('index','penilaian_stats') ?>">
+              <a href="<?php echo site_url('penilaian_stats') ?>"><i class="fa fa-angle-double-right"></i> Penilaian Pelayanan</a>
+            </li>
           </ul>
         </li>
 
@@ -148,7 +151,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </li>
 
-        <li class="treeview <?php echo active_link_multiple(array('setting','role')); ?>">
+        <li class="treeview <?php echo active_link_multiple(array('setting','role','penilaian')); ?>">
             <a href="#">
                <i class="fa fa-wrench"></i> <span>Pengaturan</span>
                <span class="pull-right-container">
@@ -158,6 +161,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <ul class="treeview-menu">
             <li class="<?php echo active_link_controller('setting') ?>">
               <a href="<?php echo site_url('setting') ?>"><i class="fa fa-angle-double-right"></i> Pengaturan Sistem</a>
+            </li>
+            <li class="<?php echo active_link_controller('penilaian') ?>">
+              <a href="<?php echo site_url('penilaian') ?>?from_url=<?php echo current_url() ?>"><i class="fa fa-angle-double-right"></i> Manajemen Penilaian (KIOSK)</a>
             </li>
             <li class="<?php echo active_link_controller('role') ?>">
               <a href="<?php echo site_url('role') ?>"><i class="fa fa-angle-double-right"></i> Hak Akses Pengguna</a>
@@ -194,6 +200,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <section class="content">
 <?php  
 /* End of file left_sidebar.php */
-/* Location: ./application/modules/Akademik/views/_template/left_sidebar.php */
+/* Location: ./application/views/_template/left_sidebar.php */
 ?>
 

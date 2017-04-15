@@ -126,7 +126,7 @@ Highcharts.chart('chart-populasi-desa', {
         plotShadow: false,
         type: 'pie'
     },
-    colors: ['#fff3e0','#ffe0b2','#ffcc80','#ffb74d', '#ffa726', '#ff9800','#fb8c00','#f57c00','#ef6c00','#e65100','#ffd180','#ffab40','#ff9100','#ff6d00'],
+    colors: ['#FF9200','#52BD33','#F6CA7C','#E8AB2E','#FDF06D','#FCC700','#E5B15D','#42CBEC','#FF6A19','#CDCDCD'],
     title: {
         text: 'Populasi Penduduk Desa - Kecamatan <?php echo $this->option->get('kecamatan'); ?>'
     },

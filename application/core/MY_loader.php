@@ -7,10 +7,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @var string
  **/
 
-// if you HMVC system
-// require APPPATH."third_party/MX/Loader.php";
+/* load the MX_Loader class */
+require APPPATH."third_party/MX/Loader.php";
 
-class MY_Loader extends CI_Loader
+class MY_Loader extends MX_Loader
 {
 	private $javascripts = array();
 
@@ -105,6 +105,8 @@ class MY_Loader extends CI_Loader
 	{
 		return $this->_inline_scripting;
 	}
+
+
 }
 
 /* End of file MY_loader.php */

@@ -42,6 +42,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("public/plugins/datepicker/bootstrap-datepicker.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/heightchart/highcharts.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/heightchart/modules/exporting.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/heightchart/modules/data.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/heightchart/modules/drilldown.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/autocomplete/tautocomplete.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/bootstrap-tour/js/bootstrap-tour.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/bootstrap-switch/js/bootstrap-switch.min.js"); ?>"></script>

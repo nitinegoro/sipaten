@@ -67,7 +67,7 @@ echo form_open(site_url('user/bulk_action'));
 			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
 			                    </div>
 							</th>
-							<th class="text-center">NIK</th>
+							<th class="text-center">NIP</th>
 							<th>Nama Pengguna</th>
 							<th class="text-center">Alamat</th>
 							<th class="text-center">Telepon</th>

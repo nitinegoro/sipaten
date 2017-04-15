@@ -14,7 +14,7 @@ echo form_hidden('ID', $get->user_id);
 ?>
 			<div class="box-body" style="margin-top: 10px;">
 				<div class="form-group">
-					<label for="email" class="control-label col-md-3 col-xs-12">NIK : <strong class="text-red">*</strong></label>
+					<label for="email" class="control-label col-md-3 col-xs-12">NIP : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<input type="text" name="nip" class="form-control" value="<?php echo $get->nip; ?>">
 						<p class="help-block"><?php echo form_error('nip', '<small class="text-red">', '</small>'); ?></p>

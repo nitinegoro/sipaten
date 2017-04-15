@@ -173,6 +173,37 @@ textarea:focus
   background: @400;
 }
 
+.inner-addon {
+  position: relative;
+}
+
+/* style glyph */
+.inner-addon .glyphicon,
+.inner-addon .fa 
+{
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+
+/* align glyph */
+.left-addon .glyphicon,
+.left-addon .gfa
+ { 
+  left:  0px;
+}
+.right-addon .glyphicon,
+.right-addon .fa 
+{ 
+  right: 0px;
+}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+
 /*
  * Component: Nav
  * --------------

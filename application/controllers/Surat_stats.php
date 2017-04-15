@@ -24,6 +24,8 @@ class Surat_stats extends Sipaten
 		$this->end_date = $this->input->get('end');
 
 		$this->breadcrumbs->unshift(1, 'Statistik', "surat_stats");
+
+		$this->load->model('msurat_stats','stats');
 	}
 
 	public function index()

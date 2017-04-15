@@ -1,0 +1,46 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * Customer Satisfaction
+ * 
+ * @author Vicky Nitinegoro <pkpvicky@gmail.com>
+ **/
+
+class Satisfaction extends CI_Controller 
+{
+	public $data = array();
+
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->load->model('mpenilaian', 'penilaian');
+		
+		$this->data = array('title' => "Customer Satisfaction");	
+	}
+
+	public function index()
+	{
+		$this->load->view('vsatisfaction', $this->data);
+	}
+
+	public function create()
+	{
+		$this->penilaian->create();
+
+		$this->output->set_content_type('application/json')->set_output(json_encode(array('status' => TRUE)));
+	}
+
+	public function test($value='')
+	{
+		$now = date('Y-m-d');
+
+		$query = $this->db->query("SELECT * FROM surat WHERE DATE(waktu_selesai) = '{$now}'")->result();
+		echo "<pre>";
+		print_r($query);
+	}
+
+}
+
+/* End of file Satisfaction.php */
+/* Location: ./application/modules/satisfaction/controllers/Satisfaction.php */
