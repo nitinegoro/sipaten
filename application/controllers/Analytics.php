@@ -8,6 +8,8 @@ class Analytics extends Sipaten
 		parent::__construct();
 		
 		$this->breadcrumbs->unshift(1, 'Analisa Pelayanan', "analytics");
+
+		$this->load->model('manalytics','analytics');
 	}
 
 	public function index()
@@ -18,11 +20,20 @@ class Analytics extends Sipaten
 			'title' => "Analisa Pelayanan", 
 			'breadcrumb' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show(),
+			'get' => $this->analytics->get()
 		);
 
 		$this->template->view('analytics/index', $this->data);	
 	}
 
+	public function test()
+	{
+		$pisah = explode('/', '65/0002/19.04.01.2003/2017');
+
+		echo "<pre>";
+
+		print_r($pisah);
+	}
 }
 
 /* End of file Analytics.php */

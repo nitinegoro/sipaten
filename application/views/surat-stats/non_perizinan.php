@@ -45,7 +45,7 @@ Highcharts.chart('chart-non-perizinan', {
         }
     },
     series: [{
-        name: 'Brands',
+        name: 'Total',
         colorByPoint: true,
         data: [
         <?php  

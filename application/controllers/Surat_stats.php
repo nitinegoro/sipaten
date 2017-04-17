@@ -26,6 +26,8 @@ class Surat_stats extends Sipaten
 		$this->breadcrumbs->unshift(1, 'Statistik', "surat_stats");
 
 		$this->load->model('msurat_stats','stats');
+
+		$this->load->model('mpenilaian','penilaian');
 	}
 
 	public function index()
@@ -58,6 +60,20 @@ class Surat_stats extends Sipaten
 		$this->template->view('surat-stats/perizinan', $this->data);
 	}
 
+	public function service($value='')
+	{
+		$this->page_title->push('Statistik', 'Penilaian Pelayanan');
+
+		$this->breadcrumbs->unshift(2, 'Penilaian Pelayanan', "surat_stats/perizinan");
+
+		$this->data = array(
+			'title' => "Penilaian Pelayanan", 
+			'breadcrumb' => $this->breadcrumbs->show(),
+			'page_title' => $this->page_title->show(),
+		);
+		
+		$this->template->view('surat-stats/service', $this->data);
+	}
 }
 
 /* End of file Surat_stats.php */

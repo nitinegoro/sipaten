@@ -7,7 +7,7 @@ $this->load->view('surat-stats/nav-surat-stats', $this->data);
    <div class="col-md-9">
         <div class="box box-solid">
             <div class="box-body">
-                <div id="chart-perizinan"></div>
+                <div id="chart-service"></div>
             </div>
             <div class="box-body">
             	<div id="chart-bar"></div>
@@ -17,7 +17,7 @@ $this->load->view('surat-stats/nav-surat-stats', $this->data);
 </div>
 
 <script>
-Highcharts.chart('chart-perizinan', {
+Highcharts.chart('chart-service', {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -26,7 +26,7 @@ Highcharts.chart('chart-perizinan', {
     },
     colors: ['#FF9200','#F6CA7C','#FCC700','#E8AB2E','#52BD33','#42CBEC','#CDCDCD','#FF6A19'],
     title: {
-        text: 'Data Surat Non Perizinan'
+        text: 'Penilaian Terhadap Pelayanan'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -53,11 +53,11 @@ Highcharts.chart('chart-perizinan', {
          * Loop Data Desa
          *
          **/
-        foreach($this->stats->surat_category(NULL, 'perizinan') as $row) :
+        foreach($this->penilaian->get_answers() as $row) :
         ?>
             {
-            	name: '<?php echo $row->nama_kategori; ?>',
-            	y:<?php echo $this->stats->count_by_category($row->id_surat); ?>
+                name: '<?php echo $row->jawaban; ?>',
+                y:<?php echo $this->penilaian->count($row->ID); ?>
             },
         <?php  
         endforeach;
@@ -65,14 +65,16 @@ Highcharts.chart('chart-perizinan', {
     }]
 });
 
+
+
 /* Bar Chart */
 Highcharts.chart('chart-bar', {
     chart: {
         type: 'column'
     },
-    colors:['#FFAB19'],
+    colors:['#42CBEC','#76B640','#FCC700','#CB2C19'],
     title: {
-        text: 'Rata-rata Data Surat Keluar'
+        text: 'Rata-rata Penilaian Terhadap Pelayanan'
     },
     subtitle: {
         text: 'Tahun : <?php echo $this->stats->year; ?>'
@@ -85,7 +87,7 @@ Highcharts.chart('chart-bar', {
         min: 0,
         allowDecimals: false,
         title: {
-            text: 'Surat Keluar'
+            text: 'Jumlah Responden'
         }
     },
     tooltip: {
@@ -104,12 +106,24 @@ Highcharts.chart('chart-bar', {
         }
     },
     series: [{
-        name: 'Surat Keluar',
-        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->stats->count_by_month($m, 2017, 'perizinan').','; ?>]
+        name: 'Sangat Baik',
+        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count(1).','; ?>]
+
+    },{
+        name: 'Baik',
+        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count(2).','; ?>]
+
+    },{
+        name: 'Cukup Baik',
+        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count(3).','; ?>]
+
+    },{
+        name: 'Kurang Baik',
+        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count(4).','; ?>]
 
     }]
 });
 </script>
 <?php
-/* End of file perizinan.php */
-/* Location: ./application/views/surat-stats/perizinan.php */
+/* End of file service.php */
+/* Location: ./application/views/surat-stats/service.php */

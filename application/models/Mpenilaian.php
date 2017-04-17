@@ -72,7 +72,34 @@ class Mpenilaian extends CI_Model
 			'tanggal' => date('Y-m-d H:i:s') 
 		);
 
-	//	$this->db->insert('penilaian', $data);
+		$this->db->insert('penilaian', $data);
+	}
+
+	/**
+	 * Hitung Jumlah Responder
+	 *
+	 * @param Integer (ID) from jawaban
+	 * @return Integer
+	 **/
+	public function count($param = 0)
+	{
+		$this->db->select('tanggal');
+
+		if($this->input->get('start_date') != '')
+			$this->db->where('tanggal >= ', $this->input->get('start_date'));
+
+		if($this->input->get('end_date') != '')
+			$this->db->where('tanggal <= ', $this->input->get('end_date'));
+
+		if($this->input->get('month') != '')
+			$this->db->where('MONTH(tanggal) =', $this->input->get('month'));
+
+		if($this->input->get('year') != '')
+			$this->db->where('YEAR(tanggal) =', $this->input->get('year'));
+
+		$this->db->where('jawaban', $param);
+
+		return $this->db->get('penilaian')->num_rows();
 	}
 
 }

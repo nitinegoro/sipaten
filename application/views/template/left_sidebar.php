@@ -128,8 +128,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li class="<?php echo active_link_method('perizinan','surat_stats') ?>">
               <a href="<?php echo site_url('surat_stats/perizinan') ?>"><i class="fa fa-angle-double-right"></i> Surat Perizinan</a>
             </li>
-            <li class="<?php echo active_link_method('index','penilaian_stats') ?>">
-              <a href="<?php echo site_url('penilaian_stats') ?>"><i class="fa fa-angle-double-right"></i> Penilaian Pelayanan</a>
+            <li class="<?php echo active_link_method('service','surat_stats') ?>">
+              <a href="<?php echo site_url('surat_stats/service') ?>"><i class="fa fa-angle-double-right"></i> Penilaian Pelayanan</a>
             </li>
           </ul>
         </li>
