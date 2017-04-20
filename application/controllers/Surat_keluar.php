@@ -156,6 +156,7 @@ class Surat_keluar extends Sipaten
 			'breadcrumb' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show(),
 			'pegawai' => $this->create_surat->pegawai(),
+			'pemeriksa' => $this->create_surat->pemeriksa(),
 			'syarat' => $this->create_surat->get_syarat($surat->syarat),
 			'get' => $surat,
 			'isi' => json_decode($surat->isi_surat)
@@ -173,7 +174,7 @@ class Surat_keluar extends Sipaten
 	 **/
 	public function set_verification($param = 0, $status = 'pending')
 	{
-		$this->surat_keluar->upadte_status($param, $status);
+		$this->surat_keluar->update_status($param, $status);
 
 		$surat = $this->surat_keluar->get($param);
 

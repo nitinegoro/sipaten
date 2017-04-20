@@ -109,7 +109,8 @@ class Msurat_keluar extends Sipaten_model
 		$surat = array(
 			'nomor_surat' => $this->input->post('nomor_surat'),
 			'isi_surat' => json_encode($this->input->post('isi')),
-			'pegawai' => $this->input->post('ttd_pejabat') 
+			'pegawai' => $this->input->post('ttd_pejabat'),
+			'pemeriksa' => $this->input->post('pemeriksa')
 		);
 
 		$this->db->update('surat', $surat, array('ID' => $param));
@@ -135,7 +136,7 @@ class Msurat_keluar extends Sipaten_model
 	 * @param String (status)
 	 * @return void
 	 **/
-	public function upadte_status($param = 0, $status = 'pending')
+	public function update_status($param = 0, $status = 'pending')
 	{
 		$surat = array(
 			'waktu_selesai' => date('Y-m-d H:i:s'),

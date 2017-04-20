@@ -126,6 +126,17 @@ class Sipaten_model extends MY_Model
 	}
 
 	/**
+	 * Get Pemeriksa Surat
+	 *
+	 * @param Integer (ID)
+	 **/
+	public function pemeriksa()
+	{
+		return $this->db->query("SELECT pegawai.* FROM pegawai RIGHT JOIN users ON users.nip = pegawai.nip WHERE users.role_id = '2'")->result();
+	}
+
+
+	/**
 	 * Get Data Penduduk
 	 *
 	 * @param Integer (ID)

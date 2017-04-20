@@ -107,19 +107,19 @@ Highcharts.chart('chart-bar', {
     },
     series: [{
         name: 'Sangat Baik',
-        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count(1).','; ?>]
+        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count_month(1, $m, $this->penilaian->tahun).','; ?>]
 
     },{
         name: 'Baik',
-        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count(2).','; ?>]
+        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count_month(2, $m, $this->penilaian->tahun).','; ?>]
 
     },{
         name: 'Cukup Baik',
-        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count(3).','; ?>]
+        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count_month(3, $m, $this->penilaian->tahun).','; ?>]
 
     },{
         name: 'Kurang Baik',
-        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count(4).','; ?>]
+        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count_month(4, $m, $this->penilaian->tahun).','; ?>]
 
     }]
 });

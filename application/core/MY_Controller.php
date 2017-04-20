@@ -306,6 +306,7 @@ class Sipaten extends MY_Controller
 		}
 		$this->form_validation->set_rules('nomor_surat', 'Nomor Surat', 'trim|required');
 		$this->form_validation->set_rules('ttd_pejabat', 'Tanda Tangan', 'trim|required');
+		$this->form_validation->set_rules('pemeriksa', 'Petugas Verifikasi', 'trim|required');
 	}
 }
 

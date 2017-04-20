@@ -50,56 +50,52 @@
       </style>
    </head>
    <body class="login-page">
-      <div class="login-box">
-         <div class="login-logo">
-            <img src="<?php echo base_url("public/image/logo/{$this->option->get('logo_login')}"); ?>" alt="Logo Sistem">
+<div class="login-box">
+   <div class="login-logo">
+      <img src="<?php echo base_url("public/image/logo/{$this->option->get('logo_login')}"); ?>" alt="Logo Sistem">
+   </div>
+   <div class="arrow-up"></div>
+   <div class="login-box-body">
+      <?php echo $this->session->flashdata('alert'); ?>
+      <form action="<?php echo site_url('login?from_url='.$this->input->get('from_url')); ?>" method="post">
+         <div class="form-group has-feedback">
+            <span class="glyphicon glyphicon-user form-control-feedback" style="color: white;"></span>
+            <input type="text" name="nik" class="form-control padd" placeholder="Masukkan NIK" value="<?php echo set_value('nik'); ?>">
+            <?php echo form_error('nik', '<small class="text-red">', '</small>'); ?>
          </div>
-         <!-- /.login-logo -->
-         <div class="arrow-up"></div>
-         <div class="login-box-body">
-            <?php echo $this->session->flashdata('alert'); ?>
-            <form action="<?php echo site_url('login?from_url='.$this->input->get('from_url')); ?>" method="post">
-               <div class="form-group has-feedback">
-                  <span class="glyphicon glyphicon-user form-control-feedback" style="color: white;"></span>
-                  <input type="text" name="nik" class="form-control padd" placeholder="Masukkan NIK" value="<?php echo set_value('nik'); ?>">
-                  <?php echo form_error('nik', '<small class="text-red">', '</small>'); ?>
-               </div>
-               <div class="form-group has-feedback">
-                  <span class="glyphicon glyphicon-lock form-control-feedback" style="color: white;"></span>
-                  <input type="password" id="login-password" name="password" class="form-control padd" value="<?php echo set_value('password'); ?>" placeholder="Masukkan Password">
-                    <div class="checkbox checkbox-primary pull-right">
-                        <input id="checkbox2" class="styled" type="checkbox" onclick="showpassword()" />
-                        <label for="checkbox2">
-                            Tampilkan Password
-                        </label>
-                    </div>
-                  <?php echo form_error('password', '<small class="text-red">', '</small>'); ?>
-               </div>
-               <div class="form-group" style="margin-top: 30px;">
-                  <label for="">Kode Captcha :</label>
-                  <div class="captcha text-center">
-                     <p id="text-captcha"><?php echo $captcha['word']; ?></p>
-                  </div>
-                  <a href="" id="reload-captcha"><small>Refresh Captcha</small></a>
-               </div>
-               <div class="form-group has-feedback">
-                  <input type="text" class="form-control" name="captcha" placeholder="Kode Captcha" value="<?php echo set_value('captcha'); ?>">
-                  <?php echo form_error('captcha', '<small class="text-red">', '</small>'); ?>
-               </div>
-               <div class="row">
-                  <!-- /.col -->
-                  <div class="col-xs-12">
-                     <button type="submit" class="btn-login btn btn-block">Masuk</button>
-                  </div>
-                  <!-- /.col -->
-               </div>
-            </form>
+         <div class="form-group has-feedback">
+            <span class="glyphicon glyphicon-lock form-control-feedback" style="color: white;"></span>
+            <input type="password" id="login-password" name="password" class="form-control padd" value="<?php echo set_value('password'); ?>" placeholder="Masukkan Password">
+              <div class="checkbox checkbox-primary pull-right">
+                  <input id="checkbox2" class="styled" type="checkbox" onclick="showpassword()" />
+                  <label for="checkbox2">
+                      Tampilkan Password
+                  </label>
+              </div>
+            <?php echo form_error('password', '<small class="text-red">', '</small>'); ?>
          </div>
-         <!-- /.login-box-body -->
-         <div class="lockscreen-footer text-center" style="margin-top: 0px; color: #444">
-            <small>Hak Cipta &copy; <?php echo date('Y'); ?> <br> Kec. Koba, Kab. Bangka Tengah. All rights reserved.</small>
+         <div class="form-group" style="margin-top: 30px;">
+            <label for="">Kode Captcha :</label>
+            <div class="captcha text-center">
+               <p id="text-captcha"><?php echo $captcha['word']; ?></p>
+            </div>
+            <a href="" id="reload-captcha"><small>Refresh Captcha</small></a>
          </div>
-      </div>
+         <div class="form-group has-feedback">
+            <input type="text" class="form-control" name="captcha" placeholder="Kode Captcha" value="<?php echo set_value('captcha'); ?>">
+            <?php echo form_error('captcha', '<small class="text-red">', '</small>'); ?>
+         </div>
+         <div class="row">
+            <div class="col-xs-12">
+               <button type="submit" class="btn-login btn btn-block">Masuk</button>
+            </div>
+         </div>
+      </form>
+   </div>
+   <div class="lockscreen-footer text-center" style="margin-top: 0px; color: #444">
+      <small>Hak Cipta &copy; <?php echo date('Y'); ?> <br> Kec. Koba, Kab. Bangka Tengah. All rights reserved.</small>
+   </div>
+</div>
       <!-- /.login-box -->
       <!-- jQuery 2.2.3 -->
       <script src="<?php echo base_url('public/plugins/jQuery/jquery-2.2.3.min.js'); ?>"></script>
@@ -128,3 +124,4 @@
       </script>
    </body>
 </html>
+

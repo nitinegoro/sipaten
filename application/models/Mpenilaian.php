@@ -5,10 +5,14 @@ class Mpenilaian extends CI_Model
 {
 	public $now_date;
 
+	public $tahun;
+
 	public function __construct()
 	{
 		parent::__construct();
 		
+		$this->tahun = (!$this->input->get('year')) ? date('Y') : $this->input->get('year'); 
+
 		$this->now_date = date('Y-m-d');
 	}
 	
@@ -96,6 +100,25 @@ class Mpenilaian extends CI_Model
 
 		if($this->input->get('year') != '')
 			$this->db->where('YEAR(tanggal) =', $this->input->get('year'));
+
+		$this->db->where('jawaban', $param);
+
+		return $this->db->get('penilaian')->num_rows();
+	}
+
+	/**
+	 * Hitung Jumlah Responder
+	 *
+	 * @param Integer (ID) from jawaban
+	 * @return Integer
+	 **/
+	public function count_month($param = 0, $month = FALSE, $year = FALSE)
+	{
+		$this->db->select('tanggal');
+
+		$this->db->where('MONTH(tanggal) =', $month);
+
+		$this->db->where('YEAR(tanggal) =', $year);
 
 		$this->db->where('jawaban', $param);
 

@@ -163,6 +163,7 @@ class Mcreate_surat extends Sipaten_model
 				'tanggal' => date('Y-m-d'),
 				'isi_surat' => '',
 				'pegawai' => 0,
+				'pemeriksa' => 0,
 				'user' => $this->user,
 				'waktu_mulai' => date('Y-m-d H:i:s'),
 				'waktu_selesai' => '',
