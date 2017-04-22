@@ -37,6 +37,10 @@
     </div>
 </div>
 
+<?php  
+/* PERMISSION */
+if( $this->permission->is_true('surat_perizinan', 'on') OR $this->permission->is_true('surat_non_perizinan', 'on') ) :
+?>
 <div class="row">
     <div class="col-md-6">
         <div class="box box-default box-solid" id="block-tombol-surat-keterangan">
@@ -93,7 +97,9 @@
         </div>
     </div>
 </div>
-
+<?php  
+endif;
+?>
 <div class="row">
     <div class="col-md-12">
       <div class="box box-default box-solid block-chart-surat-keluar">

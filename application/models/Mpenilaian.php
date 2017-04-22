@@ -91,21 +91,26 @@ class Mpenilaian extends CI_Model
 	 **/
 	public function count($param = 0)
 	{
-		$this->db->select('tanggal');
+		$this->db->join('surat', 'penilaian.surat = surat.ID', 'RIGHT');
+
+		$this->db->select('penilaian.tanggal');
 
 		if($this->input->get('start_date') != '')
-			$this->db->where('tanggal >= ', $this->input->get('start_date'));
+			$this->db->where('penilaian.tanggal >= ', $this->input->get('start_date'));
 
 		if($this->input->get('end_date') != '')
-			$this->db->where('tanggal <= ', $this->input->get('end_date'));
+			$this->db->where('penilaian.tanggal <= ', $this->input->get('end_date'));
 
 		if($this->input->get('month') != '')
-			$this->db->where('MONTH(tanggal) =', $this->input->get('month'));
+			$this->db->where('MONTH(penilaian.tanggal) =', $this->input->get('month'));
 
 		if($this->input->get('year') != '')
-			$this->db->where('YEAR(tanggal) =', $this->input->get('year'));
+			$this->db->where('YEAR(penilaian.tanggal) =', $this->input->get('year'));
 
-		$this->db->where('jawaban', $param);
+		if($this->input->get('user') != '')
+			$this->db->where('surat.user', $this->input->get('user'));
+
+		$this->db->where('penilaian.jawaban', $param);
 
 		return $this->db->get('penilaian')->num_rows();
 	}
@@ -118,13 +123,18 @@ class Mpenilaian extends CI_Model
 	 **/
 	public function count_month($param = 0, $month = FALSE, $year = FALSE)
 	{
-		$this->db->select('tanggal');
+		$this->db->join('surat', 'penilaian.surat = surat.ID', 'RIGHT');
 
-		$this->db->where('MONTH(tanggal) =', $month);
+		$this->db->select('penilaian.tanggal');
 
-		$this->db->where('YEAR(tanggal) =', $year);
+		$this->db->where('MONTH(penilaian.tanggal) =', $month);
 
-		$this->db->where('jawaban', $param);
+		$this->db->where('YEAR(penilaian.tanggal) =', $year);
+
+		if($this->input->get('user') != '')
+			$this->db->where('surat.user', $this->input->get('user'));
+
+		$this->db->where('penilaian.jawaban', $param);
 
 		return $this->db->get('penilaian')->num_rows();
 	}

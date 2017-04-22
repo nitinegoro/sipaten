@@ -119,49 +119,51 @@
 	</div>
 	<script>
 
-
 	$('a.get-people-modal').click( function() 
 	{
 		audio.play();
 
-		$.get("<?php echo base_url('penilaian/get_people_in_day'); ?>", function(result) 
+		var jawaban = $(this).data('answer');
+
+		$.get("<?php echo base_url('satisfaction/get_people_in_day'); ?>", function(result) 
 		{
 			$('ul#list-people').html(result);
 			
 			$('div#select-name').modal('show');
-		});
+
+			$('ul#list-people > li').on( 'click', function(oper_jawaban) 
+			{
+				audio.play();
+
+				var service = $(this).data('service'),
+					name 	= $(this).data('name'),
+					surat 	= $(this).data('people'),
+					answer = jawaban;
+
+				$('div#modal-confirm').modal('show');
+
+				$('strong#name-people').html( name );
+
+				$('strong#name-service').html( service );
+
+				$('button.send-feedback').click( function() 
+				{
+					$.post( '<?php echo site_url('satisfaction/create') ?>', {
+						answer : answer,
+						surat : surat
+					}, function(res) {
+						if(res.status == true) 
+						{
+							$('div#select-name, div#modal-confirm').modal('hide');
+							audio_speech("<?php echo $this->option->get('audio_speech'); ?>");
+							$('div#modal-thank').modal('show');
+						}
+					});
+				});
+			}); /* End ul > li */
+		}); /* End Get XHR */
 	});
 
-	function jawab(argument) 
-	{
-		audio.play();
-
-		var service = $(argument).data('service'),
-			name 	= $(argument).data('name'),
-			surat 	= $(argument).data('people'),
-			answer = $(argument).data('answer');
-
-		$('div#modal-confirm').modal('show');
-
-		$('strong#name-people').html( name );
-
-		$('strong#name-service').html( service );
-
-		$('button.send-feedback').click( function() 
-		{
-			$.post( '<?php echo site_url('satisfaction/create') ?>', {
-				answer : answer,
-				surat : surat
-			}, function(res) {
-				if(res.status == true) 
-				{
-					$('div#select-name, div#modal-confirm').modal('hide');
-					audio_speech("<?php echo $this->option->get('audio_speech'); ?>");
-					$('div#modal-thank').modal('show');
-				}
-			});
-		});
-	}
 
 	$('button.close, a[data-dismiss="modal"], button.btn').click( function() 
 	{

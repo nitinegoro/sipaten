@@ -55,6 +55,20 @@
                     ?>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="control-label">User :</label>
+                    <select name="user" class="form-control">
+                        <option value="">-- PILIH --</option>
+                        <?php  
+                        /* Loop Data User */
+                        foreach($this->option->get_user() as $row) :
+                        ?>
+                                <option value="<?php echo $row->user_id; ?>" <?php if($row->user_id==$this->input->get('user')) echo "selected"; ?>><?php echo $row->name; ?></option>
+                        <?php  
+                        endforeach;
+                        ?>
+                    </select>
+                </div>
             </div>
             <div class="box-footer">
                 <a href="<?php echo current_url(); ?>" class="btn btn-warning hvr-shadow pull-left"><i class="fa fa-times"></i> Reset</a>

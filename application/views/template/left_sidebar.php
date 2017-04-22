@@ -18,7 +18,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
-
+<?php  
+/* PERMISSION */
+if( $this->permission->is_true('surat_perizinan', 'on') ) :
+?>
         <li class="treeview <?php echo is_surat('non perizinan', $this->uri->segment(3)); ?>">
             <a href="#">
                <i class="fa fa-file-text-o"></i> <span> Surat Non Perizinan</span>
@@ -45,6 +48,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       ?>
           </ul>
         </li>
+<?php  
+endif;
+
+/* PERMISSION */
+if( $this->permission->is_true('surat_perizinan', 'on') ) :
+?>
         <li class="treeview <?php echo is_surat('perizinan', $this->uri->segment(3)); ?>">
             <a href="#">
                <i class="ion ion-clipboard"></i> <span>Surat Perizinan</span>
@@ -69,7 +78,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       ?>
           </ul>
         </li>
-
+<?php  
+endif;
+?>
         <li class="<?php echo active_link_controller('ha'); ?>">
             <a href="<?php echo site_url('main') ?>">
                <i class="glyphicon glyphicon-search"></i> <span> Cek Pelayanan Online</span>

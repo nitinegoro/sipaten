@@ -38,6 +38,9 @@ class Msurat_stats extends Sipaten_Model
 		if($this->input->get('year') != '')
 			$this->db->where('YEAR(tanggal) =', $this->input->get('year'));
 
+		if($this->input->get('user') != '')
+			$this->db->where('surat.user', $this->input->get('user'));
+
 		$this->db->where('surat.kategori', $param);
 
 		return $this->db->get('surat')->num_rows();
@@ -52,6 +55,9 @@ class Msurat_stats extends Sipaten_Model
 		$this->db->where('MONTH(tanggal) =', $month);
 
 		$this->db->where('YEAR(tanggal) =', $this->year);
+
+		if($this->input->get('user') != '')
+			$this->db->where('surat.user', $this->input->get('user'));
 
 		$this->db->where('kategori_surat.jenis', $jenis);
 

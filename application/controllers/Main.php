@@ -33,6 +33,15 @@ class Main extends Sipaten
 		$this->template->view('main-dashboard', $this->data);
 	}
 
+	public function test()
+	{
+		//echo $this->session->userdata('ID');
+		echo "<pre>";
+		var_dump( $this->permission->is_true('surat_perizinan','on') );
+
+	}
+
+
 }
 
 /* End of file Main.php */

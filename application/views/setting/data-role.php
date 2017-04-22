@@ -50,11 +50,13 @@ echo form_open(site_url('user/bulk_action'));
 						<td class="text-center"><?php echo $this->db->get_where('users', array('role_id' => $value->role_id))->num_rows(); ?></td>
 						<td class="text-center" width="80">
 					<?php  
-					if($value->role_id > 1) :
+					if($key > 1) :
 					?>
 							<a href="<?php echo site_url("role/update/{$value->role_id}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
+					<?php  if($key > 3) : ?>
 							<a class="icon-button text-red get-delete-role" data-id="<?php echo $value->role_id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 					<?php  
+						endif;
 					endif;
 					?>
 						</td>
