@@ -11,6 +11,7 @@
   	<link href="https://fonts.googleapis.com/css?family=Carter+One|Squada+One|Averia%20Sans%20Libre|Viga" rel="stylesheet">
   	<script src="<?php echo base_url("public/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
   	<script src="<?php echo base_url("public/bootstrap/js/bootstrap.min.js"); ?>"></script>
+  	<script src="<?php echo base_url("public/plugins/artyom/artyom.min.js"); ?>"></script>
   	<style>
 	h1 { 
 		font-family: 'Viga', sans-serif; 
@@ -78,13 +79,13 @@
 					<h4 class="modal-title"><i class="fa fa-search"></i> Silahkan pilih nama anda!</h4>
 				</div>
 				<div class="modal-body">
-					<ul id="myUL">
-					<?php foreach($this->penilaian->get_people_in_day() as $row) : ?>
-					  <li class="get-confirm" data-people="<?php echo $row->ID; ?>" data-name="<?php echo $row->nama_lengkap; ?>" data-service="<?php echo $row->nama_kategori; ?>">
-					  	<span><?php echo $row->nama_lengkap; ?></span><br>
-						<small>--- <i class="fa fa-file-text"></i> <?php echo $row->nama_kategori; ?></small>
-					  </li>
-					 <?php endforeach; ?>
+					<ul id="list-people">
+<!-- 					<?php foreach($this->penilaian->get_people_in_day() as $row) : ?>
+  <li class="get-confirm" data-people="<?php echo $row->ID; ?>" data-name="<?php echo $row->nama_lengkap; ?>" data-service="<?php echo $row->nama_kategori; ?>">
+  	<span><?php echo $row->nama_lengkap; ?></span><br>
+	<small>--- <i class="fa fa-file-text"></i> <?php echo $row->nama_kategori; ?></small>
+  </li>
+ <?php endforeach; ?> -->
 					</ul>
 				</div>
 			</div>
@@ -117,44 +118,50 @@
 		</div>
 	</div>
 	<script>
+
+
 	$('a.get-people-modal').click( function() 
 	{
 		audio.play();
 
-		var answer = $(this).data('answer');
-
-		$('div#select-name').modal('show');
-
-		$('li.get-confirm').click( function() 
+		$.get("<?php echo base_url('penilaian/get_people_in_day'); ?>", function(result) 
 		{
-			audio.play();
-
-			var service = $(this).data('service'),
-				name 	= $(this).data('name')
-				surat 	= $(this).data('people');
-
-			$('div#modal-confirm').modal('show');
-
-			$('strong#name-people').html( name );
-
-			$('strong#name-service').html( service );
-
-			$('button.send-feedback').click( function() 
-			{
-				$.post( '<?php echo site_url('satisfaction/create') ?>', {
-					answer : answer,
-					surat : surat
-				}, function(res) {
-					if(res.status == true) 
-					{
-						$('div#select-name, div#modal-confirm').modal('hide');
-
-						$('div#modal-thank').modal('show');
-					}
-				});
-			});
+			$('ul#list-people').html(result);
+			
+			$('div#select-name').modal('show');
 		});
 	});
+
+	function jawab(argument) 
+	{
+		audio.play();
+
+		var service = $(argument).data('service'),
+			name 	= $(argument).data('name'),
+			surat 	= $(argument).data('people'),
+			answer = $(argument).data('answer');
+
+		$('div#modal-confirm').modal('show');
+
+		$('strong#name-people').html( name );
+
+		$('strong#name-service').html( service );
+
+		$('button.send-feedback').click( function() 
+		{
+			$.post( '<?php echo site_url('satisfaction/create') ?>', {
+				answer : answer,
+				surat : surat
+			}, function(res) {
+				if(res.status == true) 
+				{
+					$('div#select-name, div#modal-confirm').modal('hide');
+					audio_speech("<?php echo $this->option->get('audio_speech'); ?>");
+					$('div#modal-thank').modal('show');
+				}
+			});
+		});
+	}
 
 	$('button.close, a[data-dismiss="modal"], button.btn').click( function() 
 	{
@@ -173,6 +180,48 @@
 	  audio.play();
 	}, true);
 	audio.src = source;
+
+	function audio_speech(message) 
+	{
+	    artyom.initialize({
+	        lang:"id-ID",
+	        debug:true,
+	        continuous:true,
+	        listen:false
+	    }).then(function(){
+	        console.log("Artyom has been correctly initialized");
+	    }).catch(function(){
+	        console.error("An error occurred during the initialization");
+	    });
+
+	    if (artyom.speechSupported()) {
+
+	        var text = message;
+
+	        if (text) 
+	        {
+	            var lines = text.split("\n").filter(function (e) {
+	                return e
+	            });
+	            var totalLines = lines.length - 1;
+
+	            for (var c = 0; c < lines.length; c++) {
+	                var line = lines[c];
+	                if (totalLines == c) {
+	                    artyom.say(line, {
+	                        onEnd: function () {
+
+	                        }
+	                    });
+	                } else {
+	                    artyom.say(line);
+	                }
+	            }
+	        }
+	    } else {
+	        alert("Your browser cannot talk !");
+	    }
+	}
 	</script>
 </body>
 </html>

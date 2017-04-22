@@ -23,7 +23,11 @@ class Mpenilaian extends CI_Model
 
 	public function save()
 	{
-		$this->db->update('tb_options', array('option_value' => $this->input->post('pertanyaan')), array('option_name' => 'pertanyaan_penilaian'));
+		foreach($this->input->post('option') as $key => $value)
+			$this->db->update('tb_options', 
+				array('option_value' => $value), 
+				array('option_name' => $key)
+		);
 
 		if( is_array($this->input->post('jawaban')) ) 
 		{

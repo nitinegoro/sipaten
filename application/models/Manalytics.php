@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Manalytics extends CI_Model 
+class Manalytics extends Sipaten_model 
 {
 	public $code;
 

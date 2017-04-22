@@ -52,6 +52,7 @@ class Surat_keluar extends Sipaten
 		$this->page = $this->input->get('page');
 
 		$this->load->js('https://js.pusher.com/2.2/pusher.min.js');
+		$this->load->js(base_url("public/dist/js/push.js"));
 		$this->load->js(base_url("public/app/surat_keluar.js"));
 	}
 
@@ -188,12 +189,14 @@ class Surat_keluar extends Sipaten
 				$data = array(
 					'message' => $this->session->userdata('account')->name." Menolak surat pengajuan anda.",
 					'param' => $param,
+					'icon' => (!$this->session->userdata('account')->photo) ? base_url("public/image/avatar.jpg") : base_url("public/image/{$this->session->userdata('account')->photo}"),
 					'status' => 'warning'
 				); 
 			} else {
 				$data = array(
 					'message' => $this->session->userdata('account')->name." Memverifikasi surat pengajuan anda.",
 					'param' => $param,
+					'icon' => (!$this->session->userdata('account')->photo) ? base_url("public/image/avatar.jpg") : base_url("public/image/{$this->session->userdata('account')->photo}"),
 					'status' => 'info'
 				); 
 			}

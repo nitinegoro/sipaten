@@ -10,17 +10,23 @@ class Penilaian extends Sipaten
 		$this->breadcrumbs->unshift(1, 'Menajemen Penilaian', "penilaian");
 
 		$this->load->model('mpenilaian','penilaian');
+
+		$this->load->js(base_url("public/plugins/artyom/artyom.min.js"));
+		$this->load->js(base_url("public/app/penilaian.js?v1.0.1"));
 	}
 
 	public function index()
 	{
 		$this->page_title->push('Menajemen Penilaian', 'Administrator KIOSK Penilaian');
 
-		$this->form_validation->set_rules('pertanyaan', 'Pertanyaan', 'trim|required');
-
-		if($this->input->post())
+		if($this->input->post()) 
+		{
 			foreach($this->input->post('jawaban') as $key => $value)
 				$this->form_validation->set_rules("jawaban[{$key}]", "Jawaban {$key}", 'trim|required');
+
+			foreach($this->input->post('option') as $key => $value)
+				$this->form_validation->set_rules("option[{$key}]", NULL, 'trim|required');
+		}
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -36,6 +42,19 @@ class Penilaian extends Sipaten
 		);
 
 		$this->template->view('penilaian/index', $this->data);	
+	}
+
+	public function get_people_in_day()
+	{
+		$data = "";
+		foreach($this->penilaian->get_people_in_day() as $row) 
+		{
+			$data .= "<li onclick='return jawab(this)' data-people='{$row->ID}' data-name='{$row->nama_lengkap}' data-service='{$row->nama_kategori}' data-answer='{$row->nama_kategori}'>";
+			$data .= "<span>{$row->nama_lengkap}</span><br><small>--- <i class='fa fa-file-text'></i> {$row->nama_kategori}</small>";
+			$data .= "</li>";
+		}
+
+		echo $data;
 	}
 
 }

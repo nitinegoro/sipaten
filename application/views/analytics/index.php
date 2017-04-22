@@ -98,6 +98,10 @@ if($this->analytics->get()) :
                     <td><?php echo $get->judul_surat; ?></td>
                 </tr>
                 <tr>
+                    <th class="bg-primary text-right">Petugas Pemeriksa :</th>
+                    <td><?php echo @$this->analytics->pegawai($get->pemeriksa)->nama;  ?></td>
+                </tr>
+                <tr>
                     <th class="bg-primary text-right">Penandatangan <br> Dokumen :</th>
                     <td><?php echo $get->nama; ?></td>
                 <tr>

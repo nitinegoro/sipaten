@@ -17,8 +17,8 @@ echo form_open_multipart(current_url(), array('class' => 'form-horizontal'));
 				<div class="form-group">
 					<label for="email" class="control-label col-md-2 col-xs-12">Pertanyaan : <strong class="text-red">*</strong></label>
 					<div class="col-md-9">
-						<textarea name="pertanyaan" class="form-control" rows="4"><?php echo $this->option->get('pertanyaan_penilaian'); ?></textarea>
-						<p class="help-block"><?php echo form_error('pertanyaan', '<small class="text-red">', '</small>'); ?></p>
+						<textarea name="option[pertanyaan_penilaian]" class="form-control" rows="4"><?php echo $this->option->get('pertanyaan_penilaian'); ?></textarea>
+						<p class="help-block"><?php echo form_error('option[pertanyaan_penilaian]', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<?php  
@@ -43,6 +43,16 @@ echo form_open_multipart(current_url(), array('class' => 'form-horizontal'));
 				<?php  
 				endforeach;
 				?>
+				<div class="form-group">
+					<label for="email" class="control-label col-md-2 col-xs-12">Audio Speech : <strong class="text-red">*</strong></label>
+					<div class="col-md-5">
+						<textarea name="option[audio_speech]" class="form-control" rows="4"><?php echo $this->option->get('audio_speech'); ?></textarea>
+						<p class="help-block"><?php echo form_error('option[audio_speech]', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+					<div class="col-md-4">
+						<button type="button" class="get-speech btn btn-app hvr-shadow"><i class="fa fa-play"></i> Test Audio</button>
+					</div>
+				</div>
 			</div>
 
 			<div class="box-footer with-border">

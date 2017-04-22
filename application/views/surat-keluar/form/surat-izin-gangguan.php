@@ -19,7 +19,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7 block-no-surat">
 							<strong><?php echo $get->kode_surat; ?>/</strong>
-							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $get->nomor_surat; ?>">
+							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $get->nomor_surat; ?>" readonly="">
 							<strong>/<?php echo $this->option->get('kode_kecamatan'); ?>/<?php echo date('Y') ?></strong>
 							<p class="help-block"><?php echo form_error('nomor_surat', '<small class="text-red">', '</small>'); ?></p>
 						</div>
@@ -114,6 +114,23 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form"></p>
 						</div>
+						<label for="pemeriksa" class="control-label col-md-3 col-xs-12">Petugas Verifikasi : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<select name="pemeriksa" class="form-control">
+								<option value="">- PILIH -</option>
+					<?php  
+					/* Loop Data Pegawai */
+					foreach($pemeriksa as $row) :
+					?>
+								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==$get->pemeriksa) echo 'selected'; ?>><?php echo $row->nama; ?></option>
+					<?php  
+					endforeach;
+					?>
+							</select>
+							<p class="help-block"><?php echo form_error('pemeriksa', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>	
+					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Tanda Tangan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
 							<select name="ttd_pejabat" class="form-control">
