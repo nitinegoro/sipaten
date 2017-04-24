@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          </div>
          <div class="pull-left info">
             <p><?php echo $this->session->userdata('account')->name; ?></p>
-            <small>Administrator</small>
+            <small><?php echo $this->role_name; ?></small>
          </div>
       </div>
       <ul class="sidebar-menu">
@@ -81,12 +81,13 @@ if( $this->permission->is_true('surat_perizinan', 'on') ) :
 <?php  
 endif;
 ?>
+<!--
         <li class="<?php echo active_link_controller('ha'); ?>">
             <a href="<?php echo site_url('main') ?>">
                <i class="glyphicon glyphicon-search"></i> <span> Cek Pelayanan Online</span>
             </a>
         </li>
-
+-->
         <li class="<?php echo active_link_controller('surat_keluar'); ?>">
             <a href="<?php echo site_url('surat_keluar') ?>">
                <i class="glyphicon glyphicon-envelope"></i> <span>Data Surat Keluar</span>
@@ -133,36 +134,34 @@ endif;
             <li class="<?php echo active_link_controller('stats_people') ?>">
               <a href="<?php echo site_url('stats_people'); ?>"><i class="fa fa-angle-double-right"></i> Kependudukan</a>
             </li>
+<?php  
+/* PERMISSION */
+if( $this->permission->is_true('statistik_surat_non_perizinan', 'on') ) :
+?>
             <li class="<?php echo active_link_method('index','surat_stats') ?>">
               <a href="<?php echo site_url('surat_stats') ?>"><i class="fa fa-angle-double-right"></i> Surat Non Perizinan</a>
             </li>
+<?php  
+endif;
+
+if( $this->permission->is_true('statistik_surat_perizinan', 'on') ) :
+?>
             <li class="<?php echo active_link_method('perizinan','surat_stats') ?>">
               <a href="<?php echo site_url('surat_stats/perizinan') ?>"><i class="fa fa-angle-double-right"></i> Surat Perizinan</a>
             </li>
+<?php  
+endif;
+?>
             <li class="<?php echo active_link_method('service','surat_stats') ?>">
               <a href="<?php echo site_url('surat_stats/service') ?>"><i class="fa fa-angle-double-right"></i> Penilaian Pelayanan</a>
             </li>
           </ul>
         </li>
 
-        <li class="treeview <?php echo active_link_multiple(array('user')); ?>">
-            <a href="#">
-               <i class="ion ion-person-stalker"></i> <span>Data Pengguna</span>
-               <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-               </span>
-            </a>
-          <ul class="treeview-menu">
-            <li class="<?php echo active_link_method('index','user') ?>">
-              <a href="<?php echo site_url('user') ?>"><i class="fa fa-angle-double-right"></i> Data pengguna</a>
-            </li>
-            <li class="<?php echo active_link_method('create','user') ?>">
-              <a href="<?php echo site_url('user/create') ?>"><i class="fa fa-angle-double-right"></i> Tambah Pengguna</a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="treeview <?php echo active_link_multiple(array('setting','role','penilaian')); ?>">
+<?php  
+if( $this->permission->is_true('pengaturan', 'on') ) :
+?>
+        <li class="treeview <?php echo active_link_multiple(array('setting','role','penilaian', 'user')); ?>">
             <a href="#">
                <i class="fa fa-wrench"></i> <span>Pengaturan</span>
                <span class="pull-right-container">
@@ -173,6 +172,9 @@ endif;
             <li class="<?php echo active_link_controller('setting') ?>">
               <a href="<?php echo site_url('setting') ?>"><i class="fa fa-angle-double-right"></i> Pengaturan Sistem</a>
             </li>
+            <li class="<?php echo active_link_controller('user') ?>">
+              <a href="<?php echo site_url('user') ?>?from_url=<?php echo current_url() ?>"><i class="fa fa-angle-double-right"></i> Pengguna Sistem</a>
+            </li>
             <li class="<?php echo active_link_controller('penilaian') ?>">
               <a href="<?php echo site_url('penilaian') ?>?from_url=<?php echo current_url() ?>"><i class="fa fa-angle-double-right"></i> Manajemen Penilaian (KIOSK)</a>
             </li>
@@ -181,9 +183,11 @@ endif;
             </li>
           </ul>
         </li>
-
-        <li class="<?php echo active_link_controller('ha'); ?>">
-            <a href="<?php echo site_url('main') ?>">
+<?php  
+endif;
+?>
+        <li class="<?php echo active_link_controller('userguide'); ?>">
+            <a href="<?php echo site_url('userguide') ?>">
                <i class="ion ion-help-circled"></i> <span> Panduan Sistem</span>
             </a>
         </li>

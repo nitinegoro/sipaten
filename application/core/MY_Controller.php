@@ -23,6 +23,10 @@ class Sipaten extends MY_Controller
 {
 	public $data = array();
 
+	public $role_name;
+
+	public $user_id;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -33,6 +37,10 @@ class Sipaten extends MY_Controller
 
 		if($this->session->has_userdata('authentifaction')==FALSE)
 			redirect(site_url('login?from_url='.current_url()));
+
+		$this->user_id = $this->session->userdata('account')->role_id;
+
+		$this->role_name = $this->option->get_role( $this->user_id )->role_name;
 	}
 
 	/**

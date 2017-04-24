@@ -71,6 +71,22 @@ if(!function_exists('active_link_multiple'))
     }
 }
 
+/**
+ * Untuk Method dan Parameter
+ *
+ * @param String (name Mehod)
+ * @param String (Uri segment 3)
+ * @return string (Active Menu)
+ **/
+if(!function_exists('active_link_uri'))
+{
+    function active_link_uri($uri = FALSE)
+    {
+        $ci    =& get_instance();
+
+        return ( $uri == $ci->uri->segment(3) ) ? 'active' : NULL;
+    }
+} 
 
 /**
  * Untuk Menu Surat Perizinan & Non Perizinan dalam satu Controller

@@ -8,8 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <b>Versi</b> <?php echo SIPATEN_VERSION; ?>
     </div>
    <div class="container text-center">
-      <small>Hak Cipta &copy; 2017 <?php if(date('Y')!=2017) echo "- ".date('Y'); ?> Kec. Koba, Kab. Koba All rights. Develop By <a href="http://teitramega.co.id" target="_blank">Teitra Mega</a>
-         reserved.<small>
+      <small>Hak Cipta &copy; 2017 <?php if(date('Y')!=2017) echo "- ".date('Y'); ?> Kec. Koba, Kab. Koba All rights reserved. Develop By <a href="http://teitramega.co.id" target="_blank">Teitra Mega</a>
+        .<small>
    </div>
 </footer>
         <div class="modal animated fadeIn modal-danger" id="logout" tabindex="-1" data-backdrop="static" data-keyboard="false">

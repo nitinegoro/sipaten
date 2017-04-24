@@ -24,7 +24,7 @@ Highcharts.chart('chart-service', {
         plotShadow: false,
         type: 'pie'
     },
-    colors: ['#FF9200','#F6CA7C','#FCC700','#E8AB2E','#52BD33','#42CBEC','#CDCDCD','#FF6A19'],
+    colors: ['#42CBEC','#76B640','#FCC700','#CB2C19'],
     title: {
         text: 'Penilaian Terhadap Pelayanan'
     },

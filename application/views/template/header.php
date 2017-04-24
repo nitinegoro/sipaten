@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     a { cursor: pointer; }
     div.checkbox, label.checkbox { padding-top:0px; padding-bottom: 0px; }
     .bg-silver { background:rgb(249,250,252); border:#444; }
-    .icon-button { font-size: 1.1em; margin: 5px 10px 0px 0px; }
+    .icon-button { font-size: 1.1em; margin: 5px 6px 0px 0px; }
     .text-line { text-decoration: line-through; color: rgb(173,0,0); }
     dt { text-align: left; }
     .top { margin-top: 20px; }

@@ -113,8 +113,6 @@ echo form_close();
 			<div class="box-body">
 
 <?php  
-// End form pencarian
-echo form_close();
 
 /**
  * Start Form Multiple Action
@@ -127,9 +125,15 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 					<thead id="head-data-surat">
 						<tr>
 							<th width="30">
+							<?php  
+							if( $this->permission->is_verified() OR $this->permission->is_admin() ) :
+							?>
 			                    <div class="checkbox checkbox-inline">
 			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
 			                    </div>
+							<?php  
+							else : echo "No."; endif;
+							?>
 							</th>
 							<th class="text-center">No. Surat</th>
 							<th class="text-center">Jenis Surat</th>
@@ -146,14 +150,24 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 				/*
 				* Loop data penduduk
 				*/
+				$number = ( ! $this->page ) ? 0 : $this->page;
+
 				foreach($data_surat as $row) :
 					$date = new DateTime($row->tanggal);
 				?>
 						<tr>
 							<td>
+							<?php  
+							if( $this->permission->is_verified() OR $this->permission->is_admin() ) :
+							?>
 			                    <div class="checkbox checkbox-inline">
 			                        <input id="checkbox1" type="checkbox" name="surat[]" value=""> <label for="checkbox1"></label>
 			                    </div>
+							<?php  
+							else :
+								echo ++$this->page.".";
+							endif;
+							?>
 							</td>
 							<td class="text-center">
 								<?php echo $row->kode_surat.'/<b>'.$row->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?>
@@ -164,30 +178,33 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 							<td><?php echo $row->nama; ?></td>
 							<td><?php echo $row->name; ?></td>
 							<td><?php echo strtoupper($row->status) ?></td>
-							<td class="text-center" style="font-size: 14px;" width="100">
-								<div class="btn-group dropup">
-  									
-  									<a href="<?php echo site_url("surat_keluar/print_surat/{$row->ID}") ?>" class="btn btn-xs btn-default btn-print"><i class="glyphicon glyphicon-print"></i> Cetak</a>
+							<td class="text-center" style="font-size: 14px;" width="130">
+							<?php  
+							if( $row->status == 'approve' ) :
+							?>
+								<a href="<?php echo site_url("surat_keluar/print_surat/{$row->ID}") ?>" class="icon-button btn-print" data-toggle="tooltip" data-placement="top" title="Cetak" style="color: #444;"><i class="fa fa-print"></i></a>
+							<?php
+							endif;
 
-  									<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" data-placement="bottom"  title="Tombol Lainnya">
-    									<span class="caret"></span>
-    									<span class="sr-only">Toggle Dropdown</span>
-  									</button>
-  									<ul class="dropdown-menu">
-								    	<li>
-								    		<a href="<?php echo site_url("surat_keluar/get/{$row->ID}") ?>"> Sunting</a>
-								    	</li>
-								    	<li>
-								    		<a href="#" data-id="<?php echo $row->ID; ?>" class="get-dialog" data-action="set_pending"> Pending</a>
-								    	</li>
-								    	<li>
-								    		<a href="#" data-id="<?php echo $row->ID; ?>" class="get-dialog" data-action="set_aprove"> Verifikasi</a>
-								    	</li>
-								    	<li>
-								    		<a href="#" data-id="<?php echo $row->ID; ?>" class="get-dialog" data-action="delete"> Hapus</a>
-								    	</li>
-  									</ul>
-								</div>
+							if( $row->status != 'approve' OR $this->permission->is_admin() ) :
+							?>
+								<a href="<?php echo site_url("surat_keluar/get/{$row->ID}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
+							<?php  
+							endif;
+
+							if( $this->permission->is_verified() OR $this->permission->is_admin()) :
+							?>
+								<a href="#" class="icon-button text-yellow get-dialog" data-id="<?php echo $row->ID; ?>" data-action="set_pending" data-toggle="tooltip" data-placement="top" title="Pending"><i class="fa fa-times"></i></a>
+								<a href="#" class="icon-button text-green get-dialog" data-id="<?php echo $row->ID; ?>" data-action="set_aprove" data-toggle="tooltip" data-placement="top" title="Verifikasi"><i class="fa fa-check"></i></a>
+							<?php  
+							endif;
+
+							if( $this->permission->is_admin() ) :
+							?>
+								<a href="#" class="icon-button text-red get-dialog" data-id="<?php echo $row->ID; ?>" data-action="delete" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+							<?php  
+							endif;
+							?>
 							</td>
 						</tr>
 				<?php  
@@ -195,6 +212,9 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 				?>
 					</tbody>
 					<tfoot>
+					<?php  
+					if( $this->permission->is_verified() OR $this->permission->is_admin()) :
+					?>
 						<th>
 		                    <div class="checkbox checkbox-inline">
 		                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
@@ -207,6 +227,11 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 							<a class="btn btn-xs btn-round btn-success hvr-shadow"><i class="fa fa-check"></i> Verifikasi</a>
 							<small class="pull-right"><?php echo count($data_surat) . " dari " . $num_surat . " data"; ?></small>
 						</th>
+					<?php  
+					else :
+						echo "<tr><th colspan='9'><small class='pull-right'>".count($data_surat) . " dari " . $num_surat . " data"."</small><th></tr>";
+					endif;
+					?>
 					</tfoot>
 				</table>
 
