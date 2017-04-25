@@ -81,10 +81,10 @@ echo form_open(current_url(), array('method' => 'get'));
 					<select name="per_page" class="form-control input-sm" style="width:60px; display: inline-block;" onchange="window.location = '<?php echo site_url('surat_keluar?per_page='); ?>' + this.value;">
 					<?php  
 					/**
-					 * Loop 10 to 100
+					 * Loop 20 to 100
 					 * Guna untuk limit data yang ditampilkan
 					 * 
-					 * @var 10
+					 * @var 20
 					 **/
 					$start = 20; 
 					while($start <= 100) :
@@ -161,7 +161,7 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 							if( $this->permission->is_verified() OR $this->permission->is_admin() ) :
 							?>
 			                    <div class="checkbox checkbox-inline">
-			                        <input id="checkbox1" type="checkbox" name="surat[]" value=""> <label for="checkbox1"></label>
+			                        <input id="checkbox1" type="checkbox" name="surat[]" value="<?php echo $row->ID; ?>"> <label for="checkbox1"></label>
 			                    </div>
 							<?php  
 							else :
@@ -186,7 +186,7 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 							<?php
 							endif;
 
-							if( $row->status != 'approve' OR $this->permission->is_admin() ) :
+							if( $this->permission->is_admin() OR $row->status != 'approve' ) :
 							?>
 								<a href="<?php echo site_url("surat_keluar/get/{$row->ID}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 							<?php  

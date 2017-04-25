@@ -38,10 +38,24 @@ echo form_open(current_url(), array('method' => 'get'));
 					per halaman
 				</div>
 				<div class="col-md-5">
+				<?php  
+				if( $this->permission->is_true('desa', 'create') ) :
+				?>
 					<a href="<?php echo site_url('desa/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+				<?php  
+				endif;
+				if( $this->permission->is_true('desa', 'read') ) :
+				?>
 					<a href="<?php echo site_url("desa/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
 					<a href="<?php echo site_url('desa/export') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
+				<?php  
+				endif;
+				if( $this->permission->is_true('desa', 'create') ) :
+				?>
 					<a href="<?php echo site_url('desa/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a>
+				<?php  
+				endif;
+				?>
 				</div>
             <div class="col-md-3">
                <div class="input-group input-group-sm">
@@ -66,9 +80,15 @@ echo form_open(site_url('desa/bulk_action'));
 					<thead class="bg-silver">
 						<tr>
 							<th width="30">
+							<?php  
+							if( $this->permission->is_verified() OR $this->permission->is_admin() ) :
+							?>
 			                    <div class="checkbox checkbox-inline">
 			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
 			                    </div>
+							<?php  
+							else : echo "No."; endif;
+							?>
 							</th>
 							<th class="text-center">Desa</th>
 							<th class="text-center">Kepala Desa</th>
@@ -81,13 +101,23 @@ echo form_open(site_url('desa/bulk_action'));
 				/*
 				* Loop Data Desa / Kelurahan
 				*/
+				$number = ( ! $this->page ) ? 0 : $this->page;
+
 				foreach($desa as $row) :
 				?>
 						<tr>
 							<td>
+							<?php  
+							if( $this->permission->is_verified() OR $this->permission->is_admin() ) :
+							?>
 			                    <div class="checkbox checkbox-inline">
 			                        <input id="checkbox1" type="checkbox" name="desa[]" value="<?php echo $row->id_desa; ?>"> <label for="checkbox1"></label>
 			                    </div>
+							<?php  
+							else :
+								echo ++$this->page.".";
+							endif;
+							?>
 							</td>
 							<td><?php echo $row->nama_desa; ?></td>
 							<td><?php echo $row->kepala_desa; ?></td>
@@ -102,6 +132,9 @@ echo form_open(site_url('desa/bulk_action'));
 				?>
 					</tbody>
 					<tfoot>
+					<?php  
+					if( $this->permission->is_verified() OR $this->permission->is_admin()) :
+					?>
 						<th>
 	                    <div class="checkbox checkbox-inline">
 	                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
@@ -113,6 +146,11 @@ echo form_open(site_url('desa/bulk_action'));
 							<a class="btn btn-xs btn-round btn-danger get-delete-desa-multiple"><i class="fa fa-trash-o"></i> Hapus</a>
 							<small class="pull-right"><?php echo count($desa) . " dari " . $num_desa . " data"; ?></small>
 						</th>
+					<?php  
+					else :
+						echo "<tr><th colspan='4'><small class='pull-right'>".count($desa) . " dari " . $num_desa . " data"."</small><th></tr>";
+					endif;
+					?>
 					</tfoot>
 				</table>
 

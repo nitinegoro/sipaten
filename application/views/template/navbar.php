@@ -31,6 +31,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </header>
 <?php  
 /* End of file navbar.php */
-/* Location: ./application/modules/Akademik/views/_template/navbar.php */
+/* Location: ./application/modules/Akademik/views/template/navbar.php */
 ?>
 

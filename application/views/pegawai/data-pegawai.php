@@ -89,9 +89,15 @@ echo form_open(site_url('employee/bulk_action'));
 					<thead class="bg-silver">
 						<tr>
 							<th width="30">
+							<?php  
+							if( $this->permission->is_verified() OR $this->permission->is_admin() ) :
+							?>
 			                    <div class="checkbox checkbox-inline">
 			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
 			                    </div>
+							<?php  
+							else : echo "No."; endif;
+							?>
 							</th>
 							<th class="text-center">NIP</th>
 							<th class="text-center">Nama</th>
@@ -107,13 +113,23 @@ echo form_open(site_url('employee/bulk_action'));
 				/*
 				* Loop data penduduk
 				*/
+				$number = ( ! $this->page ) ? 0 : $this->page;
+
 				foreach($employee as $row) :
 				?>
 						<tr>
 							<td>
+							<?php  
+							if( $this->permission->is_verified() OR $this->permission->is_admin() ) :
+							?>
 			                    <div class="checkbox checkbox-inline">
 			                        <input id="checkbox1" type="checkbox" name="pegawai[]" value="<?php echo $row->ID; ?>"> <label for="checkbox1"></label>
 			                    </div>
+							<?php  
+							else :
+								echo ++$this->page.".";
+							endif;
+							?>
 							</td>
 							<td class="text-center"><?php echo $row->nip; ?></td>
 							<td><?php echo $row->nama; ?></td>
@@ -131,6 +147,9 @@ echo form_open(site_url('employee/bulk_action'));
 				?>
 					</tbody>
 					<tfoot>
+					<?php  
+					if( $this->permission->is_verified() OR $this->permission->is_admin()) :
+					?>
 						<th>
 		                    <div class="checkbox checkbox-inline">
 		                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
@@ -141,6 +160,11 @@ echo form_open(site_url('employee/bulk_action'));
 							<a class="btn btn-xs btn-round btn-danger get-delete-employee-multiple"><i class="fa fa-trash-o"></i> Hapus</a>
 							<small class="pull-right"><?php echo count($employee) . " dari " . $num_employee . " data"; ?></small>
 						</th>
+					<?php  
+					else :
+						echo "<tr><th colspan='8'><small class='pull-right'>".count($employee) . " dari " . $num_employee . " data"."</small><th></tr>";
+					endif;
+					?>
 					</tfoot>
 				</table>
 

@@ -38,10 +38,24 @@ echo form_open(current_url(), array('method' => 'get'));
 					per halaman
 				</div>
 				<div class="pull-right">
+				<?php  
+				if( $this->permission->is_true('penduduk', 'create') ) :
+				?>
 					<a href="<?php echo site_url('people/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+				<?php  
+				endif;
+				if( $this->permission->is_true('penduduk', 'read') ) :
+				?>
 					<a href="<?php echo site_url("people/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
 					<a href="<?php echo site_url('people/export') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	
+				<?php  
+				endif;
+				if( $this->permission->is_true('penduduk', 'create') ) :
+				?>
 					<a href="<?php echo site_url('people/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a>
+				<?php  
+				endif;
+				?>
 				</div>
 			</div>
 			<div class="box-body">
@@ -108,9 +122,15 @@ echo form_open(site_url('people/bulk_action'));
 					<thead class="bg-silver">
 						<tr>
 							<th width="30">
+							<?php  
+							if( $this->permission->is_verified() OR $this->permission->is_admin() ) :
+							?>
 			                    <div class="checkbox checkbox-inline">
 			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
 			                    </div>
+							<?php  
+							else : echo "No."; endif;
+							?>
 							</th>
 							<th class="text-center">NIK</th>
 							<th class="text-center">Nama</th>
@@ -127,13 +147,23 @@ echo form_open(site_url('people/bulk_action'));
 				/*
 				* Loop data penduduk
 				*/
+				$number = ( ! $this->page ) ? 0 : $this->page;
+
 				foreach($people as $row) :
 				?>
 						<tr>
 							<td>
+							<?php  
+							if( $this->permission->is_verified() OR $this->permission->is_admin() ) :
+							?>
 			                    <div class="checkbox checkbox-inline">
 			                        <input id="checkbox1" type="checkbox" name="peoples[]" value="<?php echo $row->ID; ?>"> <label for="checkbox1"></label>
 			                    </div>
+							<?php  
+							else :
+								echo ++$this->page.".";
+							endif;
+							?>
 							</td>
 							<td class="text-center"><?php echo $row->nik; ?></td>
 							<td><?php echo $row->nama_lengkap; ?></td>
@@ -143,8 +173,18 @@ echo form_open(site_url('people/bulk_action'));
 							<td><?php echo $row->pekerjaan; ?></td>
 							<td class="text-center"><?php echo ucfirst($row->status_kawin); ?></td>
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
+							<?php  
+							if( $this->permission->is_true('penduduk', 'update') ) :
+							?>
 								<a href="<?php echo site_url("people/update/{$row->ID}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
+							<?php  
+							endif;
+							if( $this->permission->is_true('penduduk', 'delete') ) :
+							?>
 								<a class="icon-button text-red get-delete-people" data-id="<?php echo $row->ID; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+							<?php  
+							endif;
+							?>
 							</td>
 						</tr>
 				<?php  
@@ -152,6 +192,9 @@ echo form_open(site_url('people/bulk_action'));
 				?>
 					</tbody>
 					<tfoot>
+					<?php  
+					if( $this->permission->is_verified() OR $this->permission->is_admin()) :
+					?>
 						<th>
 		                    <div class="checkbox checkbox-inline">
 		                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
@@ -162,6 +205,11 @@ echo form_open(site_url('people/bulk_action'));
 							<a class="btn btn-xs btn-round btn-danger get-delete-people-multiple"><i class="fa fa-trash-o"></i> Hapus</a>
 							<small class="pull-right"><?php echo count($people) . " dari " . $num_people . " data"; ?></small>
 						</th>
+					<?php  
+					else :
+						echo "<tr><th colspan='9'><small class='pull-right'>".count($people) . " dari " . $num_people . " data"."</small><th></tr>";
+					endif;
+					?>
 					</tfoot>
 				</table>
 

@@ -81,25 +81,31 @@ if( $this->permission->is_true('surat_perizinan', 'on') ) :
 <?php  
 endif;
 ?>
-<!--
+
         <li class="<?php echo active_link_controller('ha'); ?>">
             <a href="<?php echo site_url('main') ?>">
                <i class="glyphicon glyphicon-search"></i> <span> Cek Pelayanan Online</span>
             </a>
         </li>
--->
+
         <li class="<?php echo active_link_controller('surat_keluar'); ?>">
             <a href="<?php echo site_url('surat_keluar') ?>">
                <i class="glyphicon glyphicon-envelope"></i> <span>Data Surat Keluar</span>
             </a>
         </li>
-
+<?php  
+if( $this->permission->is_true('analytics', 'on') ) :
+?>
         <li class="<?php echo active_link_controller('analytics'); ?>">
             <a href="<?php echo site_url('analytics') ?>">
                <i class="fa fa-line-chart"></i> <span> Analisa Pelayanan</span>
             </a>
         </li>
-
+<?php  
+endif;
+/* Start Multiple Master  */
+if( $this->permission->is_groups(array('penduduk', 'desa','manejemen_surat','pegawai')) ) :
+?>
         <li class="treeview <?php echo active_link_multiple(array('people','desa', 'surat','employee')); ?>">
             <a href="#">
                <i class="fa fa-database"></i> <span> Master Data</span>
@@ -108,21 +114,44 @@ endif;
                </span>
             </a>
           <ul class="treeview-menu">
+<?php  
+if( $this->permission->is_true('penduduk', 'on') ) :
+?>
             <li class="<?php echo active_link_controller('people') ?>">
               <a href="<?php echo site_url('people') ?>"><i class="fa fa-angle-double-right"></i> Data Penduduk</a>
             </li>
+<?php  
+endif;
+if( $this->permission->is_true('desa', 'on') ) :
+?>
             <li class="<?php echo active_link_controller('desa') ?>">
               <a href="<?php echo site_url('desa') ?>"><i class="fa fa-angle-double-right"></i> Data Kelurahan/Desa</a>
             </li>
+<?php  
+endif;
+if( $this->permission->is_true('manejemen_surat', 'on') ) :
+?>
             <li class="<?php echo active_link_controller('surat') ?>">
               <a href="<?php echo site_url('surat') ?>"><i class="fa fa-angle-double-right"></i> Manajemen Surat</a>
             </li>
+<?php  
+endif;
+if( $this->permission->is_true('pegawai', 'on') ) :
+?>
             <li class="<?php echo active_link_controller('employee') ?>">
               <a href="<?php echo site_url('employee') ?>"><i class="fa fa-angle-double-right"></i> Data Kepegawaian</a>
             </li>
+<?php  
+endif;
+?>
           </ul>
         </li>
 
+<?php
+endif;  
+/* Start Multiple Statistik */
+if( $this->permission->is_groups(array('statistik_penduduk', 'statistik_surat_non_perizinan','statistik_surat_perizinan','statistik_pelayanan')) ) :
+?>
         <li class="treeview <?php echo active_link_multiple(array('stats_people','surat_stats')); ?>">
             <a href="#">
                <i class="fa fa-bar-chart-o"></i> <span>Statistik</span>
@@ -131,11 +160,15 @@ endif;
                </span>
             </a>
           <ul class="treeview-menu">
+<?php  
+/* PERMISSION */
+if( $this->permission->is_true('statistik_penduduk', 'on') ) :
+?>
             <li class="<?php echo active_link_controller('stats_people') ?>">
               <a href="<?php echo site_url('stats_people'); ?>"><i class="fa fa-angle-double-right"></i> Kependudukan</a>
             </li>
 <?php  
-/* PERMISSION */
+endif;
 if( $this->permission->is_true('statistik_surat_non_perizinan', 'on') ) :
 ?>
             <li class="<?php echo active_link_method('index','surat_stats') ?>">
@@ -151,14 +184,23 @@ if( $this->permission->is_true('statistik_surat_perizinan', 'on') ) :
             </li>
 <?php  
 endif;
+
+if( $this->permission->is_true('statistik_pelayanan', 'on') ) :
 ?>
             <li class="<?php echo active_link_method('service','surat_stats') ?>">
               <a href="<?php echo site_url('surat_stats/service') ?>"><i class="fa fa-angle-double-right"></i> Penilaian Pelayanan</a>
             </li>
+<?php  
+endif;
+?>
           </ul>
         </li>
 
 <?php  
+/* Multiple Statistik */
+endif; 
+
+
 if( $this->permission->is_true('pengaturan', 'on') ) :
 ?>
         <li class="treeview <?php echo active_link_multiple(array('setting','role','penilaian', 'user')); ?>">
@@ -215,6 +257,6 @@ endif;
       <section class="content">
 <?php  
 /* End of file left_sidebar.php */
-/* Location: ./application/views/_template/left_sidebar.php */
+/* Location: ./application/views/template/left_sidebar.php */
 ?>
 

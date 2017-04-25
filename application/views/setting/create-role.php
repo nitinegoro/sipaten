@@ -76,9 +76,26 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							<td></td>
 							<td></td>
 						</tr>	
-						<?php echo form_hidden('role[surat_non_perizinan][]', 'block'); ?>						
+						<?php echo form_hidden('role[surat_non_perizinan][]', 'block'); ?>	
 						<tr>
 							<td class="text-center">3. </td>
+							<td>Analisa Pelayanan</td>
+							<td class="text-center">
+								<?php  
+								echo form_checkbox('role[analytics][]', 'on', FALSE, array(
+									'class' => 'toggle',
+									'data-size' => 'mini'
+								));
+								?>
+							</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>	
+						<?php echo form_hidden('role[analytics][]', 'block'); ?>						
+						<tr>
+							<td class="text-center">4. </td>
 							<td>Master Data <i class="fa fa-angle-double-right"></i> Data Penduduk</td>
 							<td class="text-center">
 								<?php  
@@ -123,7 +140,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</tr>
 						<?php echo form_hidden('role[penduduk][]', 'block'); ?>
 						<tr>
-							<td class="text-center">4. </td>
+							<td class="text-center">5. </td>
 							<td>Master Data <i class="fa fa-angle-double-right"></i> Data Kelurahan / Desa</td>
 							<td class="text-center">
 								<?php  
@@ -168,7 +185,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</tr>
 						<?php echo form_hidden('role[desa][]', 'block'); ?>
 						<tr>
-							<td class="text-center">5. </td>
+							<td class="text-center">6. </td>
 							<td>Master Data <i class="fa fa-angle-double-right"></i> Data Manajemen Surat</td>
 							<td class="text-center">
 								<?php  
@@ -192,7 +209,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</tr>
 						<?php echo form_hidden('role[manejemen_surat][]', 'block'); ?>
 						<tr>
-							<td class="text-center">6. </td>
+							<td class="text-center">7. </td>
 							<td>Master Data <i class="fa fa-angle-double-right"></i> Data Kepegawaian</td>
 							<td class="text-center">
 								<?php  
@@ -237,7 +254,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</tr>
 						<?php echo form_hidden('role[pegawai][]', 'block'); ?>
 						<tr>
-							<td class="text-center">7. </td>
+							<td class="text-center">8. </td>
 							<td>Statistik <i class="fa fa-angle-double-right"></i> Kependudukan</td>
 							<td class="text-center">
 								<?php  
@@ -254,7 +271,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</tr>
 						<?php echo form_hidden('role[statistik_penduduk][]', 'block'); ?>
 						<tr>
-							<td class="text-center">8. </td>
+							<td class="text-center">9. </td>
 							<td>Statistik <i class="fa fa-angle-double-right"></i> Surat Non Perizinan</td>
 							<td class="text-center">
 								<?php  
@@ -271,7 +288,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</tr>
 						<?php echo form_hidden('role[statistik_surat_non_perizinan][]', 'block'); ?>
 						<tr>
-							<td class="text-center">9. </td>
+							<td class="text-center">10. </td>
 							<td>Statistik <i class="fa fa-angle-double-right"></i> Surat Perizinan</td>
 							<td class="text-center">
 								<?php  
@@ -288,7 +305,24 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</tr>
 						<?php echo form_hidden('role[statistik_surat_perizinan][]', 'block'); ?>
 						<tr>
-							<td class="text-center">10. </td>
+							<td class="text-center">11. </td>
+							<td>Statistik <i class="fa fa-angle-double-right"></i> Penilaian Pelayanan</td>
+							<td class="text-center">
+								<?php  
+								echo form_checkbox('role[statistik_pelayanan][]', 'on', FALSE, array(
+									'class' => 'toggle',
+									'data-size' => 'mini'
+								));
+								?>
+							</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<?php echo form_hidden('role[statistik_pelayanan][]', 'block'); ?>
+						<tr>
+							<td class="text-center">12. </td>
 							<td>Pengaturan <i class="fa fa-angle-double-right"></i> Pengaturan Sistem</td>
 							<td class="text-center">
 								<?php  

@@ -35,10 +35,7 @@ class Main extends Sipaten
 
 	public function test()
 	{
-		//echo $this->session->userdata('ID');
-		echo "<pre>";
-		var_dump( $this->permission->is_true('surat_perizinan','on') );
-
+		echo $this->permission->is_groups(array('statistik_penduduk', 'statistik_surat_non_perizinan','statistik_surat_perizinan','statistik_pelayanan'));
 	}
 
 

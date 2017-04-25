@@ -66,6 +66,28 @@ class Permission
 		if( $this->ci->session->userdata('account')->role_id != 2 OR $this->ci->session->userdata('account')->role_id != 1)
 			return true;
 	}	
+
+	/**
+	 * Cek Multple Module
+	 *
+	 * @param Array (Module Name)
+	 * @return Boolean
+	 **/
+	public function is_groups($modules = FALSE)
+	{
+		if( is_array($modules) )
+		{
+			foreach ($modules as $key => $value) 
+			{
+				if( $this->is_true($value, 'on') == FALSE ) 
+				{
+					break;
+				} else {
+					return TRUE;
+				}
+			}
+		} 
+	}
 }
 
 /* End of file Permission.php */
