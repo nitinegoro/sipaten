@@ -229,7 +229,7 @@ if( $this->permission->is_true('pengaturan', 'on') ) :
 endif;
 ?>
         <li class="<?php echo active_link_controller('userguide'); ?>">
-            <a href="<?php echo site_url('userguide') ?>">
+            <a href="<?php echo site_url('userguide/read/tutorial-penggunaan') ?>">
                <i class="ion ion-help-circled"></i> <span> Panduan Sistem</span>
             </a>
         </li>

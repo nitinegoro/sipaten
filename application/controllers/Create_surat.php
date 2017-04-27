@@ -145,11 +145,6 @@ class Create_surat extends Sipaten
 			$this->cart->destroy();
 
 			redirect("create_surat/index/{$param}");
-
-
-			$this->output->set_content_type('application/json')->set_output(json_encode($this->input->post('isi'), JSON_PRETTY_PRINT));
-		//	exit;
-
 		} 
 
 		$this->data = array(

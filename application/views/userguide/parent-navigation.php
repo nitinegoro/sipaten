@@ -9,14 +9,11 @@
                     <li class="<?php echo active_link_uri('pengenalan-aplikasi'); ?>">
                         <a href="<?php echo site_url('userguide/read/pengenalan-aplikasi') ?>"><i class="fa fa-caret-right"></i> Pengenalan Aplikasi</a>
                     </li>
-                    <li class="<?php echo active_link_uri('ketentuan-umum') ?>">
-                        <a href="<?php echo site_url('userguide/read/ketentuan-umum') ?>"> <i class="fa fa-caret-right"></i> Ketentuan Umum</a>
+                    <li class="<?php echo active_link_uri('syarat-dan-ketentuan') ?>">
+                        <a href="<?php echo site_url('userguide/read/syarat-dan-ketentuan') ?>"> <i class="fa fa-caret-right"></i> Syarat dan Ketentuan</a>
                     </li>
-                    <li><a href="">
-                        <i class="fa fa-caret-right"></i> Tutorial Penggunaan</a>
-                    </li>
-                    <li><a href="">
-                        <i class="fa fa-caret-right"></i> Pengaturan</a>
+                    <li class="<?php echo active_link_uri('tutorial-penggunaan').active_link_method('tutorial'); ?>">
+                        <a href="<?php echo site_url('userguide/read/tutorial-penggunaan') ?>"> <i class="fa fa-caret-right"></i> Tutorial Penggunaan</a>
                     </li>
                     <li>
                         <a href="" style="padding-left: 30px;">  Pembaruan dan Perbaikan</a>
