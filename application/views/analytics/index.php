@@ -39,7 +39,6 @@ if($this->analytics->get()) :
             <li style="padding-top: 30px;">
               <i class="fa fa-circle text-yellow"></i>
             </li>
-            <li c
             <li>
               <i class="fa fa-pencil bg-yellow"></i>
               <div class="timeline-item">

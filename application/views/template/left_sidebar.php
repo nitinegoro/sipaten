@@ -82,8 +82,8 @@ if( $this->permission->is_true('surat_perizinan', 'on') ) :
 endif;
 ?>
 
-        <li class="<?php echo active_link_controller('ha'); ?>">
-            <a href="<?php echo site_url('main') ?>">
+        <li class="<?php echo active_link_controller('surat_online'); ?>">
+            <a href="<?php echo site_url('surat_online') ?>">
                <i class="glyphicon glyphicon-search"></i> <span> Cek Pelayanan Online</span>
             </a>
         </li>
