@@ -76,7 +76,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form">Data Keluarga yang mengikuti :</p>
 						</div>
-						<div class="col-md-11 col-md-offset-1">
+						<div class="col-md-12">
 							<table class="table table-bordered mini-font">
 								<thead class="bg-silver">
 									<tr>
@@ -98,6 +98,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							* From parent Model
 							*/
 							if($penduduk->no_kk != FALSE) :
+								
 								foreach($this->create_surat->get_keluarga($penduduk->no_kk) as $key => $value) :
 									/* Tidak dengan orang mengajukan */
 									if($penduduk->nik==$value->nik) 
@@ -106,7 +107,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 									<tr>
 										<td>
 						                    <div class="checkbox checkbox-inline" style="margin-top: -10px;">
-						                        <input id="checkbox1" type="checkbox" name="isi[penduduk][]" <?php if($penduduk->nik==$value->nik) echo "checked"; ?> value="<?php echo $value->nama_lengkap.'|'.$value->tmp_lahir.', '.date_id($value->tgl_lahir).'|'.strtoupper($value->status_kk); ?>"> <label for="checkbox1"></label>
+						                        <input id="checkbox1" type="checkbox" name="isi[pengikut][][id]" value="<?php echo $value->ID; ?>"> <label for="checkbox1"></label>
 						                    </div>
 										</td>
 										<td class="text-center" width="150"><?php echo $value->nik; ?></td>
@@ -120,7 +121,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							?>
 								<tr>
 									<td colspan="5">
-										<div class="callout callout-info" style="width: 80%; margin:auto">
+										<div class="callout callout-info" style="width: 60%; margin:auto">
 											<strong><i class="fa fa-warning"></i> Perhatian!</strong> <p>Mohon masukkan No. KK pada pemohon ini, agar dapat terhubung pada kelompok keluarga.</p>
 										</div>
 									</td>
@@ -130,8 +131,29 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							?>
 								</tbody>
 							</table>
+							<p class="help-block"><?php echo form_error('isi[pengikut][0][id]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="col-md-9 col-md-offset-3">
+							<p class="legend-form"></p>
+						</div>
+						<label for="pemeriksa" class="control-label col-md-3 col-xs-12">Petugas Verifikasi : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<select name="pemeriksa" class="form-control">
+								<option value="">- PILIH -</option>
+					<?php  
+					/* Loop Data Pegawai */
+					foreach($pemeriksa as $row) :
+					?>
+								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==set_value('pemeriksa')) echo 'selected'; ?>><?php echo $row->nama; ?></option>
+					<?php  
+					endforeach;
+					?>
+							</select>
+							<p class="help-block"><?php echo form_error('pemeriksa', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form"></p>

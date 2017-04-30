@@ -153,11 +153,32 @@ class Sipaten_model extends MY_Model
 	 * @param String (no_kk)
 	 * @return Result
 	 **/
-	public function get_keluarga($param = 0)
+	public function get_keluarga($param = 0, $order_in_isi_surat = NULL)
 	{
-		return $this->db->get_where('penduduk', array('no_kk' => $param))->result();
+		if( $order_in_isi_surat != NULL) 
+		{
+			$penduduk = array();
+			foreach($order_in_isi_surat as $key => $value)
+				$penduduk[] = $value->id;
 
-		//return $this->db->query("SELECT * FROM penduduk WHERE no_kk IN({$param})")->result();
+			$in_primary = join(',', $penduduk);
+
+			return $this->db->query("SELECT * FROM penduduk WHERE no_kk = '{$param}' ORDER BY FIELD(ID, '{$in_primary}') DESC")->result();
+		} else {
+			return $this->db->get_where('penduduk', array('no_kk' => $param))->result();
+		}
+	}
+
+	/**
+	 * Get Kepala Keluarga
+	 *
+	 * @param Integer (No KK)
+	 * @return row
+	 **/
+	public function get_kepala_keluarga($param = 0)
+	{
+		$this->db->join('desa', 'penduduk.desa = desa.id_desa', 'left');
+		return $this->db->get_where('penduduk', array('no_kk' => $param, 'status_kk' => 'kepala keluarga'))->row();
 	}
 
 	/**

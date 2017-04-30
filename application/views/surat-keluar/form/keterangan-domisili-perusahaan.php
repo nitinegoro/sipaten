@@ -19,7 +19,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7 block-no-surat">
 							<strong><?php echo $get->kode_surat; ?>/</strong>
-							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $get->nomor_surat; ?>" readonly="">
+							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $get->nomor_surat; ?>" readonly="true">
 							<strong>/<?php echo $this->option->get('kode_kecamatan'); ?>/<?php echo date('Y') ?></strong>
 							<p class="help-block"><?php echo form_error('nomor_surat', '<small class="text-red">', '</small>'); ?></p>
 						</div>
@@ -87,7 +87,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					/* Loop Data Pegawai */
 					foreach($pemeriksa as $row) :
 					?>
-								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==$get->pemeriksa) echo 'selected'; ?>><?php echo $row->nama; ?></option>
+								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==$get->pemeriksa) echo 'selected'; ?>><?php echo $row->name; ?></option>
 					<?php  
 					endforeach;
 					?>
@@ -124,9 +124,15 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							</a>
 						</div>
 						<div class="col-md-5 col-xs-6 pull-right">
+							<?php  
+							if( $get->status == 'approve' OR $this->permission->is_admin()) :
+							?>
 							<a href="<?php echo site_url("surat_keluar/print_surat/{$get->ID}") ?>" class="btn btn-app btn-print hvr-shadow">
 								<i class="fa fa-print"></i> Cetak
 							</a>
+							<?php  
+							endif;
+							?>
 							<button type="submit" class="btn btn-app hvr-shadow pull-right">
 								<i class="fa fa-save"></i> Simpan
 							</button>

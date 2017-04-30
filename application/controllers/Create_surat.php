@@ -40,7 +40,8 @@ class Create_surat extends Sipaten
 			'page_title' => $this->page_title->show(),
 			'pegawai' => $this->create_surat->pegawai(),
 			'syarat' => $this->create_surat->get_syarat($surat->syarat),
-			'get' => $surat
+			'get' => $surat,
+			'pemeriksa' => $this->create_surat->pemeriksa(),
 		);
 
 		$this->template->view('create-surat/insert-requerment', $this->data);
@@ -154,7 +155,8 @@ class Create_surat extends Sipaten
 			'pegawai' => $this->create_surat->pegawai(),
 			'syarat' => $this->create_surat->get_syarat($surat->syarat),
 			'penduduk' => $penduduk,
-			'surat' => $surat
+			'surat' => $surat,
+			'pemeriksa' => $this->create_surat->pemeriksa(),
 		);
 
 		$this->template->view("create-surat/form/{$surat->slug}", $this->data);

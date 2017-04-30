@@ -180,7 +180,7 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 							<td><?php echo strtoupper($row->status) ?></td>
 							<td class="text-center" style="font-size: 14px;" width="130">
 							<?php  
-							if( $row->status == 'approve' ) :
+							if( $row->status == 'approve' OR $this->permission->is_admin()) :
 							?>
 								<a href="<?php echo site_url("surat_keluar/print_surat/{$row->ID}") ?>" class="icon-button btn-print" data-toggle="tooltip" data-placement="top" title="Cetak" style="color: #444;"><i class="fa fa-print"></i></a>
 							<?php
@@ -223,8 +223,6 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 						<th colspan="8">
 							<label style="font-size: 11px; margin-right: 10px;">Yang terpilih :</label>
 							<a class="btn btn-xs btn-round btn-danger hvr-shadow get-delete-people-multiple"><i class="fa fa-trash-o"></i> Hapus</a>
-							<a class="btn btn-xs btn-round btn-warning hvr-shadow"><i class="fa fa-times"></i> Pending</a>
-							<a class="btn btn-xs btn-round btn-success hvr-shadow"><i class="fa fa-check"></i> Verifikasi</a>
 							<small class="pull-right"><?php echo count($data_surat) . " dari " . $num_surat . " data"; ?></small>
 						</th>
 					<?php  

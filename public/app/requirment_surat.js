@@ -74,6 +74,7 @@ $(document).ready(function () {
 
             $(this).removeAttr('checked');
         } else {
+            console.log( $(this).is(':checked'));
             var form_asal  = $("#form-insert-requirement");
             
             var form    = getFormData(form_asal);
@@ -82,15 +83,18 @@ $(document).ready(function () {
 
             var category = $('input[name="kategori-surat"]').val();
 
-            $.post( base_url + "/create_surat/insert_log_surat", form, function( data ) 
+            if( $(this).is(':checked') === true ) 
             {
-                if(data.status === true)
+                $.post( base_url + "/create_surat/insert_log_surat", form, function( data ) 
                 {
-                    $('div#dialog-lanjutkan').modal('show');
+                    if(data.status === true)
+                    {
+                        $('div#dialog-lanjutkan').modal('show');
 
-                    $('a#button-lanjutkan').attr('href', base_url + '/create_surat/create/' + category + '/' + param);
-                } 
-            });
+                        $('a#button-lanjutkan').attr('href', base_url + '/create_surat/create/' + category + '/' + param);
+                    } 
+                });
+            }
         }
     });
 

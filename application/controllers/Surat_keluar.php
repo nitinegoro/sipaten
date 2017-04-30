@@ -297,12 +297,13 @@ class Surat_keluar extends Sipaten
 	 **/
 	public function bulk_action()
 	{
-		switch ($this->input->post('action')) 
+		switch ( $this->input->post('action') ) 
 		{
-			case 'value':
-				# code...
+			case 'delete':
+				$this->surat_keluar->delete_multiple();
+
+				redirect('surat_keluar');
 				break;
-			
 			default:
 				# code...
 				break;

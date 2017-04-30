@@ -76,7 +76,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form">Data Keluarga yang mengikuti :</p>
 						</div>
-						<div class="col-md-11 col-md-offset-1">
+						<div class="col-md-12">
 							<table class="table table-bordered mini-font">
 								<thead class="bg-silver">
 									<tr>
@@ -98,15 +98,15 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							* From parent Model
 							*/
 							if($get->no_kk != FALSE) :
-								foreach($this->create_surat->get_keluarga($get->no_kk) as $key => $value) :
+				            /* Loop data penduduk */
+								foreach($this->create_surat->get_keluarga($get->no_kk, $isi->pengikut) as $key => $value) :
 									/* Tidak dengan orang mengajukan */
-									if($get->nik==$value->nik) 
-										continue;
 							?>
 									<tr>
 										<td>
 						                    <div class="checkbox checkbox-inline" style="margin-top: -10px;">
-						                        <input id="checkbox1" type="checkbox" name="isi[penduduk][]" checked value="<?php echo $value->nama_lengkap.'|'.$value->tmp_lahir.', '.date_id($value->tgl_lahir).'|'.strtoupper($value->status_kk); ?>"> <label for="checkbox1"></label>
+						                        <input id="checkbox1" type="checkbox" name="isi[pengikut][][id]" value="<?php echo $value->ID; ?>" <?php if(isset($isi->pengikut[$key]->id) AND @$isi->pengikut[$key]->id == $value->ID) echo "checked"; ?>> <label for="checkbox1"></label>
+
 						                    </div>
 										</td>
 										<td class="text-center" width="150"><?php echo $value->nik; ?></td>
@@ -120,7 +120,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							?>
 								<tr>
 									<td colspan="5">
-										<div class="callout callout-info" style="width: 80%; margin:auto">
+										<div class="callout callout-info" style="width: 60%; margin:auto">
 											<strong><i class="fa fa-warning"></i> Perhatian!</strong> <p>Mohon masukkan No. KK pada pemohon ini, agar dapat terhubung pada kelompok keluarga.</p>
 										</div>
 									</td>
@@ -181,9 +181,15 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							</a>
 						</div>
 						<div class="col-md-5 col-xs-6 pull-right">
+							<?php  
+							if( $get->status == 'approve' OR $this->permission->is_admin()) :
+							?>
 							<a href="<?php echo site_url("surat_keluar/print_surat/{$get->ID}") ?>" class="btn btn-app btn-print hvr-shadow">
 								<i class="fa fa-print"></i> Cetak
 							</a>
+							<?php  
+							endif;
+							?>
 							<button type="submit" class="btn btn-app hvr-shadow pull-right">
 								<i class="fa fa-save"></i> Simpan
 							</button>

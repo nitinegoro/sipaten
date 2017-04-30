@@ -185,6 +185,35 @@ class Msurat_keluar extends Sipaten_model
 		}
 	}
 
+	/**
+	 * Hapus Data SUrat Keluar Multiple
+	 *
+	 * @param Array
+	 * @return void
+	 **/
+	public function delete_multiple()
+	{
+		if( is_array($this->input->post('surat')) )
+		{
+			foreach( $this->input->post('surat') as $key => $value)
+			{
+				$this->db->delete('surat', array('ID' => $value));
+
+				$this->db->delete('log_surat', array('nomor_surat' => $value));
+			}
+
+			$this->template->alert(
+				' Data Surat yang terpilih berhasil dihapus.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Tidak ada data yang dipilih.', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
+	}
+
 
 }
 

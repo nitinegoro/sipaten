@@ -104,7 +104,7 @@ $date = new DateTime($get->tanggal);
                 <tr style="vertical-align: top;">
                     <td>Pengikut </td>
                     <td class="text-center">:</td>
-                    <td><?php echo count($isi->penduduk); ?> Orang</td>
+                    <td><?php echo count($isi->pengikut); ?> Orang</td>
                 </tr>
             </table>
             <table class="table-bordered" width="100%" style="margin-top: 10px; margin-bottom:10px;">
@@ -122,18 +122,17 @@ $date = new DateTime($get->tanggal);
                 </tr>
             <?php 
             /* Loop data penduduk */
-            $number = 2;
-            for($key = 0; $key < count(@$isi->penduduk); $key++) : 
-
-                $penduduk = explode('|', $isi->penduduk[$key]);
+            $key_no = 1;
+            foreach($isi->pengikut as $key => $value) :
+                $ikut = $this->db->get_where('penduduk', array('ID' => $value->id))->row();
             ?>
                 <tr>
-                    <td class="text-center"><?php echo $number++; ?>.</td>
-                    <td><?php echo $penduduk[0]; ?></td>
-                    <td><?php echo $penduduk[1]; ?></td>
-                    <td class="text-center"><?php echo $penduduk[2]; ?></td>
+                    <td class="text-center"><?php echo ++$key_no; ?>.</td>
+                    <td><?php echo $ikut->nama_lengkap; ?></td>
+                    <td><?php echo ucfirst($ikut->tmp_lahir).', '.date_id($ikut->tgl_lahir) ?></td>
+                    <td class="text-center"><?php echo strtoupper($ikut->status_kk) ?></td>
                 </tr>
-            <?php endfor; ?>
+            <?php endforeach; ?>
             </table>
         </div>
         <div class="mail-footer">

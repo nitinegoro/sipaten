@@ -229,9 +229,15 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							</a>
 						</div>
 						<div class="col-md-5 col-xs-6 pull-right">
+							<?php  
+							if( $get->status == 'approve' OR $this->permission->is_admin()) :
+							?>
 							<a href="<?php echo site_url("surat_keluar/print_surat/{$get->ID}") ?>" class="btn btn-app btn-print hvr-shadow">
 								<i class="fa fa-print"></i> Cetak
 							</a>
+							<?php  
+							endif;
+							?>
 							<button type="submit" class="btn btn-app hvr-shadow pull-right">
 								<i class="fa fa-save"></i> Simpan
 							</button>

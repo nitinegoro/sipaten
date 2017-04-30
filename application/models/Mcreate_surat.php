@@ -192,6 +192,7 @@ class Mcreate_surat extends Sipaten_model
 			'nomor_surat' => $this->input->post('nomor_surat'),
 			'isi_surat' => json_encode($this->input->post('isi')),
 			'pegawai' => $this->input->post('ttd_pejabat'),
+			'pemeriksa' => $this->input->post('pemeriksa'),
 			'user' => $this->user,
 			'status' => 'pending'
 		);

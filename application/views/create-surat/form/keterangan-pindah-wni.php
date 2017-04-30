@@ -26,65 +26,83 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Surat Pengantar dari kelurahan / Desa</p>
+							<p class="legend-form">Data Kepindahan :</p>
 						</div>
-						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
-						<div class="col-md-7">
-							<input type="text" name="isi[no_surat_rek]" class="form-control" value="<?php echo set_value('isi[no_surat_rek]'); ?>">
-							<p class="help-block"><?php echo form_error('isi[no_surat_rek]', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>	
-					<div class="form-group">
-						<label for="email" class="control-label col-md-3 col-xs-12">Tanggal Surat : <strong class="text-red">*</strong></label>
-						<div class="col-md-7">
-							<input type="text" class="form-control" name="isi[tgl_surat_rek]" id="datepicker" value="<?php echo set_value('isi[tgl_surat_rek]'); ?>" placeholder="Ex : <?php echo date('Y-m-d'); ?>">
-							<p class="help-block"><?php echo form_error('isi[tgl_surat_rek]', '<small class="text-red">', '</small>'); ?></p>
+						<label for="email" class="control-label col-md-3 col-xs-12">Alasan Pindah : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<textarea name="isi[alasan_pindah]" rows="3" class="form-control"><?php echo set_value('isi[alasan_pindah]'); ?></textarea>
+							<p class="help-block"><?php echo form_error('isi[alasan_pindah]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
-						<label for="email" class="control-label col-md-3 col-xs-12">Nama Desa : <strong class="text-red">*</strong></label>
-						<div class="col-md-7">
-							<select name="isi[desa]" class="form-control">
-								<option value="">- PILIH -</option>
-					<?php  
-					/* Loop Data Pegawai */
-					foreach($this->create_surat->get_desa() as $row) :
-					?>
-								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==set_value('isi[desa]')) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
-					<?php  
-					endforeach;
-					?>
-							</select>
+						<div class="col-md-9 col-md-offset-3">
+							<p class="legend-form">Alamat Tujuan Pindah :</p>
+						</div>
+						<label for="email" class="control-label col-md-3 col-xs-12">Alamat Pindah : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<textarea name="isi[alamat_pindah]" rows="3" class="form-control"><?php echo set_value('isi[alamat_pindah]'); ?></textarea>
+							<p class="help-block"><?php echo form_error('isi[alamat_pindah]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Desa : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="isi[desa]" value="<?php echo set_value('isi[desa]'); ?>">
 							<p class="help-block"><?php echo form_error('isi[desa]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Kecamatan : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="isi[kecamatan]" value="<?php echo set_value('isi[kecamatan]'); ?>">
+							<p class="help-block"><?php echo form_error('isi[kecamatan]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Kabupaten/Kota : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="isi[kabupaten]" value="<?php echo set_value('isi[kabupaten]'); ?>">
+							<p class="help-block"><?php echo form_error('isi[kabupaten]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Provinsi : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="isi[provinsi]" value="<?php echo set_value('isi[provinsi]'); ?>">
+							<p class="help-block"><?php echo form_error('isi[provinsi]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Klasifikasi Pindah : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="isi[klasifikasi_pindah]" value="<?php echo set_value('isi[klasifikasi_pindah]'); ?>" placeholder="Ex : Antar Provinsi">
+							<p class="help-block"><?php echo form_error('isi[klasifikasi_pindah]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Jenis Kepindahan : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="isi[jns_kepindahan]" value="<?php echo set_value('isi[jns_kepindahan]'); ?>" placeholder="Ex : ANGGOTA KELUARGA">
+							<p class="help-block"><?php echo form_error('isi[jns_kepindahan]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Status KK bagi yang tidak pindah : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="isi[status_kk_tdk_pindah]" value="<?php echo set_value('isi[status_kk_tdk_pindah]'); ?>" placeholder="Ex : Nomor KK Tetap">
+							<p class="help-block"><?php echo form_error('isi[status_kk_tdk_pindah]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Status KK bagi yang pindah : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="isi[status_kk_pindah]" value="<?php echo set_value('isi[status_kk_pindah]'); ?>" placeholder="Ex : Numpang KK">
+							<p class="help-block"><?php echo form_error('isi[status_kk_pindah]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
 					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Tanda Tangan Kades / Lurah</p>
-						</div>
-						<label for="email" class="control-label col-md-3 col-xs-12">Nama Pejabat Lurah / Kades  : <strong class="text-red">*</strong></label>
-						<div class="col-md-7">
-							<input type="text" name="isi[pejabat_lurah]" class="form-control" value="<?php echo set_value('isi[pejabat_lurah]'); ?>">
-							<p class="help-block"><?php echo form_error('isi[pejabat_lurah]', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>	
-					<div class="form-group">
-						<label for="email" class="control-label col-md-3 col-xs-12">NIP : <strong class="text-red">*</strong></label>
-						<div class="col-md-7">
-							<input type="text" class="form-control" name="isi[nip_pejabat_lurah]" value="<?php echo set_value('isi[nip_pejabat_lurah]'); ?>">
-							<p class="help-block"><?php echo form_error('isi[nip_pejabat_lurah]', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>	
-					<div class="form-group">
-						<label for="email" class="control-label col-md-3 col-xs-12">Jabatan : <strong class="text-red">*</strong></label>
-						<div class="col-md-7">
-							<input type="text" class="form-control" name="isi[jabatan_pejabat_lurah]" value="<?php echo set_value('isi[nama_desa]'); ?>">
-							<p class="help-block"><?php echo form_error('isi[jabatan_pejabat_lurah]', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>	
-					<div class="form-group">
-						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Data Keluarga yang mengikuti :</p>
+							<p class="legend-form">Data Keluarga yang pindah :</p>
 						</div>
 						<div class="col-md-12">
 							<table class="table table-bordered mini-font">
@@ -146,16 +164,6 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Ketarangan Keperluan : </p>
-						</div>
-						<label for="email" class="control-label col-md-3 col-xs-12">Keperluan : <strong class="text-red">*</strong></label>
-						<div class="col-md-9">
-							<input type="text" name="isi[keperluan]" class="form-control" value="<?php echo set_value('isi[keperluan]'); ?>">
-							<p class="help-block"><?php echo form_error('isi[keperluan]', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form"></p>
 						</div>
 						<label for="pemeriksa" class="control-label col-md-3 col-xs-12">Petugas Verifikasi : <strong class="text-red">*</strong></label>
@@ -173,11 +181,8 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							</select>
 							<p class="help-block"><?php echo form_error('pemeriksa', '<small class="text-red">', '</small>'); ?></p>
 						</div>
-					</div>
+					</div>	
 					<div class="form-group">
-						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form"></p>
-						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Tanda Tangan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
 							<select name="ttd_pejabat" class="form-control">
