@@ -56,7 +56,7 @@ $date = new DateTime($get->tanggal);
                 <tr>
                     <td>Umur</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->umur; ?></td>
+                    <td><?php echo $isi->umur; ?> Tahun</td>
                 </tr>
                 <tr>
                     <td>Alamat</td>

@@ -88,6 +88,17 @@ class Permission
 			}
 		} 
 	}
+
+	/**
+	 * Check File Print Tersedia apa gak
+	 *
+	 * @param String (slug file)
+	 * @return Boolean
+	 **/
+	public function print_file($slug = '')
+	{
+		return file_exists(APPPATH."/views/surat-keluar/print/".$slug.".php");
+	}
 }
 
 /* End of file Permission.php */

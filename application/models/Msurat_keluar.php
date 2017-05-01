@@ -34,7 +34,7 @@ class Msurat_keluar extends Sipaten_model
 
 	public function data($limit = 20, $offset = 0, $type = 'result')
 	{
-		$this->db->select('surat.ID, nomor_surat, surat.nik, nama_lengkap, kode_surat, id_surat, tanggal, status,  judul_surat, name, nama');
+		$this->db->select('surat.ID, nomor_surat, surat.nik, kategori_surat.slug, nama_lengkap, kode_surat, id_surat, tanggal, status,  judul_surat, name, nama');
 
 		$this->db->where_not_in('status', 'entry');
 

@@ -176,6 +176,8 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[no_pendaftaran]', 'No Pendaftaran', 'trim|required');
 				break;
 			case 'izin-keramaian':
+				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[keperluan]', 'Keperluan', 'trim|required');
 				$this->form_validation->set_rules('isi[hari]', 'Hari', 'trim|required');
@@ -210,7 +212,7 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[luas_bangunan][0][1]', 'Nilai', 'trim|required');
 				$this->form_validation->set_rules('isi[luas_bangunan][0][2]', 'Nilai', 'trim|required');
 				break;
-			case 'rekomendasi-siup':
+			case 'izin-usaha-perdagangan':
 				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[nama_perusahaan]', 'Nama Perusahaan', 'trim|required');
 				$this->form_validation->set_rules('isi[alamat_perusahaan]', 'Alamat Perusahaan', 'trim|required');
@@ -254,6 +256,7 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[pengikut][0][id]', 'Minimal 1 Orang dalam Keluarga yang mengikuti', 'trim|required');
 				break;
 			case 'sp3fat':
+			case 'sp4fat':
 				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[no_surat_kuasa]', 'No. Surat Kuasa', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_surat_kuasa]', 'Tanggal Surat Kuasa', 'trim|required');
@@ -321,6 +324,11 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[status_kk_tdk_pindah]', 'Status KK bagi yang tidak pindah', 'trim|required');
 				$this->form_validation->set_rules('isi[status_kk_pindah]', 'Status KK bagi yang pindah', 'trim|required');
 				break;
+			case 'pengantar-kartu-keluarga':
+				$this->form_validation->set_rules('isi[pejabat_lurah]', 'Pejabat Lurah / Kades', 'trim|required');
+				$this->form_validation->set_rules('isi[nip_pejabat_lurah]', 'NIP Pejabat Lurah / Kades', 'trim|required');
+				$this->form_validation->set_rules('isi[jabatan_pejabat_lurah]', 'Jabatan Pejabat Lurah', 'trim|required');
+				break;	
 			default:
 				# code...surat
 				break;

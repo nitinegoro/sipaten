@@ -3,7 +3,7 @@
 	<div class="col-md-12 col-xs-12">
 		<div class="box box-primary">
             <div class="box-header with-border">
-              	<h3 class="box-title">Surat Keterangan <?php echo $title; ?></h3>
+              	<h3 class="box-title"> <?php echo $title; ?></h3>
             </div>
 <?php  
 /**
@@ -19,14 +19,14 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<label for="email" class="control-label col-md-3 col-xs-12">Nomor Surat : <strong class="text-red">*</strong></label>
 						<div class="col-md-7 block-no-surat">
 							<strong><?php echo $get->kode_surat; ?>/</strong>
-							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $get->nomor_surat; ?>" readonly="">
+							<input type="text" name="nomor_surat" class="no_surat" id="no_surat" value="<?php echo $get->nomor_surat; ?>" readonly="true">
 							<strong>/<?php echo $this->option->get('kode_kecamatan'); ?>/<?php echo date('Y') ?></strong>
 							<p class="help-block"><?php echo form_error('nomor_surat', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Surat Keterangan Usaha dari Kades / Lurah</p>
+							<p class="legend-form">Surat Pengantar dari Kades / Lurah</p>
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Nama Pejabat Lurah / Kades  : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
@@ -47,24 +47,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							<input type="text" class="form-control" name="isi[jabatan_pejabat_lurah]" value="<?php echo $isi->jabatan_pejabat_lurah; ?>">
 							<p class="help-block"><?php echo form_error('isi[jabatan_pejabat_lurah]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
-					</div>	
-					<div class="form-group">
-						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Keterangan Usaha</p>
-						</div>
-						<label for="email" class="control-label col-md-3 col-xs-12">Nama Usaha : <strong class="text-red">*</strong></label>
-						<div class="col-md-9">
-							<input type="text" name="isi[nama_usaha]" class="form-control" value="<?php echo $isi->nama_usaha; ?>">
-							<p class="help-block"><?php echo form_error('isi[nama_usaha]', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="email" class="control-label col-md-3 col-xs-12">Alamat Usaha : <strong class="text-red">*</strong></label>
-						<div class="col-md-9">
-							<textarea name="isi[alamat_usaha]" class="form-control" cols="30" rows="3"><?php echo $isi->alamat_usaha; ?></textarea>
-							<p class="help-block"><?php echo form_error('isi[alamat_usaha]', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>	
+					</div>		
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form"></p>
@@ -84,7 +67,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							</select>
 							<p class="help-block"><?php echo form_error('pemeriksa', '<small class="text-red">', '</small>'); ?></p>
 						</div>
-					</div>	
+					</div>
 					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Tanda Tangan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
@@ -101,7 +84,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							</select>
 							<p class="help-block"><?php echo form_error('ttd_pejabat', '<small class="text-red">', '</small>'); ?></p>
 						</div>
-					</div>		
+					</div>	
 					<div class="form-group">
 						<div class="col-md-12"> <hr> </div>
 						<div class="col-md-3">
@@ -114,15 +97,6 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							</a>
 						</div>
 						<div class="col-md-5 col-xs-6 pull-right">
-							<?php  
-							if( $get->status == 'approve' OR $this->permission->is_admin()) :
-							?>
-							<a href="<?php echo site_url("surat_keluar/print_surat/{$get->ID}") ?>" class="btn btn-app btn-print hvr-shadow">
-								<i class="fa fa-print"></i> Cetak
-							</a>
-							<?php  
-							endif;
-							?>
 							<button type="submit" class="btn btn-app hvr-shadow pull-right">
 								<i class="fa fa-save"></i> Simpan
 							</button>
@@ -131,14 +105,14 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				</div>
 
 				<div class="col-md-5">
-				<?php  
-				/**
-				 * Load Data Pemohon
-				 *
-				 * @var string
-				 **/
-				$this->load->view('surat-keluar/data-pemohon');
-				?>
+					<?php  
+					/**
+					 * Tampilkan Data Pemohon
+					 *
+					 * @var string
+					 **/
+					$this->load->view('surat-keluar/data-pemohon');
+					?>
 				</div>
 			</div>
 <?php  

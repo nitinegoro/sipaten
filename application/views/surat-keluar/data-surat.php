@@ -180,7 +180,7 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 							<td><?php echo strtoupper($row->status) ?></td>
 							<td class="text-center" style="font-size: 14px;" width="130">
 							<?php  
-							if( $row->status == 'approve' OR $this->permission->is_admin()) :
+							if( $row->status == 'approve' OR $this->permission->is_admin() AND $this->permission->print_file($row->slug) ) :
 							?>
 								<a href="<?php echo site_url("surat_keluar/print_surat/{$row->ID}") ?>" class="icon-button btn-print" data-toggle="tooltip" data-placement="top" title="Cetak" style="color: #444;"><i class="fa fa-print"></i></a>
 							<?php

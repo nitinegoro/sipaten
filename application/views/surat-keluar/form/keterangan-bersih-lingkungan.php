@@ -87,26 +87,6 @@ echo validation_errors();
 						</div>
 					</div>	
 					<div class="form-group">
-						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form"></p>
-						</div>
-						<label for="pemeriksa" class="control-label col-md-3 col-xs-12">Petugas Verifikasi : <strong class="text-red">*</strong></label>
-						<div class="col-md-9">
-							<select name="pemeriksa" class="form-control">
-								<option value="">- PILIH -</option>
-					<?php  
-					/* Loop Data Pegawai */
-					foreach($pemeriksa as $row) :
-					?>
-								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==$get->pemeriksa) echo 'selected'; ?>><?php echo $row->nama; ?></option>
-					<?php  
-					endforeach;
-					?>
-							</select>
-							<p class="help-block"><?php echo form_error('pemeriksa', '<small class="text-red">', '</small>'); ?></p>
-						</div>
-					</div>	
-					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Tanda Tangan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
 							<select name="ttd_pejabat" class="form-control">
@@ -135,9 +115,15 @@ echo validation_errors();
 							</a>
 						</div>
 						<div class="col-md-5 col-xs-6 pull-right">
+							<?php  
+							if( $get->status == 'approve' OR $this->permission->is_admin()) :
+							?>
 							<a href="<?php echo site_url("surat_keluar/print_surat/{$get->ID}") ?>" class="btn btn-app btn-print hvr-shadow">
 								<i class="fa fa-print"></i> Cetak
 							</a>
+							<?php  
+							endif;
+							?>
 							<button type="submit" class="btn btn-app hvr-shadow pull-right">
 								<i class="fa fa-save"></i> Simpan
 							</button>

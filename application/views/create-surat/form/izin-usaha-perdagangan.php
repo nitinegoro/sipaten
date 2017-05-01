@@ -241,7 +241,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					/* Loop Data Pegawai */
 					foreach($pemeriksa as $row) :
 					?>
-								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==set_value('pemeriksa')) echo 'selected'; ?>><?php echo $row->name; ?></option>
+								<option value="<?php echo $row->ID; ?>" <?php if($row->ID==set_value('pemeriksa')) echo 'selected'; ?>><?php echo $row->nama; ?></option>
 					<?php  
 					endforeach;
 					?>
@@ -250,9 +250,6 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form"></p>
-						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Tanda Tangan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
 							<select name="ttd_pejabat" class="form-control">
