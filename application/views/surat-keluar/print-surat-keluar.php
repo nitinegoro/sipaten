@@ -32,7 +32,7 @@ $this->load->view('print/header');
             <tr>
                 <td class="text-center"><?php echo ++$key; ?>.</td>
                 <td class="text-center">
-                    <?php echo $value->kode_surat.'/<b>'.$value->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?>
+                    <?php echo $value->kode_surat.'/'.$value->nomor_surat.'/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?>
                 </td>
                 <td><?php echo $value->judul_surat; ?></td>
                 <td class="text-center"><?php echo $date->format('d/m/Y') ?></td>

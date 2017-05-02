@@ -53,38 +53,3 @@ jQuery(function($) {
 	});
 	
 });
-
-/* Notifikasi */
-		
-Pusher.log = function(message) {
-	if (window.console && window.console.log) 
-	{
-				window.console.log(message);
-	}
-};
-var pusher = new Pusher('1a905dd0d0ea1304adbd');
-var channel = pusher.subscribe('test_channel');
-channel.bind('my_event', function(data) {
-
-	audio.play();
-
-	Push.create("Pemberitahuan!", {
-		body: data.message,
-		icon: data.icon,
-		timeout: 81000,
-		onClick: function () {
-			window.location.assign(base_url + '/surat_keluar/get/' + data.param);
-			this.close();
-		}
-	});
-});
-
-var source = base_path + "/sound/arpeggio.mp3"
-var audio = document.createElement("audio");
-audio.load()
-audio.addEventListener("load", function() {
-  audio.play();
-}, true);
-audio.src = source;
-
-

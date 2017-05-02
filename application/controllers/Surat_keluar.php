@@ -179,31 +179,29 @@ class Surat_keluar extends Sipaten
 
 		$surat = $this->surat_keluar->get($param);
 
-		if( $surat->user != $this->session->userdata('ID') )
+		$this->load->library('ci_pusher');
+		$pusher = $this->ci_pusher->get_pusher();
+
+		$penerima = $this->db->get_where('users', array('user_id' => $surat->user ))->row('nip');
+
+		if($status == 'pending')
 		{
-			$this->load->library('ci_pusher');
-			$pusher = $this->ci_pusher->get_pusher();
-
-			if($status == 'pending')
-			{
+			$data = array(
+				'message' => $this->session->userdata('account')->name." Menolak surat pengajuan anda.",
+				'param' => $param,
+				'icon' => (!$this->session->userdata('account')->photo) ? base_url("public/image/avatar.jpg") : base_url("public/image/{$this->session->userdata('account')->photo}"),
+				'status' => 'warning'
+			); 
+		} else {
 				$data = array(
-					'message' => $this->session->userdata('account')->name." Menolak surat pengajuan anda.",
-					'param' => $param,
-					'icon' => (!$this->session->userdata('account')->photo) ? base_url("public/image/avatar.jpg") : base_url("public/image/{$this->session->userdata('account')->photo}"),
-					'status' => 'warning'
-				); 
-			} else {
-				$data = array(
-					'message' => $this->session->userdata('account')->name." Memverifikasi surat pengajuan anda.",
-					'param' => $param,
-					'icon' => (!$this->session->userdata('account')->photo) ? base_url("public/image/avatar.jpg") : base_url("public/image/{$this->session->userdata('account')->photo}"),
-					'status' => 'info'
-				); 
-			}
-
-			// Send message
-			$event = $pusher->trigger('test_channel', 'my_event', $data);
-		}
+				'message' => $this->session->userdata('account')->name." Memverifikasi surat pengajuan anda.",
+				'param' => $param,
+				'icon' => (!$this->session->userdata('account')->photo) ? base_url("public/image/avatar.jpg") : base_url("public/image/{$this->session->userdata('account')->photo}"),
+				'status' => 'info'
+			); 
+		} 
+		
+		$event = $pusher->trigger('channel-'.$penerima, 'notifikasi-status', $data);
 		
 		redirect('surat_keluar');
 	}

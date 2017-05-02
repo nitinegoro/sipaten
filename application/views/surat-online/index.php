@@ -51,11 +51,11 @@ if( $this->mode_searching  AND @$get->penduduk != NULL) :
                         </tr>
                         <tr>
                             <th>Nama Lengkap </th><th width="30" class="text-center">:</th>
-                            <td><?php echo $get->penduduk->nama_lengkap; ?></td>
+                            <td><?php echo ucfirst($get->penduduk->nama_lengkap); ?></td>
                         </tr>
                         <tr>
                             <th>Jenis Kelamin </th><th width="30" class="text-center">:</th>
-                            <td><?php echo $get->penduduk->jns_kelamin; ?></td>
+                            <td><?php echo ucfirst($get->penduduk->jns_kelamin); ?></td>
                         </tr>
                         <tr style="vertical-align: top;">
                             <th>Alamat </th><th width="30" class="text-center">:</th>
@@ -63,19 +63,19 @@ if( $this->mode_searching  AND @$get->penduduk != NULL) :
                         </tr>
                         <tr>
                             <th>Agama </th><th width="30" class="text-center">:</th>
-                            <td><?php echo $get->penduduk->agama; ?></td>
+                            <td><?php echo ucfirst($get->penduduk->agama); ?></td>
                         </tr>
                         <tr>
                             <th>Pekerjaan </th><th width="30" class="text-center">:</th>
-                            <td><?php echo $get->penduduk->pekerjaan; ?></td>
+                            <td><?php echo ucfirst($get->penduduk->pekerjaan); ?></td>
                         </tr>
                         <tr>
                             <th>Kewarganegaraan </th><th width="30" class="text-center">:</th>
-                            <td><?php echo $get->penduduk->kewarganegaraan; ?></td>
+                            <td><?php echo strtoupper($get->penduduk->kewarganegaraan); ?></td>
                         </tr>
                     </table>        
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <table>
                         <tr>
                             <th>Nomor Pengajuan </th><th width="30" class="text-center">:</th>
@@ -91,30 +91,36 @@ if( $this->mode_searching  AND @$get->penduduk != NULL) :
                         </tr>
                     </table>        
                 </div>
-                <div class="col-md-4" style="padding-top: 20px;">
+                <div class="col-md-3 pull-right" style="padding-top: 20px;">
                     <button class="btn btn-app"><i class="fa fa-print"></i> Cetak</button>
-                    <button class="btn btn-app"><i class="fa fa-times"></i> Tolak</button>
-                    <button class="btn btn-app"><i class="fa fa-check-square-o"></i> Terima</button>
+                    <button class="btn btn-app" data-toggle="modal" data-target="#modal-terima-surat"><i class="fa fa-check-square-o"></i> Terima</button>
                 </div>
             </div>
             <div class="box-body"> <hr>
                 <div class="col-md-7">
-                    <h4><i class="fa fa-angle-double-right"></i> Berkas Pemohon</h4>
-                    <ul class="list-berkas">
-                    <?php foreach($get->berkas as $key => $value) : ?>
-                        <li>
-                            <a href="">
-                                <?php echo $this->rest_api->view_file( $value ) ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                    </ul>
+                    <h4 class="heading-box-sonline"><i class="fa fa-pencil-square-o"></i> Isian Dokumen Surat</h4>
+                    <?php 
+                    /**
+                     * Get Dynamic Tabel isian surat
+                     *
+                     * @return Html view
+                     **/
+                    $this->load->view("surat-online/tabel-isi/{$get->slug}.php", $this->data); 
+                    ?>
                 </div>
                 <div class="col-md-5">
-                    <h4><i class="fa fa-angle-double-right"></i> Syarat Penerbitan Surat</h4>
+                    <div id="sticker">
+                    <h4 class="heading-box-sonline"><i class="fa fa-paperclip"></i> Lampiran Berkas</h4>
+                    <ul class="list-berkas">
+                    <?php foreach($get->berkas as $key => $value) : ?>
+                        <li><?php echo $this->rest_api->view_file( $value ) ?>  </li>
+                    <?php endforeach; ?>
+                    </ul>
+                    <h4 class="heading-box-sonline"><i class="ion ion-ios-pricetags-outline" style="font-size: 17px;"></i> Syarat Penerbitan Surat</h4>
                     <ol>
                         <?php foreach( $get->syarat as $row ) echo '<li>' . $row->nama_syarat . '</li>'; ?>
                     </ol>
+                    </div>
                 </div>
             </div>
         </div>
@@ -133,3 +139,58 @@ if( $this->mode_searching  AND @$get->penduduk != NULL) :
 <?php endif; 
 endif;
 /* End Get Data */  ?>
+
+
+<div class="modal animated fadeIn modal-default" id="modal-terima-surat" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="<?php echo site_url("surat_online/create?ID={$this->ID}") ?>" method="post">
+            <div class="modal-header bg-yellow">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Terima?</h4>
+                <span>Pilih petugas verifikasi dan pejabat penandatangan untuk menerima pengajuan dokumen ini dan diverifikasi.</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="pemeriksa" class="control-label col-md-3 col-xs-12">Petugas Verifikasi : <strong class="text-red">*</strong></label>
+                        <div class="col-md-9">
+                            <select name="pemeriksa" class="form-control" required="true">
+                                <option value="">- PILIH -</option>
+                    <?php  
+                    /* Loop Data Pegawai */
+                    foreach($pemeriksa as $row) :
+                    ?>
+                                <option value="<?php echo $row->ID; ?>"><?php echo $row->nama; ?></option>
+                    <?php  
+                    endforeach;
+                    ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label col-md-3 col-xs-12">Tanda Tangan : <strong class="text-red">*</strong></label>
+                        <div class="col-md-9">
+                            <select name="pegawai" class="form-control" required="true">
+                                <option value="">- PILIH -</option>
+                    <?php  
+                    /* Loop Data Pegawai */
+                    foreach($pegawai as $row) :
+                    ?>
+                                <option value="<?php echo $row->ID; ?>"><?php echo $row->nama; ?> (<?php echo $row->jabatan; ?>)</option>
+                    <?php  
+                    endforeach;
+                    ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning hvr-shadow pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                <button type="submit" class="btn btn-warning hvr-shadow"><i class="fa fa-save"></i> Simpan & Terima</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

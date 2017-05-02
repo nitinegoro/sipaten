@@ -82,9 +82,15 @@ if( $this->permission->is_true('surat_perizinan', 'on') ) :
 endif;
 ?>
 
-        <li class="<?php echo active_link_controller('surat_online'); ?>">
+        <li class="<?php echo active_link_method('index','surat_online'); ?>">
             <a href="<?php echo site_url('surat_online') ?>">
-               <i class="glyphicon glyphicon-search"></i> <span> Cek Pelayanan Online</span>
+               <i class="glyphicon glyphicon-search"></i> <span> Lacak Pelayanan Online</span>
+            </a>
+        </li>
+
+        <li class="<?php echo active_link_method('all','surat_online'); ?>">
+            <a href="<?php echo site_url('surat_online/all') ?>">
+               <i class="fa fa-copy"></i> <span> Data Pengajuan</span>
             </a>
         </li>
 

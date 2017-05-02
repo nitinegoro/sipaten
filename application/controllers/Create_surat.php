@@ -143,6 +143,8 @@ class Create_surat extends Sipaten
 		{
 			$this->create_surat->update_surat($penduduk->nik, $param);
 
+			parent::create_surat_notification(base_url('surat_keluar'));
+
 			$this->cart->destroy();
 
 			redirect("create_surat/index/{$param}");

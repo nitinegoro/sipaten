@@ -41,6 +41,10 @@ class Sipaten extends MY_Controller
 		$this->user_id = $this->session->userdata('account')->role_id;
 
 		$this->role_name = $this->option->get_role( $this->user_id )->role_name;
+
+		$this->load->js('https://js.pusher.com/2.2/pusher.min.js');
+		$this->load->js(base_url("public/dist/js/push.js"));
+		$this->load->js(base_url("public/app/notifications.js"));
 	}
 
 	/**
@@ -333,9 +337,28 @@ class Sipaten extends MY_Controller
 				# code...surat
 				break;
 		}
+
 		$this->form_validation->set_rules('nomor_surat', 'Nomor Surat', 'trim|required');
 		$this->form_validation->set_rules('ttd_pejabat', 'Tanda Tangan', 'trim|required');
 		$this->form_validation->set_rules('pemeriksa', 'Petugas Verifikasi', 'trim|required');
+	}
+
+	public function create_surat_notification($target_url = '', $recipient = 0)
+	{
+		$this->load->library('ci_pusher');
+
+		$penerima = $this->db->get_where('pegawai', array('ID' => $recipient))->row('nip');		
+
+		$pusher = $this->ci_pusher->get_pusher();
+
+		$data = array(
+			'message' => 'Anda memiliki 1 dokumen dari '.$this->session->userdata('account')->name.' untuk diperiksa.',
+			'target_url' => $target_url,
+			'icon' => (!$this->session->userdata('account')->photo) ? base_url("public/image/avatar.jpg") : base_url("public/image/{$this->session->userdata('account')->photo}"),
+		); 
+
+		// Send message
+		$event = $pusher->trigger('channel-'.$penerima, 'notifikasi-buat-surat', $data);
 	}
 }
 

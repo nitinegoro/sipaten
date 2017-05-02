@@ -13,7 +13,7 @@ class Rest_api extends CI_Model
 		
 		$this->load->library( array('curl') );
 	
-		$this->url = "http://localhost/tempayan/api";
+		$this->url = "http://192.168.100.6/tempayan/api";
 
 		$this->method = $this->input->get('ID');
 	}
@@ -55,10 +55,11 @@ class Rest_api extends CI_Model
 			case 'JPG':
 			case 'GIF':
 			case 'PNG':
-				return '<i class="fa fa-image"></i>';
+				return '<a href="'.$url.'" data-toggle="lightbox"><i class="fa fa-image"></i></a>';
 				break;
 			case 'pdf':
-				return '<i class="fa fa-file-pdf-o"></i>';
+			case 'PDF':
+				return '<a href="'.$url.'" data-toggle="lightbox"><i class="fa fa-file-pdf-o"></i></a>';
 				break;
 			default:
 				# code...
