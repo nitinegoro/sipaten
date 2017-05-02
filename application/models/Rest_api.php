@@ -52,6 +52,9 @@ class Rest_api extends CI_Model
 			case 'jpg':
 			case 'gif':
 			case 'png':
+			case 'JPG':
+			case 'GIF':
+			case 'PNG':
 				return '<i class="fa fa-image"></i>';
 				break;
 			case 'pdf':

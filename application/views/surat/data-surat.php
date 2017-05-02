@@ -37,10 +37,7 @@ echo form_open(current_url(), array('method' => 'get'));
 					</select>
 					per halaman
 				</div>
-				<div class="col-md-5">
-					<a href="<?php echo site_url('surat/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm pull-right"><i class="fa fa-plus"></i> Tambah Baru</a>
-				</div>
-            <div class="col-md-3">
+            <div class="col-md-4 pull-right">
                <div class="input-group input-group-sm">
                   <input type="text" name="query" class="form-control pull-right" name="<?php echo $this->input->get('query') ?>" placeholder="Pencarian ...">
                   <div class="input-group-btn">
@@ -62,15 +59,11 @@ echo form_open(site_url('surat/bulk_action'));
 				<table class="table table-hover table-bordered mini-font col-md-12" style="margin-top: 10px;">
 					<thead>
 						<tr>
-							<th width="30">
-			                    <div class="checkbox checkbox-inline">
-			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
-			                    </div>
-							</th>
+							<th width="30">No.</th>
 							<th class="text-center">Kode Surat</th>
 							<th class="text-center">Judul Surat Surat</th>
 							<th class="text-center">Jenis Surat</th>
-							<th class="text-center">Waktu Pelayanan</th>
+							<th class="text-center">Nama Label</th>
 							<th width="80"></th>
 						</tr>
 					</thead>
@@ -82,18 +75,13 @@ echo form_open(site_url('surat/bulk_action'));
 				foreach($surat as $row) :
 				?>
 						<tr>
-							<td>
-			                    <div class="checkbox checkbox-inline">
-			                        <input id="checkbox1" type="checkbox" name="surat[]" value="<?php echo $row->id_surat; ?>"> <label for="checkbox1"></label>
-			                    </div>
-							</td>
+							<td> <?php echo ++$this->page; ?>.</td>
 							<td class="text-center"><?php echo $row->kode_surat; ?></td>
 							<td><?php echo $row->judul_surat; ?></td>
-							<td class="text-center"><?php echo strtoupper($row->jenis) ?></td>
-							<td class="text-center"><?php echo $row->durasi; ?></td>
+							<td><?php echo strtoupper($row->jenis) ?></td>
+							<td ><?php echo $row->nama_kategori; ?></td>
 							<td class="text-center">
 								<a href="<?php echo site_url("surat/update/{$row->id_surat}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
-								<a class="icon-button text-red get-delete-surat" data-id="<?php echo $row->id_surat; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 							</td>
 						</tr>
 				<?php  
@@ -101,14 +89,7 @@ echo form_open(site_url('surat/bulk_action'));
 				?>
 					</tbody>
 					<tfoot>
-						<th>
-	                    <div class="checkbox checkbox-inline">
-	                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
-	                    </div>
-						</th>
 						<th colspan="6">
-							<label style="font-size: 11px; margin-right: 10px;">Yang terpilih :</label>
-							<a class="btn btn-xs btn-round btn-danger get-delete-surat-multiple"><i class="fa fa-trash-o"></i> Hapus</a>
 							<small class="pull-right"><?php echo count($surat) . " dari " . $num_surat . " data"; ?></small>
 						</th>
 					</tfoot>

@@ -142,6 +142,56 @@ class Memployee extends Sipaten_model
 			return $this->db->query("SELECT nip FROM pegawai WHERE nip IN({$this->input->post('nip')}) AND ID != {$param}")->num_rows();
 		}
 	}
+
+	/**
+	 * Get Role Name in role
+	 *
+	 * @param Integer (nip)
+	 * @return String
+	 **/
+	public function get_akses_name($param = 0)
+	{
+		return $this->db->query("SELECT users_role.role_name FROM users_role RIGHT JOIN users ON users.role_id = users_role.role_id WHERE users.nip = '{$param}'")->row('role_name');
+	}
+
+	/**
+	 * Create or Update role
+	 *
+	 * @return string
+	 **/
+	public function set_akses_employee()
+	{
+		$pegawai = self::get($this->input->post('pegawai'));
+
+		if( self::check_akses_employee( $pegawai->nip) )
+		{
+			$this->db->update('users', 
+				array('role_id' => $this->input->post('akses')), 
+				array('nip' => $pegawai->nip)
+			);
+
+			$this->template->alert(
+				' Akses pengguna berhasil diubah.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Data pegawai yang dipilih belum mempunyai akun login, mohon buat terlebih dahulu', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
+	}
+
+	/**
+	 * undocumented class variable
+	 *
+	 * @param Integer (nip)
+	 * @return string
+	 **/
+	public function check_akses_employee($nip = 0)
+	{
+		return $this->db->get_where('users', array('nip' => $nip))->num_rows();
+	}
 }
 
 /* End of file Memployee.php */

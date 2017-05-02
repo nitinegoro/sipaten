@@ -103,6 +103,7 @@ echo form_open(site_url('employee/bulk_action'));
 							<th class="text-center">Nama</th>
 							<th class="text-center">Jenis Kelamin</th>
 							<th class="text-center">Jabatan</th>
+							<th class="text-center">Akses Sistem</th>
 							<th class="text-center">Alamat</th>
 							<th class="text-center">Telepon</th>
 							<th></th>
@@ -135,9 +136,11 @@ echo form_open(site_url('employee/bulk_action'));
 							<td><?php echo $row->nama; ?></td>
 							<td class="text-center"><?php echo ucfirst($row->jns_kelamin) ?></td>
 							<td><?php echo $row->jabatan; ?></td>
+							<td><?php echo $this->employee->get_akses_name($row->nip); ?></td>
 							<td><?php echo $row->alamat; ?></td>
 							<td><?php echo $row->telepon; ?></td>
 							<td class="text-center" style="font-size: 12px;">
+								<a data-id="<?php echo $row->ID; ?>" class="icon-button set-akses text-black" data-toggle="tooltip" data-placement="top" title="Hak Akses"><i class="fa fa-wrench"></i></a>
 								<a href="<?php echo site_url("employee/update/{$row->ID}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 								<a class="icon-button text-red get-delete-employee" data-id="<?php echo $row->ID; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 							</td>
@@ -196,19 +199,55 @@ echo form_close();
 </div>
 
 
-
+<!--  -->
 <div class="modal animated fadeIn modal-danger" id="modal-delete-employee" tabindex="-1" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
            	<div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><i class="fa fa-question-circle"></i> Hapus!</h4>
-                <span>Hapus data penduduk ini dari sistem?</span>
+                <span>Hapus data pegawai ini dari sistem?</span>
            	</div>
            	<div class="modal-footer">
                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
                 <a href="#" id="btn-delete" class="btn btn-outline"> Hapus </a>
            	</div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Set Level Akses -->
+<div class="modal animated fadeIn modal-default" id="modal-set-akses" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+           	<div class="modal-header bg-yellow">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4>Pilih hak akses untuk pegawai ini?</h4>
+           	</div>
+           	<form action="<?php echo site_url('employee/set_akses') ?>" method="post" id="form-select-akses">
+           	<div class="modal-body">
+           		<select name="akses" class="form-control input-lg" required="true">
+           			<option value="">-- PILIH --</option>
+           		<?php  
+           		/**
+           		 * Start Loop Role Access
+           		 *
+           		 * @var string
+           		 **/
+           		foreach($this->employee->get_role() as $row) :
+           		?>
+           			<option value="<?php echo $row->role_id; ?>"><?php echo $row->role_name; ?></option>
+           		<?php  
+           		endforeach;
+           		?>
+           		</select>
+           		<input type="hidden" value="" name="pegawai" id="pegawai">
+           	</div>
+           	<div class="modal-footer">
+                <button type="button" class="btn btn-warning hvr-shadow pull-left" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-warning hvr-shadow"> Pilih </button>
+           	</div>
+           	</form>
         </div>
     </div>
 </div>

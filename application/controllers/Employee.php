@@ -206,6 +206,18 @@ class Employee extends Sipaten
 			return true;
 		}
 	}
+
+	/**
+	 * Set Level Akses Pegawai
+	 *
+	 * @return Void
+	 **/
+	public function set_akses()
+	{
+		$this->employee->set_akses_employee();
+
+		redirect('employee');
+	}
 }
 
 /* End of file Employee.php */

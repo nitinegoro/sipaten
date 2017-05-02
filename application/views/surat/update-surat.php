@@ -21,7 +21,7 @@ echo form_hidden('ID', $get->id_surat);
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="control-label col-md-2 col-xs-12">Nama Surat : <strong class="text-red">*</strong></label>
+					<label for="email" class="control-label col-md-2 col-xs-12">Nama Label : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<input type="text" name="nama_surat" class="form-control" value="<?php echo $get->nama_kategori; ?>">
 						<p class="help-block"><?php echo form_error('nama_surat', '<small class="text-red">', '</small>'); ?></p>

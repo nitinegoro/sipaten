@@ -30,5 +30,14 @@ jQuery(function($) {
 			});	
 		}
 	});
+
+	$('.set-akses').click( function() 
+	{
+		var pegawai = $(this).data('id');
+
+		$('input[name="pegawai"]').val(pegawai);
+
+		$('#modal-set-akses').modal('show');
+	});
 	
 });
