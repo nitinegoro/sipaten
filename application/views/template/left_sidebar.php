@@ -96,7 +96,12 @@ endif;
 
         <li class="<?php echo active_link_controller('surat_keluar'); ?>">
             <a href="<?php echo site_url('surat_keluar') ?>">
-               <i class="glyphicon glyphicon-envelope"></i> <span>Data Surat Keluar</span>
+              <i class="glyphicon glyphicon-envelope"></i> <span>Data Surat Keluar</span>
+              <?php if($this->option->count_surat('pending')) : ?>
+              <span class="pull-right-container">
+                 <span class="label label-danger pull-right"><?php echo $this->option->count_surat('pending') ?></span>
+              </span>
+            <?php endif; ?>
             </a>
         </li>
 <?php  

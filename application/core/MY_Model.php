@@ -242,6 +242,16 @@ class Sipaten_model extends MY_Model
 		else 
 			return FALSE;
 	}
+
+	/**
+	 * Hitung Count SUrat by status
+	 *
+	 * @var string
+	 **/
+	public function count_surat($status = '')
+	{
+		return $this->db->get_where('surat', array('status' => $status))->num_rows();
+	}
 }
 
 /* End of file MY_Model.php */

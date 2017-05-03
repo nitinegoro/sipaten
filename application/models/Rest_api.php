@@ -55,11 +55,11 @@ class Rest_api extends CI_Model
 			case 'JPG':
 			case 'GIF':
 			case 'PNG':
-				return '<a href="'.$url.'" data-toggle="lightbox"><i class="fa fa-image"></i></a>';
+				return '<a href="'.$url.'" data-toggle="lightbox"  data-title="Berkas Gambar"><i class="fa fa-image"></i> </a>';
 				break;
 			case 'pdf':
 			case 'PDF':
-				return '<a href="'.$url.'" data-toggle="lightbox"><i class="fa fa-file-pdf-o"></i></a>';
+				return '<a href="'.$url.'" data-width="1200" data-toggle="lightbox" data-title="Berkas PDF"><i class="fa fa-file-pdf-o"></i></a>';
 				break;
 			default:
 				# code...

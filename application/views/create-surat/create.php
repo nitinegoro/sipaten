@@ -15,7 +15,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 ?>
 			<div class="box-body" style="margin-top: 10px;">
 				<div class="col-md-7">
-					<div class="form-group">
+					<div class="form-group" id="blok-cari-nik">
 						<label for="nik" class="control-label col-md-3 col-xs-12">NIK / Nama : <strong class="text-red">*</strong></label>
 						<div class="col-md-6">
 							<input type="text" name="nik" id="cari-nik" class="form-control" value="<?php echo set_value('nik'); ?>">

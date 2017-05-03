@@ -10,6 +10,8 @@ class Analytics extends Sipaten
 		$this->breadcrumbs->unshift(1, 'Analisa Pelayanan', "analytics");
 
 		$this->load->model('manalytics','analytics');
+
+		$this->load->js(base_url('public/app/tour/analytics.js'));
 	}
 
 	public function index()
@@ -24,15 +26,6 @@ class Analytics extends Sipaten
 		);
 
 		$this->template->view('analytics/index', $this->data);	
-	}
-
-	public function test()
-	{
-		$pisah = explode('/', '65/0002/19.04.01.2003/2017');
-
-		echo "<pre>";
-
-		print_r($pisah);
 	}
 }
 

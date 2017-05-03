@@ -5,7 +5,7 @@
               	<h3 class="box-title">Cari Dokumen Surat</h3>
             </div>
             <form action="<?php echo current_url(); ?>" class="form-horizontal" method="get">
-            <div class="box-body" style="padding-bottom: 20px;">
+            <div class="box-body" style="padding-bottom: 20px;" id="blok-cari-surat">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="col-md-2">
                         <label class="control-label">Nomor Surat :</label>
@@ -34,7 +34,7 @@
 if($this->analytics->get()) :
 ?>
  <div class="row">
-   <div class="col-md-5">
+   <div class="col-md-5" id="timeline" style="padding-top: 10px; padding-bottom: 10px;">
           <ul class="timeline">
             <li style="padding-top: 30px;">
               <i class="fa fa-circle text-yellow"></i>
@@ -82,7 +82,7 @@ if($this->analytics->get()) :
           </ul>
     </div>
     <div class="col-md-7">
-        <table class="table table-bordered"  id="sticker" style="background-color: white">
+        <table class="table table-bordered blok-dokumen" id="sticker" style="background-color: white">
             <tbody>
                 <tr>
                     <th width="160" class="bg-primary text-right">NIK Pemohon :</th>

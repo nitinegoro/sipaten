@@ -51,9 +51,8 @@ class Surat_keluar extends Sipaten
 
 		$this->page = $this->input->get('page');
 
-		$this->load->js('https://js.pusher.com/2.2/pusher.min.js');
-		$this->load->js(base_url("public/dist/js/push.js"));
 		$this->load->js(base_url("public/app/surat_keluar.js"));
+		$this->load->js(base_url('public/app/tour/surat-keluar.js'));
 	}
 
 	public function index()

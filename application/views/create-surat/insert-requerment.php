@@ -20,8 +20,8 @@ echo form_hidden('nik', '');
 echo form_hidden('ID', '');
 ?>
 			<div class="box-body" style="margin-top: 10px;">
-				<div class="col-md-7">
-					<div class="form-group">
+				<div class="col-md-7" id="blok-cari-nik">
+					<div class="form-group" style="padding-top: 10px;">
 						<label for="nik" class="control-label col-md-3 col-xs-12">NIK / Nama : <strong class="text-red">*</strong></label>
 						<div class="col-md-6">
 							<input type="text" id="cari-nik" class="form-control" value=""> 
@@ -51,7 +51,7 @@ echo form_hidden('ID', '');
 				</div>
 
 				<div class="col-md-5">
-					<table class="table table-bordered">
+					<table class="table table-bordered" id="table-pemohon">
 						<tbody>
 							<tr>
 								<th width="160" class="bg-primary text-right">NIK :</th>

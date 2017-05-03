@@ -19,6 +19,8 @@ class Create_surat extends Sipaten
 
 		if($this->uri->segment(2) == FALSE)
 			show_404();
+
+		$this->load->js(base_url('public/app/tour/create-surat.js'));
 	}
 
 	public function index($param = 0)

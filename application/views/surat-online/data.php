@@ -4,7 +4,7 @@
 		<div class="box box-primary">
 			<div class="box-header with-border">
 				<div class="col-md-7">
-					<h3 class="box-title">Data Surat Keluar</h3>
+					<h3 class="box-title">Data Pengajuan Online</h3>
 				</div>
 			</div>
 <?php  
@@ -25,50 +25,12 @@ echo form_open(current_url(), array('method' => 'get'));
 		            		<input class="form-control input-sm" name="end" id="datepicker2" value="<?php echo $this->input->get('end') ?>" placeholder="Sampai Tanggal ..">
 		            	</div>	
 				    </div>
+				</div>
+				<div class="col-md-4">
 				    <div class="form-group">
 				        <label>Kata Kunci :</label>
 				        <input type="text" name="query" class="form-control input-sm" value="<?php echo $this->input->get('query') ?>" placeholder="No. Surat / NIK / Nama  . . . ">
 				    </div>
-				</div>
-				<div class="col-md-4">
-				    <div class="form-group col-md-12">
-				        <label>Jenis Surat :</label>
-				        <select name="jenis" class="form-control input-sm">
-				        	<option value="">-- PILIH JENIS SURAT--</option>
-				    <?php  
-				    /* Loop Surat Kategori */
-				    foreach($this->surat_keluar->category() as $row) :
-				    ?>
-							<option value="<?php echo $row->id_surat; ?>" <?php if($row->id_surat==$this->input->get('jenis')) echo "selected"; ?>><?php echo $row->judul_surat; ?></option>
-					<?php  
-					endforeach;
-					?>
-				        </select>	
-				    </div>
-				    <div class="form-group col-md-8">
-				        <label>Status :</label>
-				        <select name="status" class="form-control input-sm">
-				        	<option value="">-- PILIH STATUS --</option>
-				        	<option value="pending" <?php if($this->input->get('status')=='pending') echo 'selected'; ?>>Pending</option>
-				        	<option value="approve" <?php if($this->input->get('status')=='approve') echo 'selected'; ?>>Terverifikasi</option>
-				        </select>	
-				    </div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-				        <label>User :</label>
-				        <select name="user" class="form-control input-sm">
-				        	<option value="">-- PILIH --</option>
-				    <?php  
-				    /* Loop Data User */
-				    foreach($this->surat_keluar->get_user() as $row) :
-				    ?>
-							<option value="<?php echo $row->user_id; ?>" <?php if($row->user_id==$this->input->get('user')) echo "selected"; ?>><?php echo $row->name; ?></option>
-					<?php  
-					endforeach;
-					?>
-				        </select>	
-					</div>
 				</div>
 				<div class="col-md-3" style="margin-left:-10px;">
                     <button type="submit" class="btn btn-app hvr-shadow"><i class="fa fa-filter"></i> Filter</button>
@@ -146,70 +108,7 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 						</tr>
 					</thead>
 					<tbody>
-				<?php  
-				/*
-				* Loop data penduduk
-				*/
-				$number = ( ! $this->page ) ? 0 : $this->page;
 
-				foreach($data_surat as $row) :
-					$date = new DateTime($row->tanggal);
-				?>
-						<tr>
-							<td>
-							<?php  
-							if( $this->permission->is_verified() OR $this->permission->is_admin() ) :
-							?>
-			                    <div class="checkbox checkbox-inline">
-			                        <input id="checkbox1" type="checkbox" name="surat[]" value="<?php echo $row->ID; ?>"> <label for="checkbox1"></label>
-			                    </div>
-							<?php  
-							else :
-								echo ++$this->page.".";
-							endif;
-							?>
-							</td>
-							<td class="text-center">
-								<?php echo $row->kode_surat.'/<b>'.$row->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?>
-							</td>
-							<td><?php echo $row->judul_surat; ?></td>
-							<td class="text-center"><?php echo date_id($row->tanggal); ?></td>
-							<td><?php echo $row->nama_lengkap; ?></td>
-							<td><?php echo $row->nama; ?></td>
-							<td><?php echo $row->name; ?></td>
-							<td><?php echo strtoupper($row->status) ?></td>
-							<td class="text-center" style="font-size: 14px;" width="130" id="blok-crud">
-							<?php  
-							if( $row->status == 'approve' OR $this->permission->is_admin() AND $this->permission->print_file($row->slug) ) :
-							?>
-								<a href="<?php echo site_url("surat_keluar/print_surat/{$row->ID}") ?>" class="icon-button btn-print" data-toggle="tooltip" data-placement="top" title="Cetak" style="color: #444;"><i class="fa fa-print"></i></a>
-							<?php
-							endif;
-
-							if( $this->permission->is_admin() OR $row->status != 'approve' ) :
-							?>
-								<a href="<?php echo site_url("surat_keluar/get/{$row->ID}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
-							<?php  
-							endif;
-
-							if( $this->permission->is_verified() OR $this->permission->is_admin()) :
-							?>
-								<a href="#" class="icon-button text-yellow get-dialog" data-id="<?php echo $row->ID; ?>" data-action="set_pending" data-toggle="tooltip" data-placement="top" title="Pending"><i class="fa fa-times"></i></a>
-								<a href="#" class="icon-button text-green get-dialog" data-id="<?php echo $row->ID; ?>" data-action="set_aprove" data-toggle="tooltip" data-placement="top" title="Verifikasi"><i class="fa fa-check"></i></a>
-							<?php  
-							endif;
-
-							if( $this->permission->is_admin() ) :
-							?>
-								<a href="#" class="icon-button text-red get-dialog" data-id="<?php echo $row->ID; ?>" data-action="delete" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
-							<?php  
-							endif;
-							?>
-							</td>
-						</tr>
-				<?php  
-				endforeach;
-				?>
 					</tbody>
 					<tfoot>
 					<?php  
@@ -223,7 +122,7 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 						<th colspan="8">
 							<label style="font-size: 11px; margin-right: 10px;">Yang terpilih :</label>
 							<a class="btn btn-xs btn-round btn-danger hvr-shadow get-delete-people-multiple"><i class="fa fa-trash-o"></i> Hapus</a>
-							<small class="pull-right"><?php echo count($data_surat) . " dari " . $num_surat . " data"; ?></small>
+							<small class="pull-right"><?php echo 3 . " dari " . 3 . " data"; ?></small>
 						</th>
 					<?php  
 					else :
@@ -277,3 +176,4 @@ echo form_close();
         </div>
     </div>
 </div>
+
