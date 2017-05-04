@@ -97,12 +97,10 @@ echo form_open(site_url('surat_keluar/bulk_action'));
 							else : echo "No."; endif;
 							?>
 							</th>
-							<th class="text-center">No. Surat</th>
+							<th class="text-center">No. Pengajuan</th>
 							<th class="text-center">Jenis Surat</th>
 							<th class="text-center" width="90">Tanggal</th>
-							<th class="text-center">Nama Penduduk</th>
-							<th class="text-center">Ditanda Tangani</th>
-							<th class="text-center">User</th>
+							<th class="text-center">NIK</th>
 							<th class="text-center">Status</th>
 							<th></th>
 						</tr>

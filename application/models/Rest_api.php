@@ -47,7 +47,7 @@ class Rest_api extends CI_Model
 	{
 		$filepath = pathinfo($url);
 
-		switch ( $filepath['extension'] ) 
+		switch ( @$filepath['extension'] ) 
 		{
 			case 'jpg':
 			case 'gif':

@@ -46,7 +46,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Mendirikan Bangunan :</p>
+							<p class="legend-form">Keterangan Perusahaan :</p>
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Nama Perusahaan/Perseroan : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">
