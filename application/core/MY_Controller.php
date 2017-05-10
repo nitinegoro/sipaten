@@ -268,13 +268,13 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[letak_tanah]', 'Letak Tanah', 'trim|required');
 				$this->form_validation->set_rules('isi[luas_tanah]', 'Luas Tanah', 'trim|required');
 				$this->form_validation->set_rules('isi[bts_utara][ket]', 'Keterangan Batas Tanah', 'trim|required');
-				$this->form_validation->set_rules('isi[bts_utara][nama]', 'Nama Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_utara][nama]', 'Ukuran Batas Tanah', 'trim|required');
 				$this->form_validation->set_rules('isi[bts_timur][ket]', 'Keterangan Batas Tanah', 'trim|required');
-				$this->form_validation->set_rules('isi[bts_timur][nama]', 'Nama Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_timur][nama]', 'Ukuran Batas Tanah', 'trim|required');
 				$this->form_validation->set_rules('isi[bts_selatan][ket]', 'Keterangan Batas Tanah', 'trim|required');
-				$this->form_validation->set_rules('isi[bts_selatan][nama]', 'Nama Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_selatan][nama]', 'Ukuran Batas Tanah', 'trim|required');
 				$this->form_validation->set_rules('isi[bts_barat][ket]', 'Keterangan Batas Tanah', 'trim|required');
-				$this->form_validation->set_rules('isi[bts_barat][nama]', 'Nama Batas Tanah', 'trim|required');
+				$this->form_validation->set_rules('isi[bts_barat][nama]', 'Ukuran Batas Tanah', 'trim|required');
 				$this->form_validation->set_rules('isi[tahun_kuasa]', 'Tahun Kuasa', 'trim|required');
 				break;
 			case 'keterangan-waris':

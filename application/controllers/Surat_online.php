@@ -40,15 +40,32 @@ class Surat_online extends Sipaten
 		$this->template->view('surat-online/index', $this->data);
 	}
 
+	/**
+	 * Create Surat dan pindahkan ke database local
+	 *
+	 * @return Html Page
+	 **/
 	public function create()
 	{
-		echo "<pre>";
+		$this->surat_online->create();
 
-		print_r($this->surat_online->create());
+		parent::create_surat_notification(base_url(), $this->input->post('pemeriksa'));
 
-		parent::create_surat_notification(base_url(), $this->surat_online->create()['pemeriksa']);
+		redirect("surat_online?ID={$this->ID}");
 	}
 
+
+	public function test()
+	{
+		echo "<pre>";
+		print_r($this->rest_api->update('PL-KDP-006-05-2017'));
+	}
+
+	/**
+	 * Halaman Data Pengaduan
+	 *
+	 * @return Html Page
+	 **/
 	public function all()
 	{
 		$this->breadcrumbs->unshift(1, 'Data Pengajuan', "surat_online");
