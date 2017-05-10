@@ -30,7 +30,7 @@ $date = new DateTime($get->tanggal);
                     <td><?php echo $isi->alamat_perusahaan; ?></td>
                 </tr>
             </table>
-            <p class="indent">Memperhatihan get tersebut diatas dan sepanjang sepengetahuan kami bahwa <?php echo $isi->nama_perusahaan; ?> memang benar beralamat di <?php echo $isi->alamat_perusahaan . ' '.ucfirst($this->option->get_select_desa($isi->desa, 'nama_desa')); ?> Kecamatan <?php echo ucfirst($this->option->get('kecamatan')) ?> Kabupaten <?php echo ucfirst($this->option->get('kabupaten')) ?>.</p>
+            <p class="indent">Memperhatihan get tersebut diatas dan sepanjang sepengetahuan kami bahwa <?php echo $isi->nama_perusahaan; ?> memang benar beralamat di <?php echo $isi->alamat_perusahaan . ' '.ucfirst($isi->desa); ?> Kecamatan <?php echo ucfirst($this->option->get('kecamatan')) ?> Kabupaten <?php echo ucfirst($this->option->get('kabupaten')) ?>.</p>
             <p class="indent">Demikiaan, Surat Keterangan Domisili ini dibuat untuk dapat dipergunakan sebagaimana mestinya.</p>
         </div>
         <div class="mail-footer">

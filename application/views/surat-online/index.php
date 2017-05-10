@@ -28,15 +28,18 @@
  </div>
 <?php  
 /**
- * undocumented class variable
+ * Jika Tombol Cari ter submit 
  *
  * @var string
  **/
 if( $this->mode_searching  AND @$get->penduduk != NULL) :
 
     $mulai = new DateTime($get->waktu->mulai);
+
+    $selesai = new DateTime($get->waktu->selesai);
 ?>
 <div class="row">
+    <div class="col-md-8 col-md-offset-2 col-xs-12"><?php echo $this->session->flashdata('alert'); ?></div>
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-body">
@@ -75,7 +78,7 @@ if( $this->mode_searching  AND @$get->penduduk != NULL) :
                         </tr>
                     </table>        
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <table>
                         <tr>
                             <th>Nomor Pengajuan </th><th width="30" class="text-center">:</th>
@@ -89,11 +92,36 @@ if( $this->mode_searching  AND @$get->penduduk != NULL) :
                             <th>Tanggal </th><th width="30" class="text-center">:</th>
                             <td><?php echo hari_ini($mulai->format('D')).", ".date_id(substr($get->waktu->mulai, 0, 10)) ?> <i><?php echo $mulai->format(' H:s A') ?></i></td>
                         </tr>
+                        <?php  
+                        /**
+                         * Jika Selesai Baru bisa dicetak
+                         *
+                         * @var string
+                         **/
+                        if( $get->waktu->selesai != FALSE ) :
+                        ?>
+                        <tr>
+                            <th>Tanggal Diproses </th><th width="30" class="text-center">:</th>
+                            <td><?php echo @hari_ini($selesai->format('D')).", ".@date_id(substr($get->waktu->selesai, 0, 10)) ?> <i><?php echo $selesai->format(' H:s A') ?></i></td>
+                        </tr>
+                        <?php  
+                        endif;
+                        ?>
                     </table>        
                 </div>
                 <div class="col-md-3 pull-right" style="padding-top: 20px;">
-                    <button class="btn btn-app"><i class="fa fa-print"></i> Cetak</button>
+                <?php  
+                /**
+                 * Jika Selesai Baru bisa dicetak
+                 *
+                 * @var string
+                 **/
+                if( $get->waktu->selesai == FALSE ) :
+                ?>
                     <button class="btn btn-app" data-toggle="modal" data-target="#modal-terima-surat"><i class="fa fa-check-square-o"></i> Terima</button>
+                <?php  
+                endif;
+                ?>
                 </div>
             </div>
             <div class="box-body"> <hr>

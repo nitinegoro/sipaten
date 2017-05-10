@@ -88,11 +88,11 @@ endif;
             </a>
         </li>
 
-        <li class="<?php echo active_link_method('all','surat_online'); ?>">
-            <a href="<?php echo site_url('surat_online/all') ?>">
-               <i class="fa fa-copy"></i> <span> Data Pengajuan</span>
-            </a>
-        </li>
+<!--         <li class="<?php echo active_link_method('all','surat_online'); ?>">
+    <a href="<?php echo site_url('surat_online/all') ?>">
+       <i class="fa fa-copy"></i> <span> Data Pengajuan</span>
+    </a>
+</li> -->
 
         <li class="<?php echo active_link_controller('surat_keluar'); ?>">
             <a href="<?php echo site_url('surat_keluar') ?>">

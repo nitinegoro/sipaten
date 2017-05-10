@@ -13,7 +13,7 @@ class Rest_api extends CI_Model
 		
 		$this->load->library( array('curl') );
 	
-		$this->url = "http://192.168.100.6/tempayan/api";
+		$this->url = "http://localhost/tempayan/api";
 
 		$this->method = $this->input->get('ID');
 	}
@@ -35,6 +35,45 @@ class Rest_api extends CI_Model
 		}
 	}
 
+	public function update($param = '')
+	{
+		$update_surat = json_decode( $this->curl->simple_put( $this->url . '/surat/' . $param ) );
+
+		return $update_surat;
+	}
+
+	/**
+	 * Get Data Penduduk
+	 *
+	 * @param Integer (NIK)
+	 * @var string
+	 **/
+	public function penduduk($param = '')
+	{
+		$penduduk = json_decode( $this->curl->simple_get( $this->url . '/penduduk?nik=' . $param ) );
+
+		if( $penduduk != NULL) 
+		{
+			if( $this->method != '') 
+			{
+				return $penduduk;
+			} else {
+				return $penduduk;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+
+	/**
+	 * Abil Desa
+	 *
+	 * @var string
+	 **/
+	public function desa($param = '')
+	{
+		return json_decode( $this->curl->simple_get( $this->url . '/penduduk/pdesa?nik=' . $param ) );
+	}
 
 
 	/**

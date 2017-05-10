@@ -50,7 +50,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					/* Loop Data Pegawai */
 					foreach($this->create_surat->get_desa() as $row) :
 					?>
-								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==set_value('isi[desa]')) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
+								<option value="<?php echo $row->nama_desa; ?>" <?php if($row->id_desa==set_value('isi[desa]')) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
 					<?php  
 					endforeach;
 					?>

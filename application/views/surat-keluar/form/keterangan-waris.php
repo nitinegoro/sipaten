@@ -26,7 +26,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>	
 					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
-							<p class="legend-form">Surat Keterangan Usaha dari Kades / Lurah</p>
+							<p class="legend-form">Surat Keterangan Waris dari Kades / Lurah</p>
 						</div>
 						<label for="email" class="control-label col-md-3 col-xs-12">Nama Pejabat Lurah / Kades  : <strong class="text-red">*</strong></label>
 						<div class="col-md-9">

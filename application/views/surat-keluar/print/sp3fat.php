@@ -22,7 +22,7 @@ $date = new DateTime($get->tanggal);
                 <tr>
                     <td width="80">Lurah</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $this->db->get_where('desa', array('id_desa' => $isi->desa))->row('nama_desa') ?></td>
+                    <td><?php echo $isi->desa ?></td>
                 </tr>
                 <tr>
                     <td>Kecamatan</td>
@@ -44,32 +44,28 @@ $date = new DateTime($get->tanggal);
             <p>
                 <ol style="list-style:">
                     <li><p>
-                        Bahwa berdasarkan Surat Pernyataan Pengakuan Fisik Atas Tanah tanggal <?php echo date_id($isi->tgl_surat_kuasa); ?> diketahui lurah <?php echo $this->db->get_where('desa', array('id_desa' => $isi->desa))->row('nama_desa') ?> tanggal <?php echo date_id($isi->tgl_diketahui); ?> Nomor : <?php echo $isi->no_surat_kuasa; ?> berupa tanah pekarangan yang terleak di <?php echo $isi->letak_tanah; ?> dengan luas <strong>&plusmn; <?php echo $isi->luas_tanah; ?> M<sup>2</sup> (Kurang Lebih <?php echo terbilang($isi->luas_tanah, 'ucfirst'); ?> Meter Persegi)</strong> <br></p>
+                        Bahwa berdasarkan Surat Pernyataan Pengakuan Fisik Atas Tanah tanggal <?php echo date_id($isi->tgl_surat_kuasa); ?> diketahui lurah <?php echo $isi->desa ?> tanggal <?php echo date_id($isi->tgl_diketahui); ?> Nomor : <?php echo $isi->no_surat_kuasa; ?> berupa tanah pekarangan yang terleak di <?php echo $isi->letak_tanah; ?> dengan luas <strong>&plusmn; <?php echo $isi->luas_tanah; ?> M<sup>2</sup> (Kurang Lebih <?php echo terbilang($isi->luas_tanah, 'ucfirst'); ?> Meter Persegi)</strong> <br></p>
                         <p>Dengan Batas-batas sebagai berikut :</p>
                         <table>
                             <tr>
                                 <td width="230">Sebelah Utara berbatasan dengan </td>
                                 <td class="text-center">:</td>
-                                <td><?php echo $isi->bts_utara->ket.' '.$isi->bts_utara->nama; ?> </td>
-                                <td>&plusmn; 90 M</td>
+                                <td><?php echo $isi->bts_utara->ket.' '.$isi->bts_utara->nama; ?> M<sup>3</sup></td>
                             </tr>
                             <tr>
                                 <td width="230">Sebelah Timur berbatasan dengan </td>
                                 <td class="text-center">:</td>
-                                <td><?php echo $isi->bts_timur->ket.' '.$isi->bts_timur->nama; ?> </td>
-                                <td>&plusmn; 90 M</td>
+                                <td><?php echo $isi->bts_timur->ket.' '.$isi->bts_timur->nama; ?> M<sup>3</sup></td>
                             </tr>
                             <tr>
                                 <td width="230">Sebelah Selatan berbatasan dengan </td>
                                 <td class="text-center">:</td>
-                                <td><?php echo $isi->bts_selatan->ket.' '.$isi->bts_selatan->nama; ?> </td>
-                                <td>&plusmn; 90 M</td>
+                                <td><?php echo $isi->bts_selatan->ket.' '.$isi->bts_selatan->nama; ?> M<sup>3</sup></td>
                             </tr>
                             <tr>
                                 <td width="230">Sebelah Barat berbatasan dengan </td>
                                 <td class="text-center">:</td>
-                                <td><?php echo $isi->bts_barat->ket.' '.$isi->bts_barat->nama; ?> </td>
-                                <td>&plusmn; 90 M</td>
+                                <td><?php echo $isi->bts_barat->ket.' '.$isi->bts_barat->nama; ?> M<sup>3</sup></td>
                             </tr>
                             <tr>
                                 <td colspan="4">(Gambar Denah Sementara Terlampir)</td>

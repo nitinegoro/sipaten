@@ -58,7 +58,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					/* Loop Data Pegawai */
 					foreach($this->create_surat->get_desa() as $row) :
 					?>
-								<option value="<?php echo $row->id_desa; ?>" <?php if($row->id_desa==set_value('isi[desa]')) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
+								<option value="<?php echo $row->nama_desa; ?>" <?php if($row->id_desa==set_value('isi[desa]')) echo 'selected'; ?>><?php echo $row->nama_desa; ?></option>
 					<?php  
 					endforeach;
 					?>
@@ -97,7 +97,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<div class="col-md-4">
 							<div class="input-group">
 							  	<input type="text" class="form-control" name="isi[bts_utara][nama]" value="<?php echo set_value('isi[bts_utara][nama]'); ?>">
-							  	<span class="input-group-addon">&plusmn; 90 M</span>
+							  	<span class="input-group-addon">&plusmn;  M<sup>3</sup></span>
 							</div>
 							<p class="help-block"><?php echo form_error('isi[bts_utara][nama]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
@@ -111,7 +111,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<div class="col-md-4">
 							<div class="input-group">
 							  	<input type="text" class="form-control" name="isi[bts_timur][nama]" value="<?php echo set_value('isi[bts_timur][nama]'); ?>">
-							  	<span class="input-group-addon">&plusmn; 90 M</span>
+							  	<span class="input-group-addon">&plusmn;  M<sup>3</sup></span>
 							</div>
 							<p class="help-block"><?php echo form_error('isi[bts_timur][nama]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
@@ -125,7 +125,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<div class="col-md-4">
 							<div class="input-group">
 							  	<input type="text" class="form-control" name="isi[bts_selatan][nama]" value="<?php echo set_value('isi[bts_selatan][nama]'); ?>">
-							  	<span class="input-group-addon">&plusmn; 90 M</span>
+							  	<span class="input-group-addon">&plusmn;  M<sup>3</sup></span>
 							</div>
 							<p class="help-block"><?php echo form_error('isi[bts_selatan][nama]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
@@ -139,7 +139,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<div class="col-md-4">
 							<div class="input-group">
 							  	<input type="text" class="form-control" name="isi[bts_barat][nama]" value="<?php echo set_value('isi[bts_barat][nama]'); ?>">
-							  	<span class="input-group-addon">&plusmn; 90 M</span>
+							  	<span class="input-group-addon">&plusmn;  M<sup>3</sup></span>
 							</div>
 							<p class="help-block"><?php echo form_error('isi[bts_barat][nama]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
