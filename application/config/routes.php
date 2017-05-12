@@ -53,6 +53,8 @@ $route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/* Satisfaction KIOSK */
+$route['kiosk'] = 'satisfaction/satisfaction/index';
 
 /* API */
 $route['penduduk/get/(\d+)'] = 'people/getjson/$1';
