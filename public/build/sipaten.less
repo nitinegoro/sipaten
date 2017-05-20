@@ -308,3 +308,23 @@ h4.heading-box-sonline {
   border-bottom: 1px solid @app_gray;
   padding-bottom:10px;
 }
+
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    z-index: 3;
+    color: white;
+    background-color: @600;
+}
+
+
+.pagination > li.active > a,
+.pagination > li.active > a:hover {
+    z-index: 3;
+    font-weight:bold;
+    color: white;
+    background-color: @600;
+    border-color: @app_gray;
+}
