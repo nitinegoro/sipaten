@@ -11,8 +11,8 @@ $this->load->view('userguide/parent-navigation', $this->data);
 				<p>Terkait Proses Sistem Tempayan Bekerja :</p>
 				<ul class="list-userguide">
 					<li><a href="<?php echo site_url('userguide/tutorial/proses-1.php') ?>">Bagaimana Membuat Surat Non Perizinan?</a></li>
-					<li><a href="">Bagaimana Membuat Surat Perizinan?</a></li>
-					<li><a href="">Bagaimana Saya memverifikasi sebuah Surat yang diajukan oleh Staff Pelayanan?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-2.php') ?>">Bagaimana Membuat Surat Perizinan?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-3.php') ?>">Bagaimana Saya memverifikasi sebuah Surat yang diajukan oleh Staff Pelayanan?</a></li>
 					<li><a href="">Dimana Saya melihat surat yang pernah Saya ajukan atau periksa?</a></li>
 					<li><a href="">Surat yang Saya ajukan terdapat kesalahan data, apa yang harus saya lakukan?</a></li>
 					<li><a href="">Saya tidak mendapatkan pemberitahuan dari Petugas verifikasi?</a></li>
