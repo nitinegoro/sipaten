@@ -13,19 +13,19 @@ $this->load->view('userguide/parent-navigation', $this->data);
 					<li><a href="<?php echo site_url('userguide/tutorial/proses-1.php') ?>">Bagaimana Membuat Surat Non Perizinan?</a></li>
 					<li><a href="<?php echo site_url('userguide/tutorial/proses-2.php') ?>">Bagaimana Membuat Surat Perizinan?</a></li>
 					<li><a href="<?php echo site_url('userguide/tutorial/proses-3.php') ?>">Bagaimana Saya memverifikasi sebuah Surat yang diajukan oleh Staff Pelayanan?</a></li>
-					<li><a href="">Dimana Saya melihat surat yang pernah Saya ajukan atau periksa?</a></li>
-					<li><a href="">Surat yang Saya ajukan terdapat kesalahan data, apa yang harus saya lakukan?</a></li>
-					<li><a href="">Saya tidak mendapatkan pemberitahuan dari Petugas verifikasi?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-4.php') ?>">Dimana Saya melihat surat yang pernah Saya ajukan atau periksa?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-5.php') ?>">Surat yang Saya ajukan terdapat kesalahan data, apa yang harus saya lakukan?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-6.php') ?>">Saya tidak mendapatkan pemberitahuan dari Petugas verifikasi?</a></li>
 				</ul>
 				<p>Umpan-balik terhadap Pelayanan :</p>
 				<ul class="list-userguide">
-					<li><a href="">Seberapa baikkah pelayan hari ini?</a></li>
-					<li><a href="">Saya ingin melihat rekam jejak sebuah surat?</a></li>
-					<li><a href="">Surat apa yang paling sering diajukan oleh penduduk?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-7.php') ?>">Seberapa baikkah pelayan hari ini?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-8.php') ?>">Saya ingin melihat rekam jejak sebuah surat?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-9.php') ?>">Surat apa yang paling sering diajukan oleh masyarakat?</a></li>
 				</ul>
 				<p>Laporan dan Hasil Data :</p>
 				<ul class="list-userguide">
-					<li><a href="">Saya ingin mencetak Surat yang keluar pada hari ini?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-10.php') ?>">Saya ingin mencetak Surat yang keluar pada hari ini?</a></li>
 					<li><a href="">Format laporan Surat Keluar yang inginkan tidak sesuai, bagaiman Saya merubahnya?</a></li>
 					<li><a href="">Seberapa banyak penduduk yang melakukan transaksi kepada kami?</a></li>
 				</ul>

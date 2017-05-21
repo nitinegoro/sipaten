@@ -18,7 +18,7 @@
          .login-page { 
             margin-top: 12%;
          height: auto;  
-           background: url(<?php echo base_url('public/image/bg-big.jpg'); ?>) no-repeat top fixed; 
+           background: url(<?php echo base_url('public/image/bg-bupati.jpg'); ?>) no-repeat top fixed; 
            -webkit-background-size: cover;
            -moz-background-size: cover;
            -o-background-size: cover;
