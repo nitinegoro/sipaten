@@ -38,7 +38,7 @@
                         <tr>
                             <th colspan="2" class="text-right">Total : </th>
                             <th class="text-center"><?php echo ($this->stats_people->gender_population('perempuan')+$this->stats_people->gender_population('laki-laki')) ?> Orang</th>
-                            <th class="text-center"><?php echo ceil($this->stats_people->gender_population('laki-laki', TRUE)+$this->stats_people->gender_population('perempuan', TRUE)) ?> %</th>
+                            <th class="text-center"><?php echo @ceil($this->stats_people->gender_population('laki-laki', TRUE)+$this->stats_people->gender_population('perempuan', TRUE)) ?> %</th>
                         </tr>
                     </tfoot>
                 </table>

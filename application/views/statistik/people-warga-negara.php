@@ -24,14 +24,14 @@
                         <tr>
                             <td>1.</td>
                             <td class="text-center">WNI</td>
-                            <td class="text-center"><?php echo $this->stats_people->warga_negara_population('wni'); ?> Orang</td>
-                            <td class="text-center"><?php echo $this->stats_people->warga_negara_population('wni', TRUE); ?> %</td>
+                            <td class="text-center"><?php echo @$this->stats_people->warga_negara_population('wni'); ?> Orang</td>
+                            <td class="text-center"><?php echo @$this->stats_people->warga_negara_population('wni', TRUE); ?> %</td>
                         </tr>
                         <tr>
                             <td>2.</td>
                             <td class="text-center">WNA</td>
-                            <td class="text-center"><?php echo $this->stats_people->warga_negara_population('wna'); ?> Orang</td>
-                            <td class="text-center"><?php echo $this->stats_people->warga_negara_population('wna', TRUE); ?> %</td>
+                            <td class="text-center"><?php echo @$this->stats_people->warga_negara_population('wna'); ?> Orang</td>
+                            <td class="text-center"><?php echo @$this->stats_people->warga_negara_population('wna', TRUE); ?> %</td>
                         </tr>
                     </tbody>
                 </table>

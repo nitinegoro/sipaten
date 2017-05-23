@@ -1,11 +1,11 @@
 <div class="row">
-	<div class="col-md-3">
+    <div class="col-md-3">
         <?php $this->load->view('statistik/nav-kependudukan'); ?>
-	</div>
-	<div class="col-md-9">
+    </div>
+    <div class="col-md-9">
         <div class="box box-solid">
             <div class="box-body">
-            <?php  
+            <?php
             /**
              * Default Pie Chart
              *
@@ -39,7 +39,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                <?php  
+                <?php
                 /**
                  * Loop Data Desa
                  *
@@ -52,19 +52,19 @@
 
                 $total_pr = 0;
 
-                $total_pr_per = 0;                
+                $total_pr_per = 0;
 
                 foreach($desa as $key => $value) :
 
-                    $total += $this->stats_people->desa_population($value->id_desa);
+                    @$total += $this->stats_people->desa_population($value->id_desa);
 
-                    $total_laki += $this->stats_people->desa_population($value->id_desa, 'laki-laki');
+                    @$total_laki += $this->stats_people->desa_population($value->id_desa, 'laki-laki');
 
-                    $total_laki_per += $this->stats_people->desa_population($value->id_desa, 'laki-laki', TRUE);
+                    @$total_laki_per += $this->stats_people->desa_population($value->id_desa, 'laki-laki', TRUE);
 
-                    $total_pr += $this->stats_people->desa_population($value->id_desa, 'perempuan');
+                    @$total_pr += $this->stats_people->desa_population($value->id_desa, 'perempuan');
 
-                    $total_pr_per += $this->stats_people->desa_population($value->id_desa, 'perempuan', TRUE);
+                    @$total_pr_per += $this->stats_people->desa_population($value->id_desa, 'perempuan', TRUE);
                 ?>
                         <tr>
                             <td><?php echo ++$key; ?>.</td>
@@ -75,7 +75,7 @@
                             <td class="text-center"><?php echo $this->stats_people->desa_population($value->id_desa, 'perempuan'); ?></td>
                             <td class="text-center"><?php echo $this->stats_people->desa_population($value->id_desa, 'perempuan', TRUE); ?>&#37;</td>
                         </tr>
-                <?php  
+                <?php
                 endforeach;
                 ?>
                     </tbody>
@@ -97,7 +97,7 @@
 
 
 <script>
-<?php  
+<?php
 /**
  * Default Pie Chart
  *
@@ -114,7 +114,7 @@ Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, 
         },
         stops: [
             [0, color],
-            [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] 
+            [1, Highcharts.Color(color).brighten(-0.3).get('rgb')]
         ]
     };
 });
@@ -150,7 +150,7 @@ Highcharts.chart('chart-populasi-desa', {
     series: [{
         name: 'Populasi',
         data: [
-                <?php  
+                <?php
                 /**
                  * Loop Data Desa
                  *
@@ -158,14 +158,14 @@ Highcharts.chart('chart-populasi-desa', {
                 foreach($desa as $row) :
                 ?>
                     {'name': '<?php echo $row->nama_desa; ?>','y':<?php echo $this->stats_people->desa_population($row->id_desa, NULL, TRUE); ?>},
-                <?php  
+                <?php
                 endforeach;
                 ?>
                 ]
     }]
 });
 
-<?php  
+<?php
 else :
 ?>
 Highcharts.chart('chart-populasi-desa-bar', {
@@ -228,7 +228,7 @@ Highcharts.chart('chart-populasi-desa-bar', {
     }]
 });
 
-<?php  
+<?php
 endif;
 ?>
 </script>

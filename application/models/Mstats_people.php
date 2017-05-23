@@ -3,13 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
 * SIPATEN
-* Statistik Data Kependudukan Model Class 
+* Statistik Data Kependudukan Model Class
 *
 * @version 1.0.0
 * @author Vicky Nitinegoro <pkpvicky@gmail.com>
 */
 
-class Mstats_people extends Sipaten_model 
+class Mstats_people extends Sipaten_model
 {
 	/**
 	 * Menghitung Jumlah penduduk
@@ -29,7 +29,7 @@ class Mstats_people extends Sipaten_model
 	public function __construct()
 	{
 		parent::__construct();
-		
+
 		$this->count_penduduk = $this->db->count_all('penduduk');
 
 		$this->count_desa = $this->db->count_all('desa');
@@ -38,7 +38,7 @@ class Mstats_people extends Sipaten_model
 	/**
 	 * Hitung Populasi by desa
 	 *
-	 * @param Integer 
+	 * @param Integer
 	 * @return Bool
 	 **/
 	public function desa_population($param = 0, $jns_kelamin = '', $percentage = FALSE)
@@ -48,11 +48,11 @@ class Mstats_people extends Sipaten_model
 
 		$query = $this->db->get_where('penduduk', array('desa' => $param))->num_rows();
 
-		$population = ($query / $this->count_penduduk) * 100;
+		@$population = ($query / $this->count_penduduk) * 100;
 
-		if($percentage == TRUE) 
+		if($percentage == TRUE)
 		{
-			return substr($population, 0, 4);
+			return @substr($population, 0, 4);
 		} else {
 			return $query;
 		}
@@ -61,18 +61,18 @@ class Mstats_people extends Sipaten_model
 	/**
 	 * Hitung Populasi by Gender
 	 *
-	 * @param string 
+	 * @param string
 	 * @return Bool
 	 **/
 	public function gender_population($jns_kelamin = '', $percentage = FALSE)
 	{
 		$query = $this->db->get_where('penduduk', array('jns_kelamin' => $jns_kelamin))->num_rows();
 
-		$population = ($query / $this->count_penduduk) * 100;
+		@$population = ($query / $this->count_penduduk) * 100;
 
-		if($percentage == TRUE) 
+		if($percentage == TRUE)
 		{
-			return substr($population, 0, 4);
+			return @substr($population, 0, 4);
 		} else {
 			return $query;
 		}
@@ -105,7 +105,7 @@ class Mstats_people extends Sipaten_model
 	/**
 	 * Hitung Populasi by Status Perkawinan
 	 *
-	 * @param string 
+	 * @param string
 	 * @return Bool
 	 **/
 	public function status_kawin_population($status_kawin = '', $percentage = FALSE)
@@ -114,7 +114,7 @@ class Mstats_people extends Sipaten_model
 
 		$population = ($query / $this->count_penduduk) * 100;
 
-		if($percentage == TRUE) 
+		if($percentage == TRUE)
 		{
 			return substr($population, 0, 4);
 		} else {
@@ -125,7 +125,7 @@ class Mstats_people extends Sipaten_model
 	/**
 	 * Hitung Populasi by Agama
 	 *
-	 * @param string 
+	 * @param string
 	 * @return Bool
 	 **/
 	public function religion_population($agama = '', $percentage = FALSE)
@@ -134,7 +134,7 @@ class Mstats_people extends Sipaten_model
 
 		$population = ($query / $this->count_penduduk) * 100;
 
-		if($percentage == TRUE) 
+		if($percentage == TRUE)
 		{
 			return substr($population, 0, 4);
 		} else {
@@ -145,7 +145,7 @@ class Mstats_people extends Sipaten_model
 	/**
 	 * Hitung Populasi by kewarganegaraan
 	 *
-	 * @param string 
+	 * @param string
 	 * @return Bool
 	 **/
 	public function warga_negara_population($kewarganegaraan = '', $percentage = FALSE)
@@ -154,7 +154,7 @@ class Mstats_people extends Sipaten_model
 
 		$population = ($query / $this->count_penduduk) * 100;
 
-		if($percentage == TRUE) 
+		if($percentage == TRUE)
 		{
 			return substr($population, 0, 4);
 		} else {
@@ -165,7 +165,7 @@ class Mstats_people extends Sipaten_model
 	/**
 	 * Hitung Populasi by Golongan Darah
 	 *
-	 * @param string 
+	 * @param string
 	 * @return Bool
 	 **/
 	public function gol_darah_population($gol_darah = '', $percentage = FALSE)
@@ -174,7 +174,7 @@ class Mstats_people extends Sipaten_model
 
 		$population = ($query / $this->count_penduduk) * 100;
 
-		if($percentage == TRUE) 
+		if($percentage == TRUE)
 		{
 			return substr($population, 0, 4);
 		} else {
