@@ -9,22 +9,22 @@ $this->load->view('userguide/parent-navigation', $this->data);
             <div class="box-body box-userguide">
             	<h4>Pengenalan Aplikasi</h4>
 				<ul>
-					<li>
-						<strong>Alur Sistem Informasi Tempayan</strong><br>
-						<img src="<?php echo base_url("public/image/userguide/alur-tempayan.jpg"); ?>" class="img-responsive" alt="Alur Sistem Informasi tempayan">
-						<i>Keterangan</i> : <br>
-						<ol>
-							<li>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, unde, illum? Reiciendis quo, vitae voluptas excepturi autem quaerat quia sapiente.</p>
-							</li>
-							<li>
-								<p>Ipsam unde quae consectetur itaque animi? Aspernatur enim, distinctio sapiente cum autem facere harum ad cupiditate, modi aliquid quaerat odit.</p>
-							</li>
-							<li>
-								<p>Maiores quidem quibusdam, est et! Deleniti quo est, sequi odio quisquam ut sint nemo provident sapiente inventore culpa consequatur itaque.</p>
-							</li>
-						</ol>
-					</li>
+<!-- 					<li>
+	<strong>Alur Sistem Informasi Tempayan</strong><br>
+	<img src="<?php echo base_url("public/image/userguide/alur-tempayan.jpg"); ?>" class="img-responsive" alt="Alur Sistem Informasi tempayan">
+	<i>Keterangan</i> : <br>
+	<ol>
+		<li>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, unde, illum? Reiciendis quo, vitae voluptas excepturi autem quaerat quia sapiente.</p>
+		</li>
+		<li>
+			<p>Ipsam unde quae consectetur itaque animi? Aspernatur enim, distinctio sapiente cum autem facere harum ad cupiditate, modi aliquid quaerat odit.</p>
+		</li>
+		<li>
+			<p>Maiores quidem quibusdam, est et! Deleniti quo est, sequi odio quisquam ut sint nemo provident sapiente inventore culpa consequatur itaque.</p>
+		</li>
+	</ol>
+</li> -->
 					<li>
 						<strong>Tata Letak dan Menu Navigasi</strong>
 						<p><strong>Tata Letak</strong> <br>Sistem Informasi Tempayan Memiliki 4 pengelempokkan tata letak.</p>
@@ -55,9 +55,9 @@ $this->load->view('userguide/parent-navigation', $this->data);
 							<li><strong>Navigasi Bar</strong><br>
 								<p>Navigasi Bar adalah menu yang berupa icon-icon yang teerletak disudut kanan atas Aplikasi meliputi :
 									<ul>
-										<li><i class="ion-help-circled"></i> : Pengaktif panduan aplikasi</li>
-										<li><i class="glyphicon glyphicon-user"></i> : Pengaturan Login</li>
-										<li><i class="fa fa-power-off"></i> : Keluar dari Sistem</li>
+										<li><strong class="text-orange"><i class="ion-help-circled"></i></strong> : Pengaktif panduan aplikasi</li>
+										<li><strong class="text-orange"><i class="glyphicon glyphicon-user"></i></strong> : Pengaturan Login</li>
+										<li><strong class="text-orange"><i class="fa fa-power-off"></i></strong> : Keluar dari Sistem</li>
 									</ul>
 								</p>
 							</li>

@@ -13,7 +13,7 @@ class Rest_api extends CI_Model
 		
 		$this->load->library( array('curl') );
 	
-		$this->url = "http://localhost/tempayan/api";
+		$this->url = "http://192.168.100.3/tempayan/api";
 
 		$this->method = $this->input->get('ID');
 	}

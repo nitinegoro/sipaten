@@ -15,9 +15,6 @@
                     <li class="<?php echo active_link_uri('tutorial-penggunaan').active_link_method('tutorial'); ?>">
                         <a href="<?php echo site_url('userguide/read/tutorial-penggunaan') ?>"> <i class="fa fa-caret-right"></i> Tutorial Penggunaan</a>
                     </li>
-                    <li>
-                        <a href="" style="padding-left: 30px;">  Pembaruan dan Perbaikan</a>
-                    </li>
                 </ul>
             </div>
         </div>

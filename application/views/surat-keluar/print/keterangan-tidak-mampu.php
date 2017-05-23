@@ -58,6 +58,7 @@ $date = new DateTime($get->tanggal);
             <?php 
             /* Loop data penduduk */
             $key_no = 1;
+            if(count(@$isi->pengikut) < 1) :
             foreach($isi->pengikut as $key => $value) :
                 $ikut = $this->db->get_where('penduduk', array('ID' => $value->id))->row();
             ?>
@@ -70,7 +71,9 @@ $date = new DateTime($get->tanggal);
                     <td><?php echo date_id($ikut->tgl_lahir) ?></td>
                     <td class="text-center"><?php echo strtoupper($ikut->status_kk) ?></td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endforeach; 
+            endif;
+            ?>
             </table>
             <p class="indent">Nama-nama tersebut diatas memang benar warga Desa <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> yang berdomisisli di <?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' Kelurahan '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten').' Prov. '.$this->option->get('provinsi'); ?> dan memang benar berdasarkan data pemantauan kami dilapangan yang bersangkutan adalah benar <strong>KELUARGA TIDAK MAMPU</strong>.</p>
             <p class="indent">Demikiaan, Surat Keterangan Kurang Mampu ini dibuat, agar dapat dipergunakan untuk <strong>"<?php echo strtoupper($isi->keperluan); ?>"</strong>.</p>

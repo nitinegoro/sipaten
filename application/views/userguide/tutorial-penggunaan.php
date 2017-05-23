@@ -26,16 +26,12 @@ $this->load->view('userguide/parent-navigation', $this->data);
 				<p>Laporan dan Hasil Data :</p>
 				<ul class="list-userguide">
 					<li><a href="<?php echo site_url('userguide/tutorial/proses-10.php') ?>">Saya ingin mencetak Surat yang keluar pada hari ini?</a></li>
-					<li><a href="">Format laporan Surat Keluar yang inginkan tidak sesuai, bagaiman Saya merubahnya?</a></li>
-					<li><a href="">Seberapa banyak penduduk yang melakukan transaksi kepada kami?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-11.php') ?>">Format laporan Surat Keluar yang inginkan tidak sesuai, bagaiman Saya merubahnya?</a></li>
 				</ul>
 				<p>Privasi, KIOSK (<i>Mesin Penilaian</i>) dan Pengaturan :</p>
 				<ul class="list-userguide">
-					<li><a href="">Saya merasa Kata Sandi saya tidak aman lagi, dimana saya menggantinya?</a></li>
-					<li><a href="">Saya ingin menjadikan salah satu petugas pelayanan menjadi petugas pemeriksa.</a></li>
-					<li><a href="">Bagaimana menambahkan pengguna aplikasi?</a></li>
-					<li><a href="">Saya ingin memblokir salah satu fitur kepada kepada petugas pelayanan.</a></li>
-					<li><a href="">Bagaimana merubah pertanyaan pada Mesin Penilaian berserta jawabannya?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-12.php') ?>">Saya merasa Kata Sandi saya tidak aman lagi, dimana saya menggantinya?</a></li>
+					<li><a href="<?php echo site_url('userguide/tutorial/proses-13.php') ?>">Saya ingin menjadikan salah satu petugas pelayanan menjadi petugas pemeriksa  <br><span style="padding-left: 40px; font-size: 15px;">atau memblokir salah satu fitur kepada kepada petugas pelayanan.</span></a></li>
 				</ul>
             </div>
         </div>
