@@ -80,12 +80,6 @@
 				</div>
 				<div class="modal-body">
 					<ul id="list-people">
-<!-- 					<?php foreach($this->penilaian->get_people_in_day() as $row) : ?>
-  <li class="get-confirm" data-people="<?php echo $row->ID; ?>" data-name="<?php echo $row->nama_lengkap; ?>" data-service="<?php echo $row->nama_kategori; ?>">
-  	<span><?php echo $row->nama_lengkap; ?></span><br>
-	<small>--- <i class="fa fa-file-text"></i> <?php echo $row->nama_kategori; ?></small>
-  </li>
- <?php endforeach; ?> -->
 					</ul>
 				</div>
 			</div>
@@ -118,112 +112,10 @@
 		</div>
 	</div>
 	<script>
-
-	$('a.get-people-modal').click( function() 
-	{
-		audio.play();
-
-		var jawaban = $(this).data('answer');
-
-		$.get("<?php echo base_url('satisfaction/get_people_in_day'); ?>", function(result) 
-		{
-			$('ul#list-people').html(result);
-			
-			$('div#select-name').modal('show');
-
-			$('ul#list-people > li').on( 'click', function(oper_jawaban) 
-			{
-				audio.play();
-
-				var service = $(this).data('service'),
-					name 	= $(this).data('name'),
-					surat 	= $(this).data('people'),
-					answer = jawaban;
-
-				$('div#modal-confirm').modal('show');
-
-				$('strong#name-people').html( name );
-
-				$('strong#name-service').html( service );
-
-				$('button.send-feedback').click( function() 
-				{
-					$.post( '<?php echo site_url('satisfaction/create') ?>', {
-						answer : answer,
-						surat : surat
-					}, function(res) {
-						if(res.status == true) 
-						{
-							$('div#select-name, div#modal-confirm').modal('hide');
-							audio_speech("<?php echo $this->option->get('audio_speech'); ?>");
-							$('div#modal-thank').modal('show');
-						}
-					});
-				});
-			}); /* End ul > li */
-		}); /* End Get XHR */
-	});
-
-
-	$('button.close, a[data-dismiss="modal"], button.btn').click( function() 
-	{
-		audio.play();
-	});
-
-	$('button.close-thank').click( function() 
-	{
-		window.location.reload();
-	});
-
-	var source = "<?php echo base_url("public/sound/click1.wav"); ?>";
-	var audio = document.createElement("audio");
-	audio.load()
-	audio.addEventListener("load", function() {
-	  audio.play();
-	}, true);
-	audio.src = source;
-
-	function audio_speech(message) 
-	{
-	    artyom.initialize({
-	        lang:"id-ID",
-	        debug:true,
-	        continuous:true,
-	        listen:false
-	    }).then(function(){
-	        console.log("Artyom has been correctly initialized");
-	    }).catch(function(){
-	        console.error("An error occurred during the initialization");
-	    });
-
-	    if (artyom.speechSupported()) {
-
-	        var text = message;
-
-	        if (text) 
-	        {
-	            var lines = text.split("\n").filter(function (e) {
-	                return e
-	            });
-	            var totalLines = lines.length - 1;
-
-	            for (var c = 0; c < lines.length; c++) {
-	                var line = lines[c];
-	                if (totalLines == c) {
-	                    artyom.say(line, {
-	                        onEnd: function () {
-
-	                        }
-	                    });
-	                } else {
-	                    artyom.say(line);
-	                }
-	            }
-	        }
-	    } else {
-	        alert("Your browser cannot talk !");
-	    }
-	}
+	var base_url = '<?php echo base_url('satisfaction') ?>';
+	var base_path = '<?php echo base_url(); ?>';
+	var textAudio = '<?php echo $this->option->get('audio_speech'); ?>';
 	</script>
+	<script type="text/javascript" src="<?php echo base_url("public/app/kiosk/main_kiosk.js"); ?>"></script>
 </body>
 </html>
