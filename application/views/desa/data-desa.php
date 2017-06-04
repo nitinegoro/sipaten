@@ -160,7 +160,7 @@ echo form_open(site_url('desa/bulk_action'));
 				           	<div class="modal-header">
 				                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Hapus!</h4>
-				                <span>Hapus pengguna ini dari sistem?</span>
+				                <span>Hapus Desa ini dari sistem?</span>
 				           	</div>
 				           	<div class="modal-footer">
 				                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
@@ -189,7 +189,7 @@ echo form_close();
            	<div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><i class="fa fa-question-circle"></i> Hapus!</h4>
-                <span>Hapus pengguna ini dari sistem?</span>
+                <span>Hapus Desa ini dari sistem?</span>
            	</div>
            	<div class="modal-footer">
                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>

@@ -18,7 +18,9 @@ echo form_open_multipart(site_url('desa/set_upload'), array('class' => 'form-hor
 			               <p>- File harus berekstensi (.xlxs) atau berformat Microsoft Excel 2007 - 2010.</p>
 			               <p>- Ukuran Dokumen yang diupload tidak lebih dari 3MB.</p>
 			               <p>- Jumlah baris pada dokumen tidak lebih dari 1000 baris.</p>
-			               <p>- Field - field yang diunggah harus sesuai dengan contoh yang ada. <a href="" class="text-blue">Lihat Disini</a></p>
+			               <p>- Field - field yang diunggah harus sesuai dengan contoh yang ada. 
+							<a href="<?php echo base_url("public/files/CONTOH-IMPOR-DESA.xlsx") ?>" target="_blank" class="text-blue">Lihat Disini</a>
+			               </p>
 			           </div>
 					</div>
 				</div>

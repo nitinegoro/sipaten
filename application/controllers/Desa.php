@@ -119,7 +119,7 @@ class Desa extends Sipaten
 	{
 		$this->desa->delete($param);
 
-		redirect('desa/import');
+		redirect('desa');
 	}
 
 	public function export()
