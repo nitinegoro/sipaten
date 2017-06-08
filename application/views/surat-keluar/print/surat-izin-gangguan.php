@@ -119,7 +119,6 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
                         <?php echo strtoupper($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?> <br>
-                        <strong style="line-height: 20px;">a.n CAMAT <?php echo strtoupper($this->option->get('kecamatan')) ?>,</strong><br>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
