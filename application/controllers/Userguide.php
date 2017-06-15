@@ -20,6 +20,9 @@ class Userguide extends Sipaten
         $this->method = $ci->router->fetch_method();
 
 		$this->breadcrumbs->unshift(1, 'Panduan Sistem', "userguide");
+
+		$this->load->js("https://cdn.rawgit.com/showdownjs/showdown/1.7.1/dist/showdown.min.js");
+		$this->load->js(base_url('public/app/realease.js'));
 	}
 
 	public function index()
@@ -51,11 +54,6 @@ class Userguide extends Sipaten
 		$this->template->view("userguide/{$param}", $this->data);
 	}
 
-	private function tutorial_contents()
-	{
-		return array_diff_key(scandir(APPPATH."/views/userguide/tutorial"), array('.','..'));
-	}
-
 	public function tutorial($param = '')
 	{ 
 		if($param == '')
@@ -71,6 +69,19 @@ class Userguide extends Sipaten
 
 		$this->template->view("userguide/tutorial/{$param}", $this->data);
 	}	
+
+	public function release()
+	{
+		$this->page_title->push('Panduan Sistem', 'Keterangan Rilis');
+
+		$this->data = array(
+			'title' => "Panduan Sistem",
+			'breadcrumb' => $this->breadcrumbs->show(),
+			'page_title' => $this->page_title->show(),
+		);
+
+		$this->template->view("userguide/release", $this->data);
+	}
 
 }
 
