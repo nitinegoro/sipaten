@@ -31,6 +31,7 @@ class Account extends Sipaten
 	public function index()
 	{	
 		$this->form_validation->set_rules('nip', 'NIK', 'trim|callback_validate_nip|required');
+		$this->form_validation->set_rules('email', 'E-Mail', 'trim|valid_email|required');
 		$this->form_validation->set_rules('name', 'Nama Pengguna', 'trim|required');
 		$this->form_validation->set_rules('new_pass', 'Password Baru', 'trim|min_length[8]|max_length[12]');
 		$this->form_validation->set_rules('repeat_pass', 'Ini', 'trim|matches[new_pass]');

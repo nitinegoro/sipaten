@@ -20,6 +20,10 @@ class Login extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->load->model('maccount', 'account');
+
+		$this->load->library('email');
 		
 		$this->nik = $this->input->post('nik');
 
@@ -38,7 +42,7 @@ class Login extends CI_Controller
 	        'colors'        => array(
 	           	'background' => array(255, 255, 255),
 	           	'border' => array(255, 255, 255),
-	           	'text' => array(34,42,125),
+	           	'text' => array(225,180,51),
 	           	'grid' => array(40, 40, 40)
 	        )
 		);
@@ -63,16 +67,16 @@ class Login extends CI_Controller
         	$nik = $this->input->post('nik');
         	$password = $this->input->post('password');
 
-        	// get data account
+        	/* get data account */
         	$account = $this->_get_account($nik);
 
-        	// authentifaction dengan password verify
+        	/* authentifaction dengan password verify */
         	if (password_verify($password, $account->password)) 
         	{
-        		// set session data
+        		/* set session data */
         		$this->_set_account_login($account);
 
-        		// if session destroy in other page
+        		/* if session destroy in other page */
         		if( $this->input->get('from_url') != '')
         		{
         			redirect( $this->input->get('from_url') );
@@ -80,7 +84,6 @@ class Login extends CI_Controller
         			redirect('main');
         		}
         	} else {
-	        	// set error alert
 				$this->template->alert(
 					'Nik dan password tidak valid.', 
 					array('type' => 'danger','icon' => 'times')
@@ -105,7 +108,6 @@ class Login extends CI_Controller
 		{
 			return $query->row();
 		} else {
-			// hilangkan error object
 			return (Object) array('password' => '');
 		}
 	}
@@ -120,7 +122,7 @@ class Login extends CI_Controller
 	private function _set_account_login($account)
 	{
 		$this->delete_captcha();
-        // set session data
+
         $account_session = array(
         	'authentifaction' => TRUE,
         	'ID' => $account->user_id,
@@ -180,6 +182,132 @@ class Login extends CI_Controller
 	    }
 	}
 
+
+    public function forgot()  
+    {   
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');   
+         
+        if( $this->form_validation->run() == TRUE ) 
+        {    
+            $email = $this->input->post('email');   
+            
+            $clean = $this->security->xss_clean($email);  
+            
+            $userInfo = $this->account->getUserInfoByEmail($clean);  
+            
+            if( ! $userInfo )
+            {  
+				$this->template->alert(
+					'Email address salah, silakan coba lagi.', 
+					array('type' => 'danger','icon' => 'times')
+				);
+
+            	redirect(site_url('login'),'refresh');   
+            }  
+                       
+            $token = $this->account->insertToken($userInfo->user_id);   
+
+            $qstring = $this->base64url_encode($token);  
+
+            $this->load->library('email');
+            $config['charset'] = 'iso-8859-1';
+            $config['wordwrap'] = TRUE;
+            $config['mailtype'] = 'html';
+
+            $this->email->initialize($config);
+                   
+            $this->email->from('kiss@fjbbabel.com', 'Tempayan');
+            $this->email->to($userInfo->email);
+            $this->email->subject('[TEMPAYAN] Permintaan Reset Password');
+            $this->email->message( $this->template->theme_mail(array(
+                'nama' => $userInfo->name,
+                'link' => site_url() . '/login/reset_password/token/' . $qstring
+            )) );
+                   
+            $this->email->send();   
+
+            $this->template->alert(
+                'Permintaan Reset Password telah dikirim ke E-Mail anda. segera reset password anda sebelum 1X24 jam dari sekarang', 
+                array('type' => 'success','icon' => 'check')
+            );
+
+            redirect('login');
+
+            exit;  
+        }   
+    }  
+
+    public function reset_password()  
+    {  
+       	$token = $this->base64url_decode($this->uri->segment(4));       
+
+       	$cleanToken = $this->security->xss_clean($token);  
+         
+       	$user_info = $this->account->isTokenValid($cleanToken);     
+         
+       	if( ! $user_info ) 
+       	{  
+			$this->template->alert(
+				'Token tidak valid atau kadaluarsa', 
+				array('type' => 'danger','icon' => 'times')
+			);
+ 
+         	redirect(site_url('login'),'refresh');   
+       	}    
+   
+       	$data = array(  
+         	'title'=> 'Halaman Reset Password',  
+         	'nama'=> $user_info->name,   
+         	'email'=>$user_info->email,   
+         	'token'=>$this->base64url_encode($token)  
+       	);  
+         
+       	$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');  
+       	$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');         
+         
+       	if ($this->form_validation->run() == FALSE) 
+       	{    
+         	$this->load->view('user/account/v_reset_password', $data);  
+       	} else {  
+                           
+         	$post = $this->input->post(NULL, TRUE);          
+         	
+         	$cleanPost = $this->security->xss_clean($post);          
+         	
+         	$hashed = password_hash($cleanPost['password'], PASSWORD_DEFAULT);          
+         	
+         	$cleanPost['password'] = $hashed;  
+         	
+         	$cleanPost['user_id'] = $user_info->user_id;  
+         	
+         	unset($cleanPost['passconf']);      
+
+         	if(!$this->account->updatePassword($cleanPost)) 
+         	{  
+    			$this->template->alert(
+    				'Update password gagal.', 
+    				array('type' => 'danger','icon' => 'times')
+    			);
+         	} else {  
+    			$this->template->alert(
+    				'Password anda sudah diperbaharui. Silakan login.', 
+    				array('type' => 'success','icon' => 'check')
+    			);
+         	}  
+
+         	redirect(site_url('login'),'refresh');         
+       	}  
+    }  
+
+   	public function base64url_encode($data) 
+   	{   
+    	return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');   
+   	}   
+   
+   	public function base64url_decode($data) 
+   	{   
+    	return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));   
+   	} 
 }
 
 /* End of file Login.php */

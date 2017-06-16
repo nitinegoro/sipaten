@@ -47,6 +47,11 @@
          span.blue-sipaten { color: #0093DD; }
          .text-red { color: red; }
          .captcha > p { font-size:30px; font-family: 'Arial Narrow'; font-weight: bold; text-align: center; letter-spacing: 30px; color: #FC9631;  }
+         div.box-forgot { padding-top:10px;  }
+         a.link-forgot {
+            text-decoration: none;
+            color: orange
+         }
       </style>
    </head>
    <body class="login-page">
@@ -77,7 +82,7 @@
          <div class="form-group" style="margin-top: 30px;">
             <label for="">Kode Captcha :</label>
             <div class="captcha text-center">
-               <p id="text-captcha"><?php echo $captcha['word']; ?></p>
+               <p id="text-captcha"><?php echo $captcha['image']; ?></p>
             </div>
             <a href="" id="reload-captcha"><small>Refresh Captcha</small></a>
          </div>
@@ -89,10 +94,36 @@
             <div class="col-xs-12">
                <button type="submit" class="btn-login btn btn-block">Masuk</button>
             </div>
+            <div class="col-xs-6 box-forgot pull-right">
+               <a data-toggle="modal" href='#forgot-password' class="link-forgot">Lupa Password?</a>
+            </div>
          </div>
       </form>
+        <div class="modal animated fade modal-warning" id="forgot-password" tabindex="-1" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Lupa Password?</h4>
+                <span>Tidak masalah. Masukkan alamat email Anda dan kami akan mengirimkan instruksi untuk mengganti password.</span>
+              </div>
+              <?php echo form_open(site_url("login/forgot")); ?>
+              <div class="modal-body">
+                  <div class="form-group">
+                     <label for="">E-Mail :</label>
+                     <input type="email" class="form-control" name="email" placeholder="Masukkan E-Mail anda. . ." required="true">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
+                <button type="submit" class="btn btn-outline">Kirim</button>
+              </div>
+              <?php echo form_close(); ?>
+            </div>
+          </div>
+        </div>
    </div>
-   <div class="lockscreen-footer text-center" style="margin-top: 0px; color: #444">
+   <div class="lockscreen-footer text-center" style="margin-top: 30px; color: #444">
       <small>Hak Cipta &copy; <?php echo date('Y'); ?> <br> Kec. Koba, Kab. Bangka Tengah. All rights reserved.</small>
    </div>
 </div>

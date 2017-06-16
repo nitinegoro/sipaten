@@ -26,6 +26,13 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="email" class="control-label col-md-3 col-xs-12">E-Mail : <strong class="text-red">*</strong></label>
+					<div class="col-md-8">
+						<input type="text" name="email" class="form-control" value="<?php echo set_value('email'); ?>">
+						<p class="help-block"><?php echo form_error('email', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="password" class="control-label col-md-3 col-xs-12">Password : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<input type="password" name="password" class="form-control" value="<?php echo set_value('password'); ?>">

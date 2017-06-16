@@ -66,6 +66,7 @@ class User extends Sipaten
 
 		$this->form_validation->set_rules('nip', 'NIK', 'trim|callback_validate_nip|required');
 		$this->form_validation->set_rules('name', 'Nama Lengkap', 'trim|required');
+		$this->form_validation->set_rules('email', 'E-Mail', 'trim|valid_email|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|min_length[8]|max_length[12]|required');
 		$this->form_validation->set_rules('repeat_pass', 'Ulangi Password', 'trim|matches[password]|required');
 		$this->form_validation->set_rules('role', 'Level Akses', 'trim|required');

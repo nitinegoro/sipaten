@@ -70,6 +70,7 @@ echo form_open(site_url('user/bulk_action'));
 							<th class="text-center">NIP</th>
 							<th>Nama Pengguna</th>
 							<th class="text-center">Alamat</th>
+							<th class="text-center">E-Mail</th>
 							<th class="text-center">Telepon</th>
 							<th>Level Akses</th>
 							<th></th>
@@ -94,6 +95,7 @@ echo form_open(site_url('user/bulk_action'));
 							<td><?php echo $row->nip; ?></td>
 							<td><?php echo $row->name; ?></td>
 							<td><?php echo $row->address; ?></td>
+							<td><?php echo $row->email; ?></td>
 							<td><?php echo $row->phone; ?></td>
 							<td><?php echo $row->role_name; ?></td>
 							<td class="text-center" width="80">
