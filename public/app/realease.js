@@ -11,8 +11,7 @@ $(document).ready( function()
 			var date = new Date( value.created_at ); 
 
 			content += '<li><span>' + value.name + '</span><br>';
-			content += '<div class="time-release">Diterbitkan ' + jQuery.timeago( date ) + ', oleh ';
-			content += ' <a href="https://www.linkedin.com/in/nitinegoro/" target="_blank">' + value.author.login + '</a></div>';
+			content += '<div class="time-release">Diterbitkan ' + jQuery.timeago( date ) + '</div>';
 			content += '<div class="body-release">' + converter.makeHtml(value.body) + '</body></li>';
                      
 		});
