@@ -39,7 +39,8 @@ class Muser extends Sipaten_model
 			'photo' => '',
 			'active' => 1,
 			'email' => $this->input->post('email'),
-			'role_id' => $this->input->post('role') 
+			'role_id' => $this->input->post('role'),
+			'login_status' => 0
 		);
 
 		$this->db->insert('users', $user);

@@ -15,10 +15,15 @@ class MY_Model extends CI_Model {
 */
 class Sipaten_model extends MY_Model
 {
+	public $user;
+
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->load->library(array('session'));
 		
+		$this->user = $this->session->userdata('ID');
 	}
 
 	public function get_user($param = 0)
@@ -251,6 +256,18 @@ class Sipaten_model extends MY_Model
 	public function count_surat($status = '')
 	{
 		return $this->db->get_where('surat', array('status' => $status))->num_rows();
+	}
+
+	/**
+	 * Get User Login List
+	 *
+	 * @return Array
+	 **/
+	public function get_user_login()
+	{
+		return $this->db->query(
+			"SELECT user_id, name, photo, login_status FROM users WHERE user_id NOT IN({$this->user})"
+		)->result();
 	}
 }
 

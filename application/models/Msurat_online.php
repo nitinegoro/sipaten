@@ -66,30 +66,32 @@ class Msurat_online extends Sipaten_model
 	 **/
 	public function create_penduduk($param = 0)
 	{
+		echo "<pre>";
+		print_r($this->ci->rest_api->desa($param));
 		if( self::nik_check($param) == FALSE )
 		{
 			$get = $this->ci->rest_api->penduduk($param);
 
 			$penduduk = array(
-				'nik' => $get->nik, 
-				'no_kk' => $get->no_kk,
-				'status_kk' => $get->status_kk,
-				'nama_lengkap' => $get->nama_lengkap,
-				'tmp_lahir' => $get->tmp_lahir,
-				'tgl_lahir' => $get->tgl_lahir,
-				'jns_kelamin' => $get->jns_kelamin,
-				'alamat' => $get->alamat,
-				'rt' => $get->rt,
-				'rw' => $get->rw,
-				'desa' => $this->ci->rest_api->desa($get->nik),
-				'kecamatan' => $get->kecamatan,
-				'agama' => $get->agama,
-				'pekerjaan' => $get->pekerjaan,
-				'kewarganegaraan' => $get->kewarganegaraan,
-				'status_kawin' => $get->status_kawin,
-				'gol_darah' => $get->gol_darah,
+				'nik' => $get[0]->nik, 
+				'no_kk' => $get[0]->no_kk,
+				'status_kk' => $get[0]->status_kk,
+				'nama_lengkap' => $get[0]->nama_lengkap,
+				'tmp_lahir' => $get[0]->tmp_lahir,
+				'tgl_lahir' => $get[0]->tgl_lahir,
+				'jns_kelamin' => $get[0]->jns_kelamin,
+				'alamat' => $get[0]->alamat,
+				'rt' => $get[0]->rt,
+				'rw' => $get[0]->rw,
+				'desa' => $this->ci->rest_api->desa($param),
+				'kecamatan' => $get[0]->kecamatan,
+				'agama' => $get[0]->agama,
+				'pekerjaan' => $get[0]->pekerjaan,
+				'kewarganegaraan' => $get[0]->kewarganegaraan,
+				'status_kawin' => $get[0]->status_kawin,
+				'gol_darah' => $get[0]->gol_darah,
 				'telepon' => NULL,
-				'kd_pos' => $get->kd_pos 
+				'kd_pos' => $get[0]->kd_pos 
 			);
 
 			$this->db->insert('penduduk', $penduduk);

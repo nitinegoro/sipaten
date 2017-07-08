@@ -73,6 +73,8 @@ class Login extends CI_Controller
         	/* authentifaction dengan password verify */
         	if (password_verify($password, $account->password)) 
         	{
+                $this->db->update('users', array('login_status' => 1), array('user_id' => $account->user_id));
+
         		/* set session data */
         		$this->_set_account_login($account);
 

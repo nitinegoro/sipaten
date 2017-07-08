@@ -238,7 +238,41 @@ endif;
                <i class="ion ion-help-circled"></i> <span> Panduan Sistem</span>
             </a>
         </li>
+        <li class="header" style="background-color: #E6E7E9">
+          <span>STATUS PENGGUNA</span>
+          <ul id="list-user-login">
+<?php  
+/**
+ * Get User Online Status
+ *
+ **/
+foreach( $this->account->get_user_login() as $row) :
+?>
+            <li>
+              <img src="<?php echo (!$row->photo) ? base_url("public/image/avatar.jpg") : base_url("public/image/{$row->photo}"); ?>" alt="user online">
+              <span class="name-on"><?php echo $row->name; ?></span>
+          <?php  
+          if( $row->login_status != FALSE ) :
+          ?>
+              <i class="fa fa-circle text-green"></i>
+          <?php else : ?>
+              <i class="fa fa-circle text-gray"></i>
+          <?php endif; ?>
+<?php  
+endforeach;
+?>
+          </ul>
+        </li>
       </ul>
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" id="search-status-login" class="form-control sidebar-search" placeholder="Status Pengguna..." onkeyup="search_user_login()">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
       </section>
    </aside>
    <div class="content-wrapper">

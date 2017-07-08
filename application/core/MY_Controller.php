@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-define('SIPATEN_VERSION', '1.0.2 <small>(Demo Release)</small>');
+define('SIPATEN_VERSION', '1.1.0 <small>(Demo Release)</small>');
 
 class MY_Controller extends CI_Controller
 {
@@ -25,6 +25,8 @@ class Sipaten extends MY_Controller
 
 	public $role_name;
 
+	public $IdAccount;
+
 	public $user_id;
 
 	public function __construct()
@@ -33,10 +35,18 @@ class Sipaten extends MY_Controller
 
 		$this->load->model('mcreate_surat', 'create_surat');
 
+		$this->IdAccount = $this->session->userdata('ID');
+
+		$this->load->model('maccount', 'account');
+
 		$this->breadcrumbs->unshift(0, 'Home', 'main');
 
-		if($this->session->has_userdata('authentifaction')==FALSE)
+		if($this->session->has_userdata('authentifaction')==FALSE) 
+		{
+			$this->db->update('users', array('login_status' => 0), array('user_id' => $this->IdAccount));
+			
 			redirect(site_url('login?from_url='.current_url()));
+		}
 
 		$this->user_id = $this->session->userdata('account')->role_id;
 
