@@ -90,7 +90,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							<option value="hindu" <?php if(set_value('agama')=='hindu') echo "selected"; ?>>Hindu</option>
 							<option value="buddha" <?php if(set_value('agama')=='buddha') echo "selected"; ?>>Buddha</option>
 							<option value="khonghucu" <?php if(set_value('agama')=='khonghucu') echo "selected"; ?>>Khonghucu</option>
-							<option value="lainnya" <?php if(set_value('agama')=='lainnya') echo "selected"; ?>>Lainnya</option>
+							<option value="aliran kepercayaan" <?php if(set_value('agama')=='aliran kepercayaan') echo "selected"; ?>>Lainnya</option>
 						</select>
 						<p class="help-block"><?php echo form_error('agama', '<small class="text-red">', '</small>'); ?></p>
 					</div>

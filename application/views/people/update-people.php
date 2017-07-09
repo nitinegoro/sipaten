@@ -92,7 +92,7 @@ echo form_hidden('ID', $people->ID);
 							<option value="hindu" <?php if($people->agama=='hindu') echo "selected"; ?>>Hindu</option>
 							<option value="buddha" <?php if($people->agama=='buddha') echo "selected"; ?>>Buddha</option>
 							<option value="khonghucu" <?php if($people->agama=='khonghucu') echo "selected"; ?>>Khonghucu</option>
-							<option value="lainnya" <?php if($people->agama=='lainnya') echo "selected"; ?>>Lainnya</option>
+							<option value="aliran kepercayaan" <?php if($people->agama=='aliran kepercayaan') echo "selected"; ?>>Lainnya</option>
 						</select>
 						<p class="help-block"><?php echo form_error('agama', '<small class="text-red">', '</small>'); ?></p>
 					</div>
