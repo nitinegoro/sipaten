@@ -203,21 +203,23 @@ $date = new DateTime($get->tanggal);
             <p class="indent">Demikian Surat Keterangan ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.</p>
         </div>
         <div class="mail-footer">
-            <table style="width: 100%; margin-top: 0px;" align="center">
+            <table style="width: 100%;">
                 <tr>
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                         <?php echo strtoupper($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?> <br>
+                        <strong><?php echo ucfirst($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?></strong><br>
+                        <strong>An. Camat <?php echo ucfirst($this->option->get('kecamatan')) ?></strong><br>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
-                <tr><td colspan="3" style="height: 50px;"></td></tr>
+                <tr><td colspan="3" style="height: 70px;"></td></tr>
                 <tr>
-                    <td style="width: 40%;"><span></span></td>
+                    <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                       <span><?php echo ucfirst($get->nama); ?></span>
+                        <span><?php echo ucfirst($get->nama); ?></span><br>
+                        <span>NIP. <?php echo $get->nip; ?></span>
                     </td>
                 </tr>
             </table>

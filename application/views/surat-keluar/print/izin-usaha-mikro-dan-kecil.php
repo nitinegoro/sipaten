@@ -22,7 +22,7 @@ $date = new DateTime($get->tanggal);
                     <td width="60">DASAR</td>
                     <td class="text-center">:</td>
                     <td>
-                        <ol style="margin-top: 0px;line-height: 1.5; font-size: 12px;">
+                        <ol style="margin-top: 0px;line-height: 1.5; margin-top: -10px; font-size: 12px;">
                             <li style="padding-left: 5px;">Peraturan Periseden No. 98 Tahub 2014 tentang Perizinan Untuk Usaha Mikro dan Kecil.</li>
                             <li style="padding-left: 5px;">Peraturan Mentri Dalam Negri No. 83 Tahun 2014 tentang Pedoman Pemberian Izin Usaha Mikro dan Kecil.</li>
                             <li style="padding-left: 5px;">Peraturan Bupati Bangka Nomor 38 Tahun 2015 tentang Perubahan atas Peraturan Bupati Nomor 29 Tahun 2012 tentang Pelimpahan Sebagian Kewenangan Bupati Kepada Camat.</li>
@@ -104,15 +104,17 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
                         <strong><?php echo ucfirst($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?></strong><br>
+                        <strong>An. Camat <?php echo ucfirst($this->option->get('kecamatan')) ?></strong><br>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
-                <tr><td colspan="3" style="height: 40px;"></td></tr>
+                <tr><td colspan="3" style="height: 70px;"></td></tr>
                 <tr>
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span><?php echo ucfirst($get->nama); ?></span><br><span>NIP. <?php echo $get->nip; ?></span>
+                        <span><?php echo ucfirst($get->nama); ?></span><br>
+                        <span>NIP. <?php echo $get->nip; ?></span>
                     </td>
                 </tr>
             </table>

@@ -175,6 +175,7 @@ if($get->no_kk == FALSE)
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
                         <strong><?php echo ucfirst($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?></strong><br>
+                        <strong>An. Camat <?php echo $this->option->get('kecamatan'); ?></strong><br>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>

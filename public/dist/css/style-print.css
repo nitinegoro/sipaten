@@ -1,5 +1,5 @@
 body { 
-   font-family:Arial, Helvetica, sans-serif; 
+   font-family:'Times New Roman', sans-serif;
    margin-left:3%; 
    margin-right: 3%;   
    margin-top: 3%;
@@ -87,9 +87,9 @@ table.table-bordered td {
    border-color: #757572; 
 }
 
-.content { 
-   font-family:'Arial', sans-serif; 
+.content {  
    margin-top:30px;
+   font-size: 15px;
 }
 
 small.print-at {

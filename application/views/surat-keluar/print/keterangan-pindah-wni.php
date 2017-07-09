@@ -164,6 +164,7 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
                         <strong><?php echo ucfirst($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?></strong><br>
+                        <strong>An. Camat <?php echo ucfirst($this->option->get('kecamatan')) ?></strong><br>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
@@ -172,7 +173,8 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span><?php echo ucfirst($get->nama); ?></span>
+                        <span><?php echo ucfirst($get->nama); ?></span><br>
+                        <span>NIP. <?php echo $get->nip; ?></span>
                     </td>
                 </tr>
             </table>
