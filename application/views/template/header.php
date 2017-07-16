@@ -14,31 +14,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("public/ionicons/css/ionicons.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/select2/select2.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/dist/css/AdminLTE.min.css"); ?>">
-  <link rel="stylesheet" href="<?php echo base_url("public/dist/css/skins/skin-sipaten.css"); ?>">
-  <link rel="stylesheet" href="<?php echo base_url("public/dist/css/animate.css"); ?>">  
+  <link rel="stylesheet" href="<?php echo base_url("public/dist/css/skins/skin-sipaten.min.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("public/dist/css/animate.min.css"); ?>">  
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-checkbox/awesome-bootstrap-checkbox.min.css"); ?>">
-  <link rel="stylesheet" href="<?php echo base_url('public/plugins/validation/css/formValidation.css') ?>">
+  <link rel="stylesheet" href="<?php echo base_url('public/plugins/validation/css/formValidation.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/datepicker/datepicker3.min.css"); ?>">
-  <link rel="stylesheet" href="<?php echo base_url("public/plugins/autocomplete/tautocomplete.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("public/plugins/autocomplete/tautocomplete.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-tour/css/bootstrap-tour.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("public/plugins/bootstrap-switch/css/bootstrap-switch.min.css"); ?>">
   <link  rel="stylesheet" href="<?php echo base_url("public/dist/css/hover-min.css"); ?>">
-  <link rel="stylesheet" href="<?php echo base_url("public/plugins/datatables/dataTables.bootstrap.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("public/plugins/datatables/dataTables.bootstrap.min.css"); ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url("public/plugins/lightbox/ekko-lightbox.min.css"); ?>" media="screen" />
   <link rel="shortcut icon" type="image/png" href="<?php echo base_url("public/image/{$this->option->get('small_logo')}"); ?>"/>
   <script src="<?php echo base_url("public/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/bootstrap/js/bootstrap.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/slimScroll/jquery.slimscroll.min.js"); ?>"></script>
-  <script src="<?php echo base_url("public/plugins/fastclick/fastclick.js"); ?>"></script>
-  <script src="<?php echo base_url("public/dist/js/jquery.sticky.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/fastclick/fastclick.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/jquery.sticky.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/dist/js/app.min.js"); ?>"></script>
-  <script src="<?php echo base_url("public/dist/js/jquery.tableCheckbox.js"); ?>"></script>
-  <script src="<?php echo base_url("public/dist/js/jquery.printPage.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/jquery.tableCheckbox.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/jquery.printPage.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/bnotify/bootstrap-notify.min.js"); ?>"></script>
-  <script src="<?php echo base_url("public/dist/js/jquery.timeago.js"); ?>"></script>
+  <script src="<?php echo base_url("public/dist/js/jquery.timeago.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/dist/js/moment.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/select2/select2.full.min.js"); ?>"></script>
-  <script src="<?php echo base_url("public/dist/js/less-1.3.0.min.js"); ?>"></script>
+  <script src="<?php echo base_url("public/plugins/less-2.7.2/less.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/dist/js/prefixfree.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/datepicker/bootstrap-datepicker.min.js"); ?>"></script>
   <script src="<?php echo base_url("public/plugins/heightchart/highcharts.js"); ?>"></script>
@@ -89,6 +89,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     small > a { font-size:inherit; }
     iframe { width: 100%; min-height:530px;  }
+    .box.box-primary { border-top-color:#ffa726;}
+    .nav-pills > li.active > a,
+    .nav-pills > li.active > a:hover,
+    .nav-pills > li.active > a:focus { border-color:#ffa726; }
+    .box.box-solid.box-default > .box-header { background-color: #ffa726; color:white;}
+    .box.box-solid.box-default > .box-header a,
+    .box.box-solid.box-default > .box-header .btn {color:white;}
   </style>
 </head>
 <?php

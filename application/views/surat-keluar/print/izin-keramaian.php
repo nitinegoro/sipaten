@@ -21,7 +21,7 @@ $date = new DateTime($get->tanggal);
             <h5 class="mail-number upper">izin keramaian</h5>
         </div>
         <div class="mail-content">
-            <p class="indent">Memperhatikan Surat Pengantar dari Lurah <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?>, dengan ini Camat  <?php echo $this->option->get('kecamatan'); ?> menerangkan bahwa :</p>
+            <p class="indent">Memperhatikan Surat Pengantar dari Lurah/Kades <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?>, dengan ini Camat  <?php echo $this->option->get('kecamatan'); ?> menerangkan bahwa :</p>
             <table style="margin-top: 10px; margin-bottom:10px;">
                 <tr>
                     <td width="170">NAMA</td>

@@ -53,8 +53,8 @@ class Sipaten extends MY_Controller
 		$this->role_name = $this->option->get_role( $this->user_id )->role_name;
 
 		$this->load->js('https://js.pusher.com/2.2/pusher.min.js');
-		$this->load->js(base_url("public/dist/js/push.js"));
-		$this->load->js(base_url("public/app/notifications.js"));
+		$this->load->js(base_url("public/dist/js/push.min.js?v1.0.1"));
+		$this->load->js(base_url("public/app/notifications.js?v1.0.1"));
 	}
 
 	/**

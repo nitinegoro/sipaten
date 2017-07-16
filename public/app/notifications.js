@@ -10,12 +10,16 @@ document.addEventListener('DOMContentLoaded', function ()
 });
 
 /* AUDIO */
-var source = base_path + "/sound/arpeggio.mp3"
+var source = base_path + "/sound/arpeggio.mp3";
+
 var audio = document.createElement("audio");
+
 audio.load()
+
 audio.addEventListener("load", function() {
   audio.play();
 }, true);
+
 audio.src = source;
 
 /* Notifikasi */

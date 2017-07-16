@@ -23,7 +23,7 @@ if($get->no_kk == FALSE)
             <table>
                 <tr>
                     <td width="130"></td>
-                    <td colspan="4">Yang bertanda tangan dibawah ini Lurah <?php echo $this->db->get_where('desa', array('id_desa' => $isi->desa))->row('nama_desa') ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Kabupaten <?php echo $this->option->get('kabupaten'); ?> dengan ini menerangkan :</td>
+                    <td colspan="4">Yang bertanda tangan dibawah ini Lurah/Kades <?php echo $this->db->get_where('desa', array('id_desa' => $isi->desa))->row('nama_desa') ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Kabupaten <?php echo $this->option->get('kabupaten'); ?> dengan ini menerangkan :</td>
                 </tr>
                 <tr> <td colspan="5" height="10"></td> </tr>
             <?php  
