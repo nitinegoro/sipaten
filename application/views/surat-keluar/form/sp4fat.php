@@ -194,21 +194,24 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							<small><strong class="text-red">*</strong>	Field wajib diisi!</small> <br>
 							<small><strong class="text-blue">*</strong>	Field Optional</small>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-2">
 							<a href="<?php echo site_url('surat_keluar') ?>" class="btn btn-app hvr-shadow">
 								<i class="ion ion-reply"></i> Kembali
 							</a>
 						</div>
-						<div class="col-md-5 col-xs-6 pull-right">
-							<?php  
-							if( $get->status == 'approve' OR $this->permission->is_admin()) :
-							?>
+						<div class="col-md-7 col-xs-6 pull-right">
+						<?php if( $this->permission->is_verified() OR $this->permission->is_admin()) : ?>
+							<a href="javascript:void(0)" class="btn btn-app hvr-shadow get-dialog" data-id="<?php echo $get->ID; ?>" data-action="set_aprove">
+								<i class="fa fa-check"></i> Verifikasi
+							</a>
+						<?php 
+						endif; 
+						if( $get->status == 'approve' OR $this->permission->is_admin()) :
+						?>
 							<a href="<?php echo site_url("surat_keluar/print_surat/{$get->ID}") ?>" class="btn btn-app btn-print hvr-shadow">
 								<i class="fa fa-print"></i> Cetak
 							</a>
-							<?php  
-							endif;
-							?>
+						<?php endif; ?>
 							<button type="submit" class="btn btn-app hvr-shadow pull-right">
 								<i class="fa fa-save"></i> Simpan
 							</button>
@@ -233,4 +236,20 @@ echo form_close();
 ?>
 		</div>
 	</div>
+</div>
+
+<div class="modal animated fadeIn" id="modal-dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+           	<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+                <span class="modal-text">Hapus data surat keluar ini dari sistem?</span>
+           	</div>
+           	<div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
+                <a href="#" id="btn-action" class="btn btn-outline"> </a>
+           	</div>
+        </div>
+    </div>
 </div>

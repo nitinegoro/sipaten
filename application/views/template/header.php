@@ -96,6 +96,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     .box.box-solid.box-default > .box-header { background-color: #ffa726; color:white;}
     .box.box-solid.box-default > .box-header a,
     .box.box-solid.box-default > .box-header .btn {color:white;}
+    .btn-app { background-color: #ffa726; color:white; border:none !important;}
+    .btn-app:hover, 
+    .btn-app:active { background-color: #ff9800; color:white;}
   </style>
 </head>
 <?php
