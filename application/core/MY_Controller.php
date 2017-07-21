@@ -14,6 +14,29 @@ class MY_Controller extends CI_Controller
 }
 
 /**
+* Extends Class Apps
+*
+* @version 2.0.0
+* @author Vicky Nitinegoro <pkpvicky@gmail.com>
+*/
+class Apps extends MY_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
+
+		if($this->session->has_userdata('android_login')==FALSE) 
+		{
+			$this->db->update('users', array('login_status' => 0), array('user_id' => $this->IdAccount));
+			
+			redirect(site_url('apps/login?from_url='.current_url()));
+		}
+	}
+
+
+}
+
+/**
 * Extends Class Sipaten
 *
 * @version 1.0.0
@@ -371,6 +394,8 @@ class Sipaten extends MY_Controller
 		$event = $pusher->trigger('channel-'.$penerima, 'notifikasi-buat-surat', $data);
 	}
 }
+
+
 
 /* End of file MY_Controller.php */
 /* Location: ./application/core/MY_Controller.php */
