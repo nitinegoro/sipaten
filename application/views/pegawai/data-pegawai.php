@@ -103,6 +103,7 @@ echo form_open(site_url('employee/bulk_action'));
 							<th class="text-center">Nama</th>
 							<th class="text-center">Jenis Kelamin</th>
 							<th class="text-center">Jabatan</th>
+							<th class="text-center">Pangkat</th>
 							<th class="text-center">Akses Sistem</th>
 							<th class="text-center">Alamat</th>
 							<th class="text-center">Telepon</th>
@@ -136,6 +137,7 @@ echo form_open(site_url('employee/bulk_action'));
 							<td><?php echo $row->nama; ?></td>
 							<td class="text-center"><?php echo ucfirst($row->jns_kelamin) ?></td>
 							<td><?php echo $row->jabatan; ?></td>
+							<td><?php echo $row->pangkat; ?></td>
 							<td><?php echo $this->employee->get_akses_name($row->nip); ?></td>
 							<td><?php echo $row->alamat; ?></td>
 							<td><?php echo $row->telepon; ?></td>

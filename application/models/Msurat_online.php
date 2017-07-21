@@ -66,8 +66,6 @@ class Msurat_online extends Sipaten_model
 	 **/
 	public function create_penduduk($param = 0)
 	{
-		echo "<pre>";
-		print_r($this->ci->rest_api->desa($param));
 		if( self::nik_check($param) == FALSE )
 		{
 			$get = $this->ci->rest_api->penduduk($param);

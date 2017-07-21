@@ -42,6 +42,7 @@ class Memployee extends Sipaten_model
 			'nip' => $this->input->post('nip'),
 			'nama' => $this->input->post('name'),
 			'jabatan' => $this->input->post('jabatan'),
+			'pangkat' => $this->input->post('pangkat'),
 			'jns_kelamin' => $this->input->post('gender'),
 			'alamat' => $this->input->post('alamat'),
 			'telepon' => $this->input->post('telepon')
@@ -69,6 +70,7 @@ class Memployee extends Sipaten_model
 			'nip' => $this->input->post('nip'),
 			'nama' => $this->input->post('name'),
 			'jabatan' => $this->input->post('jabatan'),
+			'pangkat' => $this->input->post('pangkat'),
 			'jns_kelamin' => $this->input->post('gender'),
 			'alamat' => $this->input->post('alamat'),
 			'telepon' => $this->input->post('telepon')

@@ -23,7 +23,7 @@ if($get->no_kk == FALSE)
             <table>
                 <tr>
                     <td width="130"></td>
-                    <td colspan="4">Yang bertanda tangan dibawah ini Lurah/Kades <?php echo $this->db->get_where('desa', array('id_desa' => $isi->desa))->row('nama_desa') ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Kabupaten <?php echo $this->option->get('kabupaten'); ?> dengan ini menerangkan :</td>
+                    <td colspan="4">Yang bertanda tangan dibawah ini <?php echo $this->option->village_prefix($isi->desa)['k'].' '.$this->db->get_where('desa', array('id_desa' => $isi->desa))->row('nama_desa') ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Kabupaten <?php echo $this->option->get('kabupaten'); ?> dengan ini menerangkan :</td>
                 </tr>
                 <tr> <td colspan="5" height="10"></td> </tr>
             <?php  
@@ -175,7 +175,9 @@ if($get->no_kk == FALSE)
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
                         <strong><?php echo ucfirst($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?></strong><br>
-                        <strong>An. Camat <?php echo $this->option->get('kecamatan'); ?></strong><br>
+                        <?php if($get->jabatan != 'CAMAT') : ?>
+                        <strong>a.n. CAMAT <?php echo strtoupper($this->option->get('kecamatan')) ?></strong><br>
+                        <?php endif; ?>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
@@ -184,7 +186,9 @@ if($get->no_kk == FALSE)
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span><?php echo ucfirst($get->nama); ?></span><br><span>NIP. <?php echo $get->nip; ?></span>
+                        <span style="border-bottom: 0.2px solid #444; padding-bottom: 1.5px;"><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style=" line-height: 2px;"><?php echo ucfirst($get->pangkat); ?></span><br>
+                        <span>NIP. <?php echo $get->nip; ?></span>
                     </td>
                 </tr>
             </table>

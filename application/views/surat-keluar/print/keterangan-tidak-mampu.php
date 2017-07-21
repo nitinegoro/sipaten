@@ -75,7 +75,7 @@ $date = new DateTime($get->tanggal);
             endif;
             ?>
             </table>
-            <p class="indent">Nama-nama tersebut diatas memang benar warga Desa <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> yang berdomisisli di <?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' Kelurahan '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten').' Prov. '.$this->option->get('provinsi'); ?> dan memang benar berdasarkan data pemantauan kami dilapangan yang bersangkutan adalah benar <strong>KELUARGA TIDAK MAMPU</strong>.</p>
+            <p class="indent">Nama-nama tersebut diatas memang benar warga Desa <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> yang berdomisisli di <?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->village_prefix($get->id_desa)['j'].' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten').' Prov. '.$this->option->get('provinsi'); ?> dan memang benar berdasarkan data pemantauan kami dilapangan yang bersangkutan adalah benar <strong>KELUARGA TIDAK MAMPU</strong>.</p>
             <p class="indent">Demikiaan, Surat Keterangan Kurang Mampu ini dibuat, agar dapat dipergunakan untuk <strong>"<?php echo strtoupper($isi->keperluan); ?>"</strong>.</p>
         </div>
         <div class="mail-footer">
@@ -85,7 +85,9 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
                         <strong><?php echo ucfirst($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?></strong><br>
-                        <strong>An. Camat <?php echo ucfirst($this->option->get('kecamatan')) ?></strong><br>
+                        <?php if($get->jabatan != 'CAMAT') : ?>
+                        <strong>a.n. CAMAT <?php echo strtoupper($this->option->get('kecamatan')) ?></strong><br>
+                        <?php endif; ?>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
@@ -94,7 +96,8 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style="border-bottom: 0.2px solid #444; padding-bottom: 1.5px;"><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style=" line-height: 2px;"><?php echo ucfirst($get->pangkat); ?></span><br>
                         <span>NIP. <?php echo $get->nip; ?></span>
                     </td>
                 </tr>

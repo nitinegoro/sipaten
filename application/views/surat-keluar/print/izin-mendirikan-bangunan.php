@@ -18,7 +18,7 @@ $date = new DateTime($get->tanggal);
         </div>
         <div class="mail-content">
             <p class="indent">
-            Yang bertanda tangan di bawah ini Kepala Desa/Kelurahan : <strong><?php echo strtoupper($this->option->get_select_desa($isi->desa, 'nama_desa')); ?></strong> <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
+            Yang bertanda tangan di bawah ini <?php echo $this->option->village_prefix($isi->desa)['k'] ?> : <strong><?php echo strtoupper($this->option->get_select_desa($isi->desa, 'nama_desa')); ?></strong> <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
             </p>
             <table style=" margin-top: 10px; margin-bottom:10px;">
                 <tr>
@@ -44,7 +44,7 @@ $date = new DateTime($get->tanggal);
                 <tr style="vertical-align: top;">
                     <td>Alamat Tinggal</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' Kelurahan '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->village_prefix($isi->desa)['j'].' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                 </tr>
                 <tr>
                     <td>Telepon/HP</td>
@@ -131,7 +131,9 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
                         <strong><?php echo ucfirst($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?></strong><br>
-                        <strong>An. Camat <?php echo ucfirst($this->option->get('kecamatan')) ?></strong><br>
+                        <?php if($get->jabatan != 'CAMAT') : ?>
+                        <strong>a.n. CAMAT <?php echo strtoupper($this->option->get('kecamatan')) ?></strong><br>
+                        <?php endif; ?>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
@@ -140,7 +142,8 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style="border-bottom: 0.2px solid #444; padding-bottom: 1.5px;"><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style=" line-height: 2px;"><?php echo ucfirst($get->pangkat); ?></span><br>
                         <span>NIP. <?php echo $get->nip; ?></span>
                     </td>
                 </tr>

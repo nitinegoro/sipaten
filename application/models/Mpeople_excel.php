@@ -128,7 +128,7 @@ class Mpeople_excel extends Sipaten_model
 	 *
 	 * @return Attachment excel
 	 **/
-	public function get()
+	public function get($limit = 300, $offset = 0)
 	{
 		$objPHPExcel = new PHPExcel();
 
@@ -181,7 +181,7 @@ class Mpeople_excel extends Sipaten_model
 		$this->db->join('desa', 'penduduk.desa = desa.id_desa', 'left');
 
 		$row_cell = 2;
-		foreach($this->db->get('penduduk')->result() as $key => $value)
+		foreach($this->db->get('penduduk', $limit, $offset)->result() as $key => $value)
 		{
 			$date = new DateTime($value->tgl_lahir);
 

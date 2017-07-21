@@ -212,14 +212,14 @@ class People extends Sipaten
 
 	public function set_upload()
 	{
-			$this->people_excel->upload();
+		$this->people_excel->upload();
 
-			redirect('people/import');
+		redirect('people/import');
 	}
 
 	public function export()
 	{
-		$this->people_excel->get();
+		$this->people_excel->get($this->input->get('per_page'), $this->input->get('page'));
 	}
 
 	/**

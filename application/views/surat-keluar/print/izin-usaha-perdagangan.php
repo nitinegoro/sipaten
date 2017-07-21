@@ -18,7 +18,7 @@ $date = new DateTime($get->tanggal);
         </div>
         <div class="mail-content">
             <p style="margin-top: -10px;" class="indent">
-            Yang bertanda tangan di bawah ini Kepala Desa/Kelurahan : <strong><?php echo strtoupper($this->option->get_select_desa($isi->desa, 'nama_desa')); ?></strong> Kecamatan <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
+            Yang bertanda tangan di bawah ini <?php echo $this->option->village_prefix($isi->desa)['k'] ?> : <strong><?php echo strtoupper($this->option->get_select_desa($isi->desa, 'nama_desa')); ?></strong> Kecamatan <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
             </p>
             <table style=" margin-top: -10px; margin-bottom:-10px;">
                 <tr>
@@ -44,7 +44,7 @@ $date = new DateTime($get->tanggal);
                 <tr style="vertical-align: top;">
                     <td>Alamat Tinggal</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' Kelurahan '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->village_prefix($get->id_desa)['j'].' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                 </tr>
                 <tr>
                     <td>Telepon/HP</td>
@@ -62,7 +62,7 @@ $date = new DateTime($get->tanggal);
                 <tr  style="vertical-align: top;">
                     <td>2. Alamat</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->alamat_perusahaan.' Kelurahan '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo $isi->alamat_perusahaan.' '.$this->option->village_prefix($get->id_desa)['j'].' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                 </tr>
                 <tr>
                     <td>3. Kedudukan dalam Perusahaan</td>
@@ -89,9 +89,9 @@ $date = new DateTime($get->tanggal);
                     <td class="text-center">:</td>
                     <td>
                         <ul style="list-style: lower-alpha; margin: 0px; margin-left: -25px;">
-                            <li><?php echo $isi->jenis_barang_dagang->a; ?></li>
-                            <li><?php echo $isi->jenis_barang_dagang->b; ?></li>
-                            <li><?php echo $isi->jenis_barang_dagang->c; ?></li>
+                            <li style="margin: 0px;"><?php echo $isi->jenis_barang_dagang->a; ?></li>
+                            <li style="margin: 0px;"><?php echo $isi->jenis_barang_dagang->b; ?></li>
+                            <li style="margin: 0px;"><?php echo $isi->jenis_barang_dagang->c; ?></li>
                         </ul>
                     </td>
                 </tr>
@@ -105,8 +105,8 @@ $date = new DateTime($get->tanggal);
                     <td class="text-center">:</td>
                     <td>
                         <ul style="list-style: lower-alpha; margin: 0px; margin-left: -25px;">
-                            <li>Laki-laki : <?php echo ($isi->jumlah_pekerja_laki) ? $isi->jumlah_pekerja_laki : '..............'; ?> Orang</li>
-                            <li>Wanita &nbsp;&nbsp;: <?php echo ($isi->jumlah_pekerja_wanita) ? $isi->jumlah_pekerja_wanita : '..............'; ?> Orang</li>
+                            <li style="margin: 0px;">Laki-laki : <?php echo ($isi->jumlah_pekerja_laki) ? $isi->jumlah_pekerja_laki : '..............'; ?> Orang</li>
+                            <li style="margin: 0px;">Wanita &nbsp;&nbsp;: <?php echo ($isi->jumlah_pekerja_wanita) ? $isi->jumlah_pekerja_wanita : '..............'; ?> Orang</li>
                         </ul>
                     </td>
                 </tr>
@@ -181,11 +181,11 @@ $date = new DateTime($get->tanggal);
                     <td class="text-center">:</td>
                     <td>Milik Sendiri / Sewa / Kontrak / Pinjam Pakai</td>
                 </tr>
-                <tr style="vertical-align: top">
+                <tr style="vertical-align: top;">
                     <td>12. Bagi mereka yang tempat usahanya bukan milik sendiri</td>
                     <td class="text-center">:</td>
                     <td>
-                        <ul style="list-style: lower-alpha; margin: 0px; margin-left: -25px;">
+                        <ul style="list-style: lower-alpha; margin: 0px; margin-top:-10px; margin-left: -25px;">
                             <li>Nama Pemilik Tanah : <?php echo $isi->nama_pemilik_tanah; ?></li>
                             <li>Alamat Pemilik Tanah : <?php echo $isi->alamat_pemilik; ?></li>
                             <li>Perjanjian Sewa / kontak : Ada / Tidak / Pinjam</li>
@@ -209,16 +209,19 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
                         <strong><?php echo ucfirst($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?></strong><br>
-                        <strong>An. Camat <?php echo ucfirst($this->option->get('kecamatan')) ?></strong><br>
+                        <?php if($get->jabatan != 'CAMAT') : ?>
+                        <strong>a.n. CAMAT <?php echo strtoupper($this->option->get('kecamatan')) ?></strong><br>
+                        <?php endif; ?>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
-                <tr><td colspan="3" style="height: 70px;"></td></tr>
+                <tr><td colspan="3" style="height: 50px;"></td></tr>
                 <tr>
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style="border-bottom: 0.2px solid #444; padding-bottom: 1.5px;"><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style=" line-height: 2px;"><?php echo ucfirst($get->pangkat); ?></span><br>
                         <span>NIP. <?php echo $get->nip; ?></span>
                     </td>
                 </tr>

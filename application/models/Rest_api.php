@@ -13,7 +13,7 @@ class Rest_api extends CI_Model
 		
 		$this->load->library( array('curl') );
 	
-		$this->url = "http://192.168.0.104/kiss/api";
+		$this->url = "http://fjbbabel.com/kiss/api";
 
 		$this->method = $this->input->get('ID');
 	}

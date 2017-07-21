@@ -47,7 +47,7 @@ echo form_open(current_url(), array('method' => 'get'));
 				if( $this->permission->is_true('penduduk', 'read') ) :
 				?>
 					<a href="<?php echo site_url("people/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
-					<a href="<?php echo site_url('people/export') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	
+					<a href="<?php echo site_url("people/export?per_page={$this->per_page}&page={$this->page}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	
 				<?php  
 				endif;
 				if( $this->permission->is_true('penduduk', 'create') ) :

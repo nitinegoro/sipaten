@@ -137,7 +137,7 @@ class Sipaten_model extends MY_Model
 	 **/
 	public function pemeriksa()
 	{
-		return $this->db->query("SELECT pegawai.* FROM pegawai RIGHT JOIN users ON users.nip = pegawai.nip WHERE users.role_id = '2'")->result();
+		return $this->db->query("SELECT pegawai.*, users.name FROM pegawai RIGHT JOIN users ON users.nip = pegawai.nip WHERE users.role_id = '2'")->result();
 	}
 
 
@@ -266,8 +266,43 @@ class Sipaten_model extends MY_Model
 	public function get_user_login()
 	{
 		return $this->db->query(
-			"SELECT user_id, name, photo, login_status FROM users WHERE user_id NOT IN({$this->user})"
+			"SELECT user_id, name, photo, login_status FROM users WHERE user_id NOT IN({$this->user}) AND login_status = 1"
 		)->result();
+	}
+
+	/**
+	 * Jenis Desa atau Keluranan
+	 *
+	 * @param Integer (ID desa)
+	 * @var string
+	 **/
+	public function village_prefix($param = '')
+	{
+		$desa = $this->db->get_where('desa', array('id_desa' => $param))->row();
+
+		if($desa == FALSE)
+			exit(null);
+
+		switch ($desa->slug) 
+		{
+			case 'koba':
+			case 'simpang-perlang':
+			case 'berok':
+			case 'padang-mulia':
+			case 'arung-dalam':
+				return array(
+					'j' => 'Kelurahan',
+					'k' => 'Lurah'
+				);
+				break;
+			
+			default:
+				return array(
+					'j' => 'Desa',
+					'k' => 'Kepala Desa'
+				);
+				break;
+		}
 	}
 }
 

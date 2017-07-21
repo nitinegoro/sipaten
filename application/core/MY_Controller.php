@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-define('SIPATEN_VERSION', '1.1.0 <small>(Demo Release)</small>');
+define('SIPATEN_VERSION', '1.2.6 <small>(Demo Release)</small>');
 
 class MY_Controller extends CI_Controller
 {

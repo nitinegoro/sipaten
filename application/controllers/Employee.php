@@ -91,6 +91,7 @@ class Employee extends Sipaten
 		$this->form_validation->set_rules('alamat', 'Alamat', 'trim');
 		$this->form_validation->set_rules('telepon', 'Telepon', 'trim');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
+		$this->form_validation->set_rules('pangkat', 'Pangkat', 'trim');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -120,6 +121,7 @@ class Employee extends Sipaten
 		$this->form_validation->set_rules('alamat', 'Alamat', 'trim');
 		$this->form_validation->set_rules('telepon', 'Telepon', 'trim');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
+		$this->form_validation->set_rules('pangkat', 'Pangkat', 'trim');
 
 		if ($this->form_validation->run() == TRUE)
 		{

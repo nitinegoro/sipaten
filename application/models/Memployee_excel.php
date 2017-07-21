@@ -30,7 +30,6 @@ class Memployee_excel extends Sipaten_model
 
 			$file_excel = "./public/excel/{$this->upload->file_name}";
 
-			// Identifikasi File Excel Reader
 			try {
 
 				$excelReader = new PHPExcel_Reader_Excel2007();
@@ -39,11 +38,8 @@ class Memployee_excel extends Sipaten_model
 
             	$sheet = $loadExcel->getActiveSheet()->toArray(null, true, true ,true);
 
-		        // Loops Excel data reader
-
 		        foreach ($sheet as $key => $value) 
 		        {
-		        	// Mulai Dari Baris ketiga
 		        	if($key > 1)
 		        	{
 		        		if($value['B'] == FALSE OR $this->nip_check($value['B'])) 
@@ -53,13 +49,13 @@ class Memployee_excel extends Sipaten_model
 							'nip' => $value['B'],
 							'nama' => $value['C'],
 							'jabatan' => $value['D'],
-							'jns_kelamin' => strtolower($value['E']),
-							'alamat' => $value['F'],
-							'telepon' => $value['G']
+							'pangkat' => $value['E'],
+							'jns_kelamin' => strtolower($value['F']),
+							'alamat' => $value['H'],
+							'telepon' => $value['I']
 						);
 
 						$this->db->insert('pegawai', $employee);
-		        	// End Baris ketiga
 		        	}
 
 					if($this->db->affected_rows())
@@ -74,7 +70,6 @@ class Memployee_excel extends Sipaten_model
 							array('type' => 'warning','icon' => 'warning')
 						);
 					}
-		        // End Loop
 		        }
 
 		        unlink("./public/excel/{$this->upload->file_name}");
@@ -98,7 +93,7 @@ class Memployee_excel extends Sipaten_model
 
 		$worksheet = $objPHPExcel->createSheet(0);
 
-	    for ($cell='A'; $cell <= 'G'; $cell++)
+	    for ($cell='A'; $cell <= 'H'; $cell++)
 	    {
 	        $worksheet->getStyle($cell.'1')->getFont()->setBold(true);
 	    }
@@ -121,14 +116,14 @@ class Memployee_excel extends Sipaten_model
 	    	)
 	    );
 
-		// Header dokumen
 		 $worksheet->setCellValue('A1', 'NO.')
 		 		   ->setCellValue('B1', 'NIP')
 		 		   ->setCellValue('C1', 'NAMA LENGKAP')
 		 		   ->setCellValue('D1', 'JABATAN')
-		 		   ->setCellValue('E1', 'JENIS KELAMIN')
-		 		   ->setCellValue('F1', 'ALAMAT')
-		 		   ->setCellValue('G1', 'TELEPON');
+		 		   ->setCellValue('E1', 'PANGKAT')
+		 		   ->setCellValue('F1', 'JENIS KELAMIN')
+		 		   ->setCellValue('G1', 'ALAMAT')
+		 		   ->setCellValue('H1', 'TELEPON');
 
 		$row_cell = 2;
 		foreach($this->db->get('pegawai')->result() as $key => $value)
@@ -137,14 +132,14 @@ class Memployee_excel extends Sipaten_model
 			 		   ->setCellValue('B'.$row_cell, $value->nip)
 			 		   ->setCellValue('C'.$row_cell, $value->nama)
 			 		   ->setCellValue('D'.$row_cell, $value->jabatan)
-			 		   ->setCellValue('E'.$row_cell, ucfirst($value->jns_kelamin))
-			 		   ->setCellValue('F'.$row_cell, $value->alamat)
-			 		   ->setCellValue('G'.$row_cell, $value->telepon);
+			 		   ->setCellValue('E'.$row_cell, $value->pangkat)
+			 		   ->setCellValue('F'.$row_cell, ucfirst($value->jns_kelamin))
+			 		   ->setCellValue('G'.$row_cell, $value->alamat)
+			 		   ->setCellValue('H'.$row_cell, $value->telepon);
 
 			$row_cell++;
 		}
 
-		// Sheet Title
 		$worksheet->setTitle("DATA PEGAWAI");
 
 		$objPHPExcel->setActiveSheetIndex(0);

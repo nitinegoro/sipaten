@@ -131,7 +131,9 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
                         <strong><?php echo ucfirst($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?></strong><br>
-                        <strong>An. Camat <?php echo ucfirst($this->option->get('kecamatan')) ?></strong><br>
+                        <?php if($get->jabatan != 'CAMAT') : ?>
+                        <strong>a.n. CAMAT <?php echo strtoupper($this->option->get('kecamatan')) ?></strong><br>
+                        <?php endif; ?>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
@@ -140,7 +142,8 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style="border-bottom: 0.2px solid #444; padding-bottom: 1.5px;"><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style=" line-height: 2px;"><?php echo ucfirst($get->pangkat); ?></span><br>
                         <span>NIP. <?php echo $get->nip; ?></span>
                     </td>
                 </tr>

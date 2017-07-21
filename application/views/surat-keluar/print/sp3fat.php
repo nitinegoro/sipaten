@@ -20,7 +20,7 @@ $date = new DateTime($get->tanggal);
             <p>Yang bertanda tangan dibawah ini :</p>
              <table style="margin-left:40px; margin-top: 10px; margin-bottom:10px;">
                 <tr>
-                    <td width="80">Lurah</td>
+                    <td width="80">Lurah / Kades</td>
                     <td class="text-center">:</td>
                     <td><?php echo $isi->desa ?></td>
                 </tr>
@@ -44,7 +44,7 @@ $date = new DateTime($get->tanggal);
             <p>
                 <ol style="list-style:">
                     <li><p>
-                        Bahwa berdasarkan Surat Pernyataan Pengakuan Fisik Atas Tanah tanggal <?php echo date_id($isi->tgl_surat_kuasa); ?> diketahui lurah <?php echo $isi->desa ?> tanggal <?php echo date_id($isi->tgl_diketahui); ?> Nomor : <?php echo $isi->no_surat_kuasa; ?> berupa tanah pekarangan yang terleak di <?php echo $isi->letak_tanah; ?> dengan luas <strong>&plusmn; <?php echo $isi->luas_tanah; ?> M<sup>2</sup> (Kurang Lebih <?php echo terbilang($isi->luas_tanah, 'ucfirst'); ?> Meter Persegi)</strong> <br></p>
+                        Bahwa berdasarkan Surat Pernyataan Pengakuan Fisik Atas Tanah tanggal <?php echo date_id($isi->tgl_surat_kuasa); ?> diketahui Lurah/Kades <?php echo $isi->desa ?> tanggal <?php echo date_id($isi->tgl_diketahui); ?> Nomor : <?php echo $isi->no_surat_kuasa; ?> berupa tanah pekarangan yang terleak di <?php echo $isi->letak_tanah; ?> dengan luas <strong>&plusmn; <?php echo $isi->luas_tanah; ?> M<sup>2</sup> (Kurang Lebih <?php echo terbilang($isi->luas_tanah, 'ucfirst'); ?> Meter Persegi)</strong> <br></p>
                         <p>Dengan Batas-batas sebagai berikut :</p>
                         <table>
                             <tr>
@@ -131,7 +131,9 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
                         <strong><?php echo ucfirst($this->option->get('kecamatan')) ?>, <?php echo date_id($get->tanggal); ?></strong><br>
-                        <strong>An. Camat <?php echo ucfirst($this->option->get('kecamatan')) ?></strong><br>
+                        <?php if($get->jabatan != 'CAMAT') : ?>
+                        <strong>a.n. CAMAT <?php echo strtoupper($this->option->get('kecamatan')) ?></strong><br>
+                        <?php endif; ?>
                         <strong><?php echo $get->jabatan; ?></strong>
                     </td>
                 </tr>
@@ -140,7 +142,8 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style="border-bottom: 0.2px solid #444; padding-bottom: 1.5px;"><?php echo ucfirst($get->nama); ?></span><br>
+                        <span style=" line-height: 2px;"><?php echo ucfirst($get->pangkat); ?></span><br>
                         <span>NIP. <?php echo $get->nip; ?></span>
                     </td>
                 </tr>
