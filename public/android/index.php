@@ -10,7 +10,7 @@
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body style="background: #E6EAED">
+<body style="background: #E6EAED;">
 <div class="navbar-fixed">
   <nav class="nav-extended orange darken-3 " >
     <div class="nav-wrapper navbar-fixed" style="background-image: url('images/bg.png'); height: 70px">
