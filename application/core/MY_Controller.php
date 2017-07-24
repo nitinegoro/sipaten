@@ -25,6 +25,8 @@ class Apps extends MY_Controller
 	{
 		parent::__construct();
 
+		$this->load->model('maccount', 'account');
+		
 		if($this->session->has_userdata('android_login')==FALSE) 
 		{
 			$this->db->update('users', array('login_status' => 0), array('user_id' => $this->IdAccount));
@@ -140,7 +142,8 @@ class Sipaten extends MY_Controller
 	 **/
 	public function log_surat_check($param = '', $kategori = 0)
 	{
-		$log_surat = $this->db->query("SELECT nik, syarat, tanggal FROM log_surat WHERE nik = {$param} AND nomor_surat IN(0) AND kategori = {$kategori}")->result();
+		$log_surat = $this->db->query("SELECT nik, syarat, tanggal FROM log_surat 
+			WHERE nik = {$param} AND nomor_surat IN(0) AND kategori = {$kategori}")->result();
 
 		foreach($log_surat as $row)
 		{
@@ -366,9 +369,6 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[nip_pejabat_lurah]', 'NIP Pejabat Lurah / Kades', 'trim|required');
 				$this->form_validation->set_rules('isi[jabatan_pejabat_lurah]', 'Jabatan Pejabat Lurah', 'trim|required');
 				break;	
-			default:
-				# code...surat
-				break;
 		}
 
 		$this->form_validation->set_rules('nomor_surat', 'Nomor Surat', 'trim|required');

@@ -17,13 +17,35 @@
 	background: url('../images/bg.png') repeat-y; 
 }
 
+/*  NAVBAR */
+
 img.brand-logo {
 	width: 250px;
 	margin-top: 5px;
 }
+
+div.navbar-fixed > .input-field {
+    margin-bottom:-20px !important;
+}
+
+div.navbar-fixed > .input-field > .label-icon > i.material-icons {
+    font-size: 28px;
+}
+
+div.navbar-fixed > .input-field > input[type="search"] {
+    padding-top: 3px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    border-top: 1.8px solid white !important;
+}
+div.navbar-fixed > .input-field > input[type="search"]:focus {
+    border-bottom: 1px solid orange !important;
+    box-shadow: 0 1px 0 0 orange !important
+}
+
 div.nav-wrapper > a > .fa {
   font-size: 25px;
-  padding: 17px 17px 17px 17px;
+  padding: 17px 17px;
 }
 
 ul.side-nav > li a > .fa {
@@ -36,4 +58,37 @@ ul.side-nav > li a > .fa {
 
 .upper { 
   text-transform: uppercase;
+}
+
+div.main-content {
+  padding-top: 30px;
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+
+/*  FORM INPUT */
+
+
+/* label focus color */
+.input-field input:focus + label,
+.input-field textarea.materialize-textarea:focus + label {
+    color: orange !important;
+}
+ /* label underline focus color */
+.row .input-field input:focus,
+.row .input-field textarea.materialize-textarea:focus {
+    border-bottom: 1px solid orange !important;
+    box-shadow: 0 1px 0 0 orange !important
+}
+
+
+
+/* Collecttion */
+.collection {
+    padding-top: 30px;
+}
+
+.collection-item > span.list-name {
+    font-size: 16px;
+    font-weight: 500;
 }
