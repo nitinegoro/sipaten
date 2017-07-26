@@ -46,7 +46,7 @@
          .lockscreen-footer { font-family: 'Arial', sans-serif; color:#FC9631; }
          span.blue-sipaten { color: #0093DD; }
          .text-red { color: red; }
-         .captcha > p { font-size:30px; font-family: 'Arial Narrow'; font-weight: bold; text-align: center; letter-spacing: 30px; color: #FC9631;  }
+         .captcha > p { font-size:30px; font-family: sans-serif; font-weight: bold; text-align: center; letter-spacing: 30px; color: #FC9631;  }
          div.box-forgot { padding-top:10px;  }
          a.link-forgot {
             text-decoration: none;
@@ -82,7 +82,7 @@
          <div class="form-group" style="margin-top: 30px;">
             <label for="">Kode Captcha :</label>
             <div class="captcha text-center">
-               <p id="text-captcha"><?php echo $captcha['image']; ?></p>
+               <p id="text-captcha"><?php echo $captcha['word']; ?></p>
             </div>
             <a href="" id="reload-captcha"><small>Refresh Captcha</small></a>
          </div>
