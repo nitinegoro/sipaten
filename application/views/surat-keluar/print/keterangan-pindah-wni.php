@@ -175,9 +175,9 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span style="border-bottom: 0.2px solid #444; padding-bottom: 1.5px;"><?php echo ucfirst($get->nama); ?></span><br>
-                        <span style=" line-height: 2px;"><?php echo ucfirst($get->pangkat); ?></span><br>
-                        <span>NIP. <?php echo $get->nip; ?></span>
+                        <strong style="border-bottom: 0.2px solid #444; padding-bottom: 1.5px;"><?php echo ucfirst($get->nama); ?></strong><br>
+                        <strong style=" line-height: 2px;"><?php echo ucfirst($get->pangkat); ?></strong><br>
+                        <strong>NIP. <?php echo $get->nip; ?></strong>
                     </td>
                 </tr>
             </table>

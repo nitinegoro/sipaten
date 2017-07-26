@@ -10,6 +10,15 @@ $this->load->view('print/header');
 
 $date = new DateTime($get->tanggal);
 
+if(is_numeric($isi->desa))
+{
+    $desa = $this->option->get_select_desa($isi->desa, 'nama_desa');
+    $kepala =$this->option->village_prefix($get->id_desa)['j'];
+} else {
+    $desa = $isi->desa;
+    $kepala =$this->option->village_prefix($get->id_desa)['j'];
+}
+
 ?>
     <div class="content">
         <div class="mail-heading">
@@ -21,7 +30,7 @@ $date = new DateTime($get->tanggal);
             <h5 class="mail-number upper">izin keramaian</h5>
         </div>
         <div class="mail-content">
-            <p class="indent">Memperhatikan Surat Pengantar dari <?php echo $this->option->village_prefix($isi->desa)['j'] ?> <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?>, dengan ini Camat  <?php echo $this->option->get('kecamatan'); ?> menerangkan bahwa :</p>
+            <p class="indent">Memperhatikan Surat Pengantar dari <?php echo $kepala ?> <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?>, dengan ini Camat  <?php echo $this->option->get('kecamatan'); ?> menerangkan bahwa :</p>
             <table style="margin-top: 10px; margin-bottom:10px;">
                 <tr>
                     <td width="170">NAMA</td>
@@ -46,7 +55,7 @@ $date = new DateTime($get->tanggal);
                 <tr style="vertical-align: top;">
                     <td>ALAMAT</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->village_prefix($isi->desa)['j'].' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->get_select_desa($isi->desa, 'nama_desa').' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>KEPERLUAN</td>
@@ -71,7 +80,7 @@ $date = new DateTime($get->tanggal);
                         <tr>
                             <td>Tempat</td>
                             <td class="text-center">:</td>
-                            <td><?php echo $isi->tempat.' '.$this->option->village_prefix($isi->desa)['j'].' '.$this->option->get_select_desa($isi->desa, 'nama_desa').' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                            <td><?php echo $isi->tempat.' '.$desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                         </tr>
                         <tr style="vertical-align: top;">
                             <td>Hiburan</td>
@@ -110,9 +119,9 @@ $date = new DateTime($get->tanggal);
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
                     <td style="width: 40%;" class="text-center">
-                        <span style="border-bottom: 0.2px solid #444; padding-bottom: 1.5px;"><?php echo ucfirst($get->nama); ?></span><br>
-                        <span style=" line-height: 2px;"><?php echo ucfirst($get->pangkat); ?></span><br>
-                        <span>NIP. <?php echo $get->nip; ?></span>
+                        <strong style="border-bottom: 0.2px solid #444; padding-bottom: 1.5px;"><?php echo ucfirst($get->nama); ?></strong><br>
+                        <strong style=" line-height: 2px;"><?php echo ucfirst($get->pangkat); ?></strong><br>
+                        <strong>NIP. <?php echo $get->nip; ?></strong>
                     </td>
                 </tr>
             </table>
