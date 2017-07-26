@@ -79,7 +79,7 @@ class Msurat_keluar extends Sipaten_model
 	public function get($param = 0)
 	{
 		$this->db->select('
-			surat.*, kategori_surat.*, penduduk.nik, penduduk.nama_lengkap, penduduk.pekerjaan, penduduk.tmp_lahir, penduduk.tgl_lahir, penduduk.no_kk, penduduk.status_kk, penduduk.agama, penduduk.alamat, penduduk.gol_darah, penduduk.rt, penduduk.rw, penduduk.jns_kelamin, penduduk.status_kawin, penduduk.kewarganegaraan, desa.nama_desa, pegawai.nama, pegawai.jabatan, pegawai.pangkat, pegawai.nip, penduduk.telepon, desa.id_desa'
+			surat.*, kategori_surat.*, penduduk.nik, penduduk.nama_lengkap, penduduk.pekerjaan, penduduk.tmp_lahir, penduduk.tgl_lahir, penduduk.no_kk, penduduk.status_kk, penduduk.agama, penduduk.alamat, penduduk.gol_darah, penduduk.rt, penduduk.rw, penduduk.jns_kelamin, penduduk.status_kawin, penduduk.kewarganegaraan, desa.nama_desa, pegawai.nama, pegawai.jabatan, pegawai.pangkat, pegawai.nip, penduduk.telepon, desa.id_desa, users.name'
 		);
 
 		$this->db->where_not_in('status', 'entry');
@@ -213,7 +213,6 @@ class Msurat_keluar extends Sipaten_model
 			);
 		}
 	}
-
 
 }
 

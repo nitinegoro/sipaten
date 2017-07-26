@@ -92,3 +92,41 @@ div.main-content {
     font-size: 16px;
     font-weight: 500;
 }
+
+/*  LETTER */
+.letter-info {
+  margin-top: 20px;
+  font-size: 12px;
+}
+.letter-info > h6 {
+  border-bottom: 3px solid orange;
+  padding-bottom: 10px;
+  font-weight: 500;
+}
+.letter-info > h6.letter-info-icon:before {
+   font-family: FontAwesome;
+   content: "\f0f6";
+   padding-right: 10px;
+   vertical-align: center;
+   color: orange;
+}
+
+.letter-info > h6.letter-pengantar-icon:before {
+   font-family: FontAwesome;
+   content: "\f15c";
+   padding-right: 10px;
+   vertical-align: center;
+   color: orange;
+}
+
+.letter-info > table   {
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.letter-info > table tr {
+    padding:0; 
+    margin:0;
+    border-bottom: 0.4px solid orange;
+    vertical-align: top;
+}

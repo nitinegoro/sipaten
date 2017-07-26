@@ -307,36 +307,6 @@ class Surat_keluar extends Sipaten
 		}
 	}
 
-
-	public function trigger_event()
-	{
-		// Load the library.
-		// You can also autoload the library by adding it to config/autoload.php
-		$this->load->library('ci_pusher');
-		$pusher = $this->ci_pusher->get_pusher();
-
-		echo form_open(current_url());
-		echo "<textarea name='pesan'></textarea>";
-		echo "<button type='submit'>Kirim pesan </button>";
-
-		echo form_close();
-		// Set message
-		if($this->input->post('pesan') != '')
-		{
-			$data['message'] = $this->input->post('pesan');
-			// Send message
-			$event = $pusher->trigger('test_channel', 'my_event', $data);
-			if ($event === TRUE)
-			{
-				echo 'Oke Zakky';
-			}
-			else
-			{
-				echo 'Ouch, something happend. Could not trigger event.';
-			}
-		}	
-
-	}
 }
 
 /* End of file Surat_keluar.php */
