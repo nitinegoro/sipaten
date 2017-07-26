@@ -140,7 +140,10 @@ class Login extends CI_Controller
 	 **/
 	public function signout()
 	{
+        $this->db->update('users', array('login_status' => 0), array('user_id' => $this->session->userdata('ID') ));
+
 		$this->session->sess_destroy();
+
 		redirect($this->input->get('from_url'));
 	}
 
@@ -161,7 +164,7 @@ class Login extends CI_Controller
 	{
 		$captcha = create_captcha($this->captcha_component);
 
-		echo $captcha['image'];
+		echo $captcha['word'];
 	}
 
 	public function validate_captcha()
@@ -310,6 +313,29 @@ class Login extends CI_Controller
    	{   
     	return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));   
    	} 
+
+    /**
+     * Check Login Via AJAX
+     *
+     * @return Boolean
+     **/
+    public function login_check_status()
+    {
+        if($this->session->has_userdata('android_login')==FALSE)
+        {
+            $this->db->update('users', array('login_status' => 0), array('user_id' => $this->session->userdata('ID') ));
+
+            $this->data = array(
+                'status' => 'error'
+            );
+        } else {
+            $this->data = array(
+                'status' => 'success'
+            );
+        }
+
+        $this->output->set_content_type('application/json')->set_output(json_encode($this->data));
+    }
 }
 
 /* End of file Login.php */

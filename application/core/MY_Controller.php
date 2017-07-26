@@ -29,7 +29,7 @@ class Apps extends MY_Controller
 		
 		if($this->session->has_userdata('android_login')==FALSE) 
 		{
-			$this->db->update('users', array('login_status' => 0), array('user_id' => $this->IdAccount));
+			$this->db->update('users', array('login_status' => 0), array('user_id' => $this->session->userdata('ID') ));
 			
 			redirect(site_url('apps/login?from_url='.current_url()));
 		}

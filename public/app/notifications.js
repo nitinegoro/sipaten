@@ -65,3 +65,12 @@ create_surat.bind('notifikasi-status', function(data) {
 });
 
 
+setInterval(function(){ 
+	$.get(base_url + "/login/login_check_status", function(data) 
+	{
+		if( data.status === 'error')
+		{
+			window.location.href = base_url + "/login/signout";
+		}
+	});
+}, 1800000);
