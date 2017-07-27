@@ -138,3 +138,15 @@ div.main-content {
     border-bottom: 0.4px solid orange;
     vertical-align: top;
 }
+
+li.tab > a > i.fa {
+    font-size:23px;
+    margin-top: 14px !important;
+}
+
+li.tab > a > span.sipaten-badge {
+    padding-bottom: 30px !important;
+    position: inline-block;
+    font-size: 11px;
+    color: white;
+}

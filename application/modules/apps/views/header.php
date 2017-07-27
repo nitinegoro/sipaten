@@ -55,4 +55,29 @@
     <link rel="stylesheet" href="<?php echo base_url("public/font-awesome/css/font-awesome.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("public/dist/css/animate.min.css"); ?>">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="<?php echo base_url("public/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
+    <script src="<?php echo base_url("public/android/js/materialize.js"); ?>"></script>
+    <script src="<?php echo base_url("public/android/js/init.js"); ?>"></script>
+    <script type="text/javascript">
+        var base_url = '<?php echo site_url('apps/'); ?>',
+            base_path  = '<?php echo base_url('public'); ?>';
+            current_url = '<?php echo current_url(); ?>';
+            my_channel = 'channel-<?php echo $this->session->userdata('account')->nip; ?>'; 
+    </script>
+    <?php 
+
+    /**
+     * Load js from loader core
+      *
+     * @return CI_OUTPUT
+     **/
+    if($this->load->get_js_files() != FALSE) : 
+        foreach($this->load->get_js_files() as $file) :  
+    ?>
+    <script src="<?php echo $file; ?>"></script>
+    <?php 
+        endforeach; 
+    endif; 
+    ?>
 </head>

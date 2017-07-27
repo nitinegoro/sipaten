@@ -23,4 +23,6 @@ $(document).ready( function()
       		$('a#set-button').attr('href', base_url + "/surat/set/" + $(trigger).data('id') + "/" + status );
       	}
     });
+
+
 });

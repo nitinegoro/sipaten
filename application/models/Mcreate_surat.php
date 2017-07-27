@@ -209,6 +209,14 @@ class Mcreate_surat extends Sipaten_model
 			array('nik' => $nik, 'kategori' => $category, 'nomor_surat' => 0)
 		);
 
+		/* INSERT NOTIFICATIONS */
+		$this->db->insert('notifications', array(
+			'surat' => $check_surat->ID,
+			'sender' => $this->user,
+			'receiver' => $this->input->post('pemeriksa'),
+			'status' => 0
+		));
+
 		if($this->db->affected_rows())
 		{
 			$this->template->alert(
