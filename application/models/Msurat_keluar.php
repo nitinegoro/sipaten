@@ -213,7 +213,6 @@ class Msurat_keluar extends Sipaten_model
 			);
 		}
 	}
-
 }
 
 /* End of file Msurat_keluar.php */

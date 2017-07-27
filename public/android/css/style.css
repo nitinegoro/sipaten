@@ -119,6 +119,14 @@ div.main-content {
    color: orange;
 }
 
+.letter-info > h6.letter-isian-icon:before {
+   font-family: FontAwesome;
+   content: "\f040";
+   padding-right: 10px;
+   vertical-align: center;
+   color: orange;
+}
+
 .letter-info > table   {
     margin-bottom: 20px;
     border-collapse: collapse;

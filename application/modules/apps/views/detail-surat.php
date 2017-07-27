@@ -42,42 +42,29 @@ $date = new DateTime($get->tanggal);
                        <tr>
                            <td>Petugas Verifikasi</td>
                            <td class="center">:</td>
-                           <td><?php echo $this->db->get_where('pegawai', array('ID', $get->pemeriksa))->row('nama'); ?></td>
+                           <td><?php echo $this->db->get_where('pegawai', array('ID'=> $get->pemeriksa))->row('nama'); ?></td>
                        </tr>
                        <tr>
                            <td>Penandatangan</td>
                            <td class="center">:</td>
                            <td><?php echo $get->nama; ?> - NIP. <?php echo $get->nip ?></td>
                        </tr>
-                   </table>
-                   <h6 class="letter-pengantar-icon">Surat Pengantar Dari Lurah / Desa</h6>
-                   <table>
                        <tr>
-                           <td>Nomor Surat</td>
+                           <td>Status Surat</td>
                            <td class="center">:</td>
-                           <td></td>
-                       </tr>
-                       <tr>
-                           <td>Tanggal</td>
-                           <td class="center">:</td>
-                           <td><?php echo date_id($get->tanggal); ?></td>
-                       </tr>
-                       <tr>
-                           <td>Petugas Pelayanan</td>
-                           <td class="center">:</td>
-                           <td></td>
-                       </tr>
-                       <tr>
-                           <td>Petugas Verifikasi</td>
-                           <td class="center">:</td>
-                           <td></td>
-                       </tr>
-                       <tr>
-                           <td>Penandatangan</td>
-                           <td class="center">:</td>
-                           <td></td>
+                           <td><?php echo ($get->status == "approve") ? "Terverifikasi" : "Belum Terverifikasi";  ?></td>
                        </tr>
                    </table>
+                <?php  
+                /**
+                 * Panggil Form Isian Surat
+                 *
+                 * @return Require HTML
+                 **/
+                
+                if($get->slug != "pengantar-kartu-keluarga")
+                    $this->load->view("isian-surat/{$get->slug}", $this->data);
+                ?>
                </div>
            </div>
         </div>
@@ -87,9 +74,19 @@ $date = new DateTime($get->tanggal);
             <i class="large material-icons">menu</i>
         </a>
         <ul>
-            <li><a class="btn-floating green"><i class="fa fa-check"></i></a></li>
-            <li><a class="btn-floating red darken-1"><i class="fa fa-times"></i></a></li>
+            <li><a href="#set-verification" data-status="approve" data-id="<?php echo $get->ID ?>" class="btn-floating green"><i class="fa fa-check"></i></a></li>
+            <li><a href="#set-verification" data-status="pending" data-id="<?php echo $get->ID ?>" class="btn-floating red darken-1"><i class="fa fa-times"></i></a></li>
         </ul>
+    </div>
+
+    <div id="set-verification" class="modal modal-dialog">
+        <div class="modal-content">
+            <h5 id="get-heading"></h5>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat">Tidak</a>
+            <a id="set-button" class="modal-action modal-close waves-effect waves-green btn-flat">Ya</a>
+        </div>
     </div>
 <?php  
 

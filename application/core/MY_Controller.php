@@ -33,8 +33,11 @@ class Apps extends MY_Controller
 			
 			redirect(site_url('apps/login?from_url='.current_url()));
 		}
-	}
 
+		$this->load->js('https://js.pusher.com/2.2/pusher.min.js');
+		$this->load->js(base_url("public/dist/js/push.min.js?v1.0.1"));
+		$this->load->js(base_url("public/android/js/notifications.js?v1.0.1"));
+	}
 
 }
 

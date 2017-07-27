@@ -36,6 +36,8 @@ class Surat extends Apps
 		$this->load->model('msurat_keluar', 'surat_keluar');
 
 		$this->load->model('mcreate_surat', 'create_surat');
+
+		$this->load->js(base_url("public/android/js/surat.js"));
 	}
 
 	public function index()
@@ -92,6 +94,53 @@ class Surat extends Apps
 		);
 
 		$this->load->view('detail-surat', $this->data);
+	}
+
+	/**
+	 * Set Verification Surat Keluar
+	 *
+	 * @return Push Notification
+	 **/
+	public function set($param = 0, $status = 'pending')
+	{
+		$surat = array(
+			'waktu_selesai' => date('Y-m-d H:i:s'),
+			'status' => $status 
+		);
+
+		$this->db->update('surat', $surat, array('ID' => $param));
+
+		$surat = $this->create_surat->surat_category($param);
+
+		$surat = $this->surat_keluar->get($param);
+
+		$this->load->library('ci_pusher');
+		$pusher = $this->ci_pusher->get_pusher();
+
+		$penerima = $this->db->get_where('users', array('user_id' => $surat->user ))->row('nip');
+
+		$sender = $this->db->get_where('users', array('user_id' => $this->session->userdata('ID') ))->row();
+
+		if($status == 'pending')
+		{
+			$data = array(
+				'message' => $sender->name." Menolak surat pengajuan anda.",
+				'param' => $param,
+				'icon' => (!$sender->photo) ? base_url("public/image/avatar.jpg") : base_url("public/image/{$sender->photo}"),
+				'status' => 'warning'
+			); 
+		} else {
+				$data = array(
+				'message' => $sender->name." Memverifikasi surat pengajuan anda.",
+				'param' => $param,
+				'icon' => (!$sender->photo) ? base_url("public/image/avatar.jpg") : base_url("public/image/{$sender->photo}"),
+				'status' => 'info'
+			); 
+		} 
+		
+		$event = $pusher->trigger('channel-'.$penerima, 'notifikasi-status', $data);
+
+		redirect("apps/surat/get/{$param}");
 	}
 }
 
