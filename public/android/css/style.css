@@ -127,6 +127,14 @@ div.main-content {
    color: orange;
 }
 
+.letter-info > h6.letter-pemohon-icon:before {
+   font-family: FontAwesome;
+   content: "\f2bc";
+   padding-right: 10px;
+   vertical-align: center;
+   color: orange;
+}
+
 .letter-info > table   {
     margin-bottom: 20px;
     border-collapse: collapse;

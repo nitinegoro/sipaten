@@ -10,13 +10,15 @@ $this->load->view('print/header');
 
 $date = new DateTime($get->tanggal);
 
-if(is_numeric($isi->desa))
+$dszak = $this->db->get_where('desa', array('slug' => $this->slug->create_slug($isi->desa)))->row();
+
+if( is_numeric($isi->desa) )
 {
-    $desa = $this->option->get_select_desa($isi->desa, 'nama_desa');
-    $kepala =$this->option->village_prefix($get->id_desa)['j'];
+    $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
+    $kepala =$this->option->village_prefix( $isi->desa )['j'];
 } else {
     $desa = $isi->desa;
-    $kepala =$this->option->village_prefix($get->id_desa)['j'];
+    $kepala = $this->option->village_prefix( $dszak->id_desa )['j'];
 }
 
 ?>

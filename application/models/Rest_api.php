@@ -13,7 +13,7 @@ class Rest_api extends CI_Model
 		
 		$this->load->library( array('curl') );
 	
-		$this->url = "http://fjbbabel.com/kiss/api";
+		$this->url = "http://kecamatankoba.net/api";
 
 		$this->method = $this->input->get('ID');
 	}
@@ -98,7 +98,7 @@ class Rest_api extends CI_Model
 				break;
 			case 'pdf':
 			case 'PDF':
-				return '<a href="'.$url.'" data-width="1200" data-toggle="lightbox" data-title="Berkas PDF"><i class="fa fa-file-pdf-o"></i></a>';
+				return '<a href="'.$url.'" target="_blank"><i class="fa fa-file-pdf-o"></i></a>';
 				break;
 			default:
 				# code...

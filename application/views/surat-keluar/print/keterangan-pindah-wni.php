@@ -10,7 +10,6 @@ $this->load->view('print/header');
 
 $date = new DateTime($get->tanggal);
 
-
 $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
 ?>
     <div class="content">
@@ -145,6 +144,7 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
             <?php 
             /* Loop data penduduk */
             $key_no = 1;
+            if( is_array($isi->pengikut)) :
             foreach($isi->pengikut as $key => $value) :
                 $ikut = $this->db->get_where('penduduk', array('ID' => $value->id))->row();
             ?>
@@ -154,7 +154,9 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                     <td><?php echo ucfirst($ikut->tmp_lahir).', '.date_id($ikut->tgl_lahir) ?></td>
                     <td class="text-center"><?php echo strtoupper($ikut->status_kk) ?></td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endforeach; 
+            endif;
+            ?>
             </table>
         </div>
         <div class="mail-footer">

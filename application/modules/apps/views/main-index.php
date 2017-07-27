@@ -29,7 +29,7 @@ $account = $this->account->get();
                     <li class="tab">
                         <a href="#test3">
                             <i class="fa fa-globe"></i> 
-                            <span class="sipaten-badge">3</span>
+                            <span class="sipaten-badge"><?php echo count($this->notif->get()) ?></span>
                         </a>
                     </li>
                 </ul>

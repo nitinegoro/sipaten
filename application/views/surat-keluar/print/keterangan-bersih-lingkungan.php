@@ -13,6 +13,16 @@ $date = new DateTime($get->tanggal);
 if($get->no_kk == FALSE)
     exit("Maaf, tidak ada Nomor KK yang terhubung pada data ini.");
 
+$dszak = $this->db->get_where('desa', array('slug' => $this->slug->create_slug($isi->desa)))->row();
+
+if( is_numeric($isi->desa) )
+{
+    $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
+    $kepala =$this->option->village_prefix( $isi->desa )['k'];
+} else {
+    $desa = $isi->desa;
+    $kepala = $this->option->village_prefix( $dszak->id_desa )['k'];
+}
 ?>
     <div class="content">
         <div class="mail-heading">
@@ -23,7 +33,7 @@ if($get->no_kk == FALSE)
             <table>
                 <tr>
                     <td width="130"></td>
-                    <td colspan="4">Yang bertanda tangan dibawah ini <?php echo $this->option->village_prefix($isi->desa)['k'].' '.$this->db->get_where('desa', array('id_desa' => $isi->desa))->row('nama_desa') ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Kabupaten <?php echo $this->option->get('kabupaten'); ?> dengan ini menerangkan :</td>
+                    <td colspan="4">Yang bertanda tangan dibawah ini <?php echo $kepala.' '.$desa ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Kabupaten <?php echo $this->option->get('kabupaten'); ?> dengan ini menerangkan :</td>
                 </tr>
                 <tr> <td colspan="5" height="10"></td> </tr>
             <?php  
@@ -97,7 +107,7 @@ if($get->no_kk == FALSE)
                 <tr> <td colspan="5" height="10"></td> </tr>
                 <tr>
                     <td></td>
-                    <td width="20" class="text-center">3. </td>
+                    <td width="20" class="text-center"><?php echo count($this->option->get_parent_kk($get->no_kk)) + 1 ?>. </td>
                     <td width="130">Nama</td>
                     <td width="30" class="text-center">:</td>
                     <td><?php echo $get->nama_lengkap; ?></td>
@@ -167,7 +177,7 @@ if($get->no_kk == FALSE)
             <table style="width: 100%;">
                 <tr>
                     <td style="width: 40%;">
-                        Berdasarkan Surat Keterangan Lurah <?php echo $this->db->get_where('desa', array('id_desa' => $isi->desa))->row('nama_desa') ?>
+                        Berdasarkan Surat Keterangan <?php echo $kepala ?> <?php echo $desa ?>
                         <br>
                         Nomor : <?php echo $isi->no_surat_ket; ?><br>
                         Tanggal : <?php echo date_id($isi->tgl_surat_ket); ?>

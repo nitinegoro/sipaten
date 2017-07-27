@@ -10,6 +10,14 @@ $this->load->view('print/header');
 
 $date = new DateTime($get->tanggal);
 
+if( $get->id_desa != FALSE )
+{
+    $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
+    $kepala = $this->option->village_prefix( $get->desa )['j'];
+} else {
+    $desa = @$get->desa;
+    $kepala = '';
+}
 ?>
     <div class="content">
         <div class="mail-heading">
@@ -23,7 +31,7 @@ $date = new DateTime($get->tanggal);
                     <td class="text-center">:</td>
                     <td>
                         <ol style="margin-top: 0px;line-height: 1.5; margin-top: -10px; font-size: 12px;">
-                            <li style="padding-left: 5px;">Peraturan Periseden No. 98 Tahub 2014 tentang Perizinan Untuk Usaha Mikro dan Kecil.</li>
+                            <li style="padding-left: 5px;">Peraturan Presiden No. 98 Tahun 2014 tentang Perizinan Untuk Usaha Mikro dan Kecil.</li>
                             <li style="padding-left: 5px;">Peraturan Mentri Dalam Negri No. 83 Tahun 2014 tentang Pedoman Pemberian Izin Usaha Mikro dan Kecil.</li>
                             <li style="padding-left: 5px;">Peraturan Bupati Bangka Nomor 38 Tahun 2015 tentang Perubahan atas Peraturan Bupati Nomor 29 Tahun 2012 tentang Pelimpahan Sebagian Kewenangan Bupati Kepada Camat.</li>
                         </ol>
@@ -45,7 +53,7 @@ $date = new DateTime($get->tanggal);
                 <tr style="vertical-align: top;">
                     <td>ALAMAT</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->village_prefix($get->id_desa)['j'].' '.$get->nama_desa; ?></td>
+                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$kepala.' '.$get->nama_desa; ?></td>
                 </tr>
                 <tr>
                     <td>NOMOR TELEPON / HP</td>

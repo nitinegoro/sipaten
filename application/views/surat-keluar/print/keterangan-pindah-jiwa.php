@@ -10,6 +10,16 @@ $this->load->view('print/header');
 
 $date = new DateTime($get->tanggal);
 
+$dszak = $this->db->get_where('desa', array('slug' => $this->slug->create_slug($isi->desa)))->row();
+
+if( is_numeric($isi->desa) )
+{
+    $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
+    $kepala =$this->option->village_prefix( $isi->desa )['j'];
+} else {
+    $desa = $isi->desa;
+    $kepala = $this->option->village_prefix( $dszak->id_desa )['j'];
+}
 ?>
     <div class="content">
         <div class="mail-heading">
@@ -61,7 +71,7 @@ $date = new DateTime($get->tanggal);
                 <tr style="vertical-align: top;">
                     <td>Alamat</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->village_prefix($get->id_desa)['j'].' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$kepala.' '.$desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>Pindah Ke </td>
@@ -71,7 +81,7 @@ $date = new DateTime($get->tanggal);
                             <tr>
                                 <td>Desa/Kelurahan</td>
                                 <td width="40" class="text-center">:</td>
-                                <td><?php echo $isi->desa; ?></td>
+                                <td><?php echo $desa; ?></td>
                             </tr>
                             <tr>
                                 <td>Kecamatan</td>
@@ -123,6 +133,7 @@ $date = new DateTime($get->tanggal);
             <?php 
             /* Loop data penduduk */
             $key_no = 1;
+            if(is_array($isi->pengikut)) :
             foreach($isi->pengikut as $key => $value) :
                 $ikut = $this->db->get_where('penduduk', array('ID' => $value->id))->row();
             ?>
@@ -132,7 +143,9 @@ $date = new DateTime($get->tanggal);
                     <td><?php echo ucfirst($ikut->tmp_lahir).', '.date_id($ikut->tgl_lahir) ?></td>
                     <td class="text-center"><?php echo strtoupper($ikut->status_kk) ?></td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endforeach; 
+            endif;
+            ?>
             </table>
         </div>
         <div class="mail-footer">

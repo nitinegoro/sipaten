@@ -75,7 +75,7 @@ $date = new DateTime($get->tanggal);
             endif;
             ?>
             </table>
-            <p class="indent">Nama-nama tersebut diatas memang benar warga Desa <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> yang berdomisisli di <?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->village_prefix($get->id_desa)['j'].' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten').' Prov. '.$this->option->get('provinsi'); ?> dan memang benar berdasarkan data pemantauan kami dilapangan yang bersangkutan adalah benar <strong>KELUARGA TIDAK MAMPU</strong>.</p>
+            <p class="indent">Nama-nama tersebut diatas memang benar warga Desa <?php echo (is_string($isi->desa) ) ? $isi->desa : $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> yang berdomisisli di <?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.(is_string($isi->desa) ) ? $isi->desa : $this->option->get_select_desa($isi->desa, 'nama_desa').' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten').' Prov. '.$this->option->get('provinsi'); ?> dan memang benar berdasarkan data pemantauan kami dilapangan yang bersangkutan adalah benar <strong>KELUARGA TIDAK MAMPU</strong>.</p>
             <p class="indent">Demikiaan, Surat Keterangan Kurang Mampu ini dibuat, agar dapat dipergunakan untuk <strong>"<?php echo strtoupper($isi->keperluan); ?>"</strong>.</p>
         </div>
         <div class="mail-footer">

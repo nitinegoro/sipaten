@@ -139,7 +139,8 @@ $date = new DateTime($get->tanggal);
                 </tr>
             <?php 
             /* Loop data penduduk */
-            foreach($isi->pengikut as $key => $value) :
+            if( is_array($isi->pengikut) ):
+                foreach($isi->pengikut as $key => $value) :
                 $ikut = $this->db->get_where('penduduk', array('ID' => $value->id))->row();
             ?>
                 <tr>
@@ -151,7 +152,9 @@ $date = new DateTime($get->tanggal);
                     <td><?php echo date_id($ikut->tgl_lahir) ?></td>
                     <td class="text-center"><?php echo strtoupper($value->status_hubungan) ?></td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endforeach; 
+            endif;
+            ?>
             </table>
         </div>
         <div class="mail-footer">

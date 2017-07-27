@@ -62,7 +62,7 @@
         <tr style="vertical-align: top">
             <td><strong>Jangka Waktu </strong></td>
             <td class="text-center" style="width: 30px;">:</td>
-            <td><?php echo @$get->isi->jangka_tahun." Tahun<br>".date_id(@$get->isi->jangka_mulai)." S.d ".date_id(@$get->isi->jangka_akhir) ?></td>
+            <td><?php echo @$get->isi->jangka_tahun." Tahun<br>".@date_id(@$get->isi->jangka_mulai)." S.d ".@date_id(@$get->isi->jangka_akhir) ?></td>
         </tr>
     </tbody>
 </table>

@@ -9,7 +9,7 @@ class Mnotification extends Sipaten_model
 	{
 		parent::__construct();
 		
-		$this->user = $this->session->userdata('ID');
+		$this->user = $this->db->get_where('pegawai', array('nip' => $this->session->userdata('account')->nip))->row('ID');
 	}
 	
 	public function get()
@@ -21,6 +21,8 @@ class Mnotification extends Sipaten_model
 		$this->db->join('users', 'surat.user = users.user_id', 'left');
 
 		$this->db->join('kategori_surat', 'surat.kategori = kategori_surat.id_surat', 'left');
+
+		$this->db->where('notifications.status', 0);
 
 		return $this->db->get_where('notifications', array('notifications.receiver' => $this->user))->result();
 	}

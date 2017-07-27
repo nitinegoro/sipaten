@@ -10,6 +10,16 @@ $this->load->view('print/header');
 
 $date = new DateTime($get->tanggal);
 
+$dszak = $this->db->get_where('desa', array('slug' => $this->slug->create_slug($isi->desa)))->row();
+
+if( is_numeric($isi->desa) )
+{
+    $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
+    $kepala =$this->option->village_prefix( $isi->desa )['j'];
+} else {
+    $desa = $isi->desa;
+    $kepala = $this->option->village_prefix( $dszak->id_desa )['j'];
+}
 ?>
     <div class="content">
         <div class="mail-heading">
@@ -17,7 +27,7 @@ $date = new DateTime($get->tanggal);
             <h5 class="mail-number">Nomor : <?php echo $get->kode_surat.'/<b>'.$get->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?></h5>
         </div>
         <div class="mail-content">
-            <p class="indent">Berdasarkan Surat Keterangan Domisili dari <?php echo $this->option->village_prefix($get->id_desa)['k'].' '.$this->option->get_select_desa($get->id_desa, 'nama_desa'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> Tanggal <?php echo date_id($isi->tgl_surat_rek); ?> perihal Surat Keterangan Domisili a.n :</p>
+            <p class="indent">Berdasarkan Surat Keterangan Domisili dari <?php echo $kepala.' '.$desa; ?> Nomor : <?php echo $isi->no_surat_rek; ?> Tanggal <?php echo date_id($isi->tgl_surat_rek); ?> perihal Surat Keterangan Domisili a.n :</p>
             <table style="margin-left:40px; margin-top: 10px; margin-bottom:10px;">
                 <tr>
                     <td width="80">Nama</td>
@@ -30,7 +40,7 @@ $date = new DateTime($get->tanggal);
                     <td><?php echo $isi->alamat_perusahaan; ?></td>
                 </tr>
             </table>
-            <p class="indent">Memperhatihan get tersebut diatas dan sepanjang sepengetahuan kami bahwa <?php echo $isi->nama_perusahaan; ?> memang benar beralamat di <?php echo $isi->alamat_perusahaan . ' '.ucfirst($isi->desa); ?> Kecamatan <?php echo ucfirst($this->option->get('kecamatan')) ?> Kabupaten <?php echo ucfirst($this->option->get('kabupaten')) ?>.</p>
+            <p class="indent">Memperhatihan get tersebut diatas dan sepanjang sepengetahuan kami bahwa <?php echo $isi->nama_perusahaan; ?> memang benar beralamat di <?php echo $isi->alamat_perusahaan . ' '.ucfirst($desa); ?> Kecamatan <?php echo ucfirst($this->option->get('kecamatan')) ?> Kabupaten <?php echo ucfirst($this->option->get('kabupaten')) ?>.</p>
             <p class="indent">Demikiaan, Surat Keterangan Domisili ini dibuat untuk dapat dipergunakan sebagaimana mestinya.</p>
         </div>
         <div class="mail-footer">

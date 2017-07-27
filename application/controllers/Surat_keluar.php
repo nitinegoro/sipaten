@@ -27,6 +27,8 @@ class Surat_keluar extends Sipaten
 	{
 		parent::__construct();
 
+		$this->load->library('slug');
+
 		$this->breadcrumbs->unshift(1, 'Surat Keluar', "surat_keluar");
 
 		$this->load->model('msurat_keluar', 'surat_keluar');

@@ -110,6 +110,8 @@ class Surat extends Apps
 
 		$this->db->update('surat', $surat, array('ID' => $param));
 
+		$this->db->update('notifications', array('status' => 1), array('surat' => $param));
+
 		$surat = $this->create_surat->surat_category($param);
 
 		$surat = $this->surat_keluar->get($param);

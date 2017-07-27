@@ -10,6 +10,19 @@ $this->load->view('print/header');
 
 $date = new DateTime($get->tanggal);
 
+
+$dszak = $this->db->get_where('desa', array('slug' => $this->slug->create_slug($isi->desa)))->row();
+
+if( is_numeric($isi->desa) )
+{
+    $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
+    $kepala =$this->option->village_prefix( $isi->desa )['k'];
+     $jenis =$this->option->village_prefix( $isi->desa )['j'];
+} else {
+    $desa = $isi->desa;
+    $kepala = $this->option->village_prefix( $dszak->id_desa )['k'];
+     $jenis = $this->option->village_prefix( $dszak->id_desa )['j'];
+}
 ?>
     <div class="content">
         <div class="mail-heading">
@@ -18,7 +31,7 @@ $date = new DateTime($get->tanggal);
         </div>
         <div class="mail-content">
             <p class="indent">
-            Yang bertanda tangan di bawah ini <?php echo $this->option->village_prefix($isi->desa)['k'] ?> : <strong><?php echo strtoupper($this->option->get_select_desa($isi->desa, 'nama_desa')); ?></strong> <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
+            Yang bertanda tangan di bawah ini <?php echo $kepala ?> : <strong><?php echo strtoupper($desa); ?></strong> <?php echo $this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?>, menerangkan dengan sebenarnya bahwa :
             </p>
             <table style=" margin-top: 10px; margin-bottom:10px;">
                 <tr>
@@ -44,7 +57,7 @@ $date = new DateTime($get->tanggal);
                 <tr style="vertical-align: top;">
                     <td>Alamat Tinggal</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->village_prefix($isi->desa)['j'].' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$jenis.' '.$desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                 </tr>
                 <tr>
                     <td>Telepon/HP</td>

@@ -10,6 +10,18 @@ $this->load->view('print/header');
 
 $date = new DateTime($get->tanggal);
 
+$dszak = $this->db->get_where('desa', array('slug' => $this->slug->create_slug($isi->desa)))->row();
+
+if( is_numeric($isi->desa) )
+{
+    $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
+    $kepala =$this->option->village_prefix( $isi->desa )['k'];
+    $jenis =$this->option->village_prefix( $isi->desa )['j'];
+} else {
+    $desa = $isi->desa;
+    $kepala = $this->option->village_prefix( $dszak->id_desa )['k'];
+    $jenis = $this->option->village_prefix( $dszak->id_desa )['j'];
+}
 ?>
     <div class="content">
         <div class="mail-heading">
@@ -44,7 +56,7 @@ $date = new DateTime($get->tanggal);
             <p>
                 <ol style="list-style:">
                     <li><p>
-                        Bahwa berdasarkan Surat Pernyataan Pengakuan Fisik Atas Tanah tanggal <?php echo date_id($isi->tgl_surat_kuasa); ?> diketahui lurah <?php echo $isi->desa ?> tanggal <?php echo date_id($isi->tgl_diketahui); ?> Nomor : <?php echo $isi->no_surat_kuasa; ?> berupa tanah pekarangan yang terleak di <?php echo $isi->letak_tanah; ?> dengan luas <strong>&plusmn; <?php echo $isi->luas_tanah; ?> M<sup>2</sup> (Kurang Lebih <?php echo terbilang($isi->luas_tanah, 'ucfirst'); ?> Meter Persegi)</strong> <br></p>
+                        Bahwa berdasarkan Surat Pernyataan Pengakuan Fisik Atas Tanah tanggal <?php echo date_id($isi->tgl_surat_kuasa); ?> diketahui <?php echo $kepala ?> <?php echo $isi->desa ?> tanggal <?php echo date_id($isi->tgl_diketahui); ?> Nomor : <?php echo $isi->no_surat_kuasa; ?> berupa tanah pekarangan yang terleak di <?php echo $isi->letak_tanah; ?> dengan luas <strong>&plusmn; <?php echo $isi->luas_tanah; ?> M<sup>2</sup> (Kurang Lebih <?php echo terbilang($isi->luas_tanah, 'ucfirst'); ?> Meter Persegi)</strong> <br></p>
                         <p>Dengan Batas-batas sebagai berikut :</p>
                         <table>
                             <tr>
