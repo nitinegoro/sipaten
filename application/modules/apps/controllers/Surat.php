@@ -27,6 +27,8 @@ class Surat extends Apps
 	{
 		parent::__construct();
 
+		$this->load->library('slug');
+
 		$this->query = $this->input->get('query');
 
 		$this->per_page = 20;
