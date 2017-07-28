@@ -93,6 +93,7 @@ class Sipaten extends MY_Controller
 	 **/
 	public function penduduk($param = 0)
 	{
+		ini_set('memory_limit', '256M');
 		$this->db->join('desa', 'penduduk.desa = desa.id_desa', 'left');
 		if($param == FALSE) 
 		{
