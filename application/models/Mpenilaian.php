@@ -239,9 +239,6 @@ class Mpenilaian extends CI_Model
 					WHERE YEAR(tanggal) = '{$this->tahun}' AND jawaban = '{$jawaban}'
 				")->row('jumlah');
 				break;
-			default:
-				# code...
-				break;
 		}
 	}
 

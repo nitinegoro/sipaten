@@ -82,7 +82,7 @@ class Surat_stats extends Sipaten
 		$this->breadcrumbs->unshift(2, 'Indeks Kepuasan Masyarakat', "surat_stats/perizinan");
 
 		$this->data = array(
-			'title' => "Penilaian Pelayanan", 
+			'title' => "Indeks Kepuasan Masyarakat", 
 			'breadcrumb' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show(),
 		);

@@ -22,6 +22,14 @@ if( is_numeric($isi->desa) )
 }
 
 ?>
+    <style>
+        table {
+            font-size: 1.2em
+        }
+        p {
+            font-size: 1.2em;
+        }
+    </style>
     <div class="content">
         <div class="mail-heading">
             <h5 class="mail-name upper"><?php echo $get->judul_surat; ?> </h5> <br>

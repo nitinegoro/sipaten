@@ -111,7 +111,7 @@ small.print-at {
 }
 
 .mail-heading > h5.mail-name {
-   font-size: 13pt;
+   font-size: 1.2em;
    line-height: 1px;
    border-bottom: 1px solid black;
    padding-bottom: 13.5px;
@@ -120,9 +120,10 @@ small.print-at {
 }
 
 .mail-heading > h5.mail-number {
-   font-size: 9pt;
+   font-size: 1.2em;
    margin-top: 0px;
    display: inherit; 
+   width: auto;
 }
 
 div.mail-content,
@@ -130,6 +131,7 @@ div.mail-footer {
    font-size: 13px;
    margin-top: 50px;
    display: inline;
+   width: auto
 }
 
 div.mail-content > p {
