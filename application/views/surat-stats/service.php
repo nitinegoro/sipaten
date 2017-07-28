@@ -24,7 +24,7 @@ Highcharts.chart('chart-service', {
         plotShadow: false,
         type: 'pie'
     },
-    colors: ['#42CBEC','#76B640','#FCC700','#CB2C19'],
+    colors: ['#00B050','#C6EBA5','#ECCE8E','#FFC000','#FF0000'],
     title: {
         text: 'Penilaian Terhadap Pelayanan'
     },
@@ -72,7 +72,7 @@ Highcharts.chart('chart-bar', {
     chart: {
         type: 'column'
     },
-    colors:['#42CBEC','#76B640','#FCC700','#CB2C19'],
+    colors:['#00B050','#C6EBA5','#ECCE8E','#FFC000','#FF0000'],
     title: {
         text: 'Rata-rata Penilaian Terhadap Pelayanan'
     },
@@ -114,12 +114,16 @@ Highcharts.chart('chart-bar', {
         data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count_month(2, $m, $this->penilaian->tahun).','; ?>]
 
     },{
-        name: 'Cukup Baik',
+        name: 'Cukup',
         data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count_month(3, $m, $this->penilaian->tahun).','; ?>]
 
     },{
-        name: 'Kurang Baik',
+        name: 'Buruk',
         data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count_month(4, $m, $this->penilaian->tahun).','; ?>]
+
+    },{
+        name: 'Sangat Buruk',
+        data: [<?php for($m = 1; $m <= 12; $m++) echo $this->penilaian->count_month(5, $m, $this->penilaian->tahun).','; ?>]
 
     }]
 });

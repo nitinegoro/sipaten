@@ -18,47 +18,47 @@
 		font-size: 4.5em; 
 		color: #F6F3E4; 
 		line-height: 1.5em;
-   -webkit-text-stroke: 1px black;
-   color: white;
-   text-shadow:
+	   -webkit-text-stroke: 1px black;
+	   color: white;
+	   text-shadow:
        3px 3px 0 #686551,
      -1px -1px 0 #686551,  
       1px -1px 0 #686551,
       -1px 1px 0 #686551,
        1px 1px 0 #686551; 
 	}
-	div.col-md-3 > h4 { 
+	div.col-xs-2 > h4 { 
 		font-family: 'Squada One', cursive; color: white; font-size: 2.2em; 
-   color: white;
-   text-shadow:
+	   color: white;
+	   text-shadow:
        2px 2px 0 #000,
      -1px -1px 0 #000,  
       1px -1px 0 #000,
       -1px 1px 0 #000,
        1px 1px 0 #000; 
 	}
-	div.col-md-3 > a:focus { outline:none !important; } 
+	div.col-xs-2 > a:focus { outline:none !important; } 
   	</style>
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3 pull-right">
+			<div class="col-xs-3 pull-right">
 				<img src="<?php echo base_url("public/image/teitra.png"); ?>" alt="">
 			</div>
-			<div class="col-md-3 pull-right text-center" style="padding-left:45px;border-right: 2px solid #9F9465;">
+			<div class="col-xs-3 pull-right text-center" style="padding-left:45px;border-right: 2px solid #9F9465;">
 				<img src="<?php echo base_url("public/image/logo-login.png"); ?>" alt="" width="250">
 			</div>
-			<div class="col-md-10 top text-center">
+			<div class="col-xs-10 top text-center">
 				<h1><?php echo $this->option->get('pertanyaan_penilaian'); ?></h1>
 			</div>
 		</div>
 	  	<div class="row top text-center" style="margin-left: -30px;">
-	  		<div class="col-md-10">
+	  		<div class="col-xs-12">
 	  		<?php  
 	  		foreach($this->penilaian->get_answers() as $row) :
 	  		?>
-		    	<div class="col-md-3 text-center">
+		    	<div class="col-xs-2 text-center">
 		    		<a href="#" class="get-people-modal" data-answer="<?php echo $row->ID; ?>">
 		    			<div class="enjoy-css"><img src="<?php echo base_url("public/image/emoji/{$row->icon}"); ?>" width="100" alt=""></div>
 		    		</a>

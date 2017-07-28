@@ -60,7 +60,7 @@ class Surat_stats extends Sipaten
 		$this->template->view('surat-stats/perizinan', $this->data);
 	}
 
-	public function service($value='')
+	public function service()
 	{
 		$this->page_title->push('Statistik', 'Penilaian Pelayanan');
 
@@ -73,6 +73,21 @@ class Surat_stats extends Sipaten
 		);
 		
 		$this->template->view('surat-stats/service', $this->data);
+	}
+
+	public function kepuasan()
+	{
+		$this->page_title->push('Statistik', 'Indeks Kepuasan Masyarakat');
+
+		$this->breadcrumbs->unshift(2, 'Indeks Kepuasan Masyarakat', "surat_stats/perizinan");
+
+		$this->data = array(
+			'title' => "Penilaian Pelayanan", 
+			'breadcrumb' => $this->breadcrumbs->show(),
+			'page_title' => $this->page_title->show(),
+		);
+		
+		$this->template->view('surat-stats/indeks-kepuasan', $this->data);
 	}
 }
 

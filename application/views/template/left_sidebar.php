@@ -195,6 +195,9 @@ if( $this->permission->is_true('statistik_pelayanan', 'on') ) :
             <li class="<?php echo active_link_method('service','surat_stats') ?>">
               <a href="<?php echo site_url('surat_stats/service') ?>"><i class="fa fa-angle-double-right"></i> Penilaian Pelayanan</a>
             </li>
+            <li class="<?php echo active_link_method('kepuasan','surat_stats') ?>">
+              <a href="<?php echo site_url('surat_stats/kepuasan') ?>"><i class="fa fa-angle-double-right"></i> Indeks Kepuasan Masyarakat</a>
+            </li>
 <?php  
 endif;
 ?>

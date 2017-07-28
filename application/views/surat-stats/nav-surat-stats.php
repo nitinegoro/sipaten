@@ -20,6 +20,27 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label">Triwulan :</label>
+                    <select name="triwulan" class="form-control">
+                        <option value="">-- PILIH --</option>
+                    <?php  
+                    /**
+                     * Loop month
+                     *
+                     * @var Integer
+                     * @return 1, 2, 3 | 4, 5, 6 | 7, 8, 9 | 10, 11, 12
+                     **/
+                    for($triwulan = 1; $triwulan <= 4; $triwulan++) :
+                    ?>
+                        <option value="<?php echo romawi($triwulan); ?>" <?php if(romawi($triwulan)==$this->input->get('triwulan')) echo "selected"; ?>>
+                           Triwulan  <?php echo romawi($triwulan); ?>    
+                        </option>
+                    <?php  
+                    endfor;
+                    ?>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label class="control-label">Bulan :</label>
                     <select name="month" class="form-control">
                         <option value="">-- PILIH --</option>

@@ -22,8 +22,6 @@ class Setting extends Sipaten
 		$this->myaccount = $this->session->userdata('ID');
 
 		$this->load->library(array('upload'));
-
-		//$this->load->js(base_url('public/app/tour/account-tour.js'));
 	}
 
 	public function index()

@@ -7,6 +7,10 @@ class Mpenilaian extends CI_Model
 
 	public $tahun;
 
+	public $quarter;
+
+	public $bulan;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -14,11 +18,20 @@ class Mpenilaian extends CI_Model
 		$this->tahun = (!$this->input->get('year')) ? date('Y') : $this->input->get('year'); 
 
 		$this->now_date = date('Y-m-d');
+
+		$this->quarter = $this->input->get('triwulan');
+
+		$this->bulan = $this->input->get('month');
 	}
 	
 	public function get_answers()
 	{
 		return $this->db->get('opsi_jawaban')->result();
+	}
+
+	public function get_indeks_kepuasan()
+	{
+		return json_decode($this->db->get_where('tb_options', array('option_name' => 'indeks_kepuasan'))->row('option_value'));
 	}
 
 	public function save()
@@ -139,6 +152,116 @@ class Mpenilaian extends CI_Model
 		return $this->db->get('penilaian')->num_rows();
 	}
 
+	public function jawaban()
+	{
+		$data = array();
+
+		$konversi = count(self::get_answers()) + 1;
+
+		foreach(self::get_answers() as $key => $value) 
+		{
+			$konversi--;
+
+			if( $this->quarter != FALSE AND $this->bulan == FALSE )
+			{
+				$data[] = array(
+					'jawaban' => $value->jawaban,
+					'jumlah' => self::get_quarter($value->ID, $this->quarter),
+					'konversi' => (self::get_quarter($value->ID, $this->quarter) * $konversi),
+					'warna' => $value->warna
+				);
+			} elseif( $this->bulan == TRUE AND $this->quarter == FALSE ) {
+				$data[] = array(
+					'jawaban' => $value->jawaban,
+					'jumlah' => self::get_jawaban($value->ID),
+					'konversi' => (self::get_jawaban($value->ID) * $konversi),
+					'warna' => $value->warna
+				);
+			} else {
+				$data[] = array(
+					'jawaban' => $value->jawaban,
+					'jumlah' => self::get_jawaban($value->ID),
+					'konversi' => (self::get_jawaban($value->ID) * $konversi),
+					'warna' => $value->warna
+				);
+			}
+
+		}
+
+		return $data;
+	}
+
+	public function get_jawaban($param = 0)
+	{
+		$wbulan = "";
+
+		if( $this->bulan == TRUE )
+			$wbulan = " AND MONTH(tanggal) = '{$this->bulan}'";
+
+		return $this->db->query("
+			SELECT COUNT(*) jumlah FROM penilaian 
+			WHERE jawaban = '{$param}' AND YEAR(tanggal) = '{$this->tahun}' {$wbulan}
+		")->row('jumlah');
+	}
+
+	public function get_quarter($jawaban = 0, $quarter = 'I')
+	{
+		switch ($quarter) {
+			case 'I':
+				return $this->db->query("
+					SELECT
+						SUM(CASE WHEN MONTH(tanggal) >= 1 AND MONTH(tanggal) <= 3 THEN (1) END) jumlah
+					FROM penilaian
+					WHERE YEAR(tanggal) = '{$this->tahun}' AND jawaban = '{$jawaban}'
+				")->row('jumlah');
+				break;
+			case 'II':
+				return $this->db->query("
+					SELECT
+						SUM(CASE WHEN MONTH(tanggal) >= 4 AND MONTH(tanggal) <= 6 THEN (1) END) jumlah
+					FROM penilaian
+					WHERE YEAR(tanggal) = '{$this->tahun}' AND jawaban = '{$jawaban}'
+				")->row('jumlah');
+				break;
+			case 'III':
+				return $this->db->query("
+					SELECT
+						SUM(CASE WHEN MONTH(tanggal) >= 7 AND MONTH(tanggal) <= 9 THEN (1) END) jumlah
+					FROM penilaian
+					WHERE YEAR(tanggal) = '{$this->tahun}' AND jawaban = '{$jawaban}'
+				")->row('jumlah');
+				break;
+			case 'IV':
+				return $this->db->query("
+					SELECT
+						SUM(CASE WHEN MONTH(tanggal) >= 10 AND MONTH(tanggal) <= 12 THEN (1) END) jumlah
+					FROM penilaian
+					WHERE YEAR(tanggal) = '{$this->tahun}' AND jawaban = '{$jawaban}'
+				")->row('jumlah');
+				break;
+			default:
+				# code...
+				break;
+		}
+	}
+
+	public function get_mutu_kepuasan($angka = 0, $method = 'description')
+	{
+		$indeks = self::get_indeks_kepuasan();
+
+		foreach(self::get_indeks_kepuasan() as $key => $value) 
+		{
+			$range = explode('-', $value->range);
+
+			if( $angka >= $range[0] )
+			{
+				if($method == 'mutu')
+					return $value->grade;
+				else
+					return $value->description;
+			}
+		}
+	}
 }
 
 /* End of file Mpenilaian.php */
