@@ -69,6 +69,17 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</div>
 					</div>	
 					<div class="form-group">
+						<label class="control-label col-md-3 col-xs-12">Jenis Keramaian/Kegiatan : <strong class="text-red">*</strong></label>
+						<div class="col-md-7">
+							<select name="isi[jenis_keramaian]" class="form-control">
+								<option value="">-- PILIH --</option>
+								<option value="retribusi" <?php if($isi->jenis_keramaian=='retribusi') echo "selected"; ?>>Retribusi</option>
+								<option value="non retribusi" <?php if($isi->jenis_keramaian=='non retribusi') echo "selected"; ?>>Non Retribusi</option>
+							</select>
+							<p class="help-block"><?php echo form_error('isi[jenis_keramaian]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>	
+					<div class="form-group">
 						<label for="email" class="control-label col-md-3 col-xs-12">Hari : <strong class="text-red">*</strong></label>
 						<div class="col-md-7">
 							<input type="text" class="form-control" name="isi[hari]" value="<?php echo $isi->hari; ?>">

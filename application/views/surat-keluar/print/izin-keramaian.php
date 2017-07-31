@@ -22,48 +22,63 @@ if( is_numeric($isi->desa) )
 }
 
 ?>
+    <style>
+    div.mail-content,
+    div.mail-footer {
+        font-size: 14pt;
+    }
+    div.mail-content > p.indent { text-indent: 40px; }
+    div.mail-content > p {
+       letter-spacing: 0.7px;
+       word-spacing: auto;
+       line-height: 1.3em;
+       text-align: justify;
+    }
+    div.mail-heading { margin-bottom: 20px; margin-top: -10px; }
+    div.mail-footer > table {  margin-top: 0px; font-size: 13pt; }
+    </style>
     <div class="content">
         <div class="mail-heading">
             <h5 class="mail-name upper">Surat rekomendasi camat <?php echo $this->option->get('kecamatan'); ?></h5> <br>
             <h5 class="mail-number">Nomor : <?php echo $get->kode_surat.'/<b>'.$get->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?></h5>
         </div>
-        <div class="mail-heading" style="margin-bottom:10px;">
+        <div class="mail-heading" style="margin-bottom:-30px;">
             <h5 class="mail-number upper">Tentang</h5> <br>
             <h5 class="mail-number upper">izin keramaian</h5>
         </div>
         <div class="mail-content">
             <p class="indent">Memperhatikan Surat Pengantar dari <?php echo $kepala ?> <?php echo $this->option->get_select_desa($isi->desa, 'nama_desa'); ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?>, dengan ini Camat  <?php echo $this->option->get('kecamatan'); ?> menerangkan bahwa :</p>
-            <table style="margin-top: 10px; margin-bottom:10px;">
+            <table style="margin-top: -14px; margin-bottom:0px;">
                 <tr>
-                    <td width="170">NAMA</td>
+                    <td width="170">Nama</td>
                     <td class="text-center" width="20">:</td>
                     <td><strong><?php echo strtoupper($get->nama_lengkap); ?></strong></td>
                 </tr>
                 <tr>
-                    <td>TEMPAT, TANGGAL LAHIR</td>
+                    <td>Tempat, Tanggal Lahir</td>
                     <td class="text-center">:</td>
                     <td><?php echo ucfirst($get->tmp_lahir).', '.date_id($get->tgl_lahir); ?></td>
                 </tr>
                 <tr>
-                    <td>JENIS KELAMIN</td>
+                    <td>Jenis Kelamin</td>
                     <td class="text-center">:</td>
                     <td><?php echo strtoupper($get->jns_kelamin); ?></td>
                 </tr>
                 <tr>
-                    <td>PEKERJAAN</td>
+                    <td>Pekerjaan</td>
                     <td class="text-center">:</td>
                     <td><?php echo ucfirst($get->pekerjaan); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
-                    <td>ALAMAT</td>
+                    <td>Alamat</td>
                     <td class="text-center">:</td>
                     <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->get_select_desa($isi->desa, 'nama_desa').' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
-                    <td>KEPERLUAN</td>
+                    <td>Keperluan</td>
                     <td class="text-center">:</td>
                     <td>Mengurus Izin Keramaian dalam rangka <strong>"<?php echo $isi->keperluan; ?>"</strong> yang akan diselenggarakan : 
-                    <table style="margin-top: 10px; margin-bottom:10px;">
+                    <table style="margin-top: 0px; margin-bottom:-10px;">
                         <tr>
                             <td width="50">Hari</td>
                             <td class="text-center" width="30">:</td>
@@ -79,7 +94,7 @@ if( is_numeric($isi->desa) )
                             <td class="text-center">:</td>
                             <td><?php echo $isi->waktu; ?></td>
                         </tr>
-                        <tr>
+                        <tr style="vertical-align: top">
                             <td>Tempat</td>
                             <td class="text-center">:</td>
                             <td><?php echo $isi->tempat.' '.$desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
@@ -94,17 +109,27 @@ if( is_numeric($isi->desa) )
                 </tr>
             </table>
             <p class="indent">Pada prinsipnya kami tidak keberatan atas penyelenggaraan kegiatan tersebut dengan ketentuan sebagai berikut :
-                <ol style="margin-left: -10px;line-height: 1.5; font-size: 12px;">
-                    <li style="padding-left: 5px;">Harus menjaga ketertiban dan keamanan setempat.</li>
-                    <li style="padding-left: 5px;">Harus menjaga kebersihan lokasi.</li>
-                    <li style="padding-left: 5px;">Melaporkan kepada Dinas/Instansi terkait sebelum maupun akan berakhirnya keramaian dimaksud.</li>
-                    <li style="padding-left: 5px;">Agar berkoordinasi dengan aparat setempat.</li>
+                <ol style="margin-left: -20px; margin-top: -15px;">
+                <?php if($isi->jenis_keramaian == 'non retribusi') : ?>
+                    <li style="padding-left: 5px;">Harus menjaga ketertiban dan keamanan setempat;</li>
+                    <li style="padding-left: 5px;">Harus menjaga kebersihan lokasi;</li>
+                    <li style="padding-left: 5px;">Melaporkan kepada Dinas/Instansi terkait sebelum maupun akan berakhirnya keramaian dimaksud;</li>
+                    <li style="padding-left: 5px;">Agar berkoordinasi dengan aparat setempat;</li>
                     <li style="padding-left: 5px;">Harus mentaati peraturan perundang-undangan, peraturan daerah dan norma-norma yang berlaku.</li>
+                <?php else : ?>
+                    <li>Harus meneruskan Rekomendasi ini kepada Bupati <?php echo $this->option->get('kabupaten') ?> Cq. Kepala Dinas Kebudayaan Pariwisata, Kepemudaan, dan Olahraga Kabupaten <?php echo $this->option->get('kabupaten') ?>.</li>
+                    <li>Harus menyetor PAD kepada Pemerintah Daerah <?php echo $this->option->get('kabupaten') ?> Cq. Ka. Badan Pengolahan Pajak dan Retribusi Daerah Kab. <?php echo $this->option->get('kabupaten') ?>.</li>
+                    <li>Harus menjaga ketertiban dan keamanan setempat.</li>
+                    <li>Harus menjaga kebersihan lokasi Acara.</li>
+                    <li>Melaporkan kepada Dinas/Instansi terkait sebelum dan setelah berakhirnya keramain dimaksud.</li>
+                    <li>Agar berkoordinasi dengan aparat setempat.</li>
+                    <li>Harus mentaati peraturan perundang-undangan, peraturan daerah, dan norma-norma yang berlaku.</li>
+                <?php endif; ?>
                 </ol>
             </p>
         </div>
         <div class="mail-footer">
-            <table style="width: 100%;">
+            <table style="width: 100%; margin-top: -5px;">
                 <tr>
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>

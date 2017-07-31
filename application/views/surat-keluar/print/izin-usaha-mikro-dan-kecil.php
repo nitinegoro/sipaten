@@ -20,17 +20,17 @@ if( $get->id_desa != FALSE )
 }
 ?>
     <div class="content">
-        <div class="mail-heading">
+        <div class="mail-heading" style="margin-bottom: 20px;">
             <h5 class="mail-name upper"><?php echo $get->judul_surat; ?> </h5> <br>
-            <h5 class="mail-number">Nomor : <?php echo $get->kode_surat.'/<b>'.$get->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?></h5>
+            <h5 class="mail-number upper">Nomor SIUP : <?php echo $get->kode_surat.'/<b>'.$get->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?></h5>
         </div>
         <div class="mail-content">
-            <table style="margin-bottom:10px;">
+            <table>
                 <tr style="vertical-align: top;">
                     <td width="60">DASAR</td>
                     <td class="text-center">:</td>
                     <td>
-                        <ol style="margin-top: 0px;line-height: 1.5; margin-top: -10px; font-size: 12px;">
+                        <ol style=" margin-top: -11px;">
                             <li style="padding-left: 5px;">Peraturan Presiden No. 98 Tahun 2014 tentang Perizinan Untuk Usaha Mikro dan Kecil.</li>
                             <li style="padding-left: 5px;">Peraturan Mentri Dalam Negri No. 83 Tahun 2014 tentang Pedoman Pemberian Izin Usaha Mikro dan Kecil.</li>
                             <li style="padding-left: 5px;">Peraturan Bupati Bangka Nomor 38 Tahun 2015 tentang Perubahan atas Peraturan Bupati Nomor 29 Tahun 2012 tentang Pelimpahan Sebagian Kewenangan Bupati Kepada Camat.</li>
@@ -39,7 +39,7 @@ if( $get->id_desa != FALSE )
                 </tr>
             </table>
             <p> Menyatakan dan Memberikan Izin Kepada :</p>
-            <table style="margin-top: 10px; margin-bottom:10px;">
+            <table style="margin-bottom:5px;">
                 <tr>
                     <td width="170">NAMA</td>
                     <td class="text-center" width="30">:</td>
@@ -62,7 +62,7 @@ if( $get->id_desa != FALSE )
                 </tr>
             </table>
             <p class="text-center" style="text-align:center;">Untuk mendirikan Usaha Mikro Kecil yang mencakup perizinan dasar berupa : <br>Menempati Lokasi / Domisili, melakukan kegiatan usaha baik produksi maupun penjualan barang dan jasa, dengan identitas :</p>
-            <table style="margin-top: 10px; margin-bottom:10px;">
+            <table style="margin-top: 5px; margin-bottom:5px;">
                 <tr>
                     <td width="170">NAMA PERUSAHAAN</td>
                     <td class="text-center" width="30">:</td>
@@ -129,6 +129,11 @@ if( $get->id_desa != FALSE )
                     </td>
                 </tr>
             </table>
+        </div>
+        <div class="push">
+            <small><strong><?php echo $this->option->get('nama_sistem') ?></strong></small> <br>
+            <small>Motto : <?php echo $this->option->get('motto') ?></small> <br>
+            <small>Janji pelayanan : <?php echo $this->option->get('janji_pelayanan') ?></small>
         </div>
     </div>
 <?php

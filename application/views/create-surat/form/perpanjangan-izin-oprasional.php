@@ -42,6 +42,13 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						</div>
 					</div>	
 					<div class="form-group">
+						<label for="email" class="control-label col-md-3 col-xs-12">Surat Rekomendasi Dari : <strong class="text-red">*</strong></label>
+						<div class="col-md-9">
+							<input type="text" name="isi[sumber_rekomendasi]" class="form-control" value="<?php echo set_value('isi[sumber_rekomendasi]'); ?>">
+							<p class="help-block"><?php echo form_error('isi[sumber_rekomendasi]', '<small class="text-red">', '</small>'); ?></p>
+						</div>
+					</div>
+					<div class="form-group">
 						<div class="col-md-9 col-md-offset-3">
 							<p class="legend-form">Keterangan Lembaga</p>
 						</div>

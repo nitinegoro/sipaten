@@ -11,17 +11,32 @@ $this->load->view('print/header');
 $date = new DateTime($get->tanggal);
 
 ?>
+    <style>
+    div.mail-content,
+    div.mail-footer {
+        font-size: 15pt;
+    }
+    div.mail-content > p.indent { text-indent: 70px; }
+    div.mail-content > p {
+       letter-spacing: 0.7px;
+       word-spacing: auto;
+       line-height: 1.5em;
+       text-align: justify;
+    }
+    div.mail-heading { margin-bottom: 20px; margin-top: 20px; }
+    div.mail-footer > table {  margin-top: 100px; }
+    </style>
     <div class="content">
         <div class="mail-heading">
             <h5 class="mail-name upper"><?php echo $get->judul_surat; ?> </h5> <br>
             <h5 class="mail-number">Nomor : <?php echo $get->kode_surat.'/<b>'.$get->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?></h5>
         </div>
         <div class="mail-content">
-            <p class="indent">Berdasarkan Surat dari Pengelola <?php echo $isi->nama_lembaga; ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?> perihal Pemohonan Rekomendasi Perpanjangan Izin Oprasional a.n :</p>
-            <table style="margin-left:40px; margin-top: 10px; margin-bottom:10px;">
+            <p class="indent">Berdasarkan Surat dari <?php echo $isi->sumber_rekomendasi; ?> <?php echo $isi->nama_lembaga; ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?> perihal Pemohonan Rekomendasi Perpanjangan Izin Oprasional a.n :</p>
+            <table style="margin-left:70px; margin-top: 10px; margin-bottom:10px;">
                 <tr>
                     <td width="140">Nama Lembaga</td>
-                    <td class="text-center">:</td>
+                    <td class="text-center" width="30">:</td>
                     <td><strong><?php echo strtoupper($isi->nama_lembaga); ?></strong></td>
                 </tr>
                 <tr>
@@ -36,7 +51,7 @@ $date = new DateTime($get->tanggal);
                 </tr>
             </table>
             <p class="indent">Dengan maksud mengajukan Permohonan Perpanjangan Izin Oprasional. Dan Pihak kami prinsipnya tidak keberatan untuk memberikan rekomendasi Perpanjangan Izin Oprasional <?php echo $isi->nama_lembaga; ?> sepanjang mematuhi dan mentaati segala peraturan dan perundang-undangan yang berlaku.</p>
-            <p class="indent">Demikiaan, Surat Keterangan Baik ini dibuat untuk dapat dipergunakan sebagaimana mestinya. Atas perhatiannya diucapkan terima kasih.</p>
+            <p class="indent">Demikiaan, Surat rekomendasi ini dibuat untuk dapat dipergunakan sebagaimana mestinya. Atas perhatiannya diucapkan terima kasih.</p>
         </div>
         <div class="mail-footer">
             <table style="width: 100%;">

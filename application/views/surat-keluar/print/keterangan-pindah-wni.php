@@ -133,7 +133,7 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                     <th width="40">No</th>
                     <th>Nama</th>
                     <th>Tempat, Tanggal Lahir</th>
-                    <th width="150">Status Hubungan Dalam Keluarga (SHDK)</th>
+                    <th width="150">SHDK</th>
                 </tr>
                 <tr>
                     <td class="text-center">1.</td>
@@ -154,7 +154,14 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                     <td><?php echo ucfirst($ikut->tmp_lahir).', '.date_id($ikut->tgl_lahir) ?></td>
                     <td class="text-center"><?php echo strtoupper($ikut->status_kk) ?></td>
                 </tr>
-            <?php endforeach; 
+            <?php endforeach; else : ?>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            <?php
             endif;
             ?>
             </table>

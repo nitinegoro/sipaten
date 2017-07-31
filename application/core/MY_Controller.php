@@ -205,6 +205,7 @@ class Sipaten extends MY_Controller
 			case 'perpanjangan-izin-oprasional':
 				$this->form_validation->set_rules('isi[no_surat_rek]', 'Nomor Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
+				$this->form_validation->set_rules('isi[sumber_rekomendasi]', 'Rekomendasi dari', 'trim|required');
 				$this->form_validation->set_rules('isi[nama_lembaga]', 'Nama Lembaga', 'trim|required');
 				$this->form_validation->set_rules('isi[nama_pengelola]', 'Nama Pengelola', 'trim|required');
 				$this->form_validation->set_rules('isi[alamat_lembaga]', 'Alamat Lembaga', 'trim|required');
@@ -224,6 +225,7 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[tgl_surat_rek]', 'Tanggal Surat', 'trim|required');
 				$this->form_validation->set_rules('isi[desa]', 'Nama Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[keperluan]', 'Keperluan', 'trim|required');
+				$this->form_validation->set_rules('isi[jenis_keramaian]', 'Jenis Kegiatan/Keramaian', 'trim|required');
 				$this->form_validation->set_rules('isi[hari]', 'Hari', 'trim|required');
 				$this->form_validation->set_rules('isi[tanggal]', 'Tanggal', 'trim|required');
 				$this->form_validation->set_rules('isi[waktu]', 'Waktu', 'trim|required');
