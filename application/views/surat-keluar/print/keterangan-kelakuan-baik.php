@@ -15,11 +15,12 @@ $dszak = $this->db->get_where('desa', array('slug' => $this->slug->create_slug($
 if( is_numeric($isi->desa) )
 {
     $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
-    $kepala =$this->option->village_prefix( $isi->desa )['j'];
+    $kepala = $this->option->village_prefix( $isi->desa )['k'];
 } else {
     $desa = $isi->desa;
-    $kepala = $this->option->village_prefix( $dszak->id_desa )['j'];
+    $kepala = $this->option->village_prefix( $dszak->id_desa )['k'];
 }
+
 
 ?>
     <style>
@@ -29,6 +30,10 @@ if( is_numeric($isi->desa) )
         p {
             font-size: 1.2em;
         }
+        div.mail-content > p.indent { text-indent: 70px; }
+        div.mail-heading > h5.mail-name,
+        div.mail-heading > h5.mail-number { font-size: 1.2em; }
+        div.mail-footer > table {  margin-top: 100px; }
     </style>
     <div class="content">
         <div class="mail-heading">
@@ -37,9 +42,9 @@ if( is_numeric($isi->desa) )
         </div>
         <div class="mail-content">
             <p class="indent">Memperhatikan Surat Keterangan Kelakuan Baik dari <?php echo $kepala.' '.$desa; ?> Kecamatan <?php echo $this->option->get('kecamatan'); ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?>, dengan ini Camat  <?php echo $this->option->get('kecamatan'); ?> menerangkan bahwa :</p>
-            <table style="margin-left:40px; margin-top: 10px; margin-bottom:10px;">
+            <table style="margin-left:70px; margin-top: 10px; margin-bottom:10px;">
                 <tr>
-                    <td width="140">Nama</td>
+                    <td width="180">Nama</td>
                     <td class="text-center">:</td>
                     <td><strong><?php echo strtoupper($get->nama_lengkap); ?></strong></td>
                 </tr>
@@ -71,11 +76,11 @@ if( is_numeric($isi->desa) )
                 <tr style="vertical-align: top;">
                     <td>Alamat</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$kepala.' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                 </tr>
             </table>
             <p class="indent">Sepanjang sepengetahuan kami bahwa nama tersebut adalah benar berkelakuan baik dalam kehidupan sehari-hari dan dalam kehidupan bermasyarakat.</p>
-            <p class="indent">Demikiaan, Surat Keterangan Baik ini dibuat, sebagai pengantar untuk melengkapi persyaratan <strong>"<?php echo $isi->keperluan ?>"</strong>.</p>
+            <p class="indent">Demikian, Surat Keterangan ini dibuat, sebagai pengantar untuk melengkapi persyaratan <strong>"<?php echo $isi->keperluan ?>"</strong>.</p>
         </div>
         <div class="mail-footer">
             <table style="width: 100%;">

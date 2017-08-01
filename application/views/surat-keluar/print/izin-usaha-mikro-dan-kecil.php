@@ -32,8 +32,8 @@ if( property_exists($isi, 'desa') )
                     <td>
                         <ol style=" margin-top: -11px;">
                             <li style="padding-left: 5px;">Peraturan Presiden No. 98 Tahun 2014 tentang Perizinan Untuk Usaha Mikro dan Kecil.</li>
-                            <li style="padding-left: 5px;">Peraturan Mentri Dalam Negri No. 83 Tahun 2014 tentang Pedoman Pemberian Izin Usaha Mikro dan Kecil.</li>
-                            <li style="padding-left: 5px;">Peraturan Bupati Bangka Nomor 38 Tahun 2015 tentang Perubahan atas Peraturan Bupati Nomor 29 Tahun 2012 tentang Pelimpahan Sebagian Kewenangan Bupati Kepada Camat.</li>
+                            <li style="padding-left: 5px;">Peraturan Menteri Dalam Negeri No. 83 Tahun 2014 tentang Pedoman Pemberian Izin Usaha Mikro dan Kecil.</li>
+                            <li style="padding-left: 5px;">Peraturan Bupati Bangka Tengah Nomor 38 Tahun 2015 tentang Perubahan atas Peraturan Bupati Nomor 29 Tahun 2012 tentang Pelimpahan Sebagian Kewenangan Bupati Kepada Camat.</li>
                         </ol>
                     </td>
                 </tr>
@@ -41,7 +41,7 @@ if( property_exists($isi, 'desa') )
             <p> Menyatakan dan Memberikan Izin Kepada :</p>
             <table style="margin-bottom:5px;">
                 <tr>
-                    <td width="170">NAMA</td>
+                    <td width="200">NAMA</td>
                     <td class="text-center" width="30">:</td>
                     <td><strong><?php echo strtoupper($get->nama_lengkap); ?></strong></td>
                 </tr>
@@ -64,7 +64,7 @@ if( property_exists($isi, 'desa') )
             <p class="text-center" style="text-align:center;">Untuk mendirikan Usaha Mikro Kecil yang mencakup perizinan dasar berupa : <br>Menempati Lokasi / Domisili, melakukan kegiatan usaha baik produksi maupun penjualan barang dan jasa, dengan identitas :</p>
             <table style="margin-top: 5px; margin-bottom:5px;">
                 <tr>
-                    <td width="170">NAMA PERUSAHAAN</td>
+                    <td width="200">NAMA PERUSAHAAN</td>
                     <td class="text-center" width="30">:</td>
                     <td><?php echo $isi->nama_perusahaan; ?></td>
                 </tr>

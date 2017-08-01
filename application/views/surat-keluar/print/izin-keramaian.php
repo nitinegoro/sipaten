@@ -34,7 +34,7 @@ if( is_numeric($isi->desa) )
        line-height: 1.3em;
        text-align: justify;
     }
-    div.mail-heading { margin-bottom: 20px; margin-top: -10px; }
+    div.mail-heading { margin-bottom: 20px; margin-top: -10px; font-size: 1.2em; }
     div.mail-footer > table {  margin-top: 0px; font-size: 13pt; }
     </style>
     <div class="content">
@@ -129,7 +129,7 @@ if( is_numeric($isi->desa) )
             </p>
         </div>
         <div class="mail-footer">
-            <table style="width: 100%; margin-top: -5px;">
+            <table style="width: 100%; margin-top: -10px;">
                 <tr>
                     <td style="width: 40%;"></td>
                     <td style="width: 20%;"></td>
