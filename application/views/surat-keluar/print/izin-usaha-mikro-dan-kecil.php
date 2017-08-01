@@ -10,10 +10,10 @@ $this->load->view('print/header');
 
 $date = new DateTime($get->tanggal);
 
-if( $get->id_desa != FALSE )
+if( property_exists($isi, 'desa') )
 {
     $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
-    $kepala = $this->option->village_prefix( $get->desa )['j'];
+    $kepala = $this->option->village_prefix( $get->id_desa )['j'];
 } else {
     $desa = @$get->desa;
     $kepala = '';
