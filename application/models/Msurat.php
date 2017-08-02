@@ -70,7 +70,6 @@ class Msurat extends Sipaten_model
 	{
 		$kategori_surat = array(
 			'kode_surat' => $this->input->post('kode_surat'),
-			'slug' => $this->slug->create_slug($this->input->post('nama_surat')),
 			'nama_kategori' => $this->input->post('nama_surat'), 
 			'judul_surat' => $this->input->post('judul_surat'),
 			'jenis' => $this->input->post('jenis'),
