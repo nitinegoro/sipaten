@@ -17,8 +17,14 @@ if( is_numeric($isi->desa) )
     $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
     $kepala =$this->option->village_prefix( $isi->desa )['j'];
 } else {
-    $desa = $isi->desa;
-    $kepala = $this->option->village_prefix( $dszak->id_desa )['j'];
+    if($dszak == TRUE) 
+    {
+        $desa = $isi->desa;
+        $kepala = $this->option->village_prefix( $dszak->id_desa )['j'];  
+    } else {
+        $desa = $isi->desa;
+        $kepala = 'Desa';
+    }
 }
 ?>
     <div class="content">
@@ -122,7 +128,7 @@ if( is_numeric($isi->desa) )
                     <th width="40">No</th>
                     <th>Nama</th>
                     <th>Tempat, Tanggal Lahir</th>
-                    <th width="150">Status Hubungan Dalam Keluarga (SHDK)</th>
+                    <th width="150">SHDK</th>
                 </tr>
                 <tr>
                     <td class="text-center">1.</td>

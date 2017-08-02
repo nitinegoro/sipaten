@@ -163,7 +163,7 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
             * From parent Model
             */
             if($get->no_kk != FALSE) :
-                $key_no = 0;
+                $key_no = 1;
                 foreach($this->create_surat->get_keluarga($get->no_kk) as $key => $value) :
                     /* Tidak dengan orang mengajukan */
                     if($get->nik==$value->nik) 
