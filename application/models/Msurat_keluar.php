@@ -106,6 +106,29 @@ class Msurat_keluar extends Sipaten_model
 	 **/
 	public function update_surat($param = 0)
 	{
+		$surat = $this->get($param);
+
+		$isianSurat = json_decode(json_encode($this->input->post('isi')));
+
+		/* JIKA TERDAPAT PENGIKUT */
+		if( property_exists($isianSurat, 'pengikut') )
+		{
+			$this->db->delete('pengikut', array('surat' => $param));
+			
+			if( is_array($isianSurat->pengikut) )
+			{
+				foreach( $isianSurat->pengikut as $key => $value )
+				{
+					$this->db->insert('pengikut', 
+						array(
+							'surat' => $param,
+							'param' => $surat->slug,
+							'nik' => $value->nik
+					));
+				}
+			}
+		}
+
 		$surat = array(
 			'nomor_surat' => $this->input->post('nomor_surat'),
 			'isi_surat' => json_encode($this->input->post('isi')),
@@ -170,6 +193,10 @@ class Msurat_keluar extends Sipaten_model
 		$this->db->delete('surat', array('ID' => $param));
 
 		$this->db->delete('log_surat', array('nomor_surat' => $param));
+
+		$this->db->delete('notifications', array('surat' => $param));
+
+		$this->db->delete('pengikut', array('surat' => $param));
 
 		if($this->db->affected_rows())
 		{

@@ -127,7 +127,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							*/
 							if($get->no_kk != FALSE) :
 								
-								foreach($this->create_surat->get_keluarga($get->no_kk, $isi->pengikut) as $key => $value) :
+								foreach($this->create_surat->get_keluarga($get->no_kk) as $key => $value) :
 									/* Tidak dengan orang mengajukan */
 									if($get->nik==$value->nik) 
 										continue;
@@ -135,7 +135,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 									<tr>
 										<td>
 						                    <div class="checkbox checkbox-inline" style="margin-top: -10px;">
-						                        <input id="checkbox1" type="checkbox" name="isi[pengikut][][id]" value="<?php echo $value->ID; ?>" <?php if(isset($isi->pengikut[$key]->id) AND @$isi->pengikut[$key]->id == $value->ID) echo "checked"; ?>> <label for="checkbox1"></label>
+						                        <input id="checkbox1" type="checkbox" name="isi[pengikut][][nik]" value="<?php echo $value->nik; ?>" <?php if( $this->surat_keluar->check_pengikut($get->ID, $value->nik)) echo "checked"; ?>> <label for="checkbox1"></label>
 						                    </div>
 										</td>
 										<td class="text-center" width="150"><?php echo $value->nik; ?></td>

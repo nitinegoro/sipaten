@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-define('SIPATEN_VERSION', '2.4.5 <small>Beta</small>');
+define('SIPATEN_VERSION', '2.4.6 <small>Beta</small>');
 
 class MY_Controller extends CI_Controller
 {
@@ -360,11 +360,11 @@ class Sipaten extends MY_Controller
 				break;
 			case 'keterangan-pindah-wni':
 				$this->form_validation->set_rules('isi[alasan_pindah]', 'Alasan Pindah', 'trim|required');
+				$this->form_validation->set_rules('isi[alamat_pindah]', 'Alamat Pindah', 'trim|required');
 				$this->form_validation->set_rules('isi[desa]', 'Desa', 'trim|required');
 				$this->form_validation->set_rules('isi[kecamatan]', 'Kecamatan', 'trim|required');
 				$this->form_validation->set_rules('isi[kabupaten]', 'Kabupaten/Kota', 'trim|required');
 				$this->form_validation->set_rules('isi[provinsi]', 'Provinsi', 'trim|required');
-				$this->form_validation->set_rules('isi[pengikut][0][id]', 'Minimal 1 Orang dalam Kepala Keluarga yang mengikuti', 'trim|required');
 				$this->form_validation->set_rules('isi[klasifikasi_pindah]', 'Klasifikasi Pindah', 'trim|required');
 				$this->form_validation->set_rules('isi[jns_kepindahan]', 'Jenis Kepindahan', 'trim|required');
 				$this->form_validation->set_rules('isi[status_kk_tdk_pindah]', 'Status KK bagi yang tidak pindah', 'trim|required');

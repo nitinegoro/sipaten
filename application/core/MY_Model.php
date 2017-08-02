@@ -270,6 +270,23 @@ class Sipaten_model extends MY_Model
 		)->result();
 	}
 
+	public function get_slug_surat($param = 0)
+	{
+		return $this->db->query("SELECT slug FROM kategori_surat WHERE id_surat = '{$param}'")->row('slug');
+	}
+
+	public function check_pengikut($surat = 0, $nik = '')
+	{
+		$query = $this->db->query("SELECT ID FROM pengikut WHERE surat = '{$surat}' AND nik = '{$nik}'");
+
+		if($query->num_rows())
+		{
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
 	/**
 	 * Jenis Desa atau Keluranan
 	 *

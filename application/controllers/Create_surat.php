@@ -149,7 +149,7 @@ class Create_surat extends Sipaten
 
 			$this->cart->destroy();
 
-			redirect("create_surat/index/{$param}");
+			//redirect("create_surat/index/{$param}");
 		} 
 
 		$this->data = array(

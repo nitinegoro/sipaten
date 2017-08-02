@@ -188,6 +188,25 @@ class Mcreate_surat extends Sipaten_model
 			array('nik' => $nik, 'kategori' => $category, 'status' => 'entry')
 		)->row(); 
 
+		$isianSurat = json_decode(json_encode($this->input->post('isi')));
+
+		/* JIKA TERDAPAT PENGIKUT */
+		if( property_exists($isianSurat, 'pengikut') )
+		{
+			if( is_array($isianSurat->pengikut) )
+			{
+				foreach( $isianSurat->pengikut as $key => $value )
+				{
+					$this->db->insert('pengikut', 
+						array(
+							'surat' => $check_surat->ID,
+							'param' => $this->get_slug_surat($category),
+							'nik' => $value->nik
+					));
+				}
+			}
+		}
+
 		$surat = array(
 			'nomor_surat' => $this->input->post('nomor_surat'),
 			'isi_surat' => json_encode($this->input->post('isi')),
@@ -230,6 +249,7 @@ class Mcreate_surat extends Sipaten_model
 			);
 		}
 	}
+
 }
 
 /* End of file Msurat_keterangan.php */

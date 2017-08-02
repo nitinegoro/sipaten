@@ -135,7 +135,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 									<tr>
 										<td>
 						                    <div class="checkbox checkbox-inline" style="margin-top: -10px;">
-						                        <input id="checkbox1" type="checkbox" name="isi[pengikut][][id]" value="<?php echo $value->ID; ?>"> <label for="checkbox1"></label>
+						                        <input id="checkbox1" type="checkbox" name="isi[pengikut][][nik]" value="<?php echo $value->nik; ?>"> <label for="checkbox1"></label>
 						                    </div>
 										</td>
 										<td class="text-center" width="150"><?php echo $value->nik; ?></td>
@@ -159,7 +159,6 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							?>
 								</tbody>
 							</table>
-							<p class="help-block"><?php echo form_error('isi[pengikut][0][id]', '<small class="text-red">', '</small>'); ?></p>
 						</div>
 					</div>
 					<div class="form-group">
