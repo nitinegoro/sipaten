@@ -221,7 +221,7 @@ class Login extends CI_Controller
 
             $this->email->initialize($config);
                    
-            $this->email->from('kiss@fjbbabel.com', 'Tempayan');
+            $this->email->from('kiss@kecamatankoba.net', 'Tempayan');
             $this->email->to($userInfo->email);
             $this->email->subject('[TEMPAYAN] Permintaan Reset Password');
             $this->email->message( $this->template->theme_mail(array(

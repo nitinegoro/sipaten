@@ -38,6 +38,10 @@ class Main extends Sipaten
 		echo $this->permission->is_groups(array('statistik_penduduk', 'statistik_surat_non_perizinan','statistik_surat_perizinan','statistik_pelayanan'));
 	}
 
+	public function mail_surat($value='')
+	{
+           echo   $this->template->mail_surat(array( 'nama' => "Nitinegoro" ));
+	}
 
 }
 

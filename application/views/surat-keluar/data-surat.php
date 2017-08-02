@@ -101,9 +101,11 @@ echo form_open(current_url(), array('method' => 'get'));
 					<a href="<?php echo site_url("surat_keluar/print_out?{$this->input->server('QUERY_STRING')}"); ?>" class="btn btn-warning hvr-shadow btn-flat btn-print">
 						<i class="fa fa-print"></i> Cetak
 					</a>
+					<!--
 					<a href="" class="btn btn-warning hvr-shadow btn-flat">
 						<i class="fa fa-download"></i> Ekspor Data
 					</a>
+					-->
 				</div>
 			</div>
 <?php  
