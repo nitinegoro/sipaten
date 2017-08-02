@@ -33,7 +33,7 @@ $date = new DateTime($get->tanggal);
             <h5 class="mail-number">Nomor : <?php echo $get->kode_surat.'/<b>'.$get->nomor_surat.'</b>/'.$this->option->get('kode_kecamatan').'/'.$date->format('Y'); ?></h5>
         </div>
         <div class="mail-content">
-            <p class="indent">Berdasarkan Surat dari <?php echo $isi->sumber_rekomendasi; ?> <?php echo $isi->nama_lembaga; ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?> perihal Permohonan dan Perpanjangan Izin Oprasional a.n :</p>
+            <p class="indent">Berdasarkan Surat dari <?php echo $isi->sumber_rekomendasi; ?> <?php echo $isi->nama_lembaga; ?> Nomor : <?php echo $isi->no_surat_rek; ?> tanggal <?php echo date_id($isi->tgl_surat_rek); ?> perihal Permohonan dan Perpanjangan Izin Operasional a.n :</p>
             <table style="margin-left:70px; margin-top: 10px; margin-bottom:10px;">
                 <tr>
                     <td width="140">Nama Lembaga</td>
@@ -51,7 +51,7 @@ $date = new DateTime($get->tanggal);
                     <td><?php echo $isi->alamat_lembaga.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
                 </tr>
             </table>
-            <p class="indent">Dengan maksud mengajukan Permohonan Perpanjangan Izin Oprasional. Dan Pihak kami prinsipnya tidak keberatan untuk memberikan rekomendasi Perpanjangan Izin Oprasional <?php echo $isi->nama_lembaga; ?> sepanjang mematuhi dan mentaati segala peraturan dan perundang-undangan yang berlaku.</p>
+            <p class="indent">Dengan maksud mengajukan Permohonan Perpanjangan Izin Operasional. Dan Pihak kami prinsipnya tidak keberatan untuk memberikan rekomendasi Perpanjangan Izin Operasional <?php echo $isi->nama_lembaga; ?> sepanjang mematuhi dan mentaati segala peraturan dan perundang-undangan yang berlaku.</p>
             <p class="indent">Demikian, Surat rekomendasi ini dibuat untuk dapat dipergunakan sebagaimana mestinya. Atas perhatiannya kami ucapkan terima kasih.</p>
         </div>
         <div class="mail-footer">
