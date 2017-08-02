@@ -114,7 +114,7 @@ class Msurat_keluar extends Sipaten_model
 		if( property_exists($isianSurat, 'pengikut') )
 		{
 			$this->db->delete('pengikut', array('surat' => $param));
-			
+
 			if( is_array($isianSurat->pengikut) )
 			{
 				foreach( $isianSurat->pengikut as $key => $value )
@@ -197,6 +197,8 @@ class Msurat_keluar extends Sipaten_model
 		$this->db->delete('notifications', array('surat' => $param));
 
 		$this->db->delete('pengikut', array('surat' => $param));
+
+		$this->db->delete('penilaian', array('surat' => $param));
 
 		if($this->db->affected_rows())
 		{
