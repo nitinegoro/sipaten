@@ -29,7 +29,7 @@ Highcharts.chart('chart-perizinan', {
         text: 'Data Surat Non Perizinan'
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b><br> Jumlah : <b>{point.y}</b> Surat'
     },
     plotOptions: {
         pie: {
