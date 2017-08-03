@@ -30,30 +30,30 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                 <tr>
                     <td>2. Nama Kepala Keluarga</td>
                     <td class="text-center">:</td>
-                    <td><?php echo @$kk->nama_lengkap; ?></td>
+                    <td><?php echo strtoupper(@$kk->nama_lengkap); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>3. Alamat</td>
                     <td class="text-center">:</td>
-                    <td> <?php echo @$kk->alamat; ?>
+                    <td> <?php echo strtoupper(@$kk->alamat); ?>
                         <table>
                             <tr style="vertical-align: top">
-                                <td style="width: 110px;">a. Desa/Kelurahan</td>
+                                <td style="width: 100px;">a. Desa/Kelurahan</td>
                                 <td width="10" class="text-center">:</td>
-                                <td><?php echo @$kk->nama_desa; ?></td>
+                                <td><?php echo strtoupper(@$kk->nama_desa); ?></td>
                                 <td style="width: 5px;"></td>
-                                <td style="width: 110px;">c. Kabupaten/Kota</td>
+                                <td style="width: 100px;">c. Kabupaten/Kota</td>
                                 <td width="10" class="text-center">:</td>
-                                <td><?php echo $this->option->get('kabupaten'); ?></td>
+                                <td><?php echo strtoupper($this->option->get('kabupaten')); ?></td>
                             </tr>
                             <tr style="vertical-align: top">
                                 <td>b. Kecamatan</td>
                                 <td width="10" class="text-center">:</td>
-                                <td><?php echo $this->option->get('kecamatan'); ?></td>
+                                <td><?php echo strtoupper($this->option->get('kecamatan')); ?></td>
                                 <td style="width: 5px;"></td>
                                 <td>d. Provinsi</td>
                                 <td width="10" class="text-center">:</td>
-                                <td><?php echo $this->option->get('provinsi'); ?></td>
+                                <td><?php echo strtoupper($this->option->get('provinsi')); ?></td>
                             </tr>
                         </table>
                     </td>
@@ -66,7 +66,7 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                 <tr>
                     <td>5. Nama Lengkap</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->nama_lengkap; ?></td>
+                    <td><?php echo strtoupper($get->nama_lengkap); ?></td>
                 </tr>
                 <tr>
                     <td colspan="3"><h3 class="upper" style="margin:10px 0px 10px 0px;">data kepindahan</h3></td>
@@ -74,7 +74,7 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                 <tr>
                     <td width="170">1. Alasan Pindah</td>
                     <td class="text-center" style="width: 15px;">:</td>
-                    <td><?php echo $isi->alasan_pindah; ?></td>
+                    <td><?php echo strtoupper($isi->alasan_pindah); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>2. Alaat Tujuan Pindah</td>
@@ -84,25 +84,25 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                             <tr style="vertical-align: top">
                                 <td style="width: 120px;">a. Alamat</td>
                                 <td width="10" class="text-center">:</td>
-                                <td colspan="4"><?php echo $isi->alamat_pindah; ?></td>  
+                                <td colspan="4"><?php echo strtoupper($isi->alamat_pindah); ?></td>  
                             </tr>
                             <tr style="vertical-align: top">
                                 <td style="width: 120px;">b. Desa/Kelurahan</td>
                                 <td width="10" class="text-center">:</td>
-                                <td><?php echo $isi->desa; ?></td>
+                                <td><?php echo strtoupper($isi->desa); ?></td>
                                 <td style="width: 5px;"></td>
                                 <td style="width: 130px;">d. Kabupaten/Kota</td>
                                 <td width="10" class="text-center">:</td>
-                                <td><?php echo $isi->kabupaten; ?></td>
+                                <td><?php echo strtoupper($isi->kabupaten); ?></td>
                             </tr>
                             <tr style="vertical-align: top">
                                 <td>c. Kecamatan</td>
                                 <td width="10" class="text-center">:</td>
-                                <td><?php echo $isi->kecamatan; ?></td>
+                                <td><?php echo strtoupper($isi->kecamatan); ?></td>
                                 <td style="width: 5px;"></td>
                                 <td>e. Provinsi</td>
                                 <td width="10" class="text-center">:</td>
-                                <td><?php echo $isi->provinsi; ?></td>
+                                <td><?php echo strtoupper($isi->provinsi); ?></td>
                             </tr>
                         </table>
                     </td>
@@ -110,22 +110,22 @@ $kk = $this->surat_keluar->get_kepala_keluarga( $get->no_kk );
                 <tr>
                     <td>3. Klasifikasi Pindah</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->klasifikasi_pindah; ?></td>
+                    <td><?php echo strtoupper($isi->klasifikasi_pindah); ?></td>
                 </tr>
                 <tr>
                     <td>4. Jenis Kepindahan</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->jns_kepindahan; ?></td>
+                    <td><?php echo strtoupper($isi->jns_kepindahan); ?></td>
                 </tr>
                 <tr>
                     <td>5. Status KK Bagi Yang &nbsp;&nbsp;&nbsp;&nbsp;Tidak Pindah</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->status_kk_tdk_pindah; ?></td>
+                    <td><?php echo strtoupper($isi->status_kk_tdk_pindah); ?></td>
                 </tr>
                 <tr>
                     <td>6. Status KK Bagi Yang &nbsp;&nbsp;&nbsp;&nbsp;Pindah</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->status_kk_pindah; ?></td>
+                    <td><?php echo strtoupper($isi->status_kk_pindah); ?></td>
                 </tr>
                 <tr>
                     <td>7. Keluarga Yang Pindah</td>

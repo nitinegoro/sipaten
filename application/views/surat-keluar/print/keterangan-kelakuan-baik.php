@@ -16,9 +16,11 @@ if( is_numeric($isi->desa) )
 {
     $desa = $this->option->get_select_desa($get->id_desa, 'nama_desa');
     $kepala = $this->option->village_prefix( $isi->desa )['k'];
+    $jenis = $this->option->village_prefix( $isi->desa )['j'];
 } else {
     $desa = $isi->desa;
     $kepala = $this->option->village_prefix( $dszak->id_desa )['k'];
+    $jenis = $this->option->village_prefix( $dszak->desa )['j'];
 }
 
 
@@ -51,7 +53,7 @@ if( is_numeric($isi->desa) )
                 <tr>
                     <td>Tempat, Tanggal Lahir</td>
                     <td class="text-center">:</td>
-                    <td><?php echo ucfirst($get->tmp_lahir).', '.date_id($get->tgl_lahir); ?></td>
+                    <td><?php echo strtoupper($get->tmp_lahir).', '.date_id($get->tgl_lahir); ?></td>
                 </tr>
                 <tr>
                     <td>Jenis Kelamin</td>
@@ -61,7 +63,7 @@ if( is_numeric($isi->desa) )
                 <tr>
                     <td>Agama</td>
                     <td class="text-center">:</td>
-                    <td><?php echo ucfirst($get->agama); ?></td>
+                    <td><?php echo strtoupper($get->agama); ?></td>
                 </tr>
                 <tr>
                     <td>NIK</td>
@@ -71,16 +73,16 @@ if( is_numeric($isi->desa) )
                 <tr>
                     <td>Pekerjaan</td>
                     <td class="text-center">:</td>
-                    <td><?php echo ucfirst($get->pekerjaan); ?></td>
+                    <td><?php echo strtoupper($get->pekerjaan); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>Alamat</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo strtoupper($get->alamat).' RT.'.$get->rt.' '.strtoupper($jenis).' '.strtoupper($desa).' KEC. '.strtoupper($this->option->get('kecamatan')).' KAB. '.strtoupper($this->option->get('kabupaten')); ?></td>
                 </tr>
             </table>
             <p class="indent">Sepanjang sepengetahuan kami bahwa nama tersebut adalah benar berkelakuan baik dalam kehidupan sehari-hari dan dalam kehidupan bermasyarakat.</p>
-            <p class="indent">Demikian, Surat Keterangan ini dibuat, sebagai pengantar untuk melengkapi persyaratan <strong>"<?php echo $isi->keperluan ?>"</strong>.</p>
+            <p class="indent">Demikian, Surat Keterangan ini dibuat, sebagai pengantar untuk melengkapi persyaratan <strong>"<?php echo strtoupper($isi->keperluan) ?>"</strong>.</p>
         </div>
         <div class="mail-footer">
             <table style="width: 100%;">

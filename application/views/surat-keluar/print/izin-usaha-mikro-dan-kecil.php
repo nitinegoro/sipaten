@@ -16,7 +16,7 @@ if( property_exists($isi, 'desa') )
     $kepala = $this->option->village_prefix( $get->id_desa )['j'];
 } else {
     $desa = @$get->desa;
-    $kepala = '';
+    $kepala = $this->option->village_prefix( $get->id_desa )['j'];
 }
 ?>
     <div class="content">
@@ -27,10 +27,10 @@ if( property_exists($isi, 'desa') )
         <div class="mail-content">
             <table>
                 <tr style="vertical-align: top;">
-                    <td width="60">DASAR</td>
+                    <td width="50">DASAR</td>
                     <td class="text-center">:</td>
                     <td>
-                        <ol style=" margin-top: -11px;">
+                        <ol style="margin-left: -20px; margin-top: -8px;">
                             <li style="padding-left: 5px;">Peraturan Presiden No. 98 Tahun 2014 tentang Perizinan Untuk Usaha Mikro dan Kecil.</li>
                             <li style="padding-left: 5px;">Peraturan Menteri Dalam Negeri No. 83 Tahun 2014 tentang Pedoman Pemberian Izin Usaha Mikro dan Kecil.</li>
                             <li style="padding-left: 5px;">Peraturan Bupati Bangka Tengah Nomor 38 Tahun 2015 tentang Perubahan atas Peraturan Bupati Nomor 29 Tahun 2012 tentang Pelimpahan Sebagian Kewenangan Bupati Kepada Camat.</li>
@@ -53,7 +53,7 @@ if( property_exists($isi, 'desa') )
                 <tr style="vertical-align: top;">
                     <td>ALAMAT</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$kepala.' '.$get->nama_desa; ?></td>
+                    <td><?php echo strtoupper($get->alamat).' '.strtoupper($kepala).' '.strtoupper($get->nama_desa); ?></td>
                 </tr>
                 <tr>
                     <td>NOMOR TELEPON / HP</td>
@@ -66,32 +66,32 @@ if( property_exists($isi, 'desa') )
                 <tr>
                     <td width="200">NAMA PERUSAHAAN</td>
                     <td class="text-center" width="30">:</td>
-                    <td><?php echo $isi->nama_perusahaan; ?></td>
+                    <td><?php echo strtoupper($isi->nama_perusahaan); ?></td>
                 </tr>
                 <tr>
                     <td>BENTUK PERUSAHAAN</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->bentuk_perusahaan; ?></td>
+                    <td><?php echo strtoupper($isi->bentuk_perusahaan); ?></td>
                 </tr>
                 <tr>
                     <td>NPWP</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->npwp; ?></td>
+                    <td><?php echo strtoupper($isi->npwp); ?></td>
                 </tr>
                 <tr>
                     <td>KEGIATAN USAHA</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->kegiatan_usaha; ?></td>
+                    <td><?php echo strtoupper($isi->kegiatan_usaha); ?></td>
                 </tr>
                 <tr>
                     <td>SARANA USAHA</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->sarana_usaha; ?></td>
+                    <td><?php echo strtoupper($isi->sarana_usaha); ?></td>
                 </tr>
                 <tr>
                     <td>ALAMAT USAHA</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->alamat_perusahaan; ?></td>
+                    <td><?php echo strtoupper($isi->alamat_perusahaan); ?></td>
                 </tr>
                 <tr>
                     <td>JUMLAH MODAL USAHA</td>
@@ -130,7 +130,7 @@ if( property_exists($isi, 'desa') )
                 </tr>
             </table>
         </div>
-        <div class="push">
+        <div class="push" style="padding-top:100px;">
             <small><strong><?php echo $this->option->get('nama_sistem') ?></strong></small> <br>
             <small>Motto : <?php echo $this->option->get('motto') ?></small> <br>
             <small>Janji pelayanan : <?php echo $this->option->get('janji_pelayanan') ?></small>

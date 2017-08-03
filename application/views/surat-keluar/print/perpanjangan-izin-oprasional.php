@@ -43,15 +43,15 @@ $date = new DateTime($get->tanggal);
                 <tr>
                     <td>Nama Pengelola</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->nama_pengelola; ?></td>
+                    <td><?php echo strtoupper($isi->nama_pengelola); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>Alamat</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $isi->alamat_lembaga.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo strtoupper($isi->alamat_lembaga).' KEC. '.strtoupper($this->option->get('kecamatan')).' KAB. '.strtoupper($this->option->get('kabupaten')); ?></td>
                 </tr>
             </table>
-            <p class="indent">Dengan maksud mengajukan Permohonan Perpanjangan Izin Operasional. Dan Pihak kami prinsipnya tidak keberatan untuk memberikan rekomendasi Perpanjangan Izin Operasional <?php echo $isi->nama_lembaga; ?> sepanjang mematuhi dan mentaati segala peraturan dan perundang-undangan yang berlaku.</p>
+            <p class="indent">Dengan maksud mengajukan Permohonan Perpanjangan Izin Operasional. Dan Pihak kami prinsipnya tidak keberatan untuk memberikan rekomendasi Perpanjangan Izin Operasional <?php echo strtoupper($isi->nama_lembaga); ?> sepanjang mematuhi dan mentaati segala peraturan dan perundang-undangan yang berlaku.</p>
             <p class="indent">Demikian, Surat rekomendasi ini dibuat untuk dapat dipergunakan sebagaimana mestinya. Atas perhatiannya kami ucapkan terima kasih.</p>
         </div>
         <div class="mail-footer">

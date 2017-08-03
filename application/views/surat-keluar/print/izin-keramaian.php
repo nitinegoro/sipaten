@@ -57,7 +57,7 @@ if( is_numeric($isi->desa) )
                 <tr>
                     <td>Tempat, Tanggal Lahir</td>
                     <td class="text-center">:</td>
-                    <td><?php echo ucfirst($get->tmp_lahir).', '.date_id($get->tgl_lahir); ?></td>
+                    <td><?php echo strtoupper($get->tmp_lahir).', '.date_id($get->tgl_lahir); ?></td>
                 </tr>
                 <tr>
                     <td>Jenis Kelamin</td>
@@ -67,42 +67,42 @@ if( is_numeric($isi->desa) )
                 <tr>
                     <td>Pekerjaan</td>
                     <td class="text-center">:</td>
-                    <td><?php echo ucfirst($get->pekerjaan); ?></td>
+                    <td><?php echo strtoupper($get->pekerjaan); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>Alamat</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$this->option->get_select_desa($isi->desa, 'nama_desa').' '.$get->nama_desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo strtoupper($get->alamat).' '.strtoupper($kepala).' '.strtoupper($this->option->get_select_desa($isi->desa, 'nama_desa')).' '.strtoupper($get->nama_desa).' KEC. '.strtoupper($this->option->get('kecamatan')).' KAB. '.strtoupper($this->option->get('kabupaten')); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>Keperluan</td>
                     <td class="text-center">:</td>
-                    <td>Mengurus Izin Keramaian dalam rangka <strong>"<?php echo $isi->keperluan; ?>"</strong> yang akan diselenggarakan : 
+                    <td>Mengurus Izin Keramaian dalam rangka <strong>"<?php echo strtoupper($isi->keperluan); ?>"</strong> yang akan diselenggarakan : 
                     <table style="margin-top: 0px; margin-bottom:-10px;">
                         <tr>
                             <td width="50">Hari</td>
                             <td class="text-center" width="30">:</td>
-                            <td><?php echo $isi->hari; ?></td>
+                            <td><?php echo strtoupper($isi->hari); ?></td>
                         </tr>
                         <tr>
                             <td>Tanggal</td>
                             <td class="text-center">:</td>
-                            <td><?php echo date_id($isi->tanggal); ?></td>
+                            <td><?php echo strtoupper(date_id($isi->tanggal)); ?></td>
                         </tr>
                         <tr>
                             <td>Pukul</td>
                             <td class="text-center">:</td>
-                            <td><?php echo $isi->waktu; ?></td>
+                            <td><?php echo strtoupper($isi->waktu); ?></td>
                         </tr>
                         <tr style="vertical-align: top">
                             <td>Tempat</td>
                             <td class="text-center">:</td>
-                            <td><?php echo $isi->tempat.' '.$desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                            <td><?php echo strtoupper($isi->tempat).' '.strtoupper($desa).' KEC. '.strtoupper($this->option->get('kecamatan')).' KAB. '.strtoupper($this->option->get('kabupaten')); ?></td>
                         </tr>
                         <tr style="vertical-align: top;">
                             <td>Hiburan</td>
                             <td class="text-center">:</td>
-                            <td><?php echo $isi->hiburan ?></td>
+                            <td><?php echo strtoupper($isi->hiburan) ?></td>
                         </tr>
                     </table>
                     </td>
