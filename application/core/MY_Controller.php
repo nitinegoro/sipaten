@@ -299,7 +299,7 @@ class Sipaten extends MY_Controller
 				$this->form_validation->set_rules('isi[kabupaten]', 'Kabupaten/Kota', 'trim|required');
 				$this->form_validation->set_rules('isi[provinsi]', 'Provinsi', 'trim|required');
 				$this->form_validation->set_rules('isi[tgl_pindah]', 'Tanggal Pindah', 'trim|required');
-				$this->form_validation->set_rules('isi[pengikut][0][id]', 'Minimal 1 Orang dalam Keluarga yang mengikuti', 'trim|required');
+				//$this->form_validation->set_rules('isi[pengikut][0][id]', 'Minimal 1 Orang dalam Keluarga yang mengikuti', 'trim|required');
 				break;
 			case 'sp3fat':
 			case 'sp4fat':

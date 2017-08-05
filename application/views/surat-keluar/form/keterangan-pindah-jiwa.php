@@ -98,9 +98,12 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							* From parent Model
 							*/
 							if($get->no_kk != FALSE) :
+								if(property_exists($isi, 'pengikut')) :
 				            /* Loop data penduduk */
 								foreach($this->create_surat->get_keluarga($get->no_kk, $isi->pengikut) as $key => $value) :
 									/* Tidak dengan orang mengajukan */
+									if($get->nik==$value->nik) 
+												continue;
 							?>
 									<tr>
 										<td>
@@ -116,6 +119,26 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 									</tr>
 							<?php  
 								endforeach;
+								else :
+								foreach($this->create_surat->get_keluarga($get->no_kk) as $key => $value) :
+									/* Tidak dengan orang mengajukan */
+									if($get->nik==$value->nik) 
+										continue;
+							?>
+									<tr>
+										<td>
+						                    <div class="checkbox checkbox-inline" style="margin-top: -10px;">
+						                        <input id="checkbox1" type="checkbox" name="isi[pengikut][][id]" value="<?php echo $value->ID; ?>"> <label for="checkbox1"></label>
+						                    </div>
+										</td>
+										<td class="text-center" width="150"><?php echo $value->nik; ?></td>
+										<td><?php echo $value->nama_lengkap; ?></td>
+										<td><?php echo $value->tmp_lahir.', '.date_id($value->tgl_lahir); ?></td>
+										<td><?php echo strtoupper($value->status_kk); ?></td>
+									</tr>
+							<?php
+								endforeach;
+								endif;
 							else :
 							?>
 								<tr>

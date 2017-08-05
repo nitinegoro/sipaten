@@ -52,7 +52,7 @@ if( is_numeric($isi->desa) )
                 <tr>
                     <td>Tempat, Tanggal Lahir</td>
                     <td class="text-center">:</td>
-                    <td><?php echo ucfirst($get->tmp_lahir).', '.date_id($get->tgl_lahir); ?></td>
+                    <td><?php echo strtoupper($get->tmp_lahir).', '.strtoupper(date_id($get->tgl_lahir)); ?></td>
                 </tr>
                 <tr>
                     <td>Kewarganegaraan</td>
@@ -62,7 +62,7 @@ if( is_numeric($isi->desa) )
                 <tr>
                     <td>Agama</td>
                     <td class="text-center">:</td>
-                    <td><?php echo ucfirst($get->agama); ?></td>
+                    <td><?php echo strtoupper($get->agama); ?></td>
                 </tr>
                 <tr>
                     <td>Status Perkawinan</td>
@@ -72,12 +72,12 @@ if( is_numeric($isi->desa) )
                 <tr>
                     <td>Pekerjaan</td>
                     <td class="text-center">:</td>
-                    <td><?php echo ucfirst($get->pekerjaan); ?></td>
+                    <td><?php echo strtoupper($get->pekerjaan); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>Alamat</td>
                     <td class="text-center">:</td>
-                    <td><?php echo $get->alamat.' RT.'.$get->rt.' RW.'.$get->rw.' '.$kepala.' '.$desa.' Kec. '.$this->option->get('kecamatan').' Kab. '.$this->option->get('kabupaten'); ?></td>
+                    <td><?php echo strtoupper($get->alamat).' RT.'.$get->rt.' '.strtoupper($kepala).' '.strtoupper($desa).' KEC. '.strtoupper($this->option->get('kecamatan')).' KAB. '.strtoupper($this->option->get('kabupaten')); ?></td>
                 </tr>
                 <tr style="vertical-align: top;">
                     <td>Pindah Ke </td>
@@ -87,27 +87,27 @@ if( is_numeric($isi->desa) )
                             <tr>
                                 <td>Desa/Kelurahan</td>
                                 <td width="40" class="text-center">:</td>
-                                <td><?php echo $desa; ?></td>
+                                <td><?php echo strtoupper($desa); ?></td>
                             </tr>
                             <tr>
                                 <td>Kecamatan</td>
                                 <td width="40" class="text-center">:</td>
-                                <td><?php echo $isi->kecamatan; ?></td>
+                                <td><?php echo strtoupper($isi->kecamatan); ?></td>
                             </tr>
                             <tr>
                                 <td>Kabupaten/Kota</td>
                                 <td width="40" class="text-center">:</td>
-                                <td><?php echo $isi->kabupaten; ?></td>
+                                <td><?php echo strtoupper($isi->kabupaten); ?></td>
                             </tr>
                             <tr>
                                 <td>Provinsi</td>
                                 <td width="40" class="text-center">:</td>
-                                <td><?php echo $isi->provinsi; ?></td>
+                                <td><?php echo strtoupper($isi->provinsi); ?></td>
                             </tr>
                             <tr>
                                 <td>Pada Tanggal</td>
                                 <td width="40" class="text-center">:</td>
-                                <td><?php echo date_id($isi->tgl_pindah); ?></td>
+                                <td><?php echo strtoupper(date_id($isi->tgl_pindah)); ?></td>
                             </tr>
                         </table>
                     </td>
@@ -120,7 +120,7 @@ if( is_numeric($isi->desa) )
                 <tr style="vertical-align: top;">
                     <td>Pengikut </td>
                     <td class="text-center">:</td>
-                    <td><?php echo count($isi->pengikut); ?> Orang</td>
+                    <td><?php echo (property_exists($isi, 'pengikut')) ? count($isi->pengikut)." ORANG" : '-'; ?></td>
                 </tr>
             </table>
             <table class="table-bordered" width="100%" style="margin-top: 10px; margin-bottom:10px;">
@@ -130,26 +130,29 @@ if( is_numeric($isi->desa) )
                     <th>Tempat, Tanggal Lahir</th>
                     <th width="150">SHDK</th>
                 </tr>
-                <tr>
-                    <td class="text-center">1.</td>
-                    <td><?php echo $get->nama_lengkap; ?></td>
-                    <td><?php echo ucfirst($get->tmp_lahir).', '.date_id($get->tgl_lahir); ?></td>
-                    <td class="text-center"><?php echo strtoupper($get->status_kk); ?></td>
-                </tr>
             <?php 
             /* Loop data penduduk */
             $key_no = 1;
-            if(is_array($isi->pengikut)) :
+            if(property_exists($isi, 'pengikut')) :
             foreach($isi->pengikut as $key => $value) :
                 $ikut = $this->db->get_where('penduduk', array('ID' => $value->id))->row();
             ?>
                 <tr>
-                    <td class="text-center"><?php echo ++$key_no; ?>.</td>
+                    <td class="text-center"><?php echo $key_no++; ?>.</td>
                     <td><?php echo $ikut->nama_lengkap; ?></td>
                     <td><?php echo ucfirst($ikut->tmp_lahir).', '.date_id($ikut->tgl_lahir) ?></td>
                     <td class="text-center"><?php echo strtoupper($ikut->status_kk) ?></td>
                 </tr>
             <?php endforeach; 
+            else :
+            ?>
+                <tr style="height: 25px;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            <?php
             endif;
             ?>
             </table>
