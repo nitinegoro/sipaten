@@ -91,5 +91,5 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 echo form_close();
 ?>
 		</div>
-	</dov>
+	</div>
 </div>

@@ -35,7 +35,7 @@ if( is_numeric($isi->desa) )
         <div class="mail-content">
             <table style="margin-left:40px; margin-top: 10px; margin-bottom:10px;">
                 <tr>
-                    <td width="140">Nama</td>
+                    <td width="150">Nama</td>
                     <td class="text-center">:</td>
                     <td><strong><?php echo strtoupper($get->nama_lengkap); ?></strong></td>
                 </tr>
